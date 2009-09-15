@@ -146,7 +146,7 @@ feature -- Element change
 
 feature {NONE} -- Implementation
 
-	partitions: LX_SYMBOL_PARTITIONS
+	partitions: ?LX_SYMBOL_PARTITIONS
 			-- Partitions of symbols with same out-transitions
 
 	set_nfa_state_ids (start_conditions: LX_START_CONDITIONS) is
@@ -281,17 +281,20 @@ feature {NONE} -- Implementation
 		local
 			i, nb: INTEGER
 			previous: INTEGER
-			dfa_state: LX_DFA_STATE
+			dfa_state: ?LX_DFA_STATE
 			transitions: LX_TRANSITION_TABLE [LX_DFA_STATE]
 			symbols: ARRAY [BOOLEAN]
+			l_partitions: like partitions
 		do
-			nb := partitions.capacity
+			l_partitions := partitions
+			check l_partitions /= Void end -- implied by precondition `paritions_not_void'
+			nb := l_partitions.capacity
 			if states.capacity - states.count < nb then
 				resize (states.capacity + nb + Max_dfas_increment)
 			end
-			partitions.initialize
-			state.partition (partitions)
-			symbols := partitions.symbols
+			l_partitions.initialize
+			state.partition (l_partitions)
+			symbols := l_partitions.symbols
 			transitions := state.transitions
 			from
 				i := minimum_symbol
@@ -301,11 +304,12 @@ feature {NONE} -- Implementation
 				if symbols.item (i) then
 						-- There is a transition labeled `i'
 						-- leaving `new_state'.
-					if partitions.is_representative (i) then
+					if l_partitions.is_representative (i) then
 						dfa_state := new_state (state.new_state (i))
 					else
-						previous := partitions.previous_symbol (i)
+						previous := l_partitions.previous_symbol (i)
 						dfa_state := transitions.target (previous)
+						check dfa_state /= Void end -- implied by ... ?
 					end
 					transitions.set_target (dfa_state, i)
 				end
@@ -321,24 +325,26 @@ feature {NONE} -- Implementation
 			not_full: not states.is_full
 		local
 			i, nb: INTEGER
+			r: ?like new_state
 		do
 			from
 				i := start_states_count + 1
 				nb := states.count
 			until
-				Result /= Void or i > nb
+				r /= Void or i > nb
 			loop
-				Result := states.item (i)
-				if not Result.is_equal (state) then
-					Result := Void
+				r := states.item (i)
+				if not r.is_equal (state) then
+					r := Void
 					i := i + 1
 				end
 			end
-			if Result = Void then
-				Result := state
+			if r = Void then
+				r := state
 				states.put_last (state)
 				state.set_id (states.count)
 			end
+			Result := r
 		ensure
 			new_state_not_void: Result /= Void
 			same_state: Result.is_equal (state)

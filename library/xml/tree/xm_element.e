@@ -33,13 +33,13 @@ inherit
 
 create
 
-	make,
+	make, make_without_parent,
 	make_last,
 	make_root,
 	make_child
 
 feature {NONE} -- Initialization
-	
+
 	make (a_parent: like parent; a_name: like name; a_ns: like namespace) is
 			-- Create a new child element, without attaching to parent.
 		require
@@ -48,15 +48,27 @@ feature {NONE} -- Initialization
 			a_ns_not_void: a_ns /= Void
 		do
 			parent := a_parent
-			name := a_name
-			namespace := a_ns
-			list_make
+			make_without_parent (a_name, a_ns)
 		ensure
 			parent_set: parent = a_parent
 			name_set: name = a_name
 			ns_prefix_set: namespace = a_ns
 		end
-		
+
+	make_without_parent (a_name: like name; a_ns: like namespace) is
+			-- Create a new child element, without attaching to any parent.
+		require
+			a_name_not_void: a_name /= Void
+			a_ns_not_void: a_ns /= Void
+		do
+			name := a_name
+			namespace := a_ns
+			list_make
+		ensure
+			name_set: name = a_name
+			ns_prefix_set: namespace = a_ns
+		end
+
 	make_last (a_parent: XM_ELEMENT; a_name: like name; a_ns: like namespace) is
 			-- Create a new child element, and add it to the parent.
 		require
@@ -70,11 +82,11 @@ feature {NONE} -- Initialization
 			a_parent.force_last (Current)
 		ensure
 			parent_set: parent = a_parent
-			in_parent: parent.last = Current
+			in_parent: a_parent.last = Current
 			name_set: name = a_name
 			ns_prefix_set: namespace = a_ns
 		end
-		
+
 	make_root (a_parent: XM_DOCUMENT; a_name: like name; a_ns: like namespace) is
 			-- Create a new root element, and add it to the document parent.
 		require
@@ -88,11 +100,11 @@ feature {NONE} -- Initialization
 			a_parent.set_root_element (Current)
 		ensure
 			parent_set: parent = a_parent
-			in_parent: parent.last = Current
+			in_parent: a_parent.last = Current
 			name_set: name = a_name
 			ns_prefix_set: namespace = a_ns
 		end
-		
+
 	make_child (a_parent: like parent; a_name: like name; a_ns: like namespace) is
 			-- Create a new child element.
 		obsolete
@@ -117,7 +129,7 @@ feature -- Element change
 			-- else force_last (last) happens to be a no-op.
 			end
 		end
-		
+
 	put_last (v: like last) is
 			-- `put_last' with parent removal and optimisation for
 			-- put_last (last).
@@ -128,24 +140,27 @@ feature -- Element change
 			-- else force_last (last) happens to be a no-op.
 			end
 		end
-		
+
 feature {NONE} -- Parent processing
 
 	before_addition (a_node: XM_NODE) is
 			-- Remove node from original parent if not us.
+		local
+			l_parent: like parent
 		do
 			if a_node /= Void then
 				check addable: addable_item (a_node) end
 					-- Remove from previous parent.
-				if a_node.parent /= Void then
-					a_node.parent.equality_delete (a_node)
+				l_parent := a_node.parent
+				if l_parent /= Void then
+					l_parent.equality_delete (a_node)
 				end
 				a_node.node_set_parent (Current)
 			end
 		ensure then
 			parent_accepted: a_node /= Void implies a_node.parent = Current
 		end
-	
+
 	addable_item (a_node: XM_NODE): BOOLEAN is
 			-- Is this not of the correct type for addition?
 			-- (element node)
@@ -162,7 +177,7 @@ feature {NONE} -- Parent processing
 					or typer.is_attribute
 			end
 		end
-		
+
 feature {XM_NODE} -- Removal
 
 	equality_delete (v: XM_NODE) is
@@ -187,7 +202,7 @@ feature {XM_NODE} -- Removal
 				end
 			end
 		end
-		
+
 feature -- Status report
 
 	has_attribute_by_qualified_name (a_uri: STRING; a_name: STRING): BOOLEAN is
@@ -199,13 +214,15 @@ feature -- Status report
 		local
 			a_cursor: DS_LINEAR_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
+			l_xml_attribute: ?XM_ATTRIBUTE
 		do
 			create typer
 			a_cursor := new_cursor
 			from a_cursor.start until a_cursor.after loop
 				a_cursor.item.process (typer)
-				if typer.is_attribute and then
-					typer.xml_attribute.has_qualified_name (a_uri, a_name)
+				l_xml_attribute := typer.xml_attribute
+				if typer.is_attribute and then l_xml_attribute /= Void and then
+					l_xml_attribute.has_qualified_name (a_uri, a_name)
 				then
 					Result := True
 					a_cursor.go_after -- Jump out of the loop.
@@ -214,7 +231,7 @@ feature -- Status report
 				end
 			end
 		end
-		
+
 	has_attribute_by_name (a_name: STRING): BOOLEAN is
 			-- Does current element contain an attribute named `a_name'?
 			-- element?
@@ -223,13 +240,15 @@ feature -- Status report
 		local
 			a_cursor: DS_LINEAR_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
+			l_xml_attribute: ?XM_ATTRIBUTE
 		do
 			create typer
 			a_cursor := new_cursor
 			from a_cursor.start until a_cursor.after loop
 				a_cursor.item.process (typer)
-				if typer.is_attribute and then
-					attribute_same_name (typer.xml_attribute, a_name)
+				l_xml_attribute := typer.xml_attribute
+				if typer.is_attribute and then l_xml_attribute /= Void and then
+					attribute_same_name (l_xml_attribute, a_name)
 				then
 					Result := True
 					a_cursor.go_after -- Jump out of the loop.
@@ -253,7 +272,7 @@ feature {NONE} -- Name comparison with namespace.
 			same_name: Result implies same_string (a_named.name, a_name)
 			default_ns: (a_named.namespace.uri.count = 0) implies (Result = same_string (a_named.name, a_name))
 		end
-		
+
 	named_same_name (a_named: XM_NAMED_NODE; a_name: STRING): BOOLEAN is
 			-- Has 'a_named' same name as 'a_name' and
 			-- same namespace as current node?
@@ -265,22 +284,24 @@ feature {NONE} -- Name comparison with namespace.
 		ensure
 			same_name: Result implies same_string (a_named.name, a_name)
 		end
-		
+
 feature -- Access (from XM_COMPOSITE)
-	
+
 	has_element_by_name (a_name: STRING): BOOLEAN is
 			-- Has current node at least one direct child
 			-- element with the name `a_name'?
 		local
 			a_cursor: DS_LINEAR_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
+			l_element: ?XM_ELEMENT
 		do
 			create typer
 			a_cursor := new_cursor
 			from a_cursor.start until a_cursor.after loop
 				a_cursor.item.process (typer)
-				if typer.is_element and then
-					named_same_name (typer.element, a_name)
+				l_element := typer.element
+				if typer.is_element and then l_element /= Void and then
+					named_same_name (l_element, a_name)
 				then
 					Result := True
 					a_cursor.go_after -- Jump out of the loop.
@@ -296,13 +317,15 @@ feature -- Access (from XM_COMPOSITE)
 		local
 			a_cursor: DS_LINEAR_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
+			l_element: ?XM_ELEMENT
 		do
 			create typer
 			a_cursor := new_cursor
 			from a_cursor.start until a_cursor.after loop
 				a_cursor.item.process (typer)
-				if typer.is_element and then
-					typer.element.has_qualified_name (a_uri, a_name)
+				l_element := typer.element
+				if typer.is_element and then l_element /= Void and then
+					l_element.has_qualified_name (a_uri, a_name)
 				then
 					Result := True
 					a_cursor.go_after -- Jump out of the loop.
@@ -311,56 +334,60 @@ feature -- Access (from XM_COMPOSITE)
 				end
 			end
 		end
-		
-	element_by_name (a_name: STRING): XM_ELEMENT is
+
+	element_by_name (a_name: STRING): ?XM_ELEMENT is
 			-- Direct child element with name `a_name';
 			-- If there are more than one element with that name, anyone may be returned.
 			-- Return Void if no element with that name is a child of current node.
 		local
 			a_cursor: DS_LINEAR_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
+			l_element: ?XM_ELEMENT
 		do
 			create typer
 			a_cursor := new_cursor
 			from a_cursor.start until a_cursor.after loop
 				a_cursor.item.process (typer)
-				if typer.is_element and then
-					named_same_name (typer.element, a_name)
+				l_element := typer.element
+				if typer.is_element and then l_element /= Void and then
+					named_same_name (l_element, a_name)
 				then
-					Result := typer.element
+					Result := l_element
 					a_cursor.go_after -- Jump out of the loop.
 				else
 					a_cursor.forth
 				end
 			end
 		end
-		
-	element_by_qualified_name (a_uri: STRING; a_name: STRING): XM_ELEMENT is
+
+	element_by_qualified_name (a_uri: STRING; a_name: STRING): ?XM_ELEMENT is
 			-- Direct child element with given qualified name;
 			-- If there are more than one element with that name, anyone may be returned.
 			-- Return Void if no element with that name is a child of current node.
 		local
 			a_cursor: DS_LINEAR_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
+			l_element: ?XM_ELEMENT
 		do
 			create typer
 			a_cursor := new_cursor
 			from a_cursor.start until a_cursor.after loop
 				a_cursor.item.process (typer)
-				if typer.is_element and then
-					typer.element.has_qualified_name (a_uri, a_name)
+				l_element := typer.element
+				if typer.is_element and then l_element /= Void and then
+					l_element.has_qualified_name (a_uri, a_name)
 				then
-					Result := typer.element
+					Result := l_element
 					a_cursor.go_after -- Jump out of the loop.
 				else
 					a_cursor.forth
 				end
 			end
 		end
-	
+
 feature -- Access
 
-	attribute_by_name (a_name: STRING): XM_ATTRIBUTE is
+	attribute_by_name (a_name: STRING): ?XM_ATTRIBUTE is
 			-- Attribute named `a_name' in current element;
 			-- Return Void if no such attribute was found.
 		require
@@ -368,15 +395,17 @@ feature -- Access
 		local
 			a_cursor: DS_LINEAR_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
+			l_xml_attribute: ?XM_ATTRIBUTE
 		do
 			create typer
 			a_cursor := new_cursor
 			from a_cursor.start until a_cursor.after loop
 				a_cursor.item.process (typer)
-				if typer.is_attribute and then
-					attribute_same_name (typer.xml_attribute, a_name)
+				l_xml_attribute := typer.xml_attribute
+				if typer.is_attribute and then l_xml_attribute /= Void and then
+					attribute_same_name (l_xml_attribute, a_name)
 				then
-					Result := typer.xml_attribute
+					Result := l_xml_attribute
 					a_cursor.go_after -- Jump out of the loop.
 				else
 					a_cursor.forth
@@ -387,7 +416,7 @@ feature -- Access
 			namespace: Result /= Void implies (not Result.has_prefix)
 		end
 
-	attribute_by_qualified_name (a_uri: STRING; a_name: STRING): XM_ATTRIBUTE is
+	attribute_by_qualified_name (a_uri: STRING; a_name: STRING): ?XM_ATTRIBUTE is
 			-- Attribute named `a_name' in current element;
 			-- Return Void if no such attribute was found.
 		require
@@ -396,15 +425,17 @@ feature -- Access
 		local
 			a_cursor: DS_LINEAR_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
+			l_xml_attribute: ?XM_ATTRIBUTE
 		do
 			create typer
 			a_cursor := new_cursor
 			from a_cursor.start until a_cursor.after loop
 				a_cursor.item.process (typer)
-				if typer.is_attribute and then
-					typer.xml_attribute.has_qualified_name (a_uri, a_name)
+				l_xml_attribute := typer.xml_attribute
+				if typer.is_attribute and then l_xml_attribute /= Void and then
+					l_xml_attribute.has_qualified_name (a_uri, a_name)
 				then
-					Result := typer.xml_attribute
+					Result := l_xml_attribute
 					a_cursor.go_after -- Jump out of the loop.
 				else
 					a_cursor.forth
@@ -424,14 +455,16 @@ feature -- Access
 		local
 			a_cursor: DS_LINEAR_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
+			l_xml_attribute: ?XM_ATTRIBUTE
 		do
 			create typer
 			create Result.make
 			a_cursor := new_cursor
 			from a_cursor.start until a_cursor.after loop
 				a_cursor.item.process (typer)
-				if typer.is_attribute and then typer.xml_attribute.is_namespace_declaration then
-					Result.force_last (typer.xml_attribute.namespace_declaration)
+				l_xml_attribute := typer.xml_attribute
+				if typer.is_attribute and then l_xml_attribute /= Void and then l_xml_attribute.is_namespace_declaration then
+					Result.force_last (l_xml_attribute.namespace_declaration)
 				end
 				a_cursor.forth
 			end
@@ -444,16 +477,18 @@ feature -- Access
 			-- List of all attributes in current element
 			-- (Create a new list at each call.)
 		local
-			a_cursor: DS_LINEAR_CURSOR [XM_NODE] 
+			a_cursor: DS_LINEAR_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
+			l_xml_attribute: ?XM_ATTRIBUTE
 		do
 			create typer
 			create {DS_BILINKED_LIST [XM_ATTRIBUTE]} Result.make
 			a_cursor := new_cursor
 			from a_cursor.start until a_cursor.after loop
 				a_cursor.item.process (typer)
-				if typer.is_attribute then
-					Result.force_last (typer.xml_attribute)
+				l_xml_attribute := typer.xml_attribute
+				if typer.is_attribute and then l_xml_attribute /= Void then
+					Result.force_last (l_xml_attribute)
 				end
 				a_cursor.forth
 			end
@@ -472,7 +507,7 @@ feature -- Element change
 		ensure
 			attribute_added: has_attribute_by_name (a_name)
 		end
-		
+
 	add_attribute (a_name: STRING; a_ns: XM_NAMESPACE; a_value: STRING) is
 			-- Add an attribute to current element.
 			-- (at end if last is an attribute, at beginning otherwise)
@@ -511,13 +546,15 @@ feature -- Removal
 		local
 			a_cursor: DS_LINKED_LIST_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
+			l_xml_attribute: ?XM_ATTRIBUTE
 		do
 			create typer
 			a_cursor := new_cursor
 			from a_cursor.start until a_cursor.after loop
 				a_cursor.item.process (typer)
-				if typer.is_attribute and then
-					attribute_same_name (typer.xml_attribute, a_name)
+				l_xml_attribute := typer.xml_attribute
+				if typer.is_attribute and then l_xml_attribute /= Void and then
+					attribute_same_name (l_xml_attribute, a_name)
 				then
 					remove_at_cursor (a_cursor)
 				else
@@ -535,13 +572,15 @@ feature -- Removal
 		local
 			a_cursor: DS_LINKED_LIST_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
+			l_xml_attribute: ?XM_ATTRIBUTE
 		do
 			create typer
 			a_cursor := new_cursor
 			from a_cursor.start until a_cursor.after loop
 				a_cursor.item.process (typer)
-				if typer.is_attribute and then
-					typer.xml_attribute.has_qualified_name (a_uri, a_name)
+				l_xml_attribute := typer.xml_attribute
+				if typer.is_attribute and then l_xml_attribute /= Void and then
+					l_xml_attribute.has_qualified_name (a_uri, a_name)
 				then
 					remove_at_cursor (a_cursor)
 				else
@@ -549,11 +588,11 @@ feature -- Removal
 				end
 			end
 		end
-		
+
 	join_text_nodes is
 			-- Join sequences of text nodes.
 		local
-			text_node: XM_CHARACTER_DATA
+			text_node: ?XM_CHARACTER_DATA
 			joint_text_node: XM_CHARACTER_DATA
 			a_cursor: DS_LINKED_LIST_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
@@ -567,6 +606,7 @@ feature -- Removal
 						-- Found a text node.
 						-- Now join all text-nodes that are following it
 						-- until there is a node that is no text-node.
+					check text_node /= Void end -- implied by `typer.is_character_data'
 					joint_text_node := text_node.cloned_object
 					remove_at_cursor (a_cursor)
 					from
@@ -576,7 +616,9 @@ feature -- Removal
 						a_cursor.item.process (typer)
 						if typer.is_character_data then
 								-- Found another text-node -> join.
-							joint_text_node.append_content (typer.character_data)
+							text_node := typer.character_data
+							check text_node /= Void end -- implied by `typer.is_character_data'
+							joint_text_node.append_content (text_node)
 							remove_at_cursor (a_cursor)
 						else
 							a_cursor.forth

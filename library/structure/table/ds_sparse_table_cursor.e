@@ -56,7 +56,7 @@ feature -- Element change
 
 feature {DS_SPARSE_TABLE} -- Implementation
 
-	next_cursor: DS_SPARSE_TABLE_CURSOR [G, K]
+	next_cursor: ?DS_SPARSE_TABLE_CURSOR [G, K]
 			-- Next cursor
 			-- (Used by `container' to keep track of traversing
 			-- cursors (i.e. cursors associated with `container'

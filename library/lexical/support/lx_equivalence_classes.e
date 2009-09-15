@@ -92,8 +92,12 @@ feature -- Access
 			valid_symbol: valid_symbol (symbol)
 			not_representative: not is_representative (symbol)
 			not_built: not built
+		local
+			cell: ?DS_BILINKABLE [INTEGER]
 		do
-			Result := storage.item (symbol).left.item
+			cell := storage.item (symbol).left
+			check cell /= Void end -- implied by precondition valid_symbol and not_representative
+			Result := cell.item
 		end
 
 	count: INTEGER
@@ -155,7 +159,7 @@ feature -- Element change
 			-- Build equivalence class numbers.
 		local
 			i, j, nb: INTEGER
-			cell: DS_BILINKABLE [INTEGER]
+			cell: ?DS_BILINKABLE [INTEGER]
 		do
 			nb := upper
 			from
@@ -164,6 +168,7 @@ feature -- Element change
 				i > nb
 			loop
 				cell := storage.item (i)
+				check cell /= Void end -- implied by `lower <= i < nb = upper'
 				if cell.left = Void then
 					from
 						j := j + 1
@@ -189,9 +194,10 @@ feature -- Element change
 			not_built: not built
 			valid_symbol: valid_symbol (symbol)
 		local
-			cell, left, right: DS_BILINKABLE [INTEGER]
+			cell, left, right: ?DS_BILINKABLE [INTEGER]
 		do
 			cell := storage.item (symbol)
+			check cell /= Void end -- implied by precondition `valid_symbol'
 			left := cell.left
 			right := cell.right
 			if left /= Void and right /= Void then
@@ -215,8 +221,8 @@ feature -- Element change
 			symbols_sorted: not symbol_class.sort_needed
 			valid_symbols: valid_symbol_class (symbol_class)
 		local
-			cell, right: DS_BILINKABLE [INTEGER]
-			old_cell, new_cell: DS_BILINKABLE [INTEGER]
+			cell, right, old_cell: ?DS_BILINKABLE [INTEGER]
+			new_cell: DS_BILINKABLE [INTEGER]
 			i, j, k, nb: INTEGER
 			stop, next_ec: BOOLEAN
 			symbol: INTEGER
@@ -233,6 +239,7 @@ feature -- Element change
 				k > nb
 			loop
 				cell := storage.item (symbol_class.item (k))
+				check cell /= Void end -- implied by `1 <= k <= nb = symbol_class.count < upper' and `valid_symbol_class'
 				old_cell := cell.left
 				new_cell := cell
 				j := k + 1
@@ -285,6 +292,7 @@ feature -- Element change
 				end
 				if cell.left /= Void or else old_cell /= cell.left then
 					cell.forget_left
+					check old_cell /= Void end -- implied by ... ?
 					old_cell.forget_right
 				end
 				new_cell.forget_right

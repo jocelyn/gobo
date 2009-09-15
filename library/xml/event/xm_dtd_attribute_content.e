@@ -62,29 +62,34 @@ feature -- Output
 			-- Like in DTD.
 		local
 			a_cursor: DS_LINEAR_CURSOR [STRING]
+			s: ?STRING
+			l_name: ?STRING
+			l_default_value: like default_value
 		do
 				-- Name.
 			if has_name then
-				Result := STRING_.cloned_string (STRING_.as_string (name))
+				l_name := name
+				check l_name /= Void end -- implied by `has_name'
+				s := STRING_.cloned_string (STRING_.as_string (l_name))
 			else
-				Result := STRING_.cloned_string ("?")
+				s := STRING_.cloned_string ("?")
 			end
 				-- Type.
-			Result.append_character (' ')
+			s.append_character (' ')
 			if is_data then
-				Result := STRING_.appended_string (Result, "CDATA")
+				s := STRING_.appended_string (s, "CDATA")
 			elseif is_id then
-				Result := STRING_.appended_string (Result, "ID")
+				s := STRING_.appended_string (s, "ID")
 			elseif is_id_ref then
-				Result := STRING_.appended_string (Result, "IDREF")
+				s := STRING_.appended_string (s, "IDREF")
 			elseif is_entity then
-				Result := STRING_.appended_string (Result, "ENTITY")
+				s := STRING_.appended_string (s, "ENTITY")
 			elseif is_token then
-				Result := STRING_.appended_string (Result, "NMTOKEN")
+				s := STRING_.appended_string (s, "NMTOKEN")
 			elseif is_notation then
-				Result := STRING_.appended_string (Result, "NOTATION")
+				s := STRING_.appended_string (s, "NOTATION")
 			elseif is_enumeration then
-				Result.append_character ('(')
+				s.append_character ('(')
 				from
 					a_cursor := enumeration.new_cursor
 					a_cursor.start
@@ -92,36 +97,39 @@ feature -- Output
 					a_cursor.after
 				loop
 					if not a_cursor.is_first then
-						Result.append_character ('|')
+						s.append_character ('|')
 					end
-					Result := STRING_.appended_string (Result, a_cursor.item)
+					s := STRING_.appended_string (s, a_cursor.item)
 					a_cursor.forth
 				end
-				Result.append_character (')')
+				s.append_character (')')
 			end
 			if is_list_type then
-				Result.append_character ('S')
+				s.append_character ('S')
 			end
-			Result.append_character (' ')
+			s.append_character (' ')
 				-- Default.
 			if is_value_required then
-				Result := STRING_.appended_string (Result, "#REQUIRED")
+				s := STRING_.appended_string (s, "#REQUIRED")
 			elseif is_value_implied then
-				Result := STRING_.appended_string (Result, "#IMPLIED")
+				s := STRING_.appended_string (s, "#IMPLIED")
 			elseif is_value_fixed then
-				Result := STRING_.appended_string (Result, "#FIXED ")
+				s := STRING_.appended_string (s, "#FIXED ")
 			end
 			if has_default_value then
-				Result.append_character (' ')
-				Result.append_character ('%"')
-				Result := STRING_.appended_string (Result, default_value)
-				Result.append_character ('%"')
+				l_default_value := default_value
+				check l_default_value /= Void end -- implied by has_default_value
+				s.append_character (' ')
+				s.append_character ('%"')
+				s := STRING_.appended_string (s, l_default_value)
+				s.append_character ('%"')
 			end
+			Result := s
 		end
 
 feature -- Name content type
 
-	name: STRING
+	name: ?STRING
 			-- Attribute name
 
 	set_name (a_name: like name) is
@@ -150,7 +158,7 @@ feature {NONE} -- Implementation
 
 feature -- Default value
 
-	default_value: STRING
+	default_value: ?STRING
 			-- require has_default_value
 			-- ensure Result /= Void
 
@@ -368,12 +376,16 @@ feature -- Enumeration
 			-- List of allowed values for fixed enumeration.
 		require
 			is_enumeration: is_enumeration
+		local
+			enum: like enumeration_list
 		do
-			Result := enumeration_list
+			enum := enumeration_list
+			check enum /= Void end -- implied by `is_enumeration'
+			Result := enum
 		ensure
 			result_not_void: Result /= Void
 		end
-	
+
 	set_enumeration_list (a_list: like enumeration) is
 			-- Set enumeration type and associated list.
 		require
@@ -385,12 +397,12 @@ feature -- Enumeration
 			enumeration_type_forced: is_enumeration
 			list_set: enumeration_list = a_list
 		end
-		
+
 feature {NONE} -- Enumeration list
 
-	enumeration_list: like enumeration
+	enumeration_list: ?like enumeration
 			-- List of allowed values for fixed enumeration.
-			
+
 	Default_enumeration_list: DS_LINKED_LIST [STRING] is
 			-- Default for 'enumeration_list'.
 		once
@@ -398,7 +410,7 @@ feature {NONE} -- Enumeration list
 		ensure
 			not_void: Result /= Void
 		end
-	
+
 invariant
 
 	exclusive: BOOLEAN_.nxor (<<is_token, is_entity, is_id_ref, is_id, is_data, is_notation, is_enumeration>>)

@@ -49,10 +49,10 @@ feature {NONE} -- Initialization
 			a_parent.force_last (Current)
 		ensure
 			parent_set: parent = a_parent
-			in_parent: parent.last = Current
+			in_parent: a_parent.last = Current
 			content_set: content = c
 		end
-		
+
 feature -- Access
 
 	content: STRING
@@ -70,7 +70,7 @@ feature -- Element change
 			set: content = a_content
 			same_string: STRING_.same_string (content, a_content)
 		end
-		
+
 	append_content (other: like Current) is
 			-- Append the content of 'other' to
 			-- the content of `Current'.

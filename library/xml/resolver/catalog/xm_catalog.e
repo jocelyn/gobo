@@ -70,14 +70,14 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	resolved_fpi (a_public_id: STRING; prefer_public_required: BOOLEAN): STRING is
+	resolved_fpi (a_public_id: STRING; prefer_public_required: BOOLEAN): ?STRING is
 			-- Resolved URI for `a_public_id'
 		require
 			public_id_not_void: a_public_id /= Void -- TODO and then is normalized
 		local
 			a_cursor: DS_ARRAYED_LIST_CURSOR [STRING]
 			a_public_entry: XM_PUBLIC_CATALOG_ENTRY
-			a_catalog: XM_CATALOG
+			a_catalog: ?XM_CATALOG
 		do
 			if public_entries.has (a_public_id) then
 				shared_catalog_manager.debug_message (4, "Public entry found in catalog", a_public_id)
@@ -124,7 +124,7 @@ feature -- Access
 			result_may_be_void_if_not_match: True
 		end
 
-	resolved_fsi (a_system_id: STRING): STRING is
+	resolved_fsi (a_system_id: STRING): ?STRING is
 			-- Resolved URI for `a_system_id'
 		require
 			system_id_not_void: a_system_id /= Void -- TODO and then is normalized
@@ -132,7 +132,7 @@ feature -- Access
 			a_cursor: DS_ARRAYED_LIST_CURSOR [STRING]
 			another_cursor: DS_LINKED_LIST_CURSOR [XM_REWRITE_CATALOG_ENTRY]
 			a_system_entry: XM_CATALOG_ENTRY
-			a_catalog: XM_CATALOG
+			a_catalog: ?XM_CATALOG
 			a_rewrite_rule: XM_REWRITE_CATALOG_ENTRY
 		do
 			if system_entries.has (a_system_id) then
@@ -199,7 +199,7 @@ feature -- Access
 		end
 
 
-	resolved_uri (a_uri_reference: STRING): STRING is
+	resolved_uri (a_uri_reference: STRING): ?STRING is
 			-- Resolved URI for `a_uri_reference'
 		require
 			uri_reference_not_void: a_uri_reference /= Void -- TODO and then is normalized
@@ -207,7 +207,7 @@ feature -- Access
 			a_cursor: DS_ARRAYED_LIST_CURSOR [STRING]
 			another_cursor: DS_LINKED_LIST_CURSOR [XM_REWRITE_CATALOG_ENTRY]
 			a_uri_entry: XM_CATALOG_ENTRY
-			a_catalog: XM_CATALOG
+			a_catalog: ?XM_CATALOG
 			a_rewrite_rule: XM_REWRITE_CATALOG_ENTRY
 		do
 			if uri_entries.has (a_uri_reference) then
@@ -284,24 +284,28 @@ feature -- Status report
 
 feature -- Events
 
-	on_start_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_start_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- Start of start tag.
+		local
+			l_current_element_name: like current_element_name
 		do
 			if not is_error then
 				if ignoring_depth = 0 then
-					if STRING_.same_string (a_namespace, oasis_etrc_namespace) then
-						if current_element_name = Void or else STRING_.same_string (current_element_name, Catalog_entry)
-							or else STRING_.same_string (current_element_name, Group_entry) then
+					l_current_element_name := current_element_name
+					if a_namespace /= Void and then STRING_.same_string (a_namespace, oasis_etrc_namespace) then
+						if l_current_element_name = Void or else STRING_.same_string (l_current_element_name, Catalog_entry)
+							or else STRING_.same_string (l_current_element_name, Group_entry) then
 							create attribute_namespaces.make_default
 							create attribute_local_parts.make_default
 							create attribute_values.make_default
 						else
 							is_error := True
-							shared_catalog_manager.debug_message (1, "Element must be empty", current_element_name)
+							shared_catalog_manager.debug_message (1, "Element must be empty", l_current_element_name)
 						end
 					elseif not in_catalog then
 						is_error := True
-						shared_catalog_manager.debug_message (1, "Document element is not catalog", current_element_name)
+						check l_current_element_name /= Void end -- implied by ... ?
+						shared_catalog_manager.debug_message (1, "Document element is not catalog", l_current_element_name)
 						-- TODO terminate the parse
 					else
 
@@ -318,9 +322,13 @@ feature -- Events
 
 	on_start_tag_finish is
 			-- End of start tag.
+		local
+			l_current_element_name: like current_element_name
 		do
 			if not is_error and then ignoring_depth = 0 then
-				if	STRING_.same_string (current_element_name, Catalog_entry) then
+				l_current_element_name := current_element_name
+				check l_current_element_name /= Void end -- implied by `not is_error'
+				if	STRING_.same_string (l_current_element_name, Catalog_entry) then
 					if in_catalog then
 						is_error := True
 						shared_catalog_manager.debug_message (1, "Nested catalog elements not allowed", system_id)
@@ -328,62 +336,79 @@ feature -- Events
 						in_catalog := True
 						set_catalog_attributes (True)
 					end
-				elseif STRING_.same_string (current_element_name, Group_entry) then
+				elseif STRING_.same_string (l_current_element_name, Group_entry) then
 					set_catalog_attributes (False)
 					if group_depth = 0 then
 						group_depth := 1
 					else
 						shared_catalog_manager.debug_message (1, "Nested group elements not allowed", system_id)
 					end
-				elseif STRING_.same_string (current_element_name, System_entry) then
+				elseif STRING_.same_string (l_current_element_name, System_entry) then
 					add_system_entry
-				elseif STRING_.same_string (current_element_name, Public_entry) then
+				elseif STRING_.same_string (l_current_element_name, Public_entry) then
 					add_public_entry
-				elseif STRING_.same_string (current_element_name, Uri_entry) then
+				elseif STRING_.same_string (l_current_element_name, Uri_entry) then
 					add_uri_entry
-				elseif STRING_.same_string (current_element_name, Rewrite_system_entry) then
+				elseif STRING_.same_string (l_current_element_name, Rewrite_system_entry) then
 					add_rewrite_rule (True)
-				elseif STRING_.same_string (current_element_name, Rewrite_uri_entry) then
+				elseif STRING_.same_string (l_current_element_name, Rewrite_uri_entry) then
 					add_rewrite_rule (False)
-				elseif STRING_.same_string (current_element_name, Delegate_public_entry) then
+				elseif STRING_.same_string (l_current_element_name, Delegate_public_entry) then
 					add_public_delegate
-				elseif STRING_.same_string (current_element_name, Delegate_system_entry) then
+				elseif STRING_.same_string (l_current_element_name, Delegate_system_entry) then
 					add_system_delegate
-				elseif STRING_.same_string (current_element_name, Delegate_uri_entry) then
+				elseif STRING_.same_string (l_current_element_name, Delegate_uri_entry) then
 					add_uri_delegate
-				elseif STRING_.same_string (current_element_name, System_suffix_entry) then
+				elseif STRING_.same_string (l_current_element_name, System_suffix_entry) then
 					add_suffix (True)
-				elseif STRING_.same_string (current_element_name, Uri_suffix_entry) then
+				elseif STRING_.same_string (l_current_element_name, Uri_suffix_entry) then
 					add_suffix (False)
-				elseif STRING_.same_string (current_element_name, Next_catalog_entry) then
+				elseif STRING_.same_string (l_current_element_name, Next_catalog_entry) then
 					add_next_catalog
 				end
 			end
 		end
 
-	on_attribute (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING; a_value: STRING) is
+	on_attribute (a_namespace, a_prefix: ?STRING; a_local_part: STRING; a_value: STRING) is
 			-- Start of attribute
+		local
+			l_attribute_local_parts: like attribute_local_parts
+			l_attribute_namespaces: like attribute_namespaces
+			l_attribute_values: like attribute_values
 		do
 			if not is_error and then ignoring_depth = 0 then
-				attribute_namespaces.force_last (a_namespace)
-				attribute_local_parts.force_last (a_local_part)
-				attribute_values.force_last (a_value)
+				l_attribute_local_parts := attribute_local_parts
+				l_attribute_namespaces := attribute_namespaces
+				l_attribute_values := attribute_values
+				check
+					l_attribute_local_parts /= Void and
+					l_attribute_namespaces /= Void and
+					l_attribute_values /= Void
+				end -- implied because `on_start' called and `not is_error'
+
+				l_attribute_namespaces.force_last (a_namespace)
+				l_attribute_local_parts.force_last (a_local_part)
+				l_attribute_values.force_last (a_value)
 			end
 		end
 
-	on_end_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_end_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- End tag.
+		local
+			l_current_element_name: like current_element_name
 		do
 			if not is_error then
 				if ignoring_depth > 0 then
 					ignoring_depth := ignoring_depth - 1
 				end
-				if STRING_.same_string (current_element_name, Group_entry) then
+				l_current_element_name := current_element_name
+				check l_current_element_name /= Void end -- implied by `not is_error'
+				if STRING_.same_string (l_current_element_name, Group_entry) then
 					check
 						in_group: group_depth = 1
 					end
 					group_depth := 0
-				elseif STRING_.same_string (current_element_name, Catalog_entry) then
+				elseif STRING_.same_string (l_current_element_name, Catalog_entry) then
 					in_catalog := False
 				end
 				element_name_stack.remove
@@ -392,13 +417,17 @@ feature -- Events
 
 	on_content (a_content: STRING) is
 			-- Text content.
+		local
+			l_current_element_name: like current_element_name
 		do
 			if not is_error and then in_catalog and then ignoring_depth = 0 then
-				if	STRING_.same_string (current_element_name, Catalog_entry) or else
-					STRING_.same_string (current_element_name, Group_entry) then
+				l_current_element_name := current_element_name
+				check l_current_element_name /= Void end -- implied by `not is_error'
+				if	STRING_.same_string (l_current_element_name, Catalog_entry) or else
+					STRING_.same_string (l_current_element_name, Group_entry) then
 					-- OK if it's whitespace - add a check?
 				else
-					shared_catalog_manager.debug_message (1, "Character content is not allowed", current_element_name)
+					shared_catalog_manager.debug_message (1, "Character content is not allowed", l_current_element_name)
 					is_error := True
 				end
 			end
@@ -410,7 +439,7 @@ feature {NONE} -- Implementation
 			-- Base URI of `Current';
 			-- This can change during parsing.
 
-	group_base: UT_URI
+	group_base: ?UT_URI
 			-- Base URI of current group;
 			-- (Only relevant when group_depth > 0)
 
@@ -435,7 +464,7 @@ feature {NONE} -- Implementation
 	element_name_stack: DS_ARRAYED_STACK [STRING]
 			-- Stack of element local names
 
-	current_element_name: STRING is
+	current_element_name: ?STRING is
 			-- Name of start tag currently being parsed
 		do
 			if not element_name_stack.is_empty then
@@ -443,7 +472,22 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	attribute_namespaces, attribute_local_parts, attribute_values: DS_ARRAYED_LIST [STRING]
+	attached_current_element_name: STRING is
+			-- Attached `current_element_name'
+		require
+			no_error: not is_error
+		local
+			s: ?STRING
+		do
+			s := current_element_name
+			check s /= Void end -- implied by `no_error'
+			Result := s
+		end
+
+	attribute_namespaces: ?DS_ARRAYED_LIST [?STRING]
+			-- Triples for the attributes on current element	
+
+	attribute_local_parts, attribute_values: ?DS_ARRAYED_LIST [STRING]
 			-- Triples for the attributes on current element
 
 	oasis_etrc_namespace: STRING is "urn:oasis:names:tc:entity:xmlns:xml:catalog"
@@ -513,49 +557,62 @@ feature {NONE} -- Implementation
 	set_catalog_attributes (is_document_element: BOOLEAN) is
 			-- Set `base_uri' and `prefer_public' at catalog or group level.
 		require
-			current_element_is_catalog_or_group: STRING_.same_string (current_element_name, Catalog_entry)
-				or else STRING_.same_string (current_element_name, Group_entry)
+			current_element_is_catalog_or_group: STRING_.same_string (attached_current_element_name, Catalog_entry)
+				or else STRING_.same_string (attached_current_element_name, Group_entry)
 			attributes_available: attribute_namespaces /= Void
 		local
 			a_cursor: DS_ARRAYED_LIST_CURSOR [STRING]
-			a_local_part, a_namespace_uri: STRING
+			a_local_part: STRING
+			a_namespace_uri: ?STRING
+			l_attribute_local_parts: like attribute_local_parts
+			l_attribute_namespaces: like attribute_namespaces
+			l_attribute_values: like attribute_values
 		do
 			if not is_document_element then
 				group_prefer_public := prefer_public
 				group_base := base_uri
 			end
+			l_attribute_local_parts := attribute_local_parts
+			l_attribute_namespaces := attribute_namespaces
+			l_attribute_values := attribute_values
+			check
+				l_attribute_local_parts /= Void and
+				l_attribute_namespaces /= Void and
+				l_attribute_values /= Void
+			end -- implied by precondition `attributes_available' and invariant `attribute_triples'
 			from
-				a_cursor := attribute_local_parts.new_cursor; a_cursor.start
+				a_cursor := l_attribute_local_parts.new_cursor; a_cursor.start
 			variant
-				attribute_local_parts.count + 1 - a_cursor.index
+				l_attribute_local_parts.count + 1 - a_cursor.index
 			until
 				a_cursor.after
 			loop
 				a_local_part := a_cursor.item
-				a_namespace_uri := attribute_namespaces.item (a_cursor.index)
+				a_namespace_uri := l_attribute_namespaces.item (a_cursor.index)
 				if STRING_.same_string (a_local_part, Base_attribute) and then
+					a_namespace_uri /= Void and then
 					STRING_.same_string (a_namespace_uri, xml_namespace) then
 					if is_document_element then
-						create base_uri.make (attribute_values.item (a_cursor.index))
+						create base_uri.make (l_attribute_values.item (a_cursor.index))
 						shared_catalog_manager.debug_message (5, "xml:base set to", base_uri.full_reference)
 					else
-						create group_base.make (attribute_values.item (a_cursor.index))
+						create group_base.make (l_attribute_values.item (a_cursor.index))
 					end
 				elseif STRING_.same_string (a_local_part, Prefer_attribute) and then a_namespace_uri = Void then
-					if STRING_.same_string (attribute_values.item (a_cursor.index), System_entry) then
+					if STRING_.same_string (l_attribute_values.item (a_cursor.index), System_entry) then
 						if is_document_element then
 							prefer_public := False
 						else
 							group_prefer_public := False
 						end
-					elseif STRING_.same_string (attribute_values.item (a_cursor.index), Public_entry) then
+					elseif STRING_.same_string (l_attribute_values.item (a_cursor.index), Public_entry) then
 						if is_document_element then
 							prefer_public := True
 						else
 							group_prefer_public := True
 						end
 					else
-						shared_catalog_manager.debug_message (1, "Invalid prefer: must be 'system' or 'public'", attribute_values.item (a_cursor.index))
+						shared_catalog_manager.debug_message (1, "Invalid prefer: must be 'system' or 'public'", l_attribute_values.item (a_cursor.index))
 						is_error := True
 					end
 				elseif STRING_.same_string (a_local_part, Id_attribute) and then a_namespace_uri = Void then
@@ -571,38 +628,54 @@ feature {NONE} -- Implementation
 			-- Add a `system' entry.
 		require
 			within_catalog_or_group: in_catalog and then (group_depth = 0 or else group_depth = 1)
-			current_element_is_system: STRING_.same_string (current_element_name, System_entry)
+			current_element_is_system: STRING_.same_string (attached_current_element_name, System_entry)
 			attributes_available: attribute_namespaces /= Void
 		local
-			a_base_uri, a_target: UT_URI
+			a_base_uri, a_target: ?UT_URI
 			a_cursor: DS_ARRAYED_LIST_CURSOR [STRING]
-			a_local_part, a_namespace_uri, a_system_id, a_target_uri: STRING
-			a_system_entry: XM_CATALOG_ENTRY
+			a_local_part: STRING
+			a_namespace_uri, a_system_id, a_target_uri: ?STRING
+			a_system_entry: ?XM_CATALOG_ENTRY
+			l_attribute_local_parts: like attribute_local_parts
+			l_attribute_namespaces: like attribute_namespaces
+			l_attribute_values: like attribute_values
 		do
 			if group_depth = 1 then
 				a_base_uri := group_base
 			else
 				a_base_uri := base_uri
 			end
+			l_attribute_local_parts := attribute_local_parts
+			l_attribute_namespaces := attribute_namespaces
+			l_attribute_values := attribute_values
+			check
+				l_attribute_local_parts /= Void and
+				l_attribute_namespaces /= Void and
+				l_attribute_values /= Void
+			end -- implied by precondition `attributes_available' and invariant `attribute_triples'
 			from
-				a_cursor := attribute_local_parts.new_cursor; a_cursor.start
+				a_cursor := l_attribute_local_parts.new_cursor; a_cursor.start
 			variant
-				attribute_local_parts.count + 1 - a_cursor.index
+				l_attribute_local_parts.count + 1 - a_cursor.index
 			until
 				a_cursor.after
 			loop
 				a_local_part := a_cursor.item
-				a_namespace_uri := attribute_namespaces.item (a_cursor.index)
+				a_namespace_uri := l_attribute_namespaces.item (a_cursor.index)
 				if STRING_.same_string (a_local_part, Base_attribute) and then
+					a_namespace_uri /= Void and then
 					STRING_.same_string (a_namespace_uri, xml_namespace) then
-					create a_base_uri.make (attribute_values.item (a_cursor.index))
+					create a_base_uri.make (l_attribute_values.item (a_cursor.index))
 					shared_catalog_manager.debug_message (5, "xml:base set to", base_uri.full_reference)
-				elseif STRING_.same_string (a_local_part, Id_attribute) and then a_namespace_uri.count = 0 then
+				elseif STRING_.same_string (a_local_part, Id_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
 					-- OK
-				elseif STRING_.same_string (a_local_part, System_id_attribute) and then a_namespace_uri.count = 0 then
-					a_system_id := attribute_values.item (a_cursor.index)
-				elseif STRING_.same_string (a_local_part, Uri_attribute) and then a_namespace_uri.count = 0 then
-					a_target_uri := attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, System_id_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_system_id := l_attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, Uri_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_target_uri := l_attribute_values.item (a_cursor.index)
 				elseif a_namespace_uri = Void then
 					shared_catalog_manager.debug_message (2, "Reserved attribute in the per-element-partition of 'system'", system_id)
 				end
@@ -619,6 +692,7 @@ feature {NONE} -- Implementation
 				shared_catalog_manager.debug_message (1, "Missing 'uri' attribute from 'system'", system_id)
 			else
 				a_target_uri := escape_custom (utf8.to_utf8 (a_target_uri), shared_catalog_manager.unescaped_uri_characters, False)
+				check a_base_uri /= Void end -- implied by ... ?
 				create a_target.make_resolve (a_base_uri, a_target_uri)
 				if a_target.has_fragment then
 					is_error := True
@@ -626,6 +700,10 @@ feature {NONE} -- Implementation
 				end
 			end
 			if not is_error then
+				check
+					a_target /= Void and
+					a_system_id /= Void
+				end -- implied by `not is_error'
 				if not system_entries.has (a_system_id) then -- only the first eligible entry encountered is checked
 					create a_system_entry.make (a_target)
 					system_entries.force_new (a_system_entry, a_system_id)
@@ -640,38 +718,56 @@ feature {NONE} -- Implementation
 			-- Add a `uri' entry.
 		require
 			within_catalog_or_group: in_catalog and then (group_depth = 0 or else group_depth = 1)
-			current_element_is_uri: STRING_.same_string (current_element_name, Uri_entry)
+			current_element_is_uri: STRING_.same_string (attached_current_element_name, Uri_entry)
 			attributes_available: attribute_namespaces /= Void
 		local
-			a_base_uri, a_target: UT_URI
+			a_base_uri, a_target: ?UT_URI
 			a_cursor: DS_ARRAYED_LIST_CURSOR [STRING]
-			a_local_part, a_namespace_uri, a_uri, a_target_uri: STRING
+			a_local_part: STRING
+			a_namespace_uri,
+			a_uri, a_target_uri: ?STRING
 			a_uri_entry: XM_CATALOG_ENTRY
+			l_attribute_local_parts: like attribute_local_parts
+			l_attribute_namespaces: like attribute_namespaces
+			l_attribute_values: like attribute_values
 		do
 			if group_depth = 1 then
 				a_base_uri := group_base
 			else
 				a_base_uri := base_uri
 			end
+			l_attribute_local_parts := attribute_local_parts
+			l_attribute_namespaces := attribute_namespaces
+			l_attribute_values := attribute_values
+			check
+				l_attribute_local_parts /= Void and
+				l_attribute_namespaces /= Void and
+				l_attribute_values /= Void
+			end -- implied by precondition `attributes_available' and invariant `attribute_triples'
 			from
-				a_cursor := attribute_local_parts.new_cursor; a_cursor.start
+				a_cursor := l_attribute_local_parts.new_cursor
+				a_cursor.start
 			variant
-				attribute_local_parts.count + 1 - a_cursor.index
+				l_attribute_local_parts.count + 1 - a_cursor.index
 			until
 				a_cursor.after
 			loop
 				a_local_part := a_cursor.item
-				a_namespace_uri := attribute_namespaces.item (a_cursor.index)
+				a_namespace_uri := l_attribute_namespaces.item (a_cursor.index)
 				if STRING_.same_string (a_local_part, Base_attribute) and then
+					a_namespace_uri /= Void and then
 					STRING_.same_string (a_namespace_uri, xml_namespace) then
-					create a_base_uri.make (attribute_values.item (a_cursor.index))
+					create a_base_uri.make (l_attribute_values.item (a_cursor.index))
 					shared_catalog_manager.debug_message (5, "xml:base set to", base_uri.full_reference)
-				elseif STRING_.same_string (a_local_part, Id_attribute) and then a_namespace_uri.count = 0 then
+				elseif STRING_.same_string (a_local_part, Id_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
 					-- OK
-				elseif STRING_.same_string (a_local_part, Name_attribute) and then a_namespace_uri.count = 0 then
-					a_uri := attribute_values.item (a_cursor.index)
-				elseif STRING_.same_string (a_local_part, Uri_attribute) and then a_namespace_uri.count = 0 then
-					a_target_uri := attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, Name_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_uri := l_attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, Uri_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_target_uri := l_attribute_values.item (a_cursor.index)
 				elseif a_namespace_uri = Void then
 					shared_catalog_manager.debug_message (2, "Reserved attribute in the per-element-partition of 'uri'", system_id)
 				end
@@ -688,10 +784,17 @@ feature {NONE} -- Implementation
 				shared_catalog_manager.debug_message (1, "Missing 'uri' attribute from 'uri'", system_id)
 			else
 				a_target_uri := escape_custom (utf8.to_utf8 (a_target_uri), shared_catalog_manager.unescaped_uri_characters, False)
+				check a_base_uri /= Void end -- implied by ... ?
 				create a_target.make_resolve (a_base_uri, a_target_uri)
 			end
 			if not is_error then
+				check
+					a_target /= Void and
+					a_uri /= Void
+				end -- implied by `not is_error'
+
 				if not uri_entries.has (a_uri) then -- only the first eligible entry encountered is checked
+
 					create a_uri_entry.make (a_target)
 					uri_entries.force_new (a_uri_entry, a_uri)
 					shared_catalog_manager.debug_message (4, "URI added is", a_uri)
@@ -705,14 +808,19 @@ feature {NONE} -- Implementation
 			-- Add a `public' entry.
 		require
 			within_catalog_or_group: in_catalog and then (group_depth = 0 or else group_depth = 1)
-			current_element_is_public: STRING_.same_string (current_element_name, Public_entry)
+			current_element_is_public: STRING_.same_string (attached_current_element_name, Public_entry)
 			attributes_available: attribute_namespaces /= Void
 		local
-			a_base_uri, a_target: UT_URI
+			a_base_uri, a_target: ?UT_URI
 			a_cursor: DS_ARRAYED_LIST_CURSOR [STRING]
-			a_local_part, a_namespace_uri, a_public_id, a_target_uri: STRING
-			a_public_entry: XM_PUBLIC_CATALOG_ENTRY
+			a_local_part: STRING
+			a_namespace_uri,
+			a_public_id, a_target_uri: ?STRING
+			a_public_entry: ?XM_PUBLIC_CATALOG_ENTRY
 			a_prefer_public: BOOLEAN
+			l_attribute_local_parts: like attribute_local_parts
+			l_attribute_namespaces: like attribute_namespaces
+			l_attribute_values: like attribute_values
 		do
 			if group_depth = 1 then
 				a_base_uri := group_base
@@ -721,25 +829,37 @@ feature {NONE} -- Implementation
 				a_base_uri := base_uri
 				a_prefer_public := prefer_public
 			end
+			l_attribute_local_parts := attribute_local_parts
+			l_attribute_namespaces := attribute_namespaces
+			l_attribute_values := attribute_values
+			check
+				l_attribute_local_parts /= Void and
+				l_attribute_namespaces /= Void and
+				l_attribute_values /= Void
+			end -- implied by precondition `attributes_available'
 			from
-				a_cursor := attribute_local_parts.new_cursor; a_cursor.start
+				a_cursor := l_attribute_local_parts.new_cursor; a_cursor.start
 			variant
-				attribute_local_parts.count + 1 - a_cursor.index
+				l_attribute_local_parts.count + 1 - a_cursor.index
 			until
 				a_cursor.after
 			loop
 				a_local_part := a_cursor.item
-				a_namespace_uri := attribute_namespaces.item (a_cursor.index)
+				a_namespace_uri := l_attribute_namespaces.item (a_cursor.index)
 				if STRING_.same_string (a_local_part, Base_attribute) and then
+					a_namespace_uri /= Void and then
 					STRING_.same_string (a_namespace_uri, xml_namespace) then
-					create a_base_uri.make (attribute_values.item (a_cursor.index))
+					create a_base_uri.make (l_attribute_values.item (a_cursor.index))
 					shared_catalog_manager.debug_message (5, "xml:base set to", base_uri.full_reference)
-				elseif STRING_.same_string (a_local_part, Id_attribute) and then a_namespace_uri.count = 0 then
+				elseif STRING_.same_string (a_local_part, Id_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
 					-- OK
-				elseif STRING_.same_string (a_local_part, Public_id_attribute) and then a_namespace_uri.count = 0 then
-					a_public_id := attribute_values.item (a_cursor.index)
-				elseif STRING_.same_string (a_local_part, Uri_attribute) and then a_namespace_uri.count = 0 then
-					a_target_uri := attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, Public_id_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_public_id := l_attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, Uri_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_target_uri := l_attribute_values.item (a_cursor.index)
 				elseif a_namespace_uri = Void then
 					shared_catalog_manager.debug_message (2, "Reserved attribute in the per-element-partition of 'public'", system_id)
 				end
@@ -756,6 +876,7 @@ feature {NONE} -- Implementation
 				shared_catalog_manager.debug_message (1, "Missing 'uri' attribute from 'public'", system_id)
 			else
 				a_target_uri := escape_custom (utf8.to_utf8 (a_target_uri), shared_catalog_manager.unescaped_uri_characters, False)
+				check a_base_uri /= Void end -- implied by ... ?
 				create a_target.make_resolve (a_base_uri, a_target_uri)
 				if a_target.has_fragment then
 					is_error := True
@@ -763,6 +884,10 @@ feature {NONE} -- Implementation
 				end
 			end
 			if not is_error then
+				check
+					a_target /= Void and
+					a_public_id /= Void
+				end -- implied by `not is_error'
 				public_entries.search (a_public_id)
 				if not public_entries.found then -- only the first eligible entry encountered is checked
 					create a_public_entry.make (a_target, a_prefer_public)
@@ -774,6 +899,7 @@ feature {NONE} -- Implementation
 					--  then we need another entry for when no fsi is presented.
 
 					a_public_entry := public_entries.found_item
+					check a_public_entry /= Void end -- implied by `else part of not public_entries.found'
 					if not a_public_entry.prefer_public and then not prefer_public_entries.has (a_public_id) then
 						create a_public_entry.make (a_target, True)
 						prefer_public_entries.force_new (a_public_entry, a_public_id)
@@ -791,35 +917,52 @@ feature {NONE} -- Implementation
 			-- Add a `nextCatalog' entry.
 		require
 			within_catalog_or_group: in_catalog and then (group_depth = 0 or else group_depth = 1)
-			current_element_is_next_catalog: STRING_.same_string (current_element_name, Next_catalog_entry)
+			current_element_is_next_catalog: STRING_.same_string (attached_current_element_name, Next_catalog_entry)
 			attributes_available: attribute_namespaces /= Void
 		local
-			a_base_uri, a_target: UT_URI
+			a_base_uri, a_target: ?UT_URI
 			a_cursor: DS_ARRAYED_LIST_CURSOR [STRING]
-			a_local_part, a_namespace_uri, a_catalog_name: STRING
+			a_local_part: STRING
+			a_catalog_name: ?STRING
+			a_namespace_uri: ?STRING
+			l_attribute_local_parts: like attribute_local_parts
+			l_attribute_namespaces: like attribute_namespaces
+			l_attribute_values: like attribute_values
 		do
 			if group_depth = 1 then
 				a_base_uri := group_base
 			else
 				a_base_uri := base_uri
 			end
+			l_attribute_local_parts := attribute_local_parts
+			l_attribute_namespaces := attribute_namespaces
+			l_attribute_values := attribute_values
+			check
+				l_attribute_local_parts /= Void and
+				l_attribute_namespaces /= Void and
+				l_attribute_values /= Void
+			end -- implied by precondition `attributes_available' and invariant `attribute_triples'
 			from
-				a_cursor := attribute_local_parts.new_cursor; a_cursor.start
+				a_cursor := l_attribute_local_parts.new_cursor
+				a_cursor.start
 			variant
-				attribute_local_parts.count + 1 - a_cursor.index
+				l_attribute_local_parts.count + 1 - a_cursor.index
 			until
 				a_cursor.after
 			loop
 				a_local_part := a_cursor.item
-				a_namespace_uri := attribute_namespaces.item (a_cursor.index)
+				a_namespace_uri := l_attribute_namespaces.item (a_cursor.index)
 				if STRING_.same_string (a_local_part, Base_attribute) and then
+					a_namespace_uri /= Void and then
 					STRING_.same_string (a_namespace_uri, xml_namespace) then
-					create a_base_uri.make (attribute_values.item (a_cursor.index))
+					create a_base_uri.make (l_attribute_values.item (a_cursor.index))
 					shared_catalog_manager.debug_message (5, "xml:base set to", base_uri.full_reference)
-				elseif STRING_.same_string (a_local_part, Id_attribute) and then a_namespace_uri.count = 0 then
+				elseif STRING_.same_string (a_local_part, Id_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
 					-- OK
-				elseif STRING_.same_string (a_local_part, Catalog_attribute) and then a_namespace_uri.count = 0 then
-					a_catalog_name := attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, Catalog_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_catalog_name := l_attribute_values.item (a_cursor.index)
 				elseif a_namespace_uri = Void then
 					shared_catalog_manager.debug_message (2, "Reserved attribute in the per-element-partition of 'nextCatalog'", system_id)
 				end
@@ -829,9 +972,11 @@ feature {NONE} -- Implementation
 				is_error := True
 				shared_catalog_manager.debug_message (1, "Missing 'catalog' attribute from 'nextCatalog'", system_id)
 			else
+				check a_base_uri /= Void end -- implied by ... ?
 				create a_target.make_resolve (a_base_uri, a_catalog_name)
 			end
 			if not is_error then
+				check a_target /= Void end -- implied by `not is_error'
 				local_catalog_files.force_last (a_target.full_reference)
 				shared_catalog_manager.debug_message (4, "Next catalog URI added is", a_target.full_reference)
 			end
@@ -841,40 +986,58 @@ feature {NONE} -- Implementation
 			-- Add a `rewriteSystem' or `rewriteURI' entry.
 		require
 			within_catalog_or_group: in_catalog and then (group_depth = 0 or else group_depth = 1)
-			current_element_is_rewrite_system: is_system_rule implies STRING_.same_string (current_element_name, Rewrite_system_entry)
-			current_element_is_rewrite_uri: not is_system_rule implies STRING_.same_string (current_element_name, Rewrite_uri_entry)
+			current_element_is_rewrite_system: is_system_rule implies STRING_.same_string (attached_current_element_name, Rewrite_system_entry)
+			current_element_is_rewrite_uri: not is_system_rule implies STRING_.same_string (attached_current_element_name, Rewrite_uri_entry)
 			attributes_available: attribute_namespaces /= Void
 		local
-			a_base_uri, a_target: UT_URI
+			a_base_uri, a_target: ?UT_URI
 			a_cursor: DS_ARRAYED_LIST_CURSOR [STRING]
-			a_local_part, a_namespace_uri, a_rewrite_prefix, a_start_string, a_message: STRING
+			a_local_part, a_message: STRING
+			a_namespace_uri,
+			a_rewrite_prefix, a_start_string: ?STRING
+			l_attribute_local_parts: like attribute_local_parts
+			l_attribute_namespaces: like attribute_namespaces
+			l_attribute_values: like attribute_values
 		do
 			if group_depth = 1 then
 				a_base_uri := group_base
 			else
 				a_base_uri := base_uri
 			end
+			l_attribute_local_parts := attribute_local_parts
+			l_attribute_namespaces := attribute_namespaces
+			l_attribute_values := attribute_values
+			check
+				l_attribute_local_parts /= Void and
+				l_attribute_namespaces /= Void and
+				l_attribute_values /= Void
+			end -- implied by precondition `attributes_available'
 			from
-				a_cursor := attribute_local_parts.new_cursor; a_cursor.start
+				a_cursor := l_attribute_local_parts.new_cursor; a_cursor.start
 			variant
-				attribute_local_parts.count + 1 - a_cursor.index
+				l_attribute_local_parts.count + 1 - a_cursor.index
 			until
 				a_cursor.after
 			loop
 				a_local_part := a_cursor.item
-				a_namespace_uri := attribute_namespaces.item (a_cursor.index)
+				a_namespace_uri := l_attribute_namespaces.item (a_cursor.index)
 				if STRING_.same_string (a_local_part, Base_attribute) and then
+					a_namespace_uri /= Void and then
 					STRING_.same_string (a_namespace_uri, xml_namespace) then
-					create a_base_uri.make (attribute_values.item (a_cursor.index))
+					create a_base_uri.make (l_attribute_values.item (a_cursor.index))
 					shared_catalog_manager.debug_message (5, "xml:base set to", base_uri.full_reference)
-				elseif STRING_.same_string (a_local_part, Id_attribute) and then a_namespace_uri.count = 0 then
+				elseif STRING_.same_string (a_local_part, Id_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
 					-- OK
-				elseif STRING_.same_string (a_local_part, Rewrite_prefix_attribute) and then a_namespace_uri.count = 0 then
-					a_rewrite_prefix := attribute_values.item (a_cursor.index)
-				elseif is_system_rule and then STRING_.same_string (a_local_part, System_id_start_string_attribute) and then a_namespace_uri.count = 0 then
-					a_start_string := attribute_values.item (a_cursor.index)
-				elseif not is_system_rule and then STRING_.same_string (a_local_part, Uri_start_string_attribute) and then a_namespace_uri.count = 0 then
-					a_start_string := attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, Rewrite_prefix_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_rewrite_prefix := l_attribute_values.item (a_cursor.index)
+				elseif is_system_rule and then STRING_.same_string (a_local_part, System_id_start_string_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_start_string := l_attribute_values.item (a_cursor.index)
+				elseif not is_system_rule and then STRING_.same_string (a_local_part, Uri_start_string_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_start_string := l_attribute_values.item (a_cursor.index)
 				elseif a_namespace_uri = Void then
 					a_message := "Reserved attribute in the per-element-partition of '"
 					if is_system_rule then
@@ -892,10 +1055,15 @@ feature {NONE} -- Implementation
 				is_error := True; write_missing_start_string_attribute (is_system_rule)
 			else
 				a_start_string := escape_custom (utf8.to_utf8 (a_start_string), shared_catalog_manager.unescaped_uri_characters, False)
+				check a_base_uri /= Void end -- implied by ... ?
 				create a_target.make_resolve (a_base_uri, a_rewrite_prefix)
 				write_rewrite_rule_debug_message (a_start_string, a_target, is_system_rule)
 			end
 			if not is_error then
+				check
+					a_target /= Void and
+					a_start_string /= Void
+				end -- implied by `not is_error'
 				if is_system_rule then
 					insert_system_rewrite_rule (a_start_string, a_target)
 				else
@@ -908,40 +1076,57 @@ feature {NONE} -- Implementation
 			-- Add a `systemSuffix' or `uriSuffix' entry.
 		require
 			within_catalog_or_group: in_catalog and then (group_depth = 0 or else group_depth = 1)
-			current_element_is_system_suffix: is_system_rule implies STRING_.same_string (current_element_name, System_suffix_entry)
-			current_element_is_uri_suffix: not is_system_rule implies STRING_.same_string (current_element_name, Uri_suffix_entry)
+			current_element_is_system_suffix: is_system_rule implies STRING_.same_string (attached_current_element_name, System_suffix_entry)
+			current_element_is_uri_suffix: not is_system_rule implies STRING_.same_string (attached_current_element_name, Uri_suffix_entry)
 			attributes_available: attribute_namespaces /= Void
 		local
-			a_base_uri, a_target: UT_URI
+			a_base_uri, a_target: ?UT_URI
 			a_cursor: DS_ARRAYED_LIST_CURSOR [STRING]
-			a_local_part, a_namespace_uri, a_suffix_string, a_uri_reference, a_message: STRING
+			a_local_part, a_message: STRING
+			a_namespace_uri, a_uri_reference, a_suffix_string: ?STRING
+			l_attribute_local_parts: like attribute_local_parts
+			l_attribute_namespaces: like attribute_namespaces
+			l_attribute_values: like attribute_values
 		do
 			if group_depth = 1 then
 				a_base_uri := group_base
 			else
 				a_base_uri := base_uri
 			end
+			l_attribute_local_parts := attribute_local_parts
+			l_attribute_namespaces := attribute_namespaces
+			l_attribute_values := attribute_values
+			check
+				l_attribute_local_parts /= Void and
+				l_attribute_namespaces /= Void and
+				l_attribute_values /= Void
+			end -- implied by precondition `attributes_available' and invariant `attribute_triples'
 			from
-				a_cursor := attribute_local_parts.new_cursor; a_cursor.start
+				a_cursor := l_attribute_local_parts.new_cursor; a_cursor.start
 			variant
-				attribute_local_parts.count + 1 - a_cursor.index
+				l_attribute_local_parts.count + 1 - a_cursor.index
 			until
 				a_cursor.after
 			loop
 				a_local_part := a_cursor.item
-				a_namespace_uri := attribute_namespaces.item (a_cursor.index)
+				a_namespace_uri := l_attribute_namespaces.item (a_cursor.index)
 				if STRING_.same_string (a_local_part, Base_attribute) and then
+					a_namespace_uri /= Void and then
 					STRING_.same_string (a_namespace_uri, xml_namespace) then
-					create a_base_uri.make (attribute_values.item (a_cursor.index))
+					create a_base_uri.make (l_attribute_values.item (a_cursor.index))
 					shared_catalog_manager.debug_message (5, "xml:base set to", base_uri.full_reference)
-				elseif STRING_.same_string (a_local_part, Id_attribute) and then a_namespace_uri.count = 0 then
+				elseif STRING_.same_string (a_local_part, Id_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
 					-- OK
-				elseif STRING_.same_string (a_local_part, Uri_attribute) and then a_namespace_uri.count = 0 then
-					a_uri_reference := attribute_values.item (a_cursor.index)
-				elseif is_system_rule and then STRING_.same_string (a_local_part, System_id_suffix_attribute) and then a_namespace_uri.count = 0 then
-					a_suffix_string := attribute_values.item (a_cursor.index)
-				elseif not is_system_rule and then STRING_.same_string (a_local_part, Uri_suffix_attribute) and then a_namespace_uri.count = 0 then
-					a_suffix_string := attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, Uri_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_uri_reference := l_attribute_values.item (a_cursor.index)
+				elseif is_system_rule and then STRING_.same_string (a_local_part, System_id_suffix_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_suffix_string := l_attribute_values.item (a_cursor.index)
+				elseif not is_system_rule and then STRING_.same_string (a_local_part, Uri_suffix_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_suffix_string := l_attribute_values.item (a_cursor.index)
 				elseif a_namespace_uri = Void then
 					a_message := "Reserved attribute in the per-element-partition of '"
 					if is_system_rule then
@@ -959,10 +1144,15 @@ feature {NONE} -- Implementation
 				is_error := True; write_missing_suffix_string_attribute (is_system_rule)
 			else
 				a_suffix_string := escape_custom (utf8.to_utf8 (a_suffix_string), shared_catalog_manager.unescaped_uri_characters, False)
+				check a_base_uri /= Void end -- implied by ... ?
 				create a_target.make_resolve (a_base_uri, a_uri_reference)
 				write_suffix_debug_message (a_suffix_string, a_target, is_system_rule)
 			end
 			if not is_error then
+				check
+					a_target /= Void and
+					a_suffix_string /= Void
+				end -- implied by `not is_error'
 				if is_system_rule then
 					insert_system_suffix_rule (a_suffix_string, a_target)
 				else
@@ -975,37 +1165,54 @@ feature {NONE} -- Implementation
 			-- Add a `delegateSystem' entry.
 		require
 			within_catalog_or_group: in_catalog and then (group_depth = 0 or else group_depth = 1)
-			current_element_is_system_delegate: STRING_.same_string (current_element_name, Delegate_system_entry)
+			current_element_is_system_delegate: STRING_.same_string (attached_current_element_name, Delegate_system_entry)
 			attributes_available: attribute_namespaces /= Void
 		local
-			a_base_uri, a_target: UT_URI
+			a_base_uri, a_target: ?UT_URI
 			a_cursor: DS_ARRAYED_LIST_CURSOR [STRING]
-			a_local_part, a_namespace_uri, a_catalog_name, a_start_string: STRING
+			a_local_part: STRING
+			a_namespace_uri,
+			a_catalog_name, a_start_string: ?STRING
+			l_attribute_local_parts: like attribute_local_parts
+			l_attribute_namespaces: like attribute_namespaces
+			l_attribute_values: like attribute_values
 		do
 			if group_depth = 1 then
 				a_base_uri := group_base
 			else
 				a_base_uri := base_uri
 			end
+			l_attribute_local_parts := attribute_local_parts
+			l_attribute_namespaces := attribute_namespaces
+			l_attribute_values := attribute_values
+			check
+				l_attribute_local_parts /= Void and
+				l_attribute_namespaces /= Void and
+				l_attribute_values /= Void
+			end -- implied by precondition `attributes_available'
 			from
-				a_cursor := attribute_local_parts.new_cursor; a_cursor.start
+				a_cursor := l_attribute_local_parts.new_cursor; a_cursor.start
 			variant
-				attribute_local_parts.count + 1 - a_cursor.index
+				l_attribute_local_parts.count + 1 - a_cursor.index
 			until
 				a_cursor.after
 			loop
 				a_local_part := a_cursor.item
-				a_namespace_uri := attribute_namespaces.item (a_cursor.index)
+				a_namespace_uri := l_attribute_namespaces.item (a_cursor.index)
 				if STRING_.same_string (a_local_part, Base_attribute) and then
+					a_namespace_uri /= Void and then
 					STRING_.same_string (a_namespace_uri, xml_namespace) then
-					create a_base_uri.make (attribute_values.item (a_cursor.index))
+					create a_base_uri.make (l_attribute_values.item (a_cursor.index))
 					shared_catalog_manager.debug_message (5, "xml:base set to", base_uri.full_reference)
-				elseif STRING_.same_string (a_local_part, Id_attribute) and then a_namespace_uri.count = 0 then
+				elseif STRING_.same_string (a_local_part, Id_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
 					-- OK
-				elseif STRING_.same_string (a_local_part, Catalog_attribute) and then a_namespace_uri.count = 0 then
-					a_catalog_name := attribute_values.item (a_cursor.index)
-				elseif STRING_.same_string (a_local_part, System_id_start_string_attribute) and then a_namespace_uri.count = 0 then
-					a_start_string := attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, Catalog_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_catalog_name := l_attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, System_id_start_string_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_start_string := l_attribute_values.item (a_cursor.index)
 				elseif a_namespace_uri = Void then
 					shared_catalog_manager.debug_message (2, "Reserved attribute in the per-element-partition of 'delagateSystem'", system_id)
 				end
@@ -1019,10 +1226,14 @@ feature {NONE} -- Implementation
 				shared_catalog_manager.debug_message (1, "Missing 'systemIdStartString' attribute from 'delegateSystem'", system_id)
 			else
 				a_start_string := escape_custom (utf8.to_utf8 (a_start_string), shared_catalog_manager.unescaped_uri_characters, False)
+				check a_base_uri /= Void end -- implied by ... ?
 				create a_target.make_resolve (a_base_uri, a_catalog_name)
 				shared_catalog_manager.debug_message (5, "Catalog name from 'delegateSystem'", a_catalog_name)
 			end
 			if not is_error then
+				check
+					a_target /= Void and a_start_string /= Void
+				end -- implied by `not is_error'
 				insert_system_delegate (a_start_string, a_target)
 			end
 		end
@@ -1031,37 +1242,54 @@ feature {NONE} -- Implementation
 			-- Add a `delegateUri' entry.
 		require
 			within_catalog_or_group: in_catalog and then (group_depth = 0 or else group_depth = 1)
-			current_element_is_uri_delegate: STRING_.same_string (current_element_name, Delegate_uri_entry)
+			current_element_is_uri_delegate: STRING_.same_string (attached_current_element_name, Delegate_uri_entry)
 			attributes_available: attribute_namespaces /= Void
 		local
-			a_base_uri, a_target: UT_URI
+			a_base_uri, a_target: ?UT_URI
 			a_cursor: DS_ARRAYED_LIST_CURSOR [STRING]
-			a_local_part, a_namespace_uri, a_catalog_name, a_start_string: STRING
+			a_local_part: STRING
+			a_namespace_uri,
+			a_start_string, a_catalog_name: ?STRING
+			l_attribute_local_parts: like attribute_local_parts
+			l_attribute_namespaces: like attribute_namespaces
+			l_attribute_values: like attribute_values
 		do
 			if group_depth = 1 then
 				a_base_uri := group_base
 			else
 				a_base_uri := base_uri
 			end
+			l_attribute_local_parts := attribute_local_parts
+			l_attribute_namespaces := attribute_namespaces
+			l_attribute_values := attribute_values
+			check
+				l_attribute_local_parts /= Void and
+				l_attribute_namespaces /= Void and
+				l_attribute_values /= Void
+			end -- implied by precondition `attributes_available'
 			from
-				a_cursor := attribute_local_parts.new_cursor; a_cursor.start
+				a_cursor := l_attribute_local_parts.new_cursor; a_cursor.start
 			variant
-				attribute_local_parts.count + 1 - a_cursor.index
+				l_attribute_local_parts.count + 1 - a_cursor.index
 			until
 				a_cursor.after
 			loop
 				a_local_part := a_cursor.item
-				a_namespace_uri := attribute_namespaces.item (a_cursor.index)
+				a_namespace_uri := l_attribute_namespaces.item (a_cursor.index)
 				if STRING_.same_string (a_local_part, Base_attribute) and then
+					a_namespace_uri /= Void and then
 					STRING_.same_string (a_namespace_uri, xml_namespace) then
-					create a_base_uri.make (attribute_values.item (a_cursor.index))
+					create a_base_uri.make (l_attribute_values.item (a_cursor.index))
 					shared_catalog_manager.debug_message (5, "xml:base set to", base_uri.full_reference)
-				elseif STRING_.same_string (a_local_part, "id") and then a_namespace_uri.count = 0 then
+				elseif STRING_.same_string (a_local_part, "id") and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
 					-- OK
-				elseif STRING_.same_string (a_local_part, Catalog_attribute) and then a_namespace_uri.count = 0 then
-					a_catalog_name := attribute_values.item (a_cursor.index)
-				elseif STRING_.same_string (a_local_part, Uri_start_string_attribute) and then a_namespace_uri.count = 0 then
-					a_start_string := attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, Catalog_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_catalog_name := l_attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, Uri_start_string_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_start_string := l_attribute_values.item (a_cursor.index)
 				elseif a_namespace_uri = Void then
 					shared_catalog_manager.debug_message (2, "Reserved attribute in the per-element-partition of 'delagateUri'", system_id)
 				end
@@ -1075,10 +1303,15 @@ feature {NONE} -- Implementation
 				shared_catalog_manager.debug_message (1, "Missing 'uriStartString' attribute from 'delegateSystem'", system_id)
 			else
 				a_start_string := escape_custom (utf8.to_utf8 (a_start_string), shared_catalog_manager.unescaped_uri_characters, False)
+				check a_base_uri /= Void end -- implied by ... ?
 				create a_target.make_resolve (a_base_uri, a_catalog_name)
 				shared_catalog_manager.debug_message (5, "Catalog name from 'delegateSystem'", a_catalog_name)
 			end
 			if not is_error then
+				check
+					a_target /= Void and
+					a_start_string /= Void
+				end -- implied by `not is_error'
 				insert_uri_delegate (a_start_string, a_target)
 			end
 		end
@@ -1087,13 +1320,18 @@ feature {NONE} -- Implementation
 			-- Add a `delegatePublic' entry.
 		require
 			within_catalog_or_group: in_catalog and then (group_depth = 0 or else group_depth = 1)
-			current_element_is_public_delegate: STRING_.same_string (current_element_name, Delegate_public_entry)
+			current_element_is_public_delegate: STRING_.same_string (attached_current_element_name, Delegate_public_entry)
 			attributes_available: attribute_namespaces /= Void
 		local
-			a_base_uri, a_target: UT_URI
+			a_base_uri, a_target: ?UT_URI
 			a_cursor: DS_ARRAYED_LIST_CURSOR [STRING]
-			a_local_part, a_namespace_uri, a_catalog_name, a_start_string: STRING
+			a_local_part: STRING
+			a_namespace_uri,
+			a_catalog_name, a_start_string: ?STRING
 			a_prefer_public: BOOLEAN
+			l_attribute_local_parts: like attribute_local_parts
+			l_attribute_namespaces: like attribute_namespaces
+			l_attribute_values: like attribute_values
 		do
 			if group_depth = 1 then
 				a_base_uri := group_base
@@ -1102,25 +1340,37 @@ feature {NONE} -- Implementation
 				a_base_uri := base_uri
 				a_prefer_public := prefer_public
 			end
+			l_attribute_local_parts := attribute_local_parts
+			l_attribute_namespaces := attribute_namespaces
+			l_attribute_values := attribute_values
+			check
+				l_attribute_local_parts /= Void and
+				l_attribute_namespaces /= Void and
+				l_attribute_values /= Void
+			end -- implied by precondition `attributes_available'
 			from
-				a_cursor := attribute_local_parts.new_cursor; a_cursor.start
+				a_cursor := l_attribute_local_parts.new_cursor; a_cursor.start
 			variant
-				attribute_local_parts.count + 1 - a_cursor.index
+				l_attribute_local_parts.count + 1 - a_cursor.index
 			until
 				a_cursor.after
 			loop
 				a_local_part := a_cursor.item
-				a_namespace_uri := attribute_namespaces.item (a_cursor.index)
+				a_namespace_uri := l_attribute_namespaces.item (a_cursor.index)
 				if STRING_.same_string (a_local_part, Base_attribute) and then
+					a_namespace_uri /= Void and then
 					STRING_.same_string (a_namespace_uri, xml_namespace) then
-					create a_base_uri.make (attribute_values.item (a_cursor.index))
+					create a_base_uri.make (l_attribute_values.item (a_cursor.index))
 					shared_catalog_manager.debug_message (5, "xml:base set to", base_uri.full_reference)
-				elseif STRING_.same_string (a_local_part, Id_attribute) and then a_namespace_uri.count = 0 then
+				elseif STRING_.same_string (a_local_part, Id_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
 					-- OK
-				elseif STRING_.same_string (a_local_part, Catalog_attribute) and then a_namespace_uri.count = 0 then
-					a_catalog_name := attribute_values.item (a_cursor.index)
-				elseif STRING_.same_string (a_local_part, Public_id_start_string_attribute) and then a_namespace_uri.count = 0 then
-					a_start_string := attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, Catalog_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_catalog_name := l_attribute_values.item (a_cursor.index)
+				elseif STRING_.same_string (a_local_part, Public_id_start_string_attribute) and then
+					a_namespace_uri /= Void and then a_namespace_uri.count = 0 then
+					a_start_string := l_attribute_values.item (a_cursor.index)
 				elseif a_namespace_uri = Void then
 					shared_catalog_manager.debug_message (2, "Reserved attribute in the per-element-partition of 'delegateSystem'", system_id)
 				end
@@ -1134,10 +1384,15 @@ feature {NONE} -- Implementation
 				shared_catalog_manager.debug_message (1, "Missing 'publicIdStartString' attribute from 'delegatePublic'", system_id)
 			else
 				a_start_string := normalized_fpi (a_start_string)
+				check a_base_uri /= Void end -- implied by ... ?
 				create a_target.make_resolve (a_base_uri, a_catalog_name)
 				shared_catalog_manager.debug_message (5, "Catalog name from 'delegatePublic'", a_catalog_name)
 			end
 			if not is_error then
+				check
+					a_target /= Void and
+					a_start_string /= Void
+				end -- implied by `not is_error'
 				insert_public_delegate (a_start_string, a_target, a_prefer_public)
 			end
 		end
@@ -1471,7 +1726,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	resolved_suffixed_fsi (a_system_id: STRING): STRING is
+	resolved_suffixed_fsi (a_system_id: STRING): ?STRING is
 			-- Resolved URI for `a_system_id' from suffix rules
 		require
 			system_id_not_void: a_system_id /= Void -- TODO and then is normalized
@@ -1499,7 +1754,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	resolved_suffixed_uri (a_uri: STRING): STRING is
+	resolved_suffixed_uri (a_uri: STRING): ?STRING is
 			-- Resolved URI for `a_uri' from suffix rules
 		require
 			uri_reference_not_void: a_uri /= Void -- TODO and then is normalized
@@ -1527,14 +1782,14 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	resolved_delegated_fsi (a_system_id: STRING): STRING is
+	resolved_delegated_fsi (a_system_id: STRING): ?STRING is
 			-- Resolved URI for `a_system_id' from delegate catalogs
 		require
 			system_id_not_void: a_system_id /= Void -- TODO and then is normalized
 		local
 			a_cursor: DS_LINKED_LIST_CURSOR [XM_DELEGATE_CATALOG_ENTRY]
 			a_delegate: XM_DELEGATE_CATALOG_ENTRY
-			a_catalog: XM_CATALOG
+			a_catalog: ?XM_CATALOG
 		do
 			shared_catalog_manager.debug_message (8, "Number of system delegate catalogs is", system_delegates.count.out)
 			from
@@ -1567,14 +1822,14 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	resolved_delegated_uri (a_uri_reference: STRING): STRING is
+	resolved_delegated_uri (a_uri_reference: STRING): ?STRING is
 			-- Resolved URI for `a_uri_reference' from delegate catalogs
 		require
 			uri_id_not_void: a_uri_reference /= Void -- TODO and then is normalized
 		local
 			a_cursor: DS_LINKED_LIST_CURSOR [XM_DELEGATE_CATALOG_ENTRY]
 			a_delegate: XM_DELEGATE_CATALOG_ENTRY
-			a_catalog: XM_CATALOG
+			a_catalog: ?XM_CATALOG
 		do
 			shared_catalog_manager.debug_message (8, "Number of uri delegate catalogs is", uri_delegates.count.out)
 			from
@@ -1607,14 +1862,14 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	resolved_delegated_fpi (a_public_id: STRING; prefer_public_required: BOOLEAN): STRING is
+	resolved_delegated_fpi (a_public_id: STRING; prefer_public_required: BOOLEAN): ?STRING is
 			-- Resolved URI for `a_public_id' from delegate catalogs
 		require
 			public_id_not_void: a_public_id /= Void -- TODO and then is normalized
 		local
 			a_cursor: DS_LINKED_LIST_CURSOR [XM_PUBLIC_DELEGATE_CATALOG_ENTRY]
 			a_delegate: XM_PUBLIC_DELEGATE_CATALOG_ENTRY
-			a_catalog: XM_CATALOG
+			a_catalog: ?XM_CATALOG
 		do
 			shared_catalog_manager.debug_message (8, "Number of public delegate catalogs is", public_delegates.count.out)
 			from
@@ -1806,9 +2061,11 @@ invariant
 	base_uri_not_void: base_uri /= Void
 	system_id_not_void: system_id /= Void
 	mixed_mode: is_string_mode_mixed
-	attribute_triples: attribute_namespaces /= Void implies attribute_local_parts /= Void
-		and then attribute_values /= Void and then attribute_values.count = attribute_local_parts.count
-		and then attribute_local_parts.count = attribute_namespaces.count
+	attribute_triples: {l_attribute_namespaces: like attribute_namespaces} attribute_namespaces implies (
+		{l_attribute_local_parts: like attribute_local_parts} attribute_local_parts
+		and then {l_attribute_values: like attribute_values} attribute_values and then l_attribute_values.count = l_attribute_local_parts.count
+		and then l_attribute_local_parts.count = l_attribute_namespaces.count
+		)
 	system_entries_not_void: system_entries /= Void
 	uri_entries_not_void: uri_entries /= Void
 	public_entries_not_void: public_entries /= Void

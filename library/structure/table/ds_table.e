@@ -31,7 +31,7 @@ feature -- Access
 		deferred
 		end
 
-	value (k: K): G is
+	value (k: K): ?G is
 			-- Item associated with `k';
 			-- Return default value if no such item
 		require else
@@ -44,7 +44,7 @@ feature -- Access
 
 feature -- Status report
 
-	valid_key (k: K): BOOLEAN is
+	valid_key (k: ?K): BOOLEAN is
 			-- Is `k' a valid key?
 		deferred
 		end
@@ -61,7 +61,7 @@ feature -- Status report
 			end
 		end
 
-	has (k: K): BOOLEAN is
+	has (k: ?K): BOOLEAN is
 			-- Is there an item associated with `k'?
 		deferred
 		ensure

@@ -29,7 +29,7 @@ create
 feature {NONE} -- Initialization
 
 	make (a_source: like source; a_target: like target) is
-			-- Create a new transition from 
+			-- Create a new transition from
 			-- `a_source' to `a_target'.
 		require
 			a_source_not_void: a_source /= Void

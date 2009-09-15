@@ -14,7 +14,7 @@ deferred class XM_DTD_CALLBACKS
 
 feature -- Document type definition callbacks
 
-	on_doctype (a_name: STRING; an_id: XM_DTD_EXTERNAL_ID; has_internal_subset: BOOLEAN) is
+	on_doctype (a_name: STRING; an_id: ?XM_DTD_EXTERNAL_ID; has_internal_subset: BOOLEAN) is
 			-- Document type declaration (first event).
 			-- Warning: strings may be polymorphic, see XM_STRING_MODE.
 		require
@@ -41,8 +41,8 @@ feature -- Document type definition callbacks
 		deferred
 		end
 
-	on_entity_declaration (entity_name: STRING; is_parameter: BOOLEAN; value: STRING;
-		an_id: XM_DTD_EXTERNAL_ID; notation_name: STRING) is
+	on_entity_declaration (entity_name: STRING; is_parameter: BOOLEAN; value: ?STRING;
+		an_id: ?XM_DTD_EXTERNAL_ID; notation_name: ?STRING) is
 			-- Entity declaration.
 			-- Warning: strings may be polymorphic, see XM_STRING_MODE.
 		require
@@ -61,7 +61,7 @@ feature -- Document type definition callbacks
 			id_not_void: an_id /= Void
 		deferred
 		end
-		
+
 	on_dtd_processing_instruction (a_name: STRING; a_content: STRING) is
 			-- Processing instruction within DTD.
 			-- Warning: strings may be polymorphic, see XM_STRING_MODE.
@@ -84,5 +84,5 @@ feature -- Document type definition callbacks
 			-- End of DTD (last event in a document).
 		deferred
 		end
-		
+
 end

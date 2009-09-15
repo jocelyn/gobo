@@ -112,7 +112,7 @@ feature -- Access
 			-- OASIS XML Catalogs DTD
 		once
 			Result := "[
-<!-- $Id$ -->
+<!-- $Id: xm_catalog_bootstrap_resolver.e 6579 2009-01-23 21:42:51Z ericb $ -->
 
 <!ENTITY % pubIdChars "CDATA">
 <!ENTITY % publicIdentifier "%pubIdChars;">
@@ -298,7 +298,7 @@ feature -- Access
 			-- OASIS XML Catalogs DTD, version 1.09
 		once
 			Result := "[
-<!-- $Id$ -->
+<!-- $Id: xm_catalog_bootstrap_resolver.e 6579 2009-01-23 21:42:51Z ericb $ -->
 
 <!ENTITY % pubIdChars "CDATA">
 <!ENTITY % publicIdentifier "%pubIdChars;">
@@ -465,7 +465,7 @@ feature -- Access
 	targetNamespace="urn:oasis:names:tc:entity:xmlns:xml:catalog"
 	elementFormDefault="qualified">
 
-<!-- $Id$ -->
+<!-- $Id: xm_catalog_bootstrap_resolver.e 6579 2009-01-23 21:42:51Z ericb $ -->
 
 <xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
 
@@ -690,7 +690,7 @@ feature -- Access
 	targetNamespace='urn:oasis:names:tc:entity:xmlns:xml:catalog'
 	elementFormDefault='qualified'>
 
-<!-- $Id$ -->
+<!-- $Id: xm_catalog_bootstrap_resolver.e 6579 2009-01-23 21:42:51Z ericb $ -->
 
 <xs:simpleType name='pubIdChars'>
 	<!-- A string of the characters defined as pubIdChar in production 13
@@ -885,7 +885,7 @@ feature -- Access
 	ns="urn:oasis:names:tc:entity:xmlns:xml:catalog"
 	datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
 
-<!-- $Id$ -->
+<!-- $Id: xm_catalog_bootstrap_resolver.e 6579 2009-01-23 21:42:51Z ericb $ -->
 
 <start>
 	<choice>
@@ -1140,7 +1140,7 @@ feature -- Access
 	ns="urn:oasis:names:tc:entity:xmlns:xml:catalog"
 	datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
 
-<!-- $Id$ -->
+<!-- $Id: xm_catalog_bootstrap_resolver.e 6579 2009-01-23 21:42:51Z ericb $ -->
 
 <start>
 	<choice>
@@ -1477,7 +1477,7 @@ feature -- Action(s)
 
 feature -- Result
 
-	last_stream: KI_CHARACTER_INPUT_STREAM
+	last_stream: ?KI_CHARACTER_INPUT_STREAM
 			-- Last stream initialised from external entity.
 
 	has_error: BOOLEAN is
@@ -1486,16 +1486,16 @@ feature -- Result
 			Result := uri_scheme_resolver.has_error
 		end
 
-	last_error: STRING is
+	last_error: ?STRING is
 			-- Last error message.
 		do
 			Result := uri_scheme_resolver.last_error
 		end
 
-	last_uri_reference_stream: KI_CHARACTER_INPUT_STREAM
+	last_uri_reference_stream: ?KI_CHARACTER_INPUT_STREAM
 			-- Last stream initialised from URI reference.
 
-	last_system_id: UT_URI
+	last_system_id: ?UT_URI
 			-- System id used to actually open `last_uri_reference_stream'
 
 	has_uri_reference_error: BOOLEAN is
@@ -1504,7 +1504,7 @@ feature -- Result
 			Result := uri_scheme_resolver.has_error
 		end
 
-	last_uri_reference_error: STRING is
+	last_uri_reference_error: ?STRING is
 			-- Last error message.
 		do
 			Result := uri_scheme_resolver.last_error
@@ -1513,7 +1513,7 @@ feature -- Result
 	has_media_type: BOOLEAN
 			-- Is the media type available.
 
-	last_media_type: UT_MEDIA_TYPE
+	last_media_type: ?UT_MEDIA_TYPE
 			-- Media type, if available.
 
 end

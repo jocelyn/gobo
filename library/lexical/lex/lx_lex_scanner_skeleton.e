@@ -106,7 +106,7 @@ feature -- Access
 	filename: STRING is
 			-- Name of file being parsed
 		local
-			file_buffer: YY_FILE_BUFFER
+			file_buffer: ?YY_FILE_BUFFER
 		do
 			file_buffer ?= input_buffer
 			if file_buffer /= Void then
@@ -120,7 +120,7 @@ feature -- Access
 
 feature {NONE} -- Access
 
-	character_classes: DS_HASH_TABLE [LX_SYMBOL_CLASS, STRING]
+	character_classes: DS_HASH_TABLE [LX_SYMBOL_CLASS, ?STRING]
 			-- Character classes declared so far
 
 	name_definitions: DS_HASH_TABLE [STRING, STRING]
@@ -130,7 +130,7 @@ feature {NONE} -- Access
 			-- Number of characters { not-yet-balanced
 			-- in semantic actions
 
-	last_string: STRING
+	last_string: ?STRING
 			-- Last string which has been read
 
 	last_integer_value: INTEGER
@@ -199,7 +199,7 @@ feature {NONE} -- Implementation
 
 	process_escaped_character is
 			-- Process escaped character whose printable representation
-			-- is held in `text'. Check whether the corresponding 
+			-- is held in `text'. Check whether the corresponding
 			-- character is not out of range. Set `last_integer_value' accordingly.
 		require
 --			valid_text: `text' recognized by \\(.|[0-7]{1,3}|x[0-9a-f]{1,2})

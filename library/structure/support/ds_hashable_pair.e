@@ -26,15 +26,18 @@ feature -- Access
 
 	hash_code: INTEGER is
 			-- Hash code value
+		local
+			l_second: ?like second
 		do
-			if first /= Void then
-				if second /= Void then
-					Result := first.hash_code // 2 + second.hash_code // 2
+			l_second := second
+			if {l_first: like first} first then
+				if l_second /= Void then
+					Result := l_first.hash_code // 2 + l_second.hash_code // 2
 				else
-					Result := first.hash_code
+					Result := l_first.hash_code
 				end
-			elseif second /= Void then
-				Result := second.hash_code
+			elseif l_second /= Void then
+				Result := l_second.hash_code
 			else
 				Result := 0
 			end

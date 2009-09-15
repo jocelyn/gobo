@@ -110,8 +110,15 @@ feature -- Access
 
 	item: G is
 			-- Item at front of queue
+		local
+			a_cell: like first_cell
 		do
-			Result := first_cell.item
+			a_cell := first_cell
+			check 
+					-- precondition `not_empty' and invariant `first_cell'
+				first_cell_not_void: a_cell /= Void 
+			end
+			Result := a_cell.item
 		end
 
 feature -- Measurement
@@ -165,8 +172,12 @@ feature -- Duplication
 				if not other.is_empty then
 					from
 						old_cell := other.first_cell
-						create first_cell.make (old_cell.item)
-						a_cell := first_cell
+						check 
+								-- condition `not other.is_empty' and invariant `first_cell' on `other'
+							old_cell_not_void: old_cell /= Void 
+						end
+						create a_cell.make (old_cell.item)
+						first_cell := a_cell
 						old_cell := old_cell.right
 					until
 						old_cell = Void
@@ -198,6 +209,10 @@ feature -- Comparison
 				until
 					a_cell = Void
 				loop
+					check 
+						-- other_cell is not Void because `a_cell /= Void', `other.count = count' and invariant `first_cell'
+						other_cell_not_void: other_cell /= Void 
+					end
 					if a_cell.item /= other_cell.item then
 						Result := False
 							-- Jump out of the loop.
@@ -216,6 +231,7 @@ feature -- Element change
 			-- Add `v' to back of queue.
 		local
 			a_cell: like first_cell
+			l_last_cell: like last_cell
 		do
 			create a_cell.make (v)
 			if is_empty then
@@ -223,7 +239,12 @@ feature -- Element change
 				last_cell := a_cell
 				count := 1
 			else
-				last_cell.put_right (a_cell)
+				l_last_cell := last_cell
+				check 
+						-- condition `not is_empty' and invariant `first_cell'
+					last_cell_not_void: l_last_cell /= Void 
+				end
+				l_last_cell.put_right (a_cell)
 				last_cell := a_cell
 				count := count + 1
 			end
@@ -235,6 +256,7 @@ feature -- Element change
 		local
 			a_cell, new_last, new_first: like first_cell
 			other_cursor: DS_LINEAR_CURSOR [G]
+			l_last_cell: like last_cell
 		do
 			if not other.is_empty then
 				other_cursor := other.new_cursor
@@ -255,7 +277,13 @@ feature -- Element change
 				if is_empty then
 					first_cell := new_first
 				else
-					last_cell.put_right (new_first)
+					l_last_cell := last_cell
+					check 
+							-- condition `not is_empty' and invariant `first_cell'
+						last_cell_not_void: l_last_cell /= Void 
+					end
+					check l_last_cell /= Void end -- implied by `not is_empty'
+					l_last_cell.put_right (new_first)
 				end
 				last_cell := new_last
 				count := count + other.count
@@ -266,11 +294,18 @@ feature -- Removal
 
 	remove is
 			-- Remove from item from queue.
+		local
+			a_cell: like first_cell
 		do
 			if count = 1 then
 				wipe_out
 			else
-				first_cell := first_cell.right
+				a_cell := first_cell
+				check 
+						-- inherited precondition `not_empty' and invariant `first_cell'
+					first_cell_not_void: a_cell /= Void 
+				end
+				first_cell := a_cell.right
 				count := count - 1
 			end
 		end
@@ -285,12 +320,20 @@ feature -- Removal
 				wipe_out
 			else
 				a_cell := first_cell
+				check 
+						-- inherited precondition `not_empty' and invariant `first_cell'
+					first_cell_not_void: a_cell /= Void 
+				end
 				from
 					i := 1
 				until
 					i > n
 				loop
 					a_cell := a_cell.right
+					check 
+							-- inherited precondition `valid_n' and `i <= n < count'
+						a_cell_right_not_void: a_cell /= Void 
+					end 
 					i := i + 1
 				end
 				first_cell := a_cell
@@ -395,7 +438,7 @@ feature -- Iteration
 
 feature {DS_LINKED_QUEUE} -- Implementation
 
-	first_cell: DS_LINKABLE [G]
+	first_cell: ?DS_LINKABLE [G]
 			-- First cell in queue
 
 	last_cell: like first_cell

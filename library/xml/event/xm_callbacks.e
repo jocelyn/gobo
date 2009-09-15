@@ -63,7 +63,7 @@ feature -- Meta
 
 feature -- Tag
 
-	on_start_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_start_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- Start of start tag.
 			-- Warning: strings may be polymorphic, see XM_STRING_MODE.
 		require
@@ -72,7 +72,7 @@ feature -- Tag
 		deferred
 		end
 
-	on_attribute (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING; a_value: STRING) is
+	on_attribute (a_namespace, a_prefix: ?STRING; a_local_part: STRING; a_value: STRING) is
 			-- Start of attribute.
 			-- Warning: strings may be polymorphic, see XM_STRING_MODE.
 		require
@@ -87,7 +87,7 @@ feature -- Tag
 		deferred
 		end
 
-	on_end_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_end_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- End tag.
 			-- Warning: strings may be polymorphic, see XM_STRING_MODE.
 		require
@@ -111,19 +111,21 @@ feature -- Content
 
 feature -- Support
 
-	has_prefix (a: STRING): BOOLEAN is
+	has_prefix (a: ?STRING): BOOLEAN is
 			-- Is prefix in use?
 		do
 			Result := a /= Void and then a.count > 0
+		ensure
+			true_implies_a_attached: Result implies a /= Void
 		end
 
-	has_namespace (a: STRING): BOOLEAN is
+	has_namespace (a: ?STRING): BOOLEAN is
 			-- Is namespace resolved?
 		do
 			Result := a /= Void
 		end
 
-	is_local_part (a: STRING): BOOLEAN is
+	is_local_part (a: ?STRING): BOOLEAN is
 			-- Is this a valid local part string?
 		do
 			Result := a /= Void and then a.count > 0
@@ -135,9 +137,9 @@ feature -- Assertion
 
 	has_resolved_namespaces: BOOLEAN is
 			-- Does this callback event consumer expect resolved
-			-- namespaces? 
-			-- If True, it must be located downstream of a filter 
-			-- or source producing resolved namespaces such 
+			-- namespaces?
+			-- If True, it must be located downstream of a filter
+			-- or source producing resolved namespaces such
 			-- as XM_NAMESPACE_RESOLVER.
 		do
 		end

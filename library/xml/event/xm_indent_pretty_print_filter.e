@@ -30,7 +30,7 @@ create
 
 feature -- Indent
 
-	indent: STRING
+	indent: ?STRING
 			-- Indentation string.
 
 	set_indent (an_indent: STRING) is
@@ -48,12 +48,15 @@ feature -- Events
 
 	on_start is
 			-- Start of document.
+		local
+			l_space_preserved: like space_preserved
 		do
 			if indent = Void then
 				indent := Default_indent
 			end
-			create space_preserved.make_default
-			space_preserved.force (Default_space_preserve)
+			create l_space_preserved.make_default
+			space_preserved := l_space_preserved
+			l_space_preserved.force (Default_space_preserve)
 
 			has_content := False
 
@@ -65,7 +68,7 @@ feature -- Events
 			indent_not_void: indent /= Void
 		end
 
-	on_start_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_start_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- Start of start tag.
 		do
 			check space_preserved_not_void: space_preserved /= Void end
@@ -84,23 +87,23 @@ feature -- Events
 
 			Precursor (a_namespace, a_prefix, a_local_part)
 
-			space_preserved.force (space_preserved.item)
+			attached_space_preserved.force (attached_space_preserved.item)
 		end
 
-	on_attribute (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING; a_value: STRING) is
+	on_attribute (a_namespace, a_prefix: ?STRING; a_local_part: STRING; a_value: STRING) is
 			-- Handle xml:space.
 		do
 			check space_preserved_not_void: space_preserved /= Void end
 
 			if has_xml_space (a_prefix, a_local_part) then
 					--Replace value for current element.
-				space_preserved.remove
-				space_preserved.force (STRING_.same_string (Xml_space_preserve, a_value))
+				attached_space_preserved.remove
+				attached_space_preserved.force (STRING_.same_string (Xml_space_preserve, a_value))
 			end
 			Precursor (a_namespace, a_prefix, a_local_part, a_value)
 		end
 
-	on_end_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_end_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- End tag.
 		do
 			depth := depth - 1
@@ -113,7 +116,7 @@ feature -- Events
 
 			Precursor (a_namespace, a_prefix, a_local_part)
 
-			space_preserved.remove
+			attached_space_preserved.remove
 		end
 
 	on_content (a_content: STRING) is
@@ -133,16 +136,29 @@ feature {NONE} -- Implementation
 
 feature {NONE} -- Space preserve
 
-	has_xml_space (a_prefix: STRING; a_local_part: STRING): BOOLEAN is
+	has_xml_space (a_prefix: ?STRING; a_local_part: STRING): BOOLEAN is
 			-- Is this attribute xml:space?
 		do
-			Result := has_prefix (a_prefix)
-				and then STRING_.same_string (Xml_prefix, a_prefix)
+			if has_prefix (a_prefix) then
+				check a_prefix /= Void end -- implied by `has_prefix (a_prefix)'
+				Result := STRING_.same_string (Xml_prefix, a_prefix)
 					and then STRING_.same_string (Xml_space, a_local_part)
+			end
 		end
 
-	space_preserved: DS_ARRAYED_STACK [BOOLEAN]
+	space_preserved: ?DS_ARRAYED_STACK [BOOLEAN]
 			-- Space preserved value.
+
+	attached_space_preserved: !like space_preserved
+		require
+			space_preserved_attached: space_preserved /= Void
+		local
+			v: like space_preserved
+		do
+			v := space_preserved
+			check v /= Void end -- implied by `space_preserved_attached'
+			Result := v
+		end
 
 	Default_space_preserve: BOOLEAN is
 			-- Initial space preserve value.
@@ -160,18 +176,21 @@ feature {NONE} -- Indent
 			-- Append indent before element.
 		require
 			space_preserve_not_void: space_preserved /= Void
-			space_preserve_not_empty: not space_preserved.is_empty
+			space_preserve_not_empty: not attached_space_preserved.is_empty
 			indent_not_void: indent /= Void
 		local
 			i: INTEGER
+			l_indent: like indent
 		do
-			if not space_preserved.item then
+			if not attached_space_preserved.item then
+				l_indent := indent
+				check l_indent /= Void end -- implied by `indent_not_void'
 				from
 					i := 1
 				until
 					i > depth
 				loop
-					output (indent)
+					output (l_indent)
 					i := i + 1
 				end
 			end
@@ -182,7 +201,7 @@ feature {NONE} -- Indent
 		require
 			space_preserve_not_void: space_preserved /= Void
 		do
-			if not space_preserved.item then
+			if not attached_space_preserved.item then
 				output (Lf_s)
 			end
 		end

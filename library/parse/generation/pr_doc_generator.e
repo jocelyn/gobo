@@ -90,7 +90,8 @@ feature {NONE} -- Generation
 			i, nb: INTEGER
 			a_rules: DS_ARRAYED_LIST [PR_RULE]
 			a_rule: PR_RULE
-			a_lhs, last_lhs: PR_VARIABLE
+			a_lhs: PR_VARIABLE
+			last_lhs: ?PR_VARIABLE
 		do
 			a_rules := grammar.rules
 			nb := a_rules.count
@@ -163,8 +164,8 @@ feature {NONE} -- Generation
 			a_file_open_write: a_file.is_open_write
 		local
 			i, nb: INTEGER
-			a_token: PR_TOKEN
-			a_variable: PR_VARIABLE
+			a_token: ?PR_TOKEN
+			a_variable: ?PR_VARIABLE
 		do
 			if a_rhs.is_empty then
 				print_empty_rhs (a_file)

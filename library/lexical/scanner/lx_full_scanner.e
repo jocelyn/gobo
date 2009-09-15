@@ -52,7 +52,7 @@ feature {NONE} -- Implementation
 	yy_build_tables is
 			-- Build scanner tables.
 		local
-			an_array: ARRAY [INTEGER]
+			an_array: ?ARRAY [INTEGER]
 		do
 			yy_nxt := yy_fixed_array (yy_nxt_template)
 			an_array := yy_ec_template

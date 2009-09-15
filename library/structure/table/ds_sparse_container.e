@@ -36,10 +36,13 @@ feature {NONE} -- Initialization
 			-- Use `=' as comparison criterion.
 		require
 			positive_n: n >= 0
+		local
+			l_default_item: ?G
+			l_default_key: ?K
 		do
 			capacity := n
-			make_item_storage (n + 1)
-			make_key_storage (n + 1)
+			make_item_storage (n)
+			make_key_storage (n)
 			make_clashes (n + 1)
 			modulus := new_modulus (n)
 			make_slots (modulus + 1)
@@ -344,13 +347,13 @@ feature -- Duplication
 			-- Copy `other' to current container.
 			-- Move all cursors `off' (unless `other = Current').
 		local
-			old_cursor: like new_cursor
+			old_cursor: ?like new_cursor
 		do
 			if other /= Current then
-				old_cursor := internal_cursor
+				old_cursor := detachable_internal_cursor
 				move_all_cursors_after
 				standard_copy (other)
-					-- Set `internal_cursor' to Void before calling
+					-- Set `detachable_internal_cursor' to Void before calling
 					-- `valid_cursor' and `new_cursor' to avoid an
 					-- invariant violation.
 				set_internal_cursor (Void)
@@ -408,6 +411,7 @@ feature -- Removal
 				count := 0
 			end
 			position := No_position
+			ht_deleted_position := 0
 		end
 
 feature -- Resizing
@@ -444,8 +448,8 @@ feature -- Resizing
 				end
 				i := i - 1
 			end
-			item_storage_resize (n + 1)
-			key_storage_resize (n + 1)
+			item_storage_resize (n)
+			key_storage_resize (n)
 			clashes_resize (n + 1)
 			capacity := n
 			position := No_position
@@ -459,8 +463,8 @@ feature -- Optimization
 			-- Do not lose any item. Do not move cursors.
 		local
 			i, j, nb, h: INTEGER
-			dead_item: G
-			dead_key: K
+			l_default_item: ?G
+			l_default_key: ?K
 		do
 			if last_position /= count then
 				unset_found_item
@@ -483,15 +487,10 @@ feature -- Optimization
 					end
 					i := i + 1
 				end
-				from
-					j := j + 1
-				until
-					j > nb
-				loop
-					item_storage_put (dead_item, j)
-					key_storage_put (dead_key, j)
-					j := j + 1
-				end
+				item_storage_keep_head (j)
+				key_storage_keep_head (j)
+				ht_deleted_position := 0
+
 				clashes_wipe_out
 				slots_wipe_out
 				nb := count
@@ -511,7 +510,7 @@ feature -- Optimization
 		ensure
 			same_count: count = old count
 			compressed: last_position = count
-			not_reszied: capacity = old capacity
+			not_resized: capacity = old capacity
 		end
 
 feature {DS_SPARSE_CONTAINER_CURSOR} -- Implementation
@@ -572,7 +571,7 @@ feature {DS_SPARSE_CONTAINER_CURSOR} -- Implementation
 
 feature {NONE} -- Implementation
 
-	search_position (k: K) is
+	search_position (k: ?K) is
 			-- Search for position where key is equal to `k'.
 			-- or to possible insertion position otherwise.
 			-- (Use `key_equality_tester''s comparison criterion
@@ -580,7 +579,7 @@ feature {NONE} -- Implementation
 		local
 			i: INTEGER
 			prev: INTEGER
-			dead_key: K
+			dead_key: ?K
 			a_tester: like key_equality_tester
 		do
 			if k = Void then
@@ -593,7 +592,8 @@ feature {NONE} -- Implementation
 					if
 						position = No_position or else
 						not a_tester.test (k, key_storage_item (position)) or else
-						a_tester.test (k, dead_key)
+						a_tester.test (k, dead_key) or else
+						(ht_deleted_position > 0 and then a_tester.test (k, ht_deleted_key))
 					then
 						from
 							slots_position := hash_position (k)
@@ -615,7 +615,12 @@ feature {NONE} -- Implementation
 						clashes_previous_position := prev
 					end
 				else
-					if position = No_position or else k /= key_storage_item (position) or else k = dead_key then
+					if
+						position = No_position or else
+						k /= key_storage_item (position) or else
+						k = dead_key or else
+						position = ht_deleted_position
+					then
 						from
 							slots_position := hash_position (k)
 							i := slots_item (slots_position)
@@ -647,7 +652,7 @@ feature {NONE} -- Implementation
 					(slots_item (slots_position) = position)
 		end
 
-	key_equality_tester: KL_EQUALITY_TESTER [K] is
+	key_equality_tester: ?KL_EQUALITY_TESTER [K] is
 			-- Equality tester for keys;
 			-- A void equality tester means that `='
 			-- will be used as comparison criterion.
@@ -662,7 +667,7 @@ feature {NONE} -- Implementation
 			key_equality_tester_set: key_equality_tester = a_tester
 		end
 
-	hash_position (k: K): INTEGER is
+	hash_position (k: ?K): INTEGER is
 			-- Hash position of `k' in `slots'
 		deferred
 		ensure
@@ -677,41 +682,55 @@ feature {NONE} -- Implementation
 			valid_position: valid_position (i)
 			valid_slot: valid_slot (i)
 		local
-			dead_item: G
-			k, dead_key: K
+			k: K
 			h: INTEGER
 			a_tester: like key_equality_tester
 		do
-			if i /= position then
-				k := key_storage_item (i)
-				h := hash_position (k)
-				if slots_item (h) = i then
-					position := i
-					slots_position := h
-					clashes_previous_position := No_position
-				else
-					a_tester := key_equality_tester
-					internal_set_key_equality_tester (Void)
-					search_position (k)
-					internal_set_key_equality_tester (a_tester)
+			if count = 1 then
+				wipe_out
+			else
+				if i /= position then
+					k := key_storage_item (i)
+					h := hash_position (k)
+					if slots_item (h) = i then
+						position := i
+						slots_position := h
+						clashes_previous_position := No_position
+					else
+						a_tester := key_equality_tester
+						internal_set_key_equality_tester (Void)
+						search_position (k)
+						internal_set_key_equality_tester (a_tester)
+					end
 				end
+				move_cursors_forth (position)
+				if clashes_previous_position = No_position then
+					slots_put (clashes_item (position), slots_position)
+				else
+					clashes_put (clashes_item (position), clashes_previous_position)
+				end
+
+				if ht_deleted_position = position or ht_deleted_position = 0 then
+					get_new_ht_deleted_values (position)
+				end
+				if ht_deleted_position > 0 then
+					if ht_deleted_position /= position then
+						key_storage_put (ht_deleted_key, position)
+						item_storage_put (ht_deleted_item, position)
+					end
+				else
+					check False end
+				end
+
+				if free_slot = No_position and position = last_position then
+					last_position := last_position - 1
+					clashes_put (No_position, position)
+				else
+					clashes_put (Free_offset - free_slot, position)
+					free_slot := position
+				end
+				count := count - 1
 			end
-			move_cursors_forth (position)
-			if clashes_previous_position = No_position then
-				slots_put (clashes_item (position), slots_position)
-			else
-				clashes_put (clashes_item (position), clashes_previous_position)
-			end
-			item_storage_put (dead_item, position)
-			key_storage_put (dead_key, position)
-			if free_slot = No_position and position = last_position then
-				last_position := last_position - 1
-				clashes_put (No_position, position)
-			else
-				clashes_put (Free_offset - free_slot, position)
-				free_slot := position
-			end
-			count := count - 1
 		ensure
 			one_less: count = old count - 1
 		end
@@ -733,6 +752,11 @@ feature {NONE} -- Implementation
 			-- Resize `item_storage'.
 		require
 			n_large_enough: n > capacity
+		deferred
+		end
+
+	item_storage_keep_head (n: INTEGER) is
+			-- Keep the first `n' items in `item_storage'.
 		deferred
 		end
 
@@ -766,6 +790,11 @@ feature {NONE} -- Implementation
 			-- Resize `key_storage'.
 		require
 			n_large_enough: n > capacity
+		deferred
+		end
+
+	key_storage_keep_head (n: INTEGER) is
+			-- Keep the first `n' items in `key_storage'.
 		deferred
 		end
 
@@ -888,6 +917,76 @@ feature {NONE} -- Implementation
 			found_position_unset: found_position = No_position
 		end
 
+feature {NONE} -- NEW SPECIAL: Implementation
+
+	ht_deleted_position: INTEGER
+
+	ht_deleted_item: G is
+		require
+			ht_deleted_position_not_zero: ht_deleted_position > 0
+		do
+			Result := item_storage_item (ht_deleted_position)
+		end
+
+	ht_deleted_key: K is
+		require
+			ht_deleted_position_not_zero: ht_deleted_position > 0
+		do
+			Result := key_storage_item (ht_deleted_position)
+		end
+
+	get_new_ht_deleted_values (a_excluded_position: INTEGER) is
+			-- Get a new values for `ht_deleted_item' and `ht_deleted_key"
+			-- set `ht_deleted_position' to found position
+		local
+			i, p: INTEGER
+			done: BOOLEAN
+			old_deleted_position: INTEGER
+			old_free_slot: INTEGER
+			k: K
+			g: G
+		do
+			if a_excluded_position = ht_deleted_position then
+				old_deleted_position := ht_deleted_position
+			end
+
+			ht_deleted_position := 0
+			if count = 1 then
+				ht_deleted_position := a_excluded_position
+			else
+				from
+					i := 0
+				until
+					i >= modulus or done
+				loop
+					p := slots_item (i)
+					if p > 0 and p /= a_excluded_position then
+						ht_deleted_position := p
+						done := True
+					end
+					i := i + 1
+				end
+			end
+
+			if old_deleted_position > 0 and ht_deleted_position > 0 then
+					--| Replace all previous deleted marks with new deleted marks
+				old_free_slot := free_slot
+				from
+					i := free_slot
+					k := ht_deleted_key
+					g := ht_deleted_item
+				until
+					i = No_position
+				loop
+					key_storage_put (k, i)
+					item_storage_put (g, i)
+					free_slot := Free_offset - clashes_item (i)
+					i := free_slot
+				end
+				free_slot := old_free_slot
+			end
+		end
+
 feature {NONE} -- Constants
 
 	No_position: INTEGER is 0
@@ -902,22 +1001,22 @@ feature {NONE} -- Constants
 
 feature {NONE} -- Cursor movements
 
-	set_internal_cursor (c: like internal_cursor) is
-			-- Set `internal_cursor' to `c'.
+	set_internal_cursor (c: like detachable_internal_cursor) is
+			-- Set `detachable_internal_cursor' to `c'
 		do
-			internal_cursor := c
+			detachable_internal_cursor := c
 		end
 
-	internal_cursor: like new_cursor
+	detachable_internal_cursor: ?like new_cursor
 			-- Internal cursor
 
 	move_all_cursors_after is
 			-- Move `after' all cursors.
 		local
-			a_cursor, next_cursor: like new_cursor
+			a_cursor, next_cursor: ?like new_cursor
 		do
 			from
-				a_cursor := internal_cursor
+				a_cursor := detachable_internal_cursor
 			until
 				(a_cursor = Void)
 			loop
@@ -935,10 +1034,10 @@ feature {NONE} -- Cursor movements
 			valid_old_position: valid_position (old_position)
 			valid_new_position: valid_position (new_position) and then valid_slot (new_position)
 		local
-			a_cursor: like new_cursor
+			a_cursor: ?like new_cursor
 		do
 			from
-				a_cursor := internal_cursor
+				a_cursor := detachable_internal_cursor
 			until
 				(a_cursor = Void)
 			loop
@@ -954,7 +1053,7 @@ feature {NONE} -- Cursor movements
 		require
 			valid_old_position: valid_position (old_position)
 		local
-			a_cursor, previous_cursor, next_cursor: like new_cursor
+			a_cursor, previous_cursor, next_cursor: ?like new_cursor
 		do
 			a_cursor := internal_cursor
 			if a_cursor.position = old_position then

@@ -57,10 +57,10 @@ feature -- Action(s)
 
 feature -- Result
 
-	last_stream: KI_CHARACTER_INPUT_STREAM
+	last_stream: ?KI_CHARACTER_INPUT_STREAM
 			-- File matching stream
 
-	last_error: STRING
+	last_error: ?STRING
 			-- Error
 
 	has_error: BOOLEAN is
@@ -75,7 +75,7 @@ feature -- Result
 			Result := False
 		end
 
-	last_media_type: UT_MEDIA_TYPE is
+	last_media_type: ?UT_MEDIA_TYPE is
 			-- Media type, if available.
 		do
 			-- pre-condition is never met

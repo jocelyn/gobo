@@ -44,14 +44,16 @@ feature -- Action(s)
 			-- Resolve file URI.
 		local
 			l_path: ?STRING
+			l_last_stream: like last_stream
 		do
 			last_stream := Void
 			l_path := File_uri.uri_to_filename (a_uri)
 			if l_path /= Void then
-				create {KL_BINARY_INPUT_FILE} last_stream.make (l_path)
-				last_stream.open_read
+				create {KL_BINARY_INPUT_FILE} l_last_stream.make (l_path)
+				l_last_stream.open_read
+				last_stream := l_last_stream
 			end
-			if last_stream /= Void and then last_stream.is_open_read then
+			if l_last_stream /= Void and then l_last_stream.is_open_read then
 				last_error := Void
 			else
 				last_error := STRING_.concat (Cannot_open_file_error, a_uri.path)
@@ -63,7 +65,7 @@ feature -- Result
 	last_stream: ?KI_BINARY_INPUT_FILE
 			-- File matching stream
 
-	last_error: STRING
+	last_error: ?STRING
 			-- Error
 
 	has_error: BOOLEAN is
@@ -78,7 +80,7 @@ feature -- Result
 			Result := False
 		end
 
-	last_media_type: UT_MEDIA_TYPE is
+	last_media_type: ?UT_MEDIA_TYPE is
 			-- Media type, if available.
 		do
 			-- pre-condition is never met

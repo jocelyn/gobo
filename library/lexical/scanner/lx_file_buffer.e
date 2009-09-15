@@ -53,10 +53,15 @@ feature -- Element change
 
 	refill is
 			-- Refill buffer with characters from `file'.
+		local
+			l_content: ?like content
+			l_last_string: ?STRING
 		do
 			if not file.end_of_input then
 				file.read_string (16384)
-				content := file.last_string
+				l_last_string := file.last_string
+				check l_last_string /= Void end -- implied by implementation
+				content := l_last_string
 			else
 				end_of_file := True
 				content := ""

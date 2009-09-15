@@ -25,7 +25,7 @@ feature {DS_BINARY_SEARCH_TREE_CONTAINER, DS_BINARY_SEARCH_TREE_CONTAINER_NODE, 
 
 feature {DS_BINARY_SEARCH_TREE_CONTAINER, DS_BINARY_SEARCH_TREE_CONTAINER_NODE} -- Access
 
-	parent: like Current
+	parent: ?like Current
 			-- Parent
 
 	left_child: like parent
@@ -39,13 +39,17 @@ feature {DS_BINARY_SEARCH_TREE_CONTAINER, DS_BINARY_SEARCH_TREE_CONTAINER_NODE} 
 	count: INTEGER is
 			-- Number of nodes, including the current node and
 			-- recursively the number of nodes in its children
+		local
+			l_child: like parent
 		do
 			Result := 1
-			if left_child /= Void then
-				Result := Result + left_child.count
+			l_child := left_child
+			if l_child /= Void then
+				Result := Result + l_child.count
 			end
-			if right_child /= Void then
-				Result := Result + right_child.count
+			l_child := right_child
+			if l_child /= Void then
+				Result := Result + l_child.count
 			end
 		ensure
 			count_positive: Result > 0
@@ -62,8 +66,8 @@ feature {DS_BINARY_SEARCH_TREE_CONTAINER, DS_BINARY_SEARCH_TREE_CONTAINER_NODE} 
 	height_of_left_child: INTEGER is
 			-- Height of the branch where `left_child' is seen as root node
 		do
-			if left_child /= Void then
-				Result := left_child.height
+			if {l_left_child: like left_child} left_child then
+				Result := l_left_child.height
 			end
 		ensure
 			height_not_negative: Result >= 0
@@ -73,8 +77,8 @@ feature {DS_BINARY_SEARCH_TREE_CONTAINER, DS_BINARY_SEARCH_TREE_CONTAINER_NODE} 
 	height_of_right_child: INTEGER is
 			-- Height of branch where `right_child' is seen as root node
 		do
-			if right_child /= Void then
-				Result := right_child.height
+			if {l_right_child: like right_child} right_child then
+				Result := l_right_child.height
 			end
 		ensure
 			height_not_negative: Result >= 0
@@ -92,30 +96,34 @@ feature {DS_BINARY_SEARCH_TREE_CONTAINER, DS_BINARY_SEARCH_TREE_CONTAINER_NODE} 
 			a_comparator_not_void: a_comparator /= Void
 		local
 			l_left_child_key: like key
+			l_child: like parent
 		do
 			if key = Void then
 				if left_child = Void then
-					if right_child /= Void then
-						Result := right_child.sorted (a_comparator)
+					l_child := right_child
+					if l_child /= Void then
+						Result := l_child.sorted (a_comparator)
 					else
 						Result := True
 					end
 				end
 			else
-				if left_child /= Void then
-					l_left_child_key := left_child.key
+				l_child := left_child
+				if l_child /= Void then
+					l_left_child_key := l_child.key
 					if l_left_child_key /= Void then
 						Result := a_comparator.less_than (l_left_child_key, key)
 					else
 						Result := True
 					end
-					Result := Result and then left_child.sorted (a_comparator)
+					Result := Result and then l_child.sorted (a_comparator)
 				else
 					Result := True
 				end
 				if Result then
-					if right_child /= Void then
-						Result := a_comparator.greater_than (right_child.key, key) and then right_child.sorted (a_comparator)
+					l_child := right_child
+					if l_child /= Void then
+						Result := a_comparator.greater_than (l_child.key, key) and then l_child.sorted (a_comparator)
 					else
 						Result := True
 					end
@@ -158,17 +166,17 @@ feature {DS_BINARY_SEARCH_TREE_CONTAINER, DS_BINARY_SEARCH_TREE_CONTAINER_NODE} 
 			a_child_orphan: a_child /= Void implies a_child.parent = Void
 		do
 				-- The current child will not any more have `Current' as `parent'.
-			if left_child /= Void then
-				left_child.set_parent (Void)
+			if {l_left_child: like left_child} left_child then
+				l_left_child.set_parent (Void)
 			end
 			left_child := a_child
-			if left_child /= Void then
-				left_child.set_parent (Current)
+			if a_child /= Void then
+				a_child.set_parent (Current)
 			end
 		ensure
 			left_child_set: left_child = a_child
-			correct_parent: left_child /= Void implies left_child.parent = Current
-			old_child_has_void_parent: (old left_child /= Void) implies (old left_child).parent = Void
+			correct_parent: {el_left_child: like left_child} left_child implies el_left_child.parent = Current
+			old_child_has_void_parent: ({old_left_child: like left_child} (old left_child)) implies old_left_child.parent = Void
 		end
 
 	set_right_child (a_child: like parent) is
@@ -177,17 +185,17 @@ feature {DS_BINARY_SEARCH_TREE_CONTAINER, DS_BINARY_SEARCH_TREE_CONTAINER_NODE} 
 			a_child_orphan: a_child /= Void implies a_child.parent = Void
 		do
 				-- The current child will not any more have `Current' as `parent'.
-			if right_child /= Void then
-				right_child.set_parent (Void)
+			if {l_right_child: like right_child} right_child then
+				l_right_child.set_parent (Void)
 			end
 			right_child := a_child
-			if right_child /= Void then
-				right_child.set_parent (Current)
+			if a_child /= Void then
+				a_child.set_parent (Current)
 			end
 		ensure
 			right_child_set: right_child = a_child
-			correct_parent: right_child /= Void implies right_child.parent = Current
-			old_child_has_void_parent: (old right_child /= Void) implies (old right_child).parent = Void
+			correct_parent: {el_right_child: like right_child} right_child implies el_right_child.parent = Current
+			old_child_has_void_parent: ({old_right_child: like right_child} (old right_child)) implies old_right_child.parent = Void
 		end
 
 feature {DS_BINARY_SEARCH_TREE_CONTAINER_NODE} -- Setting

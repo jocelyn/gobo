@@ -64,9 +64,13 @@ feature -- Access
 			-- Default namespace
 		require
 			has_default: has_default
+		local
+			l_found_item: like found_item
 		do
 			search (Default_namespace)
-			Result := found_item
+			l_found_item := found_item
+			check l_found_item /= Void end -- implied by `has_default'
+			Result := l_found_item
 		end
 
 feature -- Element change
@@ -82,11 +86,14 @@ feature -- Element change
 		local
 			a_cursor: DS_BILINEAR_CURSOR [XM_NAMESPACE]
 			a_namespace: XM_NAMESPACE
+			l_ns_prefix: ?STRING
 		do
 			a_cursor := l.new_cursor
 			from a_cursor.start until a_cursor.after loop
 				a_namespace := a_cursor.item
-				force (a_namespace.uri, a_namespace.ns_prefix)
+				l_ns_prefix := a_namespace.ns_prefix
+				check l_ns_prefix /= Void end -- implied by ... ?
+				force (a_namespace.uri, l_ns_prefix)
 				a_cursor.forth
 			end
 		end

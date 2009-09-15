@@ -10,7 +10,7 @@ indexing
 	date: "$Date$"
 	revision: "$Revision$"
 
-class XM_FORWARD_CALLBACKS
+deferred class XM_FORWARD_CALLBACKS
 
 inherit
 
@@ -23,7 +23,6 @@ feature -- Access
 
 	callbacks: XM_CALLBACKS
 			-- Callbacks event interface to which events are forwarded;
-			-- If void, a null callback is created on startup.
 
 feature -- Setting
 
@@ -40,9 +39,7 @@ feature {NONE} -- Document
 	on_start is
 			-- Forward start.
 		do
-			if callbacks = Void then
-				create {XM_CALLBACKS_NULL} callbacks.make
-			end
+			check callbacks_set: callbacks /= Void end
 			callbacks.on_start
 		end
 
@@ -82,13 +79,13 @@ feature {NONE} -- Meta
 
 feature {NONE} -- Tag
 
-	on_start_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_start_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- Start of start tag.
 		do
 			callbacks.on_start_tag (a_namespace, a_prefix, a_local_part)
 		end
 
-	on_attribute (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING; a_value: STRING) is
+	on_attribute (a_namespace, a_prefix: ?STRING; a_local_part: STRING; a_value: STRING) is
 			-- Process attribute.
 		do
 			callbacks.on_attribute (a_namespace, a_prefix, a_local_part, a_value)
@@ -100,7 +97,7 @@ feature {NONE} -- Tag
 			callbacks.on_start_tag_finish
 		end
 
-	on_end_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_end_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- End tag.
 		do
 			callbacks.on_end_tag (a_namespace, a_prefix, a_local_part)
@@ -113,5 +110,9 @@ feature {NONE} -- Content
 		do
 			callbacks.on_content (a_content)
 		end
+
+invariant
+
+	callbacks_attached: callbacks /= Void
 
 end

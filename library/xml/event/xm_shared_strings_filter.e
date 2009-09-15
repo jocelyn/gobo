@@ -47,41 +47,41 @@ feature -- Meta information
 	on_processing_instruction (a_name: STRING; a_content: STRING) is
 			-- Processing instruction.
 		do
-			next.on_processing_instruction (shared_string (a_name), shared_string (a_content))
+			next.on_processing_instruction (shared_attached_string (a_name), shared_attached_string (a_content))
 		end
 
 	on_comment (a_content: STRING) is
 			-- Process comment.
 			-- Atomic: single comment produces single event
 		do
-			next.on_comment (shared_string (a_content))
+			next.on_comment (shared_attached_string (a_content))
 		end
 
 feature -- Tag
 
-	on_start_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_start_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- Start of start tag.
 		do
 			next.on_start_tag (shared_string (a_namespace),
 				shared_string (a_prefix),
-				shared_string (a_local_part))
+				shared_attached_string (a_local_part))
 		end
 
-	on_attribute (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING; a_value: STRING) is
+	on_attribute (a_namespace, a_prefix: ?STRING; a_local_part: STRING; a_value: STRING) is
 			-- Start of start tag.
 		do
 			next.on_attribute (shared_string (a_namespace),
 				shared_string (a_prefix),
-				shared_string (a_local_part),
-				shared_string (a_value))
+				shared_attached_string (a_local_part),
+				shared_attached_string (a_value))
 		end
 
-	on_end_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_end_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- End tag.
 		do
 			next.on_end_tag (shared_string (a_namespace),
 				shared_string (a_prefix),
-				shared_string (a_local_part))
+				shared_attached_string (a_local_part))
 		end
 
 feature -- Content
@@ -91,30 +91,45 @@ feature -- Content
 			-- NOT atomic: successive content may be different.
 			-- Default: forward event to 'next'.
 		do
-			next.on_content (shared_string (a_content))
+			next.on_content (shared_attached_string (a_content))
 		end
 
 feature {NONE} -- Share
 
-	strings: DS_HASH_SET [STRING]
+	strings: ?DS_HASH_SET [STRING]
 			-- Strings to be shared
 
-	shared_string (a_string: STRING): STRING is
+	shared_string (a_string: ?STRING): ?STRING is
 			-- If string known return the previous occurrence
 		do
 			if a_string /= Void then
-				if strings /= Void then
-					strings.search (a_string)
-					if strings.found then
-						Result := strings.found_item
-					else
-						strings.force_new (a_string)
-						Result := a_string
-					end
-				else
-					Result := a_string
-				end
+				Result := shared_attached_string (a_string)
 			end
 		end
+
+	shared_attached_string (a_string: STRING): STRING is
+			-- If string known return the previous occurrence
+		require
+			a_string_attached: a_string /= Void
+		local
+			s: ?STRING
+		do
+			if {l_strings: like strings} strings then
+				l_strings.search (a_string)
+				if l_strings.found then
+					s := l_strings.found_item
+					check s /= Void end -- implied by `.found'
+				else
+					l_strings.force_new (a_string)
+					s := a_string
+				end
+			else
+				s := a_string
+			end
+			Result := s
+		ensure
+			Result_attached: Result /= Void
+		end
+
 
 end

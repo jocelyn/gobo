@@ -3,7 +3,7 @@ indexing
 	description:
 
 		"Print DTD declaration events"
-		
+
 	library: "Gobo Eiffel XML Library"
 	copyright: "Copyright (c) 2003, Eric Bezault and others"
 	license: "MIT License"
@@ -13,7 +13,7 @@ indexing
 class XM_DTD_PRETTY_PRINT_FILTER
 
 inherit
-	
+
 	XM_DTD_CALLBACKS_FILTER
 		redefine
 			on_doctype,
@@ -22,9 +22,9 @@ inherit
 			on_entity_declaration,
 			on_notation_declaration
 		end
-	
+
 	XM_OUTPUT
-	
+
 create
 
 	make_null,
@@ -32,7 +32,7 @@ create
 
 feature -- Document type definition callbacks
 
-	on_doctype (a_name: STRING; an_id: XM_DTD_EXTERNAL_ID; has_internal_subset: BOOLEAN) is
+	on_doctype (a_name: STRING; an_id: ?XM_DTD_EXTERNAL_ID; has_internal_subset: BOOLEAN) is
 			-- Document type declaration.
 		do
 			output ("<!DOCTYPE ")
@@ -45,7 +45,7 @@ feature -- Document type definition callbacks
 			output_new_line
 			Precursor (a_name, an_id, has_internal_subset)
 		end
-		
+
 	on_element_declaration (a_name: STRING; a_model: XM_DTD_ELEMENT_CONTENT) is
 		do
 			output ("<!ELEMENT ")
@@ -56,7 +56,7 @@ feature -- Document type definition callbacks
 			output_new_line
 			Precursor (a_name, a_model)
 		end
-		
+
 	on_attribute_declaration (an_element_name, a_name: STRING; a_model: XM_DTD_ATTRIBUTE_CONTENT) is
 			-- Attribute declaration, one event per attribute.
 		do
@@ -68,9 +68,9 @@ feature -- Document type definition callbacks
 			output_new_line
 			Precursor (an_element_name, a_name, a_model)
 		end
-		
-	on_entity_declaration (entity_name: STRING; is_parameter: BOOLEAN; value: STRING;
-		an_id: XM_DTD_EXTERNAL_ID; notation_name: STRING) is
+
+	on_entity_declaration (entity_name: STRING; is_parameter: BOOLEAN; value: ?STRING;
+		an_id: ?XM_DTD_EXTERNAL_ID; notation_name: ?STRING) is
 			-- Entity declaration.
 		do
 			output ("<!ENTITY ")
@@ -112,5 +112,5 @@ feature {NONE} -- Output
 		do
 			output ("%N")
 		end
-		
+
 end

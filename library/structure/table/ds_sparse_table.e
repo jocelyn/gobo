@@ -193,7 +193,7 @@ feature -- Access
 			create Result.make (Current)
 		end
 
-	key_equality_tester: KL_EQUALITY_TESTER [K]
+	key_equality_tester: ?KL_EQUALITY_TESTER [K]
 			-- Equality tester for keys;
 			-- A void equality tester means that `='
 			-- will be used as comparison criterion.
@@ -201,7 +201,7 @@ feature -- Access
 	keys: DS_BILINEAR [K] is
 			-- View of current table as a linear representation of its keys
 		do
-			Result := internal_keys
+			Result := attached_internal_keys
 		ensure
 			keys_not_void: Result /= Void
 		end
@@ -282,7 +282,7 @@ feature -- Setting
 			key_equality_tester_settable: key_equality_tester_settable (a_tester)
 		do
 			key_equality_tester := a_tester
-			internal_keys.internal_set_equality_tester (a_tester)
+			attached_internal_keys.internal_set_equality_tester (a_tester)
 		ensure
 			key_equality_tester_set: key_equality_tester = a_tester
 		end
@@ -672,21 +672,33 @@ feature {NONE} -- Implementation
 			-- (No precondition, to be used internally only.)
 		do
 			key_equality_tester := a_tester
-			internal_keys.internal_set_equality_tester (a_tester)
+			attached_internal_keys.internal_set_equality_tester (a_tester)
 		end
 
-	internal_keys: DS_SPARSE_TABLE_KEYS [G, K]
+	internal_keys: ?DS_SPARSE_TABLE_KEYS [G, K]
 			-- View of current table as a linear representation of its keys
+
+	frozen attached_internal_keys: !like internal_keys is
+			-- Attached internal cursor
+		require
+			internal_keys_attached: internal_keys /= Void
+		local
+			l_internal_keys: like internal_keys
+		do
+			l_internal_keys := internal_keys
+			check l_internal_keys /= Void end
+			Result := l_internal_keys
+		end
 
 	initialized: BOOLEAN is
 			-- Some Eiffel compilers check invariants even when the
 			-- execution of the creation procedure is not completed.
 			-- (In this case, checking the assertions of the being
-			-- created `internal_cursor' and `internal_keys'
+			-- created `detachable_internal_cursor' and `internal_keys'
 			-- triggers the invariants on the current container.
 			-- So these invariants need to be protected.)
 		do
-			Result := (internal_cursor /= Void and internal_keys /= Void)
+			Result := (detachable_internal_cursor /= Void and internal_keys /= Void)
 		end
 
 feature {DS_SPARSE_TABLE_CURSOR} -- Cursor implementation
@@ -700,6 +712,6 @@ feature {DS_SPARSE_TABLE_CURSOR} -- Cursor implementation
 invariant
 
 	internal_keys_not_void: initialized implies internal_keys /= Void
-	internal_keys_consistent: initialized implies internal_keys.table = Current
+	internal_keys_consistent: initialized implies attached_internal_keys.table = Current
 
 end

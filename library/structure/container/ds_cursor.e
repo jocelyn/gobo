@@ -108,7 +108,7 @@ feature -- Comparison
 
 feature {DS_TRAVERSABLE} -- Implementation
 
-	next_cursor: DS_CURSOR [G]
+	next_cursor: ?DS_CURSOR [G]
 			-- Next cursor
 			-- (Used by `container' to keep track of traversing
 			-- cursors (i.e. cursors associated with `container'

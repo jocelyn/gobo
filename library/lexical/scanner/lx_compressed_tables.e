@@ -34,12 +34,12 @@ feature -- Tables
 	yy_def: ARRAY [INTEGER]
 			-- Where to go if `yy_chk' disallows `yy_nxt' entry
 
-	yy_acclist: ARRAY [INTEGER]
-			-- Accepting id list, used when `reject' is called 
+	yy_acclist: ?ARRAY [INTEGER]
+			-- Accepting id list, used when `reject' is called
 			-- or when there is a variable length trailing context;
 			-- Void otherwise
 
-	yy_meta: ARRAY [INTEGER]
+	yy_meta: ?ARRAY [INTEGER]
 			-- Meta equivalence classes which are sets of classes
 			-- with identical transitions out of templates;
 			-- Void if meta equivalence classes are not used

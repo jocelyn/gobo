@@ -9,27 +9,27 @@ indexing
 	license: "MIT License"
 	date: "$Date$"
 	revision: "$Revision$"
-	
+
 class XM_XMLID_VALIDATOR
 
 inherit
-	
+
 	XM_CALLBACKS_FILTER
 		redefine
 			on_start,
 			on_finish,
 			on_attribute
 		end
-	
+
 	XM_MARKUP_CONSTANTS
 		export {NONE} all end
-	
+
 	XM_SHARED_UNICODE_CHARACTERS
 		export {NONE} all end
 
 	KL_IMPORTED_STRING_ROUTINES
 		export {NONE} all end
-	
+
 	KL_SHARED_STRING_EQUALITY_TESTER
 		export {NONE} all end
 
@@ -42,9 +42,12 @@ feature -- Events
 
 	on_start is
 			-- Initialize ID set.
+		local
+			l_ids: like ids
 		do
-			create ids.make_default
-			ids.set_equality_tester (string_equality_tester)
+			create l_ids.make_default
+			ids := l_ids
+			l_ids.set_equality_tester (string_equality_tester)
 			Precursor
 		end
 
@@ -54,35 +57,43 @@ feature -- Events
 			ids := Void
 			Precursor
 		end
-		
-	on_attribute (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING; a_value: STRING) is
+
+	on_attribute (a_namespace, a_prefix: ?STRING; a_local_part: STRING; a_value: STRING) is
 			-- Normalize xml:id attribute and check it is unique.
 		local
 			an_id: STRING
+			l_ids: like ids
 		do
-			check ids_not_void: ids /= Void end
-			if (has_prefix (a_prefix) and then a_prefix.same_string (Xml_prefix)) and a_local_part.same_string (Xml_id) then
-				an_id := normalize (a_value)
-				if not characters_1_0.is_ncname (an_id) then
-					on_error (Id_not_ncname_error)
-				elseif ids.has (an_id) then
-					on_error (Duplicate_id_error)
-				else
-					ids.force (an_id)
+			l_ids := ids
+			check l_ids /= Void end -- implied by `on_start' already called
+			if has_prefix (a_prefix) then
+				check a_prefix /= Void end -- implied by `has_prefix (a_prefix)'
+				if
+					a_prefix.same_string (Xml_prefix) and
+					a_local_part.same_string (Xml_id)
+				then
+					an_id := normalize (a_value)
+					if not characters_1_0.is_ncname (an_id) then
+						on_error (Id_not_ncname_error)
+					elseif l_ids.has (an_id) then
+						on_error (Duplicate_id_error)
+					else
+						l_ids.force (an_id)
+					end
+					Precursor (a_namespace, a_prefix, a_local_part, an_id)
 				end
-				Precursor (a_namespace, a_prefix, a_local_part, an_id)
 			end
-		end 
+		end
 
 feature {NONE} -- Implementation
 
-	ids: DS_HASH_SET [STRING]
+	ids: ?DS_HASH_SET [STRING]
 			-- IDs table for duplicate check
 
 feature {NONE} -- Implementation
 
 	normalize (an_id: STRING): STRING is
-			-- Identifier attribute normalized 
+			-- Identifier attribute normalized
 			-- (duplicates spaces removed, head and trailing spaces removed)
 		require
 			an_id_not_void: an_id /= Void
@@ -90,6 +101,7 @@ feature {NONE} -- Implementation
 		local
 			last_start: INTEGER
 			i: INTEGER
+			l_result: ?STRING
 		do
 				-- Remove duplicate spaces
 			from
@@ -103,10 +115,10 @@ feature {NONE} -- Implementation
 				if is_space (an_id.item_code (i)) and is_space (an_id.item_code (i - 1)) then
 					if last_start > 0 then
 							-- There has been valid chars since last duplicate space
-						if Result = Void then
-							create Result.make_empty
+						if l_result = Void then
+							create l_result.make_empty
 						end
-						Result := STRING_.appended_string (Result, an_id.substring (last_start, i - 1))
+						l_result := STRING_.appended_string (l_result, an_id.substring (last_start, i - 1))
 						last_start := 0
 					end
 				else
@@ -117,27 +129,30 @@ feature {NONE} -- Implementation
 				end
 				i := i + 1
 			end
-			
+
 			if last_start = 1 then
 					-- no duplicate spaces
-				Result := an_id
+				l_result := an_id
 			elseif last_start > 1 then
 					-- tail
-				Result := STRING_.appended_string (Result, an_id.substring (last_start, an_id.count))
+				check l_result /= Void end -- implied by implementation of previous loop
+				l_result := STRING_.appended_string (l_result, an_id.substring (last_start, an_id.count))
 			else
-				check 
+				check
 					no_leftovers: last_start = 0
 					ends_with_space: is_space (an_id.item_code (an_id.count))
 				end
+				check l_result /= Void end -- implied by implementation of previous loop
 			end
-			
+
 				-- Remove heading and trailing space
-			if not Result.is_empty and then is_space (Result.item_code (1)) then
-				Result := Result.substring (2, Result.count)
+			if not l_result.is_empty and then is_space (l_result.item_code (1)) then
+				l_result := l_result.substring (2, l_result.count)
 			end
-			if not Result.is_empty and then is_space (Result.item_code (Result.count)) then
-				Result := Result.substring (1, Result.count - 1)
+			if not l_result.is_empty and then is_space (l_result.item_code (l_result.count)) then
+				l_result := l_result.substring (1, l_result.count - 1)
 			end
+			Result := l_result
 		ensure
 			result_not_void: Result /= Void
 			fewer_or_equal_count: Result.count <= an_id.count
@@ -150,7 +165,7 @@ feature {NONE} -- Implementation
 		do
 			Result := characters_1_0.is_space (a_char)
 		end
-		
+
 feature {NONE} -- Constants
 
 	Duplicate_id_error: STRING is "duplicate xml:id declaration"

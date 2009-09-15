@@ -40,10 +40,12 @@ feature -- Basic operations
 			l_coefficient: MA_DECIMAL_COEFFICIENT
 			nibble_index, c_code: INTEGER
 			c: CHARACTER
+			l_decimal: like last_decimal
 		do
 			error := False
-			create last_decimal.make (packed_string.count * 2 - 1)
-			l_coefficient := last_decimal.coefficient
+			create l_decimal.make (packed_string.count * 2 - 1)
+			last_decimal := l_decimal
+			l_coefficient := l_decimal.coefficient
 			zero_code := ('0').code
 			from
 				index := 1
@@ -66,7 +68,7 @@ feature -- Basic operations
 				else
 					inspect lo
 					when 11, 13 then
-						last_decimal.set_negative
+						l_decimal.set_negative
 					when 10, 12, 14, 15 then
 							-- Do nothing.
 					else

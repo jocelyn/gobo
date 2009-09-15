@@ -173,12 +173,18 @@ feature {NONE} -- Matching
 			i, nb: INTEGER
 			a_state: INTEGER
 			a_symbol: INTEGER
+			l_yy_accept: like yy_accept
+			l_yy_nxt: like yy_nxt
 		do
+			l_yy_nxt := yy_nxt
+			check l_yy_nxt /= Void end -- implied by precondition `is_compiled'
 			from
 				i := start_pos
 				nb := a_string.count
 				a_state := 1
-				if yy_accept.item (a_state) /= 0 then
+				l_yy_accept := yy_accept
+				check l_yy_accept /= Void end
+				if l_yy_accept.item (a_state) /= 0 then
 					Result := i - 1
 				else
 					Result := -1
@@ -187,9 +193,9 @@ feature {NONE} -- Matching
 				Result /= -1 or i > nb
 			loop
 				a_symbol := a_string.item (i).code
-				a_state := yy_nxt.item (a_state * yyNb_rows + a_symbol)
+				a_state := l_yy_nxt.item (a_state * yyNb_rows + a_symbol)
 				if a_state > 0 then
-					if yy_accept.item (a_state) /= 0 then
+					if l_yy_accept.item (a_state) /= 0 then
 						Result := i
 					else
 						i := i + 1
@@ -215,12 +221,18 @@ feature {NONE} -- Matching
 			i, nb: INTEGER
 			a_state: INTEGER
 			a_symbol: INTEGER
+			l_yy_accept: like yy_accept
+			l_yy_nxt: like yy_nxt
 		do
+			l_yy_nxt := yy_nxt
+			check l_yy_nxt /= Void end -- implied by precondition `is_compiled'
 			from
 				i := start_pos
 				nb := a_string.count
 				a_state := 1
-				if yy_accept.item (a_state) /= 0 then
+				l_yy_accept := yy_accept
+				check l_yy_accept /= Void end
+				if l_yy_accept.item (a_state) /= 0 then
 					Result := i - 1
 				else
 					Result := -1
@@ -229,9 +241,9 @@ feature {NONE} -- Matching
 				i > nb
 			loop
 				a_symbol := a_string.item (i).code
-				a_state := yy_nxt.item (a_state * yyNb_rows + a_symbol)
+				a_state := l_yy_nxt.item (a_state * yyNb_rows + a_symbol)
 				if a_state > 0 then
-					if yy_accept.item (a_state) /= 0 then
+					if l_yy_accept.item (a_state) /= 0 then
 						Result := i
 					end
 					i := i + 1
@@ -245,11 +257,11 @@ feature {NONE} -- Matching
 
 feature {NONE} -- Engine Data
 
-	yy_nxt: ARRAY [INTEGER]
+	yy_nxt: ?ARRAY [INTEGER]
 			-- States to enter upon reading symbol;
 			-- indexed by (current_state_id * yyNb_rows + symbol)
 
-	yy_accept: ARRAY [INTEGER]
+	yy_accept: ?ARRAY [INTEGER]
 			-- Accepting ids indexed by state ids
 
 	yyNb_rows: INTEGER

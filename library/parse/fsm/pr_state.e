@@ -83,6 +83,7 @@ feature -- Access
 			has_shift: has_shift (a_symbol)
 		local
 			i: INTEGER
+			l_shift: ?like shift
 		do
 			i := shifts.count
 			from
@@ -90,20 +91,22 @@ feature -- Access
 				i < 1
 			loop
 				if shifts.item (i).accessing_symbol = a_symbol then
-					Result := shifts.item (i)
+					l_shift := shifts.item (i)
 						-- Jump out of the loop.
 					i := 0
 				else
 					i := i - 1
 				end
 			end
+			check l_shift /= Void end -- proved by precondition has_shift
+			Result := l_shift
 		ensure
 			shift_not_void: Result /= Void
 			has_shift: shifts.has (Result)
 			accessing_symbol: Result.accessing_symbol = a_symbol
 		end
 
-	error_action: PR_ERROR_ACTION
+	error_action: ?PR_ERROR_ACTION
 			-- Action to be executed when a syntax error
 			-- occurs at current state; Void if none
 
@@ -344,7 +347,7 @@ feature -- Conflicts
 			rule_prec, token_prec: INTEGER
 			a_reduction: PR_REDUCTION
 			a_conflict: PR_CONFLICT
-			a_token: PR_TOKEN
+			a_token: ?PR_TOKEN
 			i, j, nb: INTEGER
 			a_rule: PR_RULE
 		do
@@ -381,6 +384,7 @@ feature -- Conflicts
 						j < 1
 					loop
 						a_token := tokens.item (j)
+						check a_token /= Void end -- implied by `1 <= j <= tokens.count'
 						if a_token.has_precedence then
 							if lookaheads.has (a_token) then
 									-- There is a shift/reduce conflict.
@@ -462,7 +466,7 @@ feature -- Conflicts
 		local
 			tokens: DS_ARRAYED_LIST [PR_TOKEN]
 			lookaheads: DS_ARRAYED_LIST [PR_TOKEN]
-			a_token: PR_TOKEN
+			a_token: ?PR_TOKEN
 			i, j: INTEGER
 		do
 			i := shifts.count
@@ -683,9 +687,9 @@ feature -- Output
 			no_default, defaulted: BOOLEAN
 			shift_tokens, tokens: DS_ARRAYED_LIST [PR_TOKEN]
 			lookaheads: DS_ARRAYED_LIST [PR_TOKEN]
-			a_reduction, default_reduction: PR_REDUCTION
+			a_reduction, default_reduction: ?PR_REDUCTION
 			a_rule: PR_RULE
-			a_token: PR_TOKEN
+			a_token: ?PR_TOKEN
 			count, max: INTEGER
 			i, j, nb: INTEGER
 		do
@@ -716,6 +720,7 @@ feature -- Output
 					i < 1
 				loop
 					a_token := lookaheads.item (i)
+					check a_token /= Void end -- implied by `1 <= i <= lookaheads.count'
 					if shift_tokens.has (a_token) or errors.has (a_token) then
 						a_file.put_character ('%T')
 						a_file.put_string (a_token.name)
@@ -783,6 +788,7 @@ feature -- Output
 						j > nb
 					loop
 						a_reduction := reductions.item (j)
+						check a_reduction /= Void end -- implied by `1 <= j <= nb = reductions.count'
 						if a_reduction.lookaheads.has (a_token) then
 							if count = 0 then
 								if a_reduction /= default_reduction then
@@ -800,6 +806,7 @@ feature -- Output
 								count := count + 1
 							else
 								if defaulted then
+									check default_reduction /= Void end -- implied by `count > 0' and `defaulted'
 									a_rule := default_reduction.rule
 									a_file.put_character ('%T')
 									a_file.put_string (a_token.name)

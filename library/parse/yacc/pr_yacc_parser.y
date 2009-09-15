@@ -77,7 +77,11 @@ Declarations: -- Empty
 
 Declaration: T_EIFFEL
 		{
-			last_grammar.eiffel_header.force_last ($1)
+			if {l_decl_1: STRING} $1 then
+				last_grammar.eiffel_header.force_last (l_decl_1)
+			else
+				check False end
+			end
 		}
 	| T_TOKEN Token_symbol_type Token_declaration_list
 		{
@@ -104,7 +108,11 @@ Declaration: T_EIFFEL
 			if start_symbol /= Void then
 				report_multiple_start_declarations_error
 			else
-				create start_symbol.make ($2, line_nb)
+				if {l_start_symbol_name: STRING} $2 then
+					create start_symbol.make (l_start_symbol_name, line_nb)
+				else
+					check False end
+				end
 			end
 		}
 	| T_EXPECT T_NUMBER
@@ -298,26 +306,38 @@ Eiffel_generics: '[' Eiffel_type_list ']'
 Eiffel_type_list: Eiffel_type
 		{
 			create $$.make (5)
-			$$.force_last ($1)
+			if {l_pr_type_1: PR_TYPE} $1 then
+				$$.force_last (l_pr_type_1)
+			else
+				check False end
+			end
 		}
 	| Eiffel_type_no_identifier ',' Eiffel_type_list
 		{
 			$$ := $3
-			$$.force_first ($1)
+			check $$ /= Void end
+			if {l_no_id_pr_type_1: PR_TYPE} $1 then
+				$$.force_first (l_no_id_pr_type_1)
+			else
+				check False end
+			end
 		}
 	| T_IDENTIFIER ',' Eiffel_type_list
 		{
 			$$ := $3
+			check $$ /= Void end
 			$$.force_first (new_type (Void, $1))
 		}
 	| Eiffel_basic_type_name ',' Eiffel_type_list
 		{
 			$$ := $3
+			check $$ /= Void end
 			$$.force_first (new_basic_type (Void, $1))
 		}
 	| T_TUPLE ',' Eiffel_type_list
 		{
 			$$ := $3
+			check $$ /= Void end
 			$$.force_first (new_type (Void, $1))
 		}
 	;
@@ -331,27 +351,51 @@ Eiffel_labeled_generics: '[' Eiffel_labeled_type_list ']'
 Eiffel_labeled_type_list: Eiffel_labeled_type
 		{
 			create $$.make (5)
-			$$.force_last ($1)
+			if {l_pr_labeled_type_1: PR_LABELED_TYPE} $1 then
+				$$.force_last (l_pr_labeled_type_1)
+			else
+				check False end
+			end
 		}
 	| Eiffel_labeled_type ';' Eiffel_labeled_type_list
 		{
 			$$ := $3
-			$$.force_first ($1)
+			check $$ /= Void end
+			if {l_pr_labeled_type_1: PR_LABELED_TYPE} $1 then
+				$$.force_first (l_pr_labeled_type_1)
+			else
+				check False end
+			end
 		}
 	| T_IDENTIFIER ',' Eiffel_labeled_type_list
 		{
 			$$ := $3
-			$$.first.labels.force_first ($1)
+			check $$ /= Void end
+			if {l_labeled_identifier_1: STRING} $1 then
+				$$.first.labels.force_first (l_labeled_identifier_1)
+			else
+				check False end
+			end
 		}
 	| Eiffel_basic_type_name ',' Eiffel_labeled_type_list
 		{
 			$$ := $3
-			$$.first.labels.force_first ($1)
+			check $$ /= Void end
+			if {l_basic_type_name_1: STRING} $1 then
+				$$.first.labels.force_first (l_basic_type_name_1)
+			else
+				check False end
+			end
 		}
 	| T_TUPLE ',' Eiffel_labeled_type_list
 		{
 			$$ := $3
-			$$.first.labels.force_first ($1)
+			check $$ /= Void end
+			if {l_tuple_1: STRING} $1 then
+				$$.first.labels.force_first (l_tuple_1)
+			else
+				check False end
+			end
 		}
 	;
 
@@ -519,8 +563,15 @@ Lhs: Identifier
 				rule := new_rule (new_dummy_variable)
 			else
 				rule := new_rule (new_variable ($1))
-				if rule.lhs.rules.count > 1 then
-					report_rule_declared_twice_warning ($1)
+				if {l_lhs_rule: like rule} rule then
+					if l_lhs_rule.lhs.rules.count > 1 then
+						report_rule_declared_twice_warning ($1)
+					end
+					if l_lhs_rule.lhs.rules.count > 1 then
+						report_rule_declared_twice_warning ($1)
+					end
+				else
+					check False end
 				end
 			end
 			precedence_token := Void
@@ -530,7 +581,11 @@ Lhs: Identifier
 
 Colon: ':'
 		{
-			rule.set_line_nb ($1)
+			if {l_colon_rule: like rule} rule then
+				l_colon_rule.set_line_nb ($1)
+			else
+				check False end
+			end
 		}
 	;
 
@@ -541,10 +596,14 @@ Rhs_list: Rhs_errors
 Rhs_errors: Rhs
 	| Rhs_errors T_ERROR '(' T_NUMBER ')' T_ACTION
 		{
-			if $4 < 1 or $4 > rule.error_actions.count then
-				report_invalid_error_n_error ($4)
+			if {l_rhs_rule: like rule} rule then
+				if $4 < 1 or $4 > l_rhs_rule.error_actions.count then
+					report_invalid_error_n_error ($4)
+				else
+					put_error_action (new_error_action ($6, $2), $4, l_rhs_rule)
+				end
 			else
-				put_error_action (new_error_action ($6, $2), $4, rule)
+				check False end
 			end
 		}
 	;
@@ -594,9 +653,17 @@ Terminal: Identifier
 Bar: '|'
 		{
 			process_rule (rule)
-			rule := new_rule (rule.lhs)
+			if {l_bar_rule: like rule} rule then
+				rule := new_rule (l_bar_rule.lhs)
+			else
+				check False end
+			end
 			precedence_token := Void
-			rule.set_line_nb ($1)
+			if {l_bar_new_rule: like rule} rule then
+				l_bar_new_rule.set_line_nb ($1)
+			else
+				check False end
+			end
 			put_rule (rule)
 		}
 	;

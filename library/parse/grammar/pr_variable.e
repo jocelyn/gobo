@@ -119,6 +119,7 @@ feature -- Access
 			cursor := transitions.new_cursor
 			from
 				cursor.start
+				Result := cursor.item --| valid since `has_transition'
 			until
 				cursor.after
 			loop

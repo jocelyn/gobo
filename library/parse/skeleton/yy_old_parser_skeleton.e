@@ -78,8 +78,6 @@ feature {NONE} -- Implementation
 	yy_push_error_value is
 			-- Push semantic value associated with token 'error'
 			-- on top of corresponding value stack.
-		local
-			yyv: G
 		do
 			yyvsp := yyvsp + 1
 			if yyvsp >= yyvsc then
@@ -91,7 +89,7 @@ feature {NONE} -- Implementation
 					std.error.put_new_line
 				end
 			end
-			yyvs.put (yyv, yyvsp)
+--			yyvs.put_default (yyvsp)
 		end
 
 	yy_pop_last_value (yystate: INTEGER) is
@@ -109,10 +107,10 @@ feature {NONE} -- Implementation
 	yyvsc: INTEGER
 			-- Capacity of semantic value stack
 
-	yyval: G
+	yyval: ?G
 			-- Semantic value from action
 
-	yyval_default: G is
+	yyval_default: ?G is
 			-- Default value for `yyval'
 		do
 		end
@@ -122,7 +120,7 @@ feature {NONE} -- Implementation
 			-- by the garbage collector. This routine is called by
 			-- `parse' before exiting.
 		local
-			default_value: G
+			default_value: ?G
 		do
 			clear_all
 			yyval := default_value

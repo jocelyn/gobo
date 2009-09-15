@@ -48,7 +48,7 @@ feature {NONE} -- Initialization
 			positive_n: n >= 0
 		do
 			create special_routines
-			storage := special_routines.make (n + 1)
+			storage := special_routines.make (n)
 			capacity := n
 			set_internal_cursor (new_cursor)
 		ensure
@@ -65,7 +65,7 @@ feature {NONE} -- Initialization
 			positive_n: n >= 0
 		do
 			create special_routines
-			storage := special_routines.make (n + 1)
+			storage := special_routines.make (n)
 			capacity := n
 			set_internal_cursor (new_cursor)
 			create equality_tester
@@ -80,24 +80,36 @@ feature {NONE} -- Initialization
 			-- Use `=' as comparison criterion.
 		require
 			other_not_void: other /= Void
-			not_same: other /= Current
 		local
 			other_cursor: DS_LINEAR_CURSOR [G]
 			i, nb: INTEGER
+			l_other_as_current: ?like Current
 		do
 			nb := other.count
-			make (nb)
-			count := nb
-			from
-				i := 1
-				other_cursor := other.new_cursor
-				other_cursor.start
-			until
-				i > nb
-			loop
-				storage.put (other_cursor.item, i)
-				other_cursor.forth
-				i := i + 1
+			l_other_as_current ?= other
+			if l_other_as_current /= Void then
+				special_routines := l_other_as_current.special_routines
+				storage := l_other_as_current.storage
+				if l_other_as_current /= Current then
+					storage := storage.twin
+					capacity := nb
+					set_internal_cursor (new_cursor)
+					count := nb
+				end
+			else
+				make (nb)
+				count := nb
+				from
+					i := 1
+					other_cursor := other.new_cursor
+					other_cursor.start
+				until
+					i > nb
+				loop
+					storage.force (other_cursor.item, i - 1)
+					other_cursor.forth
+					i := i + 1
+				end
 			end
 		ensure
 			count_set: count = other.count
@@ -122,7 +134,7 @@ feature {NONE} -- Initialization
 			until
 				j > nb
 			loop
-				storage.put (other.item (i), j)
+				storage.force (other.item (i), j - 1)
 				j := j + 1
 				i := i + 1
 			end
@@ -148,21 +160,21 @@ feature -- Access
 			-- Item at index `i'
 			-- (Performance: O(1).)
 		do
-			Result := storage.item (i)
+			Result := storage.item (i - 1)
 		end
 
 	first: G is
 			-- First item in list
 			-- (Performance: O(1).)
 		do
-			Result := storage.item (1)
+			Result := storage.item (0)
 		end
 
 	last: G is
 			-- Last item in list
 			-- (Performance: O(1).)
 		do
-			Result := storage.item (count)
+			Result := storage.item (count - 1)
 		end
 
 	new_cursor: DS_ARRAYED_LIST_CURSOR [G] is
@@ -195,7 +207,7 @@ feature -- Measurement
 				until
 					i < 1
 				loop
-					if a_tester.test (storage.item (i), v) then
+					if a_tester.test (storage.item (i - 1), v) then
 						Result := Result + 1
 					end
 					i := i - 1
@@ -206,7 +218,7 @@ feature -- Measurement
 				until
 					i < 1
 				loop
-					if storage.item (i) = v then
+					if storage.item (i - 1) = v then
 						Result := Result + 1
 					end
 					i := i - 1
@@ -231,7 +243,7 @@ feature -- Status report
 				until
 					i < 1
 				loop
-					if a_tester.test (storage.item (i), v) then
+					if a_tester.test (storage.item (i - 1), v) then
 						Result := True
 							-- Jump out of the loop.
 						i := 0
@@ -245,7 +257,7 @@ feature -- Status report
 				until
 					i < 1
 				loop
-					if storage.item (i) = v then
+					if storage.item (i - 1) = v then
 						Result := True
 							-- Jump out of the loop.
 						i := 0
@@ -271,16 +283,16 @@ feature -- Duplication
 			-- Move all cursors `off' (unless `other = Current').
 			-- (Performance: O(other.count).)
 		local
-			old_cursor: like new_cursor
+			old_cursor: ?like new_cursor
 		do
 			if other /= Current then
-				old_cursor := internal_cursor
+				old_cursor := detachable_internal_cursor
 				move_all_cursors_after
 				standard_copy (other)
 				if old_cursor /= Void and then valid_cursor (old_cursor) then
 					set_internal_cursor (old_cursor)
 				else
-						-- Set `internal_cursor' to Void before calling
+						-- Set `detachable_internal_cursor' to Void before calling
 						-- `new_cursor' to avoid an invariant violation.
 					set_internal_cursor (Void)
 					set_internal_cursor (new_cursor)
@@ -311,7 +323,7 @@ feature -- Comparison
 				until
 					not Result or i > nb
 				loop
-					Result := (storage.item (i) = other_storage.item (i))
+					Result := (storage.item (i - 1) = other_storage.item (i - 1))
 					i := i + 1
 				end
 			end
@@ -324,7 +336,7 @@ feature -- Element change
 			-- Do not move cursors.
 			-- (Performance: O(1).)
 		do
-			storage.put (v, i)
+			storage.put (v, i - 1)
 		end
 
 	put_first (v: G) is
@@ -341,7 +353,7 @@ feature -- Element change
 			-- (Performance: O(1).)
 		do
 			count := count + 1
-			storage.put (v, count)
+			storage.force (v, count - 1)
 		end
 
 	put (v: G; i: INTEGER) is
@@ -354,7 +366,7 @@ feature -- Element change
 			else
 				move_right (i, 1)
 				move_cursors_right (i, 1)
-				storage.put (v, i)
+				storage.put (v, i - 1)
 			end
 		end
 
@@ -398,7 +410,7 @@ feature -- Element change
 				resize (new_capacity (count + 1))
 			end
 			count := count + 1
-			storage.put (v, count)
+			storage.force (v, count - 1)
 		end
 
 	force (v: G; i: INTEGER) is
@@ -464,7 +476,7 @@ feature -- Element change
 			until
 				other_cursor.after
 			loop
-				storage.put (other_cursor.item, i)
+				storage.force (other_cursor.item, i - 1)
 				i := i + 1
 				other_cursor.forth
 			end
@@ -503,7 +515,7 @@ feature -- Element change
 					until
 						other_cursor.after
 					loop
-						storage.put (other_cursor.item, k)
+						storage.force (other_cursor.item, k - 1)
 						k := k + 1
 						other_cursor.forth
 					end
@@ -609,11 +621,9 @@ feature -- removal
 			-- Remove item at end of list.
 			-- Move any cursors at this position `forth'.
 			-- (Performance: O(1).)
-		local
-			dead_item: G
 		do
 			move_last_cursors_after
-			storage.put (dead_item, count)
+			storage.remove_tail (1)
 			count := count - 1
 		end
 
@@ -621,15 +631,13 @@ feature -- removal
 			-- Remove item at `i'-th position.
 			-- Move any cursors at this position `forth'.
 			-- (Performance: O(count-i).)
-		local
-			dead_item: G
 		do
 			if i = count then
 				remove_last
 			else
 				move_cursors_left (i + 1)
 				move_left (i + 1, 1)
-				storage.put (dead_item, count + 1)
+				storage.remove_tail (1)
 			end
 		end
 
@@ -674,7 +682,7 @@ feature -- removal
 			-- (Performance: O(1).)
 		do
 			move_all_cursors_after
-			clear_items (count - n + 1, count)
+			clear_last_items (n)
 			count := count - n
 		end
 
@@ -688,7 +696,7 @@ feature -- removal
 			else
 				move_all_cursors_after
 				move_left (i + n, n)
-				clear_items (count + 1, count + n)
+				clear_last_items (n)
 			end
 		end
 
@@ -716,7 +724,7 @@ feature -- removal
 			-- (Performance: O(1).)
 		do
 			move_all_cursors_after
-			clear_items (n + 1, count)
+			clear_last_items (count - n)
 			count := n
 		end
 
@@ -751,16 +759,16 @@ feature -- removal
 					loop
 						from
 						until
-							i > nb or else not a_tester.test (storage.item (i), v)
+							i > nb or else not a_tester.test (storage.item (i - 1), v)
 						loop
 							i := i + 1
 						end
 						from
 						until
-							i > nb or else a_tester.test (storage.item (i), v)
+							i > nb or else a_tester.test (storage.item (i - 1), v)
 						loop
 							j := j + 1
-							storage.put (storage.item (i), j)
+							storage.force (storage.item (i - 1), j)
 							i := i + 1
 						end
 					end
@@ -773,23 +781,23 @@ feature -- removal
 					loop
 						from
 						until
-							i > nb or else storage.item (i) /= v
+							i > nb or else storage.item (i - 1) /= v
 						loop
 							i := i + 1
 						end
 						from
 						until
-							i > nb or else storage.item (i) = v
+							i > nb or else storage.item (i - 1) = v
 						loop
 							j := j + 1
-							storage.put (storage.item (i), j)
+							storage.force (storage.item (i - 1), j - 1)
 							i := i + 1
 						end
 					end
 				end
 				old_count := count
 				count := j
-				clear_items (count + 1, old_count)
+				clear_last_items (old_count - count)
 			end
 		end
 
@@ -799,7 +807,7 @@ feature -- removal
 			-- (Performance: O(1).)
 		do
 			move_all_cursors_after
-			clear_items (1, count)
+			clear_last_items (count)
 			count := 0
 		end
 
@@ -809,7 +817,7 @@ feature -- Resizing
 			-- Resize list so that it can contain
 			-- at least `n' items. Do not lose any item.
 		do
-			storage := special_routines.resize (storage, n + 1)
+			storage := special_routines.resize (storage, n)
 			capacity := n
 		end
 
@@ -836,7 +844,7 @@ feature {NONE} -- Implementation
 			until
 				j < i
 			loop
-				storage.put (storage.item (j), j + offset)
+				storage.force (storage.item (j - 1), j + offset - 1)
 				j := j - 1
 			end
 		ensure
@@ -859,7 +867,7 @@ feature {NONE} -- Implementation
 			until
 				j > nb
 			loop
-				storage.put (storage.item (j), j - offset)
+				storage.put (storage.item (j - 1), j - offset - 1)
 				j := j + 1
 			end
 			count := count - offset
@@ -867,38 +875,49 @@ feature {NONE} -- Implementation
 			count_set: count = old count - offset
 		end
 
-	clear_items (s, e: INTEGER) is
-			-- Clear items in `storage' within bounds `s'..`e'.
+	clear_last_items (n: INTEGER) is
+			-- Clear all items in `storage' within bounds count - n .. count
 		require
-			s_large_enough: s >= 1
-			e_small_enough: e <= capacity
-			valid_bound: s <= e + 1
-		local
-			dead_item: G
-			i: INTEGER
+			less_than_count: n <= count
 		do
-			from
-				i := s
-			until
-				i > e
-			loop
-				storage.put (dead_item, i)
-				i := i + 1
+			if n > 0 then
+				storage.remove_tail (n)
 			end
 		end
+
+--	clear_items (s, e: INTEGER) is
+--			-- Clear items in `storage' within bounds `s'..`e'.
+--		require
+--			s_large_enough: s >= 1
+--			e_small_enough: e <= capacity
+--			valid_bound: s <= e + 1
+--		local
+--			i: INTEGER
+--		do
+--			from
+--				i := s
+--			until
+--				i > e
+--			loop
+--				storage.put_default (i - 1)
+--				i := i + 1
+--			end
+--		end
+
+feature {DS_ARRAYED_LIST} -- Implementation
 
 	special_routines: KL_SPECIAL_ROUTINES [G]
 			-- Routines that ought to be in SPECIAL
 
 feature {NONE} -- Implementation
 
-	set_internal_cursor (c: like internal_cursor) is
-			-- Set `internal_cursor' to `c'.
+	set_internal_cursor (c: like detachable_internal_cursor) is
+			-- Set `detachable_internal_cursor' to `c'
 		do
-			internal_cursor := c
+			detachable_internal_cursor := c
 		end
 
-	internal_cursor: like new_cursor
+	detachable_internal_cursor: ?like new_cursor
 			-- Internal cursor
 
 feature {NONE} -- Cursor movement
@@ -906,10 +925,10 @@ feature {NONE} -- Cursor movement
 	move_all_cursors_after is
 			-- Move `after' all cursors.
 		local
-			a_cursor, next_cursor: like new_cursor
+			a_cursor, next_cursor: ?like new_cursor
 		do
 			from
-				a_cursor := internal_cursor
+				a_cursor := detachable_internal_cursor
 			until
 				(a_cursor = Void)
 			loop
@@ -924,7 +943,7 @@ feature {NONE} -- Cursor movement
 			-- Move `after' all cursors at last position.
 		local
 			i: INTEGER
-			a_cursor, previous_cursor, next_cursor: like new_cursor
+			a_cursor, previous_cursor, next_cursor: ?like new_cursor
 		do
 			i := count
 			a_cursor := internal_cursor
@@ -957,10 +976,10 @@ feature {NONE} -- Cursor movement
 			valid_i: 2 <= i and i <= count
 		local
 			j: INTEGER
-			a_cursor: like new_cursor
+			a_cursor: ?like new_cursor
 		do
 			from
-				a_cursor := internal_cursor
+				a_cursor := detachable_internal_cursor
 			until
 				(a_cursor = Void)
 			loop
@@ -979,11 +998,11 @@ feature {NONE} -- Cursor movement
 			valid_index: 1 <= i and i <= (count - offset + 1)
 			positive_offset: offset >= 0
 		local
-			a_cursor: like new_cursor
+			a_cursor: ?like new_cursor
 			j: INTEGER
 		do
 			from
-				a_cursor := internal_cursor
+				a_cursor := detachable_internal_cursor
 			until
 				(a_cursor = Void)
 			loop
@@ -1277,7 +1296,7 @@ feature {DS_ARRAYED_LIST_CURSOR} -- Cursor implementation
 invariant
 
 	storage_not_void: storage /= Void
-	capacity_definition: capacity = storage.count - 1
+	capacity_definition: capacity = storage.capacity
 	special_routines_not_void: special_routines /= Void
 
 end

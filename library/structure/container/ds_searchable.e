@@ -45,9 +45,12 @@ feature -- Status report
 			-- Are `v' and `u' considered equal?
 			-- (Use `equality_tester''s comparison criterion
 			-- if not void, use `=' criterion otherwise.)
+		local
+			l_equality_tester: like equality_tester
 		do
-			if equality_tester /= Void then
-				Result := equality_tester.test (v, u)
+			l_equality_tester := equality_tester
+			if l_equality_tester /= Void then
+				Result := l_equality_tester.test (v, u)
 			else
 				Result := (v = u)
 			end
@@ -84,7 +87,7 @@ feature -- Measurement
 
 feature -- Access
 
-	equality_tester: KL_EQUALITY_TESTER [G]
+	equality_tester: ?KL_EQUALITY_TESTER [G]
 			-- Equality tester;
 			-- A void equality tester means that `='
 			-- will be used as comparison criterion.

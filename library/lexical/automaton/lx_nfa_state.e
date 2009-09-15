@@ -40,13 +40,13 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	transition: LX_TRANSITION [LX_NFA_STATE]
+	transition: ?LX_TRANSITION [LX_NFA_STATE]
 			-- Out-transition
 
-	epsilon_transition: LX_EPSILON_TRANSITION [LX_NFA_STATE]
+	epsilon_transition: ?LX_EPSILON_TRANSITION [LX_NFA_STATE]
 			-- Epsilon out-transition
 
-	accepted_rule: LX_RULE
+	accepted_rule: ?LX_RULE
 			-- Rule that current state is accepting,
 			-- Void otherwise
 
@@ -87,11 +87,8 @@ feature -- Status report
 
 	has_epsilon_transition: BOOLEAN is
 			-- Is `transition' an epsilon transition?
-		local
-			xtion: LX_EPSILON_TRANSITION [LX_NFA_STATE]
 		do
-			xtion ?= transition
-			Result := xtion /= Void
+			Result := {xtion: LX_EPSILON_TRANSITION [LX_NFA_STATE]} transition
 		ensure
 			has_transition: Result implies has_transition
 		end
@@ -145,7 +142,7 @@ feature -- Setting
 
 feature -- Status setting
 
-	set_accepted_rule (a_rule: LX_RULE) is
+	set_accepted_rule (a_rule: ?LX_RULE) is
 			-- Set `accepted_rule' to `a_rule'.
 		do
 			accepted_rule := a_rule
@@ -157,16 +154,16 @@ feature -- Status setting
 			-- Set each state of the epsilon closure as normal
 			-- (i.e not in trailing context).
 		local
-			epsilon_xtion: LX_EPSILON_TRANSITION [LX_NFA_STATE]
+			l_epsilon_transition: like epsilon_transition
 		do
 			if in_trail_context then
 				in_trail_context := False
-				epsilon_xtion ?= transition
-				if epsilon_xtion /= Void then
+				if {epsilon_xtion: LX_EPSILON_TRANSITION [LX_NFA_STATE]} transition then
 					epsilon_xtion.target.set_beginning_as_normal
 				end
-				if epsilon_transition /= Void then
-					epsilon_transition.target.set_beginning_as_normal
+				l_epsilon_transition := epsilon_transition
+				if l_epsilon_transition /= Void then
+					l_epsilon_transition.target.set_beginning_as_normal
 				end
 			end
 		ensure

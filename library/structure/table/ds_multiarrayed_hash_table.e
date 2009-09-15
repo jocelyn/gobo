@@ -45,7 +45,7 @@ feature -- Access
 
 feature -- Hashing
 
-	hash_function: KL_HASH_FUNCTION [K]
+	hash_function: ?KL_HASH_FUNCTION [K]
 			-- Hash function to compute position in the container
 
 	set_hash_function (a_hash_function: like hash_function) is
@@ -60,14 +60,17 @@ feature -- Hashing
 
 feature {NONE} -- Implementation
 
-	hash_position (k: K): INTEGER is
+	hash_position (k: ?K): INTEGER is
 			-- Hash position of `k' in `slots';
 			-- Use `hash_function' as hashing function
 			-- if not Void, `k.hash_code' otherwise.
+		local
+			l_hash_function: like hash_function
 		do
 			if k /= Void then
-				if hash_function /= Void then
-					Result := hash_function.hash_code (k) \\ modulus
+				l_hash_function := hash_function
+				if l_hash_function /= Void then
+					Result := l_hash_function.hash_code (k) \\ modulus
 				else
 					Result := k.hash_code \\ modulus
 				end

@@ -39,7 +39,7 @@ feature {DS_ARRAYED_SPARSE_SET_CURSOR} -- Implementation
 	item_storage_item (i: INTEGER): G is
 			-- Item at position `i' in `item_storage'
 		do
-			Result := item_storage.item (i)
+			Result := item_storage.item (i - 1)
 		end
 
 	clashes_item (i: INTEGER): INTEGER is
@@ -63,7 +63,7 @@ feature {NONE} -- Implementation
 	item_storage_put (v: G; i: INTEGER) is
 			-- Put `v' at position `i' in `item_storage'.
 		do
-			item_storage.put (v, i)
+			item_storage.force (v, i - 1)
 		end
 
 	clone_item_storage is
@@ -78,20 +78,26 @@ feature {NONE} -- Implementation
 			item_storage := special_item_routines.resize (item_storage, n)
 		end
 
+	item_storage_keep_head (n: INTEGER_32)
+			-- Keep the first `n' items in `item_storage'.
+		do
+			item_storage.keep_head (n)
+		end
+
 	item_storage_wipe_out is
 			-- Wipe out items in `item_storage'.
-		local
-			i: INTEGER
-			dead_item: G
+--		local
+--			i: INTEGER
 		do
-			from
-				i := last_position
-			until
-				i < 1
-			loop
-				item_storage.put (dead_item, i)
-				i := i - 1
-			end
+			item_storage.wipe_out
+--			from
+--				i := last_position
+--			until
+--				i < 1
+--			loop
+--				item_storage.put_default (i)
+--				i := i - 1
+--			end
 		end
 
 	clashes: SPECIAL [INTEGER]
@@ -104,7 +110,7 @@ feature {NONE} -- Implementation
 	make_clashes (n: INTEGER) is
 			-- Create `clashes'.
 		do
-			clashes := SPECIAL_INTEGER_.make (n)
+			clashes := SPECIAL_INTEGER_.make_filled (0, n)
 		end
 
 	clashes_put (v: INTEGER; i: INTEGER) is
@@ -122,7 +128,7 @@ feature {NONE} -- Implementation
 	clashes_resize (n: INTEGER) is
 			-- Resize `clashes'.
 		do
-			clashes := SPECIAL_INTEGER_.resize (clashes, n)
+			clashes := SPECIAL_INTEGER_.resize_with_default (0, clashes, n)
 		end
 
 	clashes_wipe_out is
@@ -148,7 +154,7 @@ feature {NONE} -- Implementation
 	make_slots (n: INTEGER) is
 			-- Create `slots'.
 		do
-			slots := SPECIAL_INTEGER_.make (n)
+			slots := SPECIAL_INTEGER_.make_filled (0, n)
 		end
 
 	slots_item (i: INTEGER): INTEGER is
@@ -172,7 +178,7 @@ feature {NONE} -- Implementation
 	slots_resize (n: INTEGER) is
 			-- Resize `slots'.
 		do
-			slots := SPECIAL_INTEGER_.resize (slots, n)
+			slots := SPECIAL_INTEGER_.resize_with_default (0, slots, n)
 		end
 
 	slots_wipe_out is
@@ -196,7 +202,7 @@ feature {NONE} -- Implementation
 invariant
 
 	item_storage_not_void: item_storage /= Void
-	item_storage_count: item_storage.count = capacity + 1
+	item_storage_count: item_storage.count = capacity
 	clashes_not_void: clashes /= Void
 	clashes_count: clashes.count = capacity + 1
 	slots_not_void: slots /= Void

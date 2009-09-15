@@ -43,7 +43,7 @@ feature {NONE} -- Creation
 		end
 
 feature {NONE} -- Default context
-	
+
 	default_namespaces: DS_LINKED_STACK [STRING]
 			-- Default namespace URI stack.
 
@@ -76,7 +76,7 @@ feature {NONE} -- Prefixed context
 	element_prefixes: DS_HASH_SET [STRING]
 			-- Prefixes in use (not only declared) in top element.
 
-	last_item: STRING
+	last_item: ?STRING
 			-- Cache for lookup
 
 feature -- Status
@@ -105,7 +105,7 @@ feature -- Status
 			end
 		end
 
-	item (a_namespace: STRING): STRING is
+	item (a_namespace: STRING): ?STRING is
 			-- Find prefix for namespace
 		require
 			a_namespace_not_void: a_namespace /= Void
@@ -135,7 +135,7 @@ feature -- Setting
 			a_namespace_not_void: a_namespace /= Void
 			a_namespace_not_empty: not a_namespace.is_empty
 			a_prefix_not_void: a_prefix /= Void
-			a_prefix_not_empty: not a_prefix.is_empty		
+			a_prefix_not_empty: not a_prefix.is_empty
 		do
 			prefixes.last.force (a_prefix, a_namespace)
 		ensure
@@ -149,7 +149,7 @@ feature -- Status
 			-- Is this prefix used in the top element?
 		require
 			a_prefix_not_void: a_prefix /= Void
-			a_prefix_not_empty: not a_prefix.is_empty		
+			a_prefix_not_empty: not a_prefix.is_empty
 		do
 			Result := element_prefixes.has (a_prefix)
 		end
@@ -158,7 +158,7 @@ feature -- Status
 			-- Declare prefix in use in top element.
 		require
 			a_prefix_not_void: a_prefix /= Void
-			a_prefix_not_empty: not a_prefix.is_empty		
+			a_prefix_not_empty: not a_prefix.is_empty
 		do
 			element_prefixes.force (a_prefix)
 		ensure

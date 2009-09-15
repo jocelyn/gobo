@@ -31,7 +31,7 @@ feature -- Output
 			output_stream := Void
 		ensure
 			last_output_not_void: last_output /= Void
-			last_output_empty: last_output.count = 0
+			last_output_empty: {l_last_output: like last_output} last_output and then l_last_output.count = 0
 		end
 
 	set_output_string (a_string: like last_output) is
@@ -68,21 +68,21 @@ feature -- Output
 			last_output := Void
 		end
 
-	last_output: STRING
+	last_output: ?STRING
 			-- Last output;
 			-- May be void if standard output or stream is used.
 
 	flush is
 			-- Flush `output_stream'.
 		do
-			if output_stream /= Void and then output_stream.is_open_write then
-				output_stream.flush
+			if {l_output_stream: like output_stream} output_stream and then l_output_stream.is_open_write then
+				l_output_stream.flush
 			end
 		end
 
 feature {NONE} -- Output stream
 
-	output_stream: KI_CHARACTER_OUTPUT_STREAM
+	output_stream: ?KI_CHARACTER_OUTPUT_STREAM
 
 feature -- Output, interface to descendants
 
@@ -92,14 +92,21 @@ feature -- Output, interface to descendants
 			-- convenient redefinition.
 		require
 			a_string_not_void: a_string /= Void
+		local
+			l_last_output: like last_output
+			l_output_stream: like output_stream
 		do
-			if last_output /= Void then
-				last_output := STRING_.appended_string (last_output, a_string)
+			l_last_output := last_output
+			if l_last_output /= Void then
+				last_output := STRING_.appended_string (l_last_output, a_string)
 			else
-				if output_stream = Void then
+				l_output_stream := output_stream
+				if l_output_stream = Void then
 					set_output_standard
+					l_output_stream := output_stream
+					check l_output_stream /= Void end -- implied by action of `set_output_standard'
 				end
-				output_stream.put_string (a_string)
+				l_output_stream.put_string (a_string)
 			end
 			check one_set: output_stream /= Void or last_output /= Void end
 		end

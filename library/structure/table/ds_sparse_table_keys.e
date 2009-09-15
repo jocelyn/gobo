@@ -251,13 +251,13 @@ feature -- Removal
 
 feature {NONE} -- Cursor implementation
 
-	set_internal_cursor (c: like internal_cursor) is
-			-- Set `internal_cursor' to `c'.
+	set_internal_cursor (c: like detachable_internal_cursor) is
+			-- Set `detachable_internal_cursor' to `c'
 		do
-			internal_cursor := c
+			detachable_internal_cursor := c
 		end
 
-	internal_cursor: like new_cursor
+	detachable_internal_cursor: ?like new_cursor
 			-- Internal cursor
 
 feature {DS_SPARSE_TABLE_KEYS_CURSOR} -- Cursor implementation

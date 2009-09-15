@@ -20,19 +20,19 @@ inherit
 
 	KL_SHARED_STANDARD_FILES
 		export {NONE} all end
-		
+
 	KL_SHARED_FILE_SYSTEM
 		export {NONE} all end
-		
+
 	UT_SHARED_FILE_URI_ROUTINES
 		export {NONE} all end
-		
+
 	KL_IMPORTED_STRING_ROUTINES
 		export {NONE} all end
-		
+
 	UC_SHARED_STRING_EQUALITY_TESTER
 		export {NONE} all end
-		
+
 	UT_URL_ENCODING
 
 create
@@ -80,6 +80,7 @@ feature -- Access
 			catalogs_not_disabled: not are_catalogs_disabled
 		local
 			an_fpi, another_fpi, a_debug_string: STRING
+			l_result: ?STRING
 		do
 			if debug_level > 2 then
 				a_debug_string := STRING_.concat ("PUBLIC ", a_public_id)
@@ -99,29 +100,36 @@ feature -- Access
 				an_fpi := urn_to_fpi (a_system_id)
 				if another_fpi.count > 0 then
 					if STRING_.same_string (an_fpi, another_fpi) then
-						Result := resolved_fpi (an_fpi, False)
+						l_result := resolved_fpi (an_fpi, False)
 					else
 						debug_message (2, "SYSTEM id is a publicid URN, but differs from PUBLIC id", a_system_id)
-						Result := resolved_fpi (another_fpi, False)
+						l_result := resolved_fpi (another_fpi, False)
 					end
 				else
-					Result := resolved_fpi (an_fpi, False)
+					l_result := resolved_fpi (an_fpi, False)
 				end
-				if Result = Void then Result := a_system_id end
+				if l_result = Void then
+					l_result := a_system_id
+				end
 			else
 				an_fpi := another_fpi
 				if a_system_id.count = 0 then
-					Result := resolved_fpi (an_fpi, False)
+					l_result := resolved_fpi (an_fpi, False)
+					check l_result /= Void end -- implied by ... ?
+					--| Should "if Result = Void then Result := a_system_id end" be added ?
 				else
-					Result := resolved_fsi (a_system_id)
-					if Result = Void then
+					l_result := resolved_fsi (a_system_id)
+					if l_result = Void then
 						if an_fpi.count > 0 then
-							Result := resolved_fpi (an_fpi, True)
+							l_result := resolved_fpi (an_fpi, True)
 						end
-						if Result = Void then Result := a_system_id end
+						if l_result = Void then
+							l_result := a_system_id
+						end
 					end
 				end
 			end
+			Result := l_result
 		ensure
 			resulting_uri_reference_not_void: Result /= Void -- but may be the original SYSTEM id, which may be zero length
 		end
@@ -133,19 +141,24 @@ feature -- Access
 			catalogs_not_disabled: not are_catalogs_disabled
 		local
 			an_fpi: STRING
+			l_result: ?STRING
 		do
 			debug_message (3, "Resolving URI reference", a_uri_reference)
-			
+
 			-- At this level, there is no re-try from relative URI to absolute URI -
 			--  that is left to higher-level callers, such as XM_CATALOG_RESOLVER
 
 			if a_uri_reference.substring_index ("urn:publicid:", 1) = 1 then
 				an_fpi := urn_to_fpi (a_uri_reference)
-				Result := resolved_fpi (an_fpi, False)
+				l_result := resolved_fpi (an_fpi, False)
+				check l_result /= Void end -- implied by ... ?
 			else
-				Result := resolved_uri (a_uri_reference)
-				if Result = Void then Result := a_uri_reference end
+				l_result := resolved_uri (a_uri_reference)
+				if l_result = Void then
+					l_result := a_uri_reference
+				end
 			end
+			Result := l_result
 		ensure
 			resulting_uri_reference_not_void: Result /= Void -- but may be the original reference
 		end
@@ -323,8 +336,8 @@ feature {TS_TEST_CASE} -- initialization
 		end
 
 feature {XM_CATALOG, TS_TEST_CASE} -- Implementation
-	
-	retrieved_catalog (a_catalog_name: STRING): XM_CATALOG is
+
+	retrieved_catalog (a_catalog_name: STRING): ?XM_CATALOG is
 			-- Parsed catalog named `a_catalog_name'
 		require
 			catalog_name_not_void: a_catalog_name /= Void
@@ -350,7 +363,7 @@ feature {XM_CATALOG, TS_TEST_CASE} -- Implementation
 			retrieved_catalog_may_be_void: True
 		end
 
-	resolved_fpi (a_public_id: STRING; prefer_public_required: BOOLEAN): STRING is
+	resolved_fpi (a_public_id: STRING; prefer_public_required: BOOLEAN): ?STRING is
 			-- Resolved URI reference for `a_public_id'
 		require
 			public_id_not_void: a_public_id /= Void
@@ -358,14 +371,14 @@ feature {XM_CATALOG, TS_TEST_CASE} -- Implementation
 			an_fpi: STRING
 			a_cursor: DS_LIST_CURSOR [STRING]
 			a_cursor_2: DS_ARRAYED_LIST_CURSOR [STRING]
-			a_catalog: XM_CATALOG
+			a_catalog: ?XM_CATALOG
 		do
 			an_fpi := normalized_fpi (a_public_id)
 			debug_message (8, "Fpi normalized to", an_fpi)
-			
+
 			-- first search the system catalogs
-			
-			debug_message (8, "Number of system catalogs", system_catalog_files.count.out)				
+
+			debug_message (8, "Number of system catalogs", system_catalog_files.count.out)
 			from
 				a_cursor := system_catalog_files.new_cursor; a_cursor.start
 			variant
@@ -375,7 +388,7 @@ feature {XM_CATALOG, TS_TEST_CASE} -- Implementation
 			loop
 				a_catalog := retrieved_catalog (a_cursor.item)
 				if a_catalog /= Void then
-					debug_message (7, "Retrieved catalog is ", a_cursor.item)				
+					debug_message (7, "Retrieved catalog is ", a_cursor.item)
 					Result := a_catalog.resolved_fpi (an_fpi, prefer_public_required)
 					if Result = Void and then not search_chain_truncated then
 						a_cursor.forth
@@ -387,9 +400,9 @@ feature {XM_CATALOG, TS_TEST_CASE} -- Implementation
 					a_cursor.forth -- WAS a_cursor.go_after
 				end
 			end
-			
+
 			-- now check for catalogs specified by oasis-xml-catalog PIs
-			
+
 			if Result = Void and then are_processing_instructions_allowed and then not search_chain_truncated then
 				from
 					a_cursor_2 := pi_catalog_files.new_cursor; a_cursor_2.start
@@ -400,7 +413,7 @@ feature {XM_CATALOG, TS_TEST_CASE} -- Implementation
 				loop
 					a_catalog := retrieved_catalog (a_cursor_2.item)
 					if a_catalog /= Void then
-						debug_message (7, "Retrieved catalog is ", a_cursor_2.item)				
+						debug_message (7, "Retrieved catalog is ", a_cursor_2.item)
 						Result := a_catalog.resolved_fpi (an_fpi, prefer_public_required)
 						if Result = Void and then not search_chain_truncated then
 							a_cursor_2.forth
@@ -418,7 +431,7 @@ feature {XM_CATALOG, TS_TEST_CASE} -- Implementation
 			result_may_be_void_if_not_match: True
 		end
 
-	resolved_fsi (a_system_id: STRING): STRING is
+	resolved_fsi (a_system_id: STRING): ?STRING is
 			-- Resolved URI reference for `a_system_id'
 		require
 			system_id_not_void: a_system_id /= Void
@@ -426,14 +439,14 @@ feature {XM_CATALOG, TS_TEST_CASE} -- Implementation
 			an_fsi: STRING
 			a_cursor: DS_LIST_CURSOR [STRING]
 			a_cursor_2: DS_ARRAYED_LIST_CURSOR [STRING]
-			a_catalog: XM_CATALOG
+			a_catalog: ?XM_CATALOG
 		do
 			an_fsi := escape_custom (utf8.to_utf8 (a_system_id), unescaped_uri_characters, False)
 			debug_message (8, "Fsi normalized to", an_fsi)
-			
+
 			-- first search the system catalogs
 
-			debug_message (8, "Number of system catalogs", system_catalog_files.count.out)				
+			debug_message (8, "Number of system catalogs", system_catalog_files.count.out)
 			from
 				a_cursor := system_catalog_files.new_cursor; a_cursor.start
 			variant
@@ -443,7 +456,7 @@ feature {XM_CATALOG, TS_TEST_CASE} -- Implementation
 			loop
 				a_catalog := retrieved_catalog (a_cursor.item)
 				if a_catalog /= Void then
-					debug_message (7, "Retrieved catalog is ", a_cursor.item)				
+					debug_message (7, "Retrieved catalog is ", a_cursor.item)
 					Result := a_catalog.resolved_fsi (an_fsi)
 					if Result = Void and then not search_chain_truncated then
 						a_cursor.forth
@@ -486,7 +499,7 @@ feature {XM_CATALOG, TS_TEST_CASE} -- Implementation
 			result_may_be_void_if_not_match: True
 		end
 
-	resolved_uri (a_uri_reference: STRING): STRING is
+	resolved_uri (a_uri_reference: STRING): ?STRING is
 			-- Resolved URI reference for `a_uri_reference'
 		require
 			system_id_not_void: a_uri_reference /= Void
@@ -494,14 +507,14 @@ feature {XM_CATALOG, TS_TEST_CASE} -- Implementation
 			a_uri: STRING
 			a_cursor: DS_LIST_CURSOR [STRING]
 			a_cursor_2: DS_ARRAYED_LIST_CURSOR [STRING]
-			a_catalog: XM_CATALOG
+			a_catalog: ?XM_CATALOG
 		do
 			a_uri := escape_custom (utf8.to_utf8 (a_uri_reference), unescaped_uri_characters, False)
 			debug_message (8, "URI normalized to", a_uri)
-			
+
 			-- first search the system catalogs
 
-			debug_message (8, "Number of system catalogs", system_catalog_files.count.out)				
+			debug_message (8, "Number of system catalogs", system_catalog_files.count.out)
 			from
 				a_cursor := system_catalog_files.new_cursor; a_cursor.start
 			variant
@@ -511,7 +524,7 @@ feature {XM_CATALOG, TS_TEST_CASE} -- Implementation
 			loop
 				a_catalog := retrieved_catalog (a_cursor.item)
 				if a_catalog /= Void then
-					debug_message (7, "Retrieved catalog is ", a_cursor.item)				
+					debug_message (7, "Retrieved catalog is ", a_cursor.item)
 					Result := a_catalog.resolved_uri (a_uri)
 					if Result = Void and then not search_chain_truncated then
 						a_cursor.forth
@@ -553,7 +566,7 @@ feature {XM_CATALOG, TS_TEST_CASE} -- Implementation
 		ensure
 			result_may_be_void_if_not_match: True
 		end
-			
+
 feature {NONE} -- Implementation
 
 	system_catalog_files: DS_LIST [STRING]
@@ -562,7 +575,7 @@ feature {NONE} -- Implementation
 	pi_catalog_files: DS_ARRAYED_LIST [STRING]
 			-- Names of catalog files which are searched after `system_catalog_files'.
 
-	all_known_catalogs: DS_HASH_TABLE [XM_CATALOG, STRING]
+	all_known_catalogs: DS_HASH_TABLE [?XM_CATALOG, STRING]
 			-- Map of catalog names to parsed catalogs.
 			-- This will contain `Void' values for catalogs that failed parsing,
 			--  so as not to waste time parsing them again.
@@ -579,9 +592,10 @@ feature {NONE} -- Implementation
 	establish_system_catalog_files is
 			-- Establish list of catalogs to be searched for all documents
 		local
-			xml_catalog_files, l_separator: STRING
+			xml_catalog_files: ?STRING
+			l_separator: STRING
 			a_splitter: ST_SPLITTER
-			a_list: DS_LIST [STRING]
+			a_list: ?DS_LIST [STRING]
 			a_base_uri: UT_URI
 			a_cursor: DS_LIST_CURSOR [STRING]
 		do
@@ -594,18 +608,18 @@ feature {NONE} -- Implementation
 					l_separator := ":"
 				end
 				a_splitter.set_separators (l_separator)
-				a_list := a_splitter.split (xml_catalog_files) 
+				a_list := a_splitter.split (xml_catalog_files)
 			end
 			if a_list /= Void then
 				system_catalog_files := a_list
-				system_catalog_files.set_equality_tester (string_equality_tester)
+				a_list.set_equality_tester (string_equality_tester)
 
 				-- Now convert the names to absolute URIs
 
 				from
-					a_cursor := system_catalog_files.new_cursor; a_cursor.start
+					a_cursor := a_list.new_cursor; a_cursor.start
 				variant
-					system_catalog_files.count + 1 - a_cursor.index
+					a_list.count + 1 - a_cursor.index
 				until
 					a_cursor.after
 				loop
@@ -629,4 +643,4 @@ invariant
 	positive_debug_level: debug_level >= 0
 
 end
-	
+

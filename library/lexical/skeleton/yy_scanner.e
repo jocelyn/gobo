@@ -156,7 +156,7 @@ feature -- Status report
 			-- This can occur when too many `reject' are called (and hence
 			-- nothing can be matched anymore) or when the option "nodefault"
 			-- (or option -s) has been specified but the default rule is
-			-- matched nevertheless. 
+			-- matched nevertheless.
 		do
 			Result := (last_token = yyError_token)
 		end
@@ -257,7 +257,7 @@ feature -- Element change
 
 	more is
 			-- Tell scanner to append the next matched token
-			-- to current value of `text' instead of 
+			-- to current value of `text' instead of
 			-- replacing it.
 		deferred
 		end

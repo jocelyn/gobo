@@ -10,7 +10,7 @@ indexing
 	date: "$Date$"
 	revision: "$Revision$"
 
-class DS_HASH_TABLE_CURSOR [G, K -> HASHABLE]
+class DS_HASH_TABLE_CURSOR [G, K -> ?HASHABLE]
 
 inherit
 
@@ -31,7 +31,7 @@ feature -- Access
 
 feature {DS_HASH_TABLE} -- Implementation
 
-	next_cursor: DS_HASH_TABLE_CURSOR [G, K]
+	next_cursor: ?DS_HASH_TABLE_CURSOR [G, K]
 			-- Next cursor
 			-- (Used by `container' to keep track of traversing
 			-- cursors (i.e. cursors associated with `container'

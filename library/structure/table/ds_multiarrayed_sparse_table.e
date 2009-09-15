@@ -261,18 +261,21 @@ feature {DS_MULTIARRAYED_SPARSE_TABLE_CURSOR} -- Implementation
 	item_storage_item (i: INTEGER): G is
 			-- Item at position `i' in `item_storage'
 		local
-			subitems: SPECIAL [G]
+			subitems: ?SPECIAL [G]
+			l_result: ?G
 		do
 			subitems := item_storage.item (i // chunk_size)
 			if subitems /= Void then
-				Result := subitems.item (i \\ chunk_size)
+				l_result := subitems.item (i \\ chunk_size)
 			end
+			check l_result /= Void end -- implied by preconditions and implementation
+			Result := l_result
 		end
 
 	item_storage_put (v: G; i: INTEGER) is
 			-- Put `v' at position `i' in `item_storage'.
 		local
-			subitems: SPECIAL [G]
+			subitems: ?SPECIAL [G]
 			j: INTEGER
 		do
 			j := i // chunk_size
@@ -284,21 +287,50 @@ feature {DS_MULTIARRAYED_SPARSE_TABLE_CURSOR} -- Implementation
 			subitems.put (v, i \\ chunk_size)
 		end
 
+--	item_storage_put_default (i: INTEGER) is
+--			-- Put default value at position `i' in `item_storage'.
+--		local
+--			subitems: ?SPECIAL [G]
+--			j: INTEGER
+--		do
+--			j := i // chunk_size
+--			subitems := item_storage.item (j)
+--			if subitems = Void then
+--				subitems := special_item_routines.make (chunk_size)
+--				item_storage.put (subitems, j)
+--			end
+--			subitems.put_default (i \\ chunk_size)
+--		end
+
+--	item_storage_item_is_default (i: INTEGER): BOOLEAN is
+--			-- Is item at position `i' in `item_storage' a default value?
+--		local
+--			subitems: ?SPECIAL [G]
+--		do
+--			subitems := item_storage.item (i // chunk_size)
+--			if subitems /= Void then
+--				Result := subitems.is_default (i \\ chunk_size)
+--			end
+--		end
+
 	key_storage_item (i: INTEGER): K is
 			-- Item at position `i' in `key_storage'
 		local
-			subkeys: SPECIAL [K]
+			subkeys: ?SPECIAL [K]
+			l_result: ?K
 		do
 			subkeys := key_storage.item (i // chunk_size)
 			if subkeys /= Void then
-				Result := subkeys.item (i \\ chunk_size)
+				l_result := subkeys.item (i \\ chunk_size)
 			end
+			check l_result /= Void end -- implied by application's logic
+			Result := l_result
 		end
 
 	clashes_item (i: INTEGER): INTEGER is
 			-- Item at position `i' in `clashes'
 		local
-			subclashes: SPECIAL [INTEGER]
+			subclashes: ?SPECIAL [INTEGER]
 		do
 			subclashes := clashes.item (i // chunk_size)
 			if subclashes /= Void then
@@ -308,7 +340,7 @@ feature {DS_MULTIARRAYED_SPARSE_TABLE_CURSOR} -- Implementation
 
 feature {NONE} -- Implementation
 
-	item_storage: ARRAY [SPECIAL [G]]
+	item_storage: ARRAY [?SPECIAL [G]]
 			-- Storage for items of the table indexed from 1 to `capacity'
 
 	make_item_storage (n: INTEGER) is
@@ -323,7 +355,7 @@ feature {NONE} -- Implementation
 			-- Clone `item_storage'.
 		local
 			i, nb: INTEGER
-			subitems: SPECIAL [G]
+			subitems: ?SPECIAL [G]
 		do
 			item_storage := array_special_item_routines.cloned_array (item_storage)
 			nb := item_storage.upper
@@ -346,6 +378,24 @@ feature {NONE} -- Implementation
 			array_special_item_routines.resize (item_storage, 0, ((n - 1) // chunk_size))
 		end
 
+	item_storage_keep_head (n: INTEGER_32)
+			-- Keep the first `n' items in `item_storage'.
+		local
+			i, j: INTEGER
+		do
+			from
+				i := item_storage.upper
+				j := 0
+			until
+				j >= n
+			loop
+				item_storage.put (Void, i)
+				j := j + 1
+				i := i - 1
+			end
+--			item_storage.keep_head (n)
+		end
+
 	item_storage_wipe_out is
 			-- Wipe out items in `item_storage'.
 		local
@@ -362,7 +412,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	key_storage: ARRAY [SPECIAL [K]]
+	key_storage: ARRAY [?SPECIAL [K]]
 			-- Storage for keys of the table indexed from 1 to `capacity'
 
 	make_key_storage (n: INTEGER) is
@@ -376,7 +426,7 @@ feature {NONE} -- Implementation
 	key_storage_put (k: K; i: INTEGER) is
 			-- Put `k' at position `i' in `key_storage'.
 		local
-			subkeys: SPECIAL [K]
+			subkeys: ?SPECIAL [K]
 			j: INTEGER
 		do
 			j := i // chunk_size
@@ -388,11 +438,26 @@ feature {NONE} -- Implementation
 			subkeys.put (k, i \\ chunk_size)
 		end
 
+--	key_storage_put_default (i: INTEGER) is
+--			-- Put default value at position `i' in `key_storage'.
+--		local
+--			subkeys: ?SPECIAL [K]
+--			j: INTEGER
+--		do
+--			j := i // chunk_size
+--			subkeys := key_storage.item (j)
+--			if subkeys = Void then
+--				subkeys := special_key_routines.make (chunk_size)
+--				key_storage.put (subkeys, j)
+--			end
+--			subkeys.put_default (i \\ chunk_size)
+--		end
+
 	clone_key_storage is
 			-- Clone `key_storage'.
 		local
 			i, nb: INTEGER
-			subkeys: SPECIAL [K]
+			subkeys: ?SPECIAL [K]
 		do
 			key_storage := array_special_key_routines.cloned_array (key_storage)
 			nb := key_storage.upper
@@ -415,6 +480,24 @@ feature {NONE} -- Implementation
 			array_special_key_routines.resize (key_storage, 0, ((n - 1) // chunk_size))
 		end
 
+	key_storage_keep_head (n: INTEGER_32)
+			-- Keep the first `n' items in `key_storage'.
+		local
+			i, j: INTEGER
+		do
+			from
+				i := key_storage.upper
+				j := 0
+			until
+				j >= n
+			loop
+				key_storage.put (Void, i)
+				j := j + 1
+				i := i - 1
+			end
+--			key_storage.keep_head (n)
+		end
+
 	key_storage_wipe_out is
 			-- Wipe out items in `key_storage'.
 		local
@@ -431,7 +514,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	clashes: ARRAY [SPECIAL [INTEGER]]
+	clashes: ARRAY [?SPECIAL [INTEGER]]
 			-- Indexes in `item_storage' and `key_storage'  when there are clashes
 			-- in `slots'. Each entry points to the next alternative
 			-- until `No_position' is reached. Also keep track of free
@@ -447,7 +530,7 @@ feature {NONE} -- Implementation
 	clashes_put (v: INTEGER; i: INTEGER) is
 			-- Put `v' at position `i' in `clashes'.
 		local
-			subclashes: SPECIAL [INTEGER]
+			subclashes: ?SPECIAL [INTEGER]
 			j: INTEGER
 		do
 			j := i // chunk_size
@@ -463,7 +546,7 @@ feature {NONE} -- Implementation
 			-- Clone `clashes'.
 		local
 			i, nb: INTEGER
-			subclashes: SPECIAL [INTEGER]
+			subclashes: ?SPECIAL [INTEGER]
 		do
 			clashes := ARRAY_SPECIAL_INTEGER_.cloned_array (clashes)
 			nb := clashes.upper
@@ -502,7 +585,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	slots: ARRAY [SPECIAL [INTEGER]]
+	slots: ARRAY [?SPECIAL [INTEGER]]
 			-- Indexes in `item_storage' and `key_storage', indexed by hash codes
 			-- from 0 to `modulus' (the entry at index `modulus'
 			-- being reserved for void items)
@@ -516,7 +599,7 @@ feature {NONE} -- Implementation
 	slots_item (i: INTEGER): INTEGER is
 			-- Item at position `i' in `slots'
 		local
-			subslots: SPECIAL [INTEGER]
+			subslots: ?SPECIAL [INTEGER]
 		do
 			subslots := slots.item (i // chunk_size)
 			if subslots /= Void then
@@ -527,7 +610,7 @@ feature {NONE} -- Implementation
 	slots_put (v: INTEGER; i: INTEGER) is
 			-- Put `v' at position `i' in `slots'.
 		local
-			subslots: SPECIAL [INTEGER]
+			subslots: ?SPECIAL [INTEGER]
 			j: INTEGER
 		do
 			j := i // chunk_size
@@ -543,7 +626,7 @@ feature {NONE} -- Implementation
 			-- Clone `slots'.
 		local
 			i, nb: INTEGER
-			subslots: SPECIAL [INTEGER]
+			subslots: ?SPECIAL [INTEGER]
 		do
 			slots := ARRAY_SPECIAL_INTEGER_.cloned_array (slots)
 			nb := slots.upper
@@ -585,13 +668,13 @@ feature {NONE} -- Implementation
 	special_item_routines: KL_SPECIAL_ROUTINES [G]
 			-- Routines that ought to be in SPECIAL
 
-	array_special_item_routines: KL_ARRAY_ROUTINES [SPECIAL [G]]
+	array_special_item_routines: KL_ARRAY_ROUTINES [?SPECIAL [G]]
 			-- Routines that ought to be in ARRAY
 
 	special_key_routines: KL_SPECIAL_ROUTINES [K]
 			-- Routines that ought to be in SPECIAL
 
-	array_special_key_routines: KL_ARRAY_ROUTINES [SPECIAL [K]]
+	array_special_key_routines: KL_ARRAY_ROUTINES [?SPECIAL [K]]
 			-- Routines that ought to be in ARRAY
 
 invariant

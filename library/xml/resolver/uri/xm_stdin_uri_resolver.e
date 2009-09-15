@@ -63,6 +63,8 @@ feature -- Action(s)
 
 	resolve (a_uri: UT_URI) is
 			-- Resolve file URI.
+		local
+			l_last_stream: like last_stream
 		do
 			if not a_uri.is_absolute then
 				last_error := STRING_.concat (Valid_uri_message, a_uri.full_reference)
@@ -73,8 +75,9 @@ feature -- Action(s)
 			elseif a_uri.has_query then
 				last_error := STRING_.concat (Valid_uri_message, a_uri.full_reference)
 			else
-				last_stream := std.input
-				if last_stream.is_open_read then
+				l_last_stream := std.input
+				last_stream := l_last_stream
+				if l_last_stream.is_open_read then
 					last_error := Void
 				else
 					last_error := "Standard input is closed"
@@ -84,10 +87,10 @@ feature -- Action(s)
 
 feature -- Result
 
-	last_stream: KL_STDIN_FILE
+	last_stream: ?KL_STDIN_FILE
 			-- Standard input stream
 
-	last_error: STRING
+	last_error: ?STRING
 			-- Error
 
 	has_error: BOOLEAN is
@@ -102,7 +105,7 @@ feature -- Result
 			Result := True
 		end
 
-	last_media_type: UT_MEDIA_TYPE
+	last_media_type: ?UT_MEDIA_TYPE
 			-- Content type delivered by `last_stream'.
 
 feature {NONE} -- Implementation

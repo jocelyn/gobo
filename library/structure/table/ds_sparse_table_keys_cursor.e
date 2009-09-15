@@ -52,7 +52,7 @@ feature {DS_SPARSE_TABLE_KEYS} -- Implementation
 	table_cursor: DS_SPARSE_TABLE_CURSOR [G, K]
 			-- Cursor for the table to which the keys belong
 
-	next_cursor: DS_SPARSE_TABLE_KEYS_CURSOR [G, K]
+	next_cursor: ?DS_SPARSE_TABLE_KEYS_CURSOR [G, K]
 			-- Next cursor
 			-- (Used by `container' to keep track of traversing
 			-- cursors (i.e. cursors associated with `container'

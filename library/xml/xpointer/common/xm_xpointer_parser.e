@@ -39,7 +39,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	shorthand: STRING
+	shorthand: ?STRING
 			-- Shorthand pointer
 
 	scheme_sequence: DS_ARRAYED_LIST [STRING]
@@ -56,9 +56,9 @@ feature -- Status report
 	is_error: BOOLEAN
 			-- Was an error detected?
 
-	error_message, error_code: STRING
+	error_message, error_code: ?STRING
 			-- Error text and code from `parse'
-	
+
 feature -- Element change
 
 	parse (an_xpointer: STRING) is
@@ -68,7 +68,7 @@ feature -- Element change
 		local
 			a_tokenizer: XM_XPOINTER_TOKENIZER
 			a_token: INTEGER
-			a_scheme_name: STRING
+			a_scheme_name: ?STRING
 		do
 			create a_tokenizer.make (an_xpointer)
 			a_tokenizer.next
@@ -123,10 +123,10 @@ feature {NONE} -- Implementation
 	last_token: INTEGER
 			-- Last token set by `parse_scheme'
 
-	current_scheme_name: STRING
+	current_scheme_name: ?STRING
 			-- Name of scheme currently being parsed
 
-	current_scheme_data: STRING
+	current_scheme_data: ?STRING
 			-- Data for scheme currently being parsed
 
 	set_error (a_message, a_code: STRING) is
@@ -134,31 +134,33 @@ feature {NONE} -- Implementation
 		require
 			message_not_void: a_message /= Void and then a_message.count > 0
 			code_not_void: a_code /= Void and then a_code.count > 0
-			not_in_error: not is_error			
+			not_in_error: not is_error
 		do
 			error_message := a_message; error_code := a_code
 			is_error := True
 		ensure
-			valid_error_message: error_message /= Void
-				and then STRING_.same_string (error_message, a_message)
-			valid_error_code: error_code /= Void
-				and then STRING_.same_string (error_code, a_code)
+			valid_error_message: {l_error_message: like error_message} error_message
+				and then STRING_.same_string (l_error_message, a_message)
+			valid_error_code: {l_error_code: like error_code} error_code
+				and then STRING_.same_string (l_error_code, a_code)
 			in_error: is_error
 		end
 
 
-	parse_scheme (a_tokenizer: XM_XPOINTER_TOKENIZER; a_name: STRING) is
+	parse_scheme (a_tokenizer: XM_XPOINTER_TOKENIZER; a_name: ?STRING) is
 			-- Parse a single XPointer scheme name and data and set `last_token'.
 		require
 			no_previous_error: not is_error
 			tokenizer_not_finished: a_tokenizer /= Void and then not a_tokenizer.is_lexical_error and then a_tokenizer.last_token /= Eof_token
-			possible_scheme_name: a_name = Void and then a_tokenizer.last_token /= Eof_token or else is_qname (a_name)
+			possible_scheme_name: a_name = Void and then a_tokenizer.last_token /= Eof_token or else a_name /= Void and then is_qname (a_name)
 				and then a_tokenizer.last_token = Left_parenthesis_token
 		local
 			a_left_parenthesis_count, a_right_parenthesis_count: INTEGER
+			l_current_scheme_data: like current_scheme_data
 		do
 			current_scheme_name := Void
-			current_scheme_data := ""
+			l_current_scheme_data := ""
+			current_scheme_data := l_current_scheme_data
 			parse_scheme_name (a_tokenizer, a_name)
 			if not is_error then
 				if a_tokenizer.last_token = Left_parenthesis_token then
@@ -181,17 +183,18 @@ feature {NONE} -- Implementation
 								set_error ("Unexpected end-of-xpointer-string", "XPOINTER_SYNTAX")
 							when Left_parenthesis_token then
 								a_left_parenthesis_count := a_left_parenthesis_count + 1
-								current_scheme_data := STRING_.appended_string (current_scheme_data, a_tokenizer.last_token_value)
+								l_current_scheme_data := STRING_.appended_string (l_current_scheme_data, a_tokenizer.last_token_value)
 							when Right_parenthesis_token then
 								a_right_parenthesis_count := a_right_parenthesis_count + 1
 								if a_right_parenthesis_count /= a_left_parenthesis_count then
-									current_scheme_data := STRING_.appended_string (current_scheme_data, a_tokenizer.last_token_value)
+									l_current_scheme_data := STRING_.appended_string (l_current_scheme_data, a_tokenizer.last_token_value)
 								else
 									a_tokenizer.set_whitespace_reporting (True)
 								end
 							else
-								current_scheme_data := STRING_.appended_string (current_scheme_data, a_tokenizer.last_token_value)
+								l_current_scheme_data := STRING_.appended_string (l_current_scheme_data, a_tokenizer.last_token_value)
 							end
+							current_scheme_data := l_current_scheme_data
 						end
 					end
 					a_tokenizer.next
@@ -201,17 +204,19 @@ feature {NONE} -- Implementation
 				last_token := a_tokenizer.last_token
 			end
 		ensure
-			error_or_scheme_parsed: not is_error implies current_scheme_name /= Void and then is_qname (current_scheme_name)
+			error_or_scheme_parsed: not is_error implies {el_current_scheme_name: like current_scheme_name} current_scheme_name and then is_qname (el_current_scheme_name)
 				and then current_scheme_data /= Void
 		end
 
-	parse_scheme_name (a_tokenizer: XM_XPOINTER_TOKENIZER; a_name: STRING) is
+	parse_scheme_name (a_tokenizer: XM_XPOINTER_TOKENIZER; a_name: ?STRING) is
 			-- Parse scheme name
 		require
 			no_previous_error: not is_error
 			tokenizer_not_finished: a_tokenizer /= Void and then not a_tokenizer.is_lexical_error and then a_tokenizer.last_token /= Eof_token
-			possible_scheme_name: a_name = Void and then a_tokenizer.last_token /= Eof_token or else is_qname (a_name)
+			possible_scheme_name: a_name = Void and then a_tokenizer.last_token /= Eof_token or else a_name /= Void and then is_qname (a_name)
 				and then a_tokenizer.last_token = Left_parenthesis_token
+		local
+			l_current_scheme_name: like current_scheme_name
 		do
 			if a_name = Void then
 				if a_tokenizer.is_lexical_error then
@@ -227,9 +232,10 @@ feature {NONE} -- Implementation
 						if a_tokenizer.last_token /= String_token then
 							set_error ("Unexpected token within xpointer string when looking for scheme name: " + a_tokenizer.last_token_value, "XPOINTER_SYNTAX")
 						else
-							current_scheme_name := a_tokenizer.last_token_value
-							if not is_qname (current_scheme_name) then
-								set_error ("XPointer scheme name is not a lexical QName: " + current_scheme_name, "XPOINTER_LEXICAL")								
+							l_current_scheme_name := a_tokenizer.last_token_value
+							current_scheme_name := l_current_scheme_name
+							if not is_qname (l_current_scheme_name) then
+								set_error ("XPointer scheme name is not a lexical QName: " + l_current_scheme_name, "XPOINTER_LEXICAL")
 							else
 								a_tokenizer.next
 							end
@@ -240,26 +246,34 @@ feature {NONE} -- Implementation
 				current_scheme_name := a_name
 			end
 		ensure
-			error_or_lexical_qname: not is_error implies current_scheme_name /= Void and then is_qname (current_scheme_name)
+			error_or_lexical_qname: not is_error implies {el_current_scheme_name: like current_scheme_name} current_scheme_name
+				and then is_qname (el_current_scheme_name)
 		end
 
 	store_current_scheme is
 			-- Store current parsed scheme.
 		require
 			no_previous_error: not is_error
-			lexical_qname: current_scheme_name /= Void and then is_qname (current_scheme_name)
+			lexical_qname: {l_current_scheme_name: like current_scheme_name} current_scheme_name and then is_qname (l_current_scheme_name)
 			good_data: current_scheme_data /= Void
+		local
+			l_name: like current_scheme_name
+			l_data: like current_scheme_data
 		do
-			scheme_sequence.force_last (current_scheme_name)
-			scheme_data.force_last (current_scheme_data)
+			l_name := current_scheme_name
+			check l_name /= Void end -- implied by `lexical_qname'
+			scheme_sequence.force_last (l_name)
+			l_data := current_scheme_data
+			check l_data /= Void end -- implied by `good_data'
+			scheme_data.force_last (l_data)
 		end
-			
+
 invariant
 
 	possible_error: is_error implies error_message /= Void and then error_code /= Void
-	shorthand_not_void: is_shorthand implies shorthand /= Void and then is_ncname (shorthand)
+	shorthand_not_void: is_shorthand implies {l_shorthand: like shorthand} shorthand and then is_ncname (l_shorthand)
 	scheme_data_correct_length: scheme_sequence /= Void and then scheme_data /= Void
 		and then scheme_sequence.count = scheme_data.count
 
 end
-	
+

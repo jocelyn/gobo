@@ -85,7 +85,7 @@ feature -- Cursor movement
 
 feature {DS_LINEAR} -- Implementation
 
-	next_cursor: DS_LINEAR_CURSOR [G]
+	next_cursor: ?DS_LINEAR_CURSOR [G]
 			-- Next cursor
 			-- (Used by `container' to keep track of traversing
 			-- cursors (i.e. cursors associated with `container'

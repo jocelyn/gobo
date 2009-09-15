@@ -82,8 +82,8 @@ feature {NONE} -- Initialization
 				from
 					other_cursor := other.new_cursor
 					other_cursor.start
-					create first_cell.make (other_cursor.item)
-					new_last := first_cell
+					create new_last.make (other_cursor.item)
+					first_cell := new_last
 					other_cursor.forth
 				until
 					other_cursor.after
@@ -116,8 +116,8 @@ feature {NONE} -- Initialization
 				from
 					i := other.lower
 					nb := other.upper
-					create first_cell.make (other.item (i))
-					new_last := first_cell
+					create new_last.make (other.item (i))
+					first_cell := new_last
 					i := i + 1
 				until
 					i > nb
@@ -153,12 +153,14 @@ feature -- Access
 			j: INTEGER
 		do
 			a_cell := first_cell
+			check a_cell /= Void end -- implied by precondition `valid_index'
 			from
 				j := 1
 			until
 				j = i
 			loop
 				a_cell := a_cell.right
+				check a_cell /= Void end -- implied by `1 <= j < i <= count'
 				j := j + 1
 			end
 			Result := a_cell.item
@@ -167,15 +169,23 @@ feature -- Access
 	first: G is
 			-- First item in list
 			-- (Performance: O(1).)
+		local
+			l_first_cell: like first_cell
 		do
-			Result := first_cell.item
+			l_first_cell := first_cell
+			check l_first_cell /= Void end -- implied by precondition `not_empty'
+			Result := l_first_cell.item
 		end
 
 	last: G is
 			-- Last item in list
 			-- (Performance: O(1).)
+		local
+			l_last_cell: like last_cell
 		do
-			Result := last_cell.item
+			l_last_cell := last_cell
+			check l_last_cell /= Void end -- implied by precondition `not_empty'
+			Result := l_last_cell.item
 		end
 
 	new_cursor: DS_LINKED_LIST_CURSOR [G] is
@@ -405,10 +415,10 @@ feature -- Duplication
 			-- (Performance: O(other.count).)
 		local
 			a_cell, new_cell, new_last: like first_cell
-			old_cursor: like new_cursor
+			old_cursor: ?like new_cursor
 		do
 			if other /= Current then
-				old_cursor := internal_cursor
+				old_cursor := detachable_internal_cursor
 				move_all_cursors_after
 				standard_copy (other)
 				if old_cursor /= Void and then valid_cursor (old_cursor) then
@@ -416,7 +426,7 @@ feature -- Duplication
 				else
 						-- This may happen when `copy' is called from `clone'
 						-- and the target has not been properly initialized.
-						-- Set `internal_cursor' to Void before calling
+						-- Set `detachable_internal_cursor' to Void before calling
 						-- `new_cursor' to avoid an invariant violation.
 					set_internal_cursor (Void)
 					set_internal_cursor (new_cursor)
@@ -424,8 +434,9 @@ feature -- Duplication
 				if not other.is_empty then
 					from
 						a_cell := other.first_cell
-						create first_cell.make (a_cell.item)
-						new_last := first_cell
+						check a_cell /= Void end -- implied by `not other.is_empty'
+						create new_last.make (a_cell.item)
+						first_cell := new_last
 						a_cell := a_cell.right
 					until
 						a_cell = Void
@@ -460,6 +471,7 @@ feature -- Comparison
 				until
 					a_cell = Void
 				loop
+					check other_cell /= Void end -- implied by `a_cell /= Void' and `other.count = count'
 					if a_cell.item /= other_cell.item then
 						Result := False
 							-- Jump out of the loop.
@@ -479,7 +491,7 @@ feature -- Element change
 			-- Do not move cursors.
 			-- (Performance: O(1).)
 		local
-			old_cell: like first_cell
+			l_cell, old_cell: like first_cell
 		do
 			if is_empty then
 				create first_cell.make (v)
@@ -487,8 +499,10 @@ feature -- Element change
 				count := 1
 			else
 				old_cell := first_cell
-				create first_cell.make (v)
-				first_cell.put_right (old_cell)
+				check old_cell /= Void end -- implied by `not is_empty'
+				create l_cell.make (v)
+				first_cell := l_cell
+				l_cell.put_right (old_cell)
 				count := count + 1
 			end
 		end
@@ -498,7 +512,7 @@ feature -- Element change
 			-- Do not move cursors.
 			-- (Performance: O(1).)
 		local
-			old_cell: like first_cell
+			l_cell, old_cell: like first_cell
 		do
 			if is_empty then
 				create first_cell.make (v)
@@ -506,8 +520,10 @@ feature -- Element change
 				count := 1
 			else
 				old_cell := last_cell
-				create last_cell.make (v)
-				old_cell.put_right (last_cell)
+				check old_cell /= Void end -- implied by `not is_empty'
+				create l_cell.make (v)
+				last_cell := l_cell
+				old_cell.put_right (l_cell)
 				count := count + 1
 			end
 		end
@@ -521,12 +537,14 @@ feature -- Element change
 			j: INTEGER
 		do
 			a_cell := first_cell
+			check a_cell /= Void end -- implied by precondition `valid_index'
 			from
 				j := 1
 			until
 				j = i
 			loop
 				a_cell := a_cell.right
+				check a_cell /= Void end -- implied by precondition `valid_index' and 1 <= j < i
 				j := j + 1
 			end
 			a_cell.put (v)
@@ -537,7 +555,7 @@ feature -- Element change
 			-- Do not move cursors.
 			-- (Performance: O(i).)
 		local
-			a_cell, new_cell: like first_cell
+			a_cell, new_cell, rcell: like first_cell
 			j: INTEGER
 		do
 			if i = 1 then
@@ -547,19 +565,23 @@ feature -- Element change
 			else
 					-- Go to cell at index `i-1'.
 				a_cell := first_cell
+				check a_cell /= Void end -- implied by precondition `valid_index'
 				from
 					j := 2
 				until
 					j = i
 				loop
 					a_cell := a_cell.right
+					check a_cell /= Void end -- implied by precondition `valid_index' and 2 <= j < i < count + 1
 					j := j + 1
 				end
 					-- The cell at index `i-1' exists (because i /= 1)
 					-- and has a right neighbor (because i /= count + 1).
 					-- Insert a new cell in-between.
 				create new_cell.make (v)
-				new_cell.put_right (a_cell.right)
+				rcell := a_cell.right
+				check rcell /= Void end -- implied by `valid_index' and i /= count + 1 and i /= 1
+				new_cell.put_right (rcell)
 				a_cell.put_right (new_cell)
 				count := count + 1
 			end
@@ -582,6 +604,7 @@ feature -- Element change
 					-- and swap the two items. Do not forget to update
 					-- the cursor positions due the swap of items.
 				a_cell := a_cursor.current_cell
+				check a_cell /= Void end -- implied by `not_before' and `not a_cursor.after'
 				create new_cell.make (a_cell.item)
 				a_cell.put (v)
 				new_right := a_cell.right
@@ -605,7 +628,7 @@ feature -- Element change
 			-- (Synonym of `a_cursor.put_right (v)'.)
 			-- (Performance: O(1).)
 		local
-			new_cell, old_cell: like first_cell
+			new_cell, old_cell, rcell: like first_cell
 		do
 			if a_cursor.before then
 				put_first (v)
@@ -613,8 +636,11 @@ feature -- Element change
 				put_last (v)
 			else
 				old_cell := a_cursor.current_cell
+				check old_cell /= Void end -- implied by `not_after' and  `not before'
 				create new_cell.make (v)
-				new_cell.put_right (old_cell.right)
+				rcell := old_cell.right
+				check rcell /= Void end -- implied by `not is_last'
+				new_cell.put_right (rcell)
 				old_cell.put_right (new_cell)
 				count := count + 1
 			end
@@ -638,12 +664,14 @@ feature -- Element change
 					jj := i
 				end
 				i_cell := first_cell
+				check i_cell /= Void end -- implied by `valid_i' and `valid_j'
 				from
 					k := 1
 				until
 					k = ii
 				loop
 					i_cell := i_cell.right
+					check i_cell /= Void end -- implied by `k < ii' and `ii = min (i,j)'
 					k := k + 1
 				end
 				j_cell := i_cell
@@ -652,6 +680,7 @@ feature -- Element change
 					k = jj
 				loop
 					j_cell := j_cell.right
+					check j_cell /= Void end -- implied by `k < jj' and `jj = max (i,j)'
 					k := k + 1
 				end
 				v := i_cell.item
@@ -667,7 +696,7 @@ feature -- Element change
 			-- (Performance: O(other.count).)
 		local
 			other_cursor: DS_LINEAR_CURSOR [G]
-			fcell, lcell, new_cell: like first_cell
+			fcell, lcell, a_cell: like first_cell
 		do
 			if not other.is_empty then
 				from
@@ -679,16 +708,18 @@ feature -- Element change
 				until
 					other_cursor.after
 				loop
-					create new_cell.make (other_cursor.item)
-					lcell.put_right (new_cell)
-					lcell := new_cell
+					create a_cell.make (other_cursor.item)
+					lcell.put_right (a_cell)
+					lcell := a_cell
 					other_cursor.forth
 				end
 				if is_empty then
 					first_cell := fcell
 					last_cell := lcell
 				else
-					lcell.put_right (first_cell)
+					a_cell := first_cell
+					check a_cell /= Void end -- implied by `not is_empty'
+					lcell.put_right (a_cell)
 					first_cell := fcell
 				end
 				count := count + other.count
@@ -702,7 +733,7 @@ feature -- Element change
 			-- (Performance: O(other.count).)
 		local
 			other_cursor: DS_LINEAR_CURSOR [G]
-			fcell, lcell, new_cell: like first_cell
+			fcell, lcell, a_cell: like first_cell
 		do
 			if not other.is_empty then
 				from
@@ -714,16 +745,18 @@ feature -- Element change
 				until
 					other_cursor.after
 				loop
-					create new_cell.make (other_cursor.item)
-					lcell.put_right (new_cell)
-					lcell := new_cell
+					create a_cell.make (other_cursor.item)
+					lcell.put_right (a_cell)
+					lcell := a_cell
 					other_cursor.forth
 				end
 				if is_empty then
 					first_cell := fcell
 					last_cell := lcell
 				else
-					last_cell.put_right (fcell)
+					a_cell := last_cell
+					check a_cell /= Void end -- implied by `not is_empty'
+					a_cell.put_right (fcell)
 					last_cell := lcell
 				end
 				count := count + other.count
@@ -737,7 +770,7 @@ feature -- Element change
 			-- (Performance: O(i+other.count).)
 		local
 			other_cursor: DS_LINEAR_CURSOR [G]
-			a_cell: like first_cell
+			a_cell, rcell: like first_cell
 			fcell, lcell, new_cell: like first_cell
 			j: INTEGER
 		do
@@ -762,18 +795,22 @@ feature -- Element change
 				end
 					-- Go to cell at index `i-1'.
 				a_cell := first_cell
+				check a_cell /= Void end -- implied by `1 < i < count + 1'
 				from
 					j := 2
 				until
 					j = i
 				loop
 					a_cell := a_cell.right
+					check a_cell /= Void end -- implied by `j < i < count + 1'
 					j := j + 1
 				end
 					-- The cell at index `i-1' exists (because i /= 1)
 					-- and has a right neighbor (because i /= count + 1).
 					-- Insert the new cells in-between.
-				lcell.put_right (a_cell.right)
+				rcell := a_cell.right
+				check rcell /= Void end -- implied by `i /= 1' and `i /= count + 1'
+				lcell.put_right (rcell)
 				a_cell.put_right (fcell)
 				count := count + other.count
 			end
@@ -788,7 +825,7 @@ feature -- Element change
 		local
 			other_cursor: DS_LINEAR_CURSOR [G]
 			a_cell, new_cell, new_right: like first_cell
-			fcell, lcell, new_lcell: like first_cell
+			rcell, fcell, lcell, new_lcell: like first_cell
 		do
 			if a_cursor.after then
 				extend_last (other)
@@ -802,6 +839,7 @@ feature -- Element change
 					-- Do not forget to update the cursor positions due the
 					-- swap of items at current cell.
 				a_cell := a_cursor.current_cell
+				check a_cell /= Void end -- implied by `not after and not is_first' and precondition `not_before'
 				create new_cell.make (a_cell.item)
 				if other.count = 1 then
 					a_cell.put (other.first)
@@ -831,7 +869,9 @@ feature -- Element change
 					end
 					a_cell.put (fcell.item)
 					new_right := a_cell.right
-					a_cell.put_right (fcell.right)
+					rcell := fcell.right
+					check rcell /= Void end -- implied by code in previous loop
+					a_cell.put_right (rcell)
 					lcell.put_right (new_cell)
 					if new_right = Void then
 							-- The cursor was on the last cell. The new cell
@@ -855,7 +895,7 @@ feature -- Element change
 			-- (Performance: O(other.count).)
 		local
 			other_cursor: DS_LINEAR_CURSOR [G]
-			old_cell, fcell, lcell, new_lcell: like first_cell
+			a_cell, old_cell, fcell, lcell, new_lcell: like first_cell
 		do
 			if not other.is_empty then
 				from
@@ -876,10 +916,14 @@ feature -- Element change
 					first_cell := fcell
 					last_cell := lcell
 				elseif a_cursor.before then
-					lcell.put_right (first_cell)
+					a_cell := first_cell
+					check a_cell /= Void end -- implied by `not is_empty'
+					lcell.put_right (a_cell)
 					first_cell := fcell
 				elseif a_cursor.is_last then
-					last_cell.put_right (fcell)
+					a_cell := last_cell
+					check a_cell /= Void end -- implied by `not is_empty'
+					a_cell.put_right (fcell)
 					last_cell := lcell
 				else
 						-- The current cell exists (because the cursor is
@@ -888,7 +932,10 @@ feature -- Element change
 						-- (because the cursor is not `is_last' (see above)).
 						-- Insert new cells in-between.
 					old_cell := a_cursor.current_cell
-					lcell.put_right (old_cell.right)
+					check old_cell /= Void end -- implied by `not is_empty and not after and not before'
+					a_cell := old_cell.right
+					check a_cell /= Void end -- implied by `not is_last'
+					lcell.put_right (a_cell)
 					old_cell.put_right (fcell)
 				end
 				count := count + other.count
@@ -902,13 +949,16 @@ feature -- Removal
 			-- Move any cursors at this position `forth'.
 			-- (Performance: O(1).)
 		local
-			a_cell: like first_cell
+			a_cell,fcell: like first_cell
 		do
 			if count = 1 then
 				wipe_out
 			else
-				a_cell := first_cell.right
-				move_all_cursors (first_cell, a_cell)
+				fcell := first_cell
+				check fcell /= Void end -- implied by `not_empty'
+				a_cell := fcell.right
+				check a_cell /= Void end -- implied by `not_empty' and `count > 1'
+				move_all_cursors (fcell, a_cell)
 				set_first_cell (a_cell)
 				count := count - 1
 			end
@@ -928,12 +978,14 @@ feature -- Removal
 				move_last_cursors_after
 					-- Go to second to last cell.
 				a_cell := first_cell
+				check a_cell /= Void end -- implied by precondition `not_empty'
 				from
 					i := count
 				until
 					i = 2
 				loop
 					a_cell := a_cell.right
+					check a_cell /= Void end -- implied by `count > 1' and `count >= i > 2' and `a_cell' starts from `first_cell'
 					i := i - 1
 				end
 				set_last_cell (a_cell)
@@ -956,19 +1008,23 @@ feature -- Removal
 			else
 					-- Go to the cell at index `i-1'.
 				a_cell := first_cell
+				check a_cell /= Void end -- implied by precondition `not_empty'
 				from
 					j := 2
 				until
 					j = i
 				loop
 					a_cell := a_cell.right
+					check a_cell /= Void end -- implied by `count > 1' and `count > i > 2'
 					j := j + 1
 				end
 					-- The cell at index `i-1' exists (because i /= 1)
 					-- and has a right neighbor (because i /= count + 1,
 					-- see precondition).  Remove the new cell in-between.
 				old_right := a_cell.right
+				check old_right /= Void end -- implied by `i /= 1 and i /= count'
 				new_right := old_right.right
+				check new_right /= Void end -- implied by `1 < j < i < count' starting from `first_cell'
 				move_all_cursors (old_right, new_right)
 				a_cell.put_right (new_right)
 				count := count - 1
@@ -981,7 +1037,7 @@ feature -- Removal
 			-- (Synonym of `a_cursor.remove'.)
 			-- (Performance: O(count) if `a_cursor.is_last', O(1) otherwise.)
 		local
-			a_cell, old_cell: like first_cell
+			a_cell, old_cell, rcell: like first_cell
 		do
 			if a_cursor.is_first then
 				remove_first
@@ -992,14 +1048,18 @@ feature -- Removal
 					-- and swap the two items. Do not forget to update
 					-- the cursor positions due the swap of items.
 				a_cell := a_cursor.current_cell
+				check a_cell /= Void end -- implied by precondition `not_off'
 				old_cell := a_cell.right
+				check old_cell /= Void end -- implied by `not is_last'
 				if old_cell = last_cell then
 						-- The cursor was on the second to last cell.
 						-- The cell at cursor position becomes the
 						-- new last cell of the list.
 					set_last_cell (a_cell)
 				else
-					a_cell.put_right (old_cell.right)
+					rcell := old_cell.right
+					check rcell /= Void end -- implied by `not is_last' and `old_cell /= last_cell'
+					a_cell.put_right (rcell)
 				end
 				a_cell.put (old_cell.item)
 				count := count - 1
@@ -1020,7 +1080,9 @@ feature -- Removal
 				remove_last
 			else
 				current_cell := a_cursor.current_cell
+				check current_cell /= Void end -- implied by precondition `not_before' and `not after'
 				new_left := first_cell
+				check new_left /= Void end -- implied by `not_before' and `not_empty'
 				old_left := new_left.right
 				if old_left = current_cell then
 						-- The cell to be removed is the first cell
@@ -1028,6 +1090,7 @@ feature -- Removal
 					move_all_cursors (new_left, current_cell)
 					set_first_cell (current_cell)
 				else
+					check old_left /= Void end -- implied by `old_left /= current_cell' and `first_cell /= Void'
 						-- Go to cell to the left of the cell
 						-- to be removed.
 					from
@@ -1036,6 +1099,7 @@ feature -- Removal
 					loop
 						new_left := old_left
 						old_left := new_left.right
+						check old_left /= Void end -- implied by `old_left.right /= current_cell'
 					end
 					move_all_cursors (old_left, current_cell)
 					new_left.put_right (current_cell)
@@ -1056,7 +1120,9 @@ feature -- Removal
 				remove_first
 			else
 				current_cell := a_cursor.current_cell
+				check current_cell /= Void end -- implied by precondition `not_after' and `not before'
 				old_right := current_cell.right
+				check old_right /= Void end -- implied by `not_after' and `not_empty'
 				new_right := old_right.right
 				if new_right = Void then
 						-- The cell to be removed was the last in the
@@ -1085,12 +1151,14 @@ feature -- Removal
 			elseif n /= 0 then
 				move_all_cursors_after
 				new_first := first_cell
+				check new_first /= Void end -- implied by `valid_n and count /= n and n /= 0'
 				from
 					i := 1
 				until
 					i > n
 				loop
 					new_first := new_first.right
+					check new_first /= Void end -- implied by `count /= n and n /= 0 and i <= n'
 					i := i + 1
 				end
 				set_first_cell (new_first)
@@ -1122,22 +1190,26 @@ feature -- Removal
 				move_all_cursors_after
 					-- Go to cell at index `i-1'.
 				a_cell := first_cell
+				check a_cell /= Void end -- implied by `valid_index' and `n /= 0'
 				from
 					j := 2
 				until
 					j = i
 				loop
 					a_cell := a_cell.right
+					check a_cell /= Void end -- implied by `i /= 1' and `2 <= j < i' and from `first_cell'
 					j := j + 1
 				end
 					-- Go to the last cell to be removed.
 				new_right := a_cell.right
+				check new_right /= Void end -- implied by previous loop's implementation
 				from
 					j := 1
 				until
 					j = n
 				loop
 					new_right := new_right.right
+					check new_right /= Void end -- implied by `j < n'
 					j := j + 1
 				end
 				new_right := new_right.right
@@ -1170,6 +1242,7 @@ feature -- Removal
 					-- Go to the cell to the left of the first
 					-- cell to be removed.
 				current_cell := a_cursor.current_cell
+				check current_cell /= Void end -- implied by `not after' and `n /= 0' and precondition `valid_n'
 				j := a_cursor.index - n - 1
 				if j = 0 then
 						-- There is no such cell. The cell at cursor
@@ -1177,12 +1250,14 @@ feature -- Removal
 					set_first_cell (current_cell)
 				else
 					a_cell := first_cell
+					check a_cell /= Void end -- implied by `n > 0' and precondition `valid_n'
 					from
 						i := 1
 					until
 						i = j
 					loop
 						a_cell := a_cell.right
+						check a_cell /= Void end -- implied by `i < j'
 						i := i + 1
 					end
 					a_cell.put_right (current_cell)
@@ -1207,6 +1282,7 @@ feature -- Removal
 				prune_first (n)
 			elseif n /= 0 then
 				current_cell := a_cursor.current_cell
+				check current_cell /= Void end -- implied by `not before' and `n /= 0' and precondition `valid_n'
 				move_all_cursors_after
 					-- Go to the cell to the right of the last
 					-- cell to be removed.
@@ -1216,6 +1292,7 @@ feature -- Removal
 				until
 					i > n
 				loop
+					check new_right /= Void end -- implied by `i <= n"
 					new_right := new_right.right
 					i := i + 1
 				end
@@ -1252,6 +1329,7 @@ feature -- Removal
 				until
 					i = n
 				loop
+					check new_last /= Void end -- implied by `i < n'
 					new_last := new_last.right
 					i := i + 1
 				end
@@ -1398,7 +1476,7 @@ feature -- Removal
 
 feature {DS_LINKED_LIST, DS_LINKED_LIST_CURSOR} -- Implementation
 
-	first_cell: DS_LINKABLE [G]
+	first_cell: ?DS_LINKABLE [G]
 			-- First cell in list
 
 	last_cell: like first_cell
@@ -1441,13 +1519,13 @@ feature {NONE} -- Implementation
 
 feature {NONE} -- Implementation
 
-	set_internal_cursor (c: like internal_cursor) is
-			-- Set `internal_cursor' to `c'.
+	set_internal_cursor (c: like detachable_internal_cursor) is
+			-- Set `detachable_internal_cursor' to `c'
 		do
-			internal_cursor := c
+			detachable_internal_cursor := c
 		end
 
-	internal_cursor: like new_cursor
+	detachable_internal_cursor: ?like new_cursor
 			-- Internal cursor
 
 feature {NONE} -- Cursor movement
@@ -1455,7 +1533,7 @@ feature {NONE} -- Cursor movement
 	move_last_cursors_after is
 			-- Move `after' all cursors at last position.
 		local
-			a_cursor, previous_cursor, next_cursor: like new_cursor
+			a_cursor, previous_cursor, next_cursor: ?like new_cursor
 			old_cell: like first_cell
 		do
 			a_cursor := internal_cursor
@@ -1482,16 +1560,16 @@ feature {NONE} -- Cursor movement
 			end
 		end
 
-	move_all_cursors (old_cell, new_cell: like first_cell) is
+	move_all_cursors (old_cell, new_cell: !like first_cell) is
 			-- Move all cursors at position `old_cell' to `new_cell'.
 		require
 			old_cell_not_void: old_cell /= Void
 			new_cell_not_void: new_cell /= Void
 		local
-			a_cursor: like new_cursor
+			a_cursor: ?like new_cursor
 		do
 			from
-				a_cursor := internal_cursor
+				a_cursor := detachable_internal_cursor
 			until
 				(a_cursor = Void)
 			loop
@@ -1505,10 +1583,10 @@ feature {NONE} -- Cursor movement
 	move_all_cursors_after is
 			-- Move `after' all cursors.
 		local
-			a_cursor, next_cursor: like new_cursor
+			a_cursor, next_cursor: ?like new_cursor
 		do
 			from
-				a_cursor := internal_cursor
+				a_cursor := detachable_internal_cursor
 			until
 				(a_cursor = Void)
 			loop
@@ -1524,8 +1602,12 @@ feature {DS_LINKED_LIST_CURSOR} -- Cursor implementation
 	cursor_item (a_cursor: like new_cursor): G is
 			-- Item at `a_cursor' position
 			-- (Performance: O(1).)
+		local
+			l_current_cell: like first_cell
 		do
-			Result := a_cursor.current_cell.item
+			l_current_cell := a_cursor.current_cell
+			check l_current_cell /= Void end -- implied by precondition `a_cursor_not_off'
+			Result := l_current_cell.item
 		end
 
 	cursor_index (a_cursor: like new_cursor): INTEGER is
@@ -1544,6 +1626,7 @@ feature {DS_LINKED_LIST_CURSOR} -- Cursor implementation
 				until
 					a_cell = current_cell
 				loop
+					check a_cell /= Void end -- implied by being between first_cell and current_cell
 					a_cell := a_cell.right
 					Result := Result + 1
 				end
@@ -1628,13 +1711,15 @@ feature {DS_LINKED_LIST_CURSOR} -- Cursor implementation
 		local
 			was_off: BOOLEAN
 			new_after: BOOLEAN
-			new_cell: like first_cell
+			l_current_cell, new_cell: like first_cell
 		do
 			if a_cursor.before then
 				was_off := True
 				new_cell := first_cell
 			else
-				new_cell := a_cursor.current_cell.right
+				l_current_cell := a_cursor.current_cell
+				check l_current_cell /= Void end -- implied by precondition `a_cursor_not_after' and `not a_cursor.before'
+				new_cell := l_current_cell.right
 			end
 			new_after := (new_cell = Void)
 			a_cursor.set (new_cell, False, new_after)
@@ -1663,10 +1748,12 @@ feature {DS_LINKED_LIST_CURSOR} -- Cursor implementation
 				from
 					current_cell := a_cursor.current_cell
 					new_cell := first_cell
+					check new_cell /= Void end -- implied by `not a_cursor.after' and `not is_first'
 				until
 					new_cell.right = current_cell
 				loop
 					new_cell := new_cell.right
+					check new_cell /= Void end -- implied by new_cell.right /= current_cell and `first_cell /= Void'
 				end
 			end
 			new_before := (new_cell = Void)
@@ -1737,9 +1824,10 @@ feature {DS_LINKED_LIST_CURSOR} -- Cursor implementation
 			was_off := (cursor_cell = Void)
 			a_tester := equality_tester
 			if a_tester /= Void then
-				if cursor_cell /= Void and a_tester.test (cursor_cell.item, v) then
+				if cursor_cell /= Void and then a_tester.test (cursor_cell.item, v) then
 					from
 						a_cell := first_cell
+						check a_cell /= Void end -- implied by precondition `a_cursor_not_off'
 					until
 						a_cell = cursor_cell
 					loop
@@ -1747,13 +1835,15 @@ feature {DS_LINKED_LIST_CURSOR} -- Cursor implementation
 							new_cell := a_cell
 						end
 						a_cell := a_cell.right
+						check a_cell /= Void end -- implied by `first_cell /= Void and a_cursor.current_cell=cursor_cell /= Void'						
 					end
 				end
 			else
 					-- Use `=' as comparison criterion.
-				if cursor_cell /= Void and cursor_cell.item = v then
+				if cursor_cell /= Void and then cursor_cell.item = v then
 					from
 						a_cell := first_cell
+						check a_cell /= Void end -- implied by precondition `a_cursor_not_off'						
 					until
 						a_cell = cursor_cell
 					loop
@@ -1761,6 +1851,7 @@ feature {DS_LINKED_LIST_CURSOR} -- Cursor implementation
 							new_cell := a_cell
 						end
 						a_cell := a_cell.right
+						check a_cell /= Void end -- implied by `first_cell /= Void and a_cursor.current_cell=cursor_cell /= Void'												
 					end
 				end
 			end
@@ -1838,12 +1929,14 @@ feature {DS_LINKED_LIST_CURSOR} -- Cursor implementation
 					new_cell := last_cell
 				else
 					new_cell := first_cell
+					check new_cell /= Void end -- implied by `1 < i < count' and precondition `valid_index'
 					from
 						j := 1
 					until
 						j = i
 					loop
 						new_cell := new_cell.right
+						check new_cell /= Void end -- implied by `1 <= j < i < count'
 						j := j + 1
 					end
 				end
@@ -1863,6 +1956,6 @@ invariant
 
 	first_cell: is_empty = (first_cell = Void)
 	last_cell: is_empty = (last_cell = Void)
-	last_constraint: last_cell /= Void implies last_cell.right = Void
+	last_constraint: {l_last_cell: like last_cell} last_cell implies l_last_cell.right = Void
 
 end

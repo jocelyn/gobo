@@ -61,7 +61,7 @@ feature -- Access
 
 feature {NONE} -- Access
 
-	new_tree_node (a_item, a_key: G): like root_node is
+	new_tree_node (a_item, a_key: G): !like root_node is
 			-- New tree node with `a_item'
 		do
 			check
@@ -74,9 +74,12 @@ feature -- Status report
 
 	has_void: BOOLEAN is
 			-- Does container include Void?
+		local
+			l_first_node: like first_node
 		do
 			if not is_empty then
-				Result := first_node.item = Void
+				l_first_node := first_node
+				Result := l_first_node /= Void and then l_first_node.item = Void
 			end
 		end
 
@@ -208,7 +211,7 @@ feature -- Element change
 
 feature {NONE} -- Element change
 
-	on_node_added (a_node: like root_node) is
+	on_node_added (a_node: like new_tree_node) is
 			-- `a_node' was just added to the binary search tree.
 			-- This feature is basically used by balanced binary
 			-- search tree variants. They are informed which
@@ -228,7 +231,7 @@ feature {NONE} -- Removal
 		do
 		end
 
-	on_node_removed (a_old_node, a_node: like root_node; a_was_left_child: BOOLEAN) is
+	on_node_removed (a_old_node, a_node: like new_tree_node; a_was_left_child: BOOLEAN) is
 			-- `a_old_node' was just removed from the tree.
 			-- The parent of `a_old_node' was `a_node'.
 			-- Depending on `a_was_left_child' `a_old_node'
@@ -244,9 +247,11 @@ feature -- Duplication
 			-- Copy `other' to current.
 		local
 			l_other_node: like root_node
+			l_internal_cursor: like detachable_internal_cursor
 		do
 			if other /= Current then
-				if internal_cursor = Void then
+				l_internal_cursor := internal_cursor
+				if l_internal_cursor = Void then
 					set_internal_cursor (new_cursor)
 				end
 				equality_tester := other.equality_tester
@@ -297,6 +302,7 @@ feature -- Basic operations
 		local
 			l_cursor: like new_cursor
 			l_item: G
+			l_node: like root_node
 		do
 			if other = Current then
 				move_all_cursors_after
@@ -312,7 +318,9 @@ feature -- Basic operations
 				loop
 					l_item := l_cursor.item
 					if not other.has (l_item) then
-						remove_node (l_cursor.position)
+						l_node := l_cursor.position
+						check l_node /= Void end -- implied by ... ?
+						remove_node (l_node)
 					else
 						l_cursor.forth
 					end
@@ -327,6 +335,7 @@ feature -- Basic operations
 		local
 			l_cursor: like new_cursor
 			l_item: G
+			l_node: like root_node
 		do
 			if other.is_empty then
 				move_all_cursors_after
@@ -342,7 +351,9 @@ feature -- Basic operations
 				loop
 					l_item := l_cursor.item
 					if other.has (l_item) then
-						remove_node (l_cursor.position)
+						l_node := l_cursor.position
+						check l_node /= Void end -- implied by ... ?
+						remove_node (l_node)
 					else
 						l_cursor.forth
 					end
@@ -386,7 +397,7 @@ feature -- Basic operations
 
 feature {NONE} -- Implementation
 
-	root_node: DS_BINARY_SEARCH_TREE_SET_NODE [G]
+	root_node: ?DS_BINARY_SEARCH_TREE_SET_NODE [G]
 			-- Root node
 
 end

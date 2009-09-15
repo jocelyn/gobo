@@ -190,7 +190,7 @@ feature {NONE} -- Generation
 			tokens: DS_ARRAYED_LIST [PR_TOKEN]
 			a_token: PR_TOKEN
 			a_name: STRING
-			a_literal: STRING
+			a_literal: ?STRING
 			i, nb: INTEGER
 		do
 			if not old_typing then
@@ -267,6 +267,7 @@ feature {NONE} -- Generation
 			tokens: DS_ARRAYED_LIST [PR_TOKEN]
 			a_type: PR_TYPE
 			i, nb: INTEGER
+			l_basic_type: ?PR_BASIC_TYPE
 		do
 			a_file.put_line ("feature -- Last values")
 			a_file.put_new_line
@@ -298,6 +299,10 @@ feature {NONE} -- Generation
 				a_file.put_string ("%T")
 				a_file.put_string (a_type.last_value_name)
 				a_file.put_string (": ")
+				l_basic_type ?= a_type
+				if l_basic_type = Void then
+					a_file.put_string ("?")
+				end
 				a_file.put_line (a_type.name)
 				a_cursor.forth
 			end
@@ -330,7 +335,7 @@ feature {NONE} -- Generation
 			a_file_not_void: a_file /= Void
 			a_file_open_write: a_file.is_open_write
 		local
-			eiffel_code: STRING
+			eiffel_code: ?STRING
 		do
 			eiffel_code := machine.grammar.eiffel_code
 			if eiffel_code /= Void then
@@ -365,10 +370,24 @@ feature {NONE} -- Generation
 		require
 			a_file_not_void: a_file /= Void
 			a_file_open_write: a_file.is_open_write
+		local
+			types: DS_ARRAYED_LIST [PR_TYPE]
+			i, nb: INTEGER
 		do
 			a_file.put_line ("%Tyy_create_value_stacks is")
 			a_file.put_line ("%T%T%T-- Create value stacks.")
 			a_file.put_line ("%T%Tdo")
+
+			types := machine.grammar.types
+			nb := types.count
+			from
+				i := 1
+			until
+				i > nb
+			loop
+				types.item (i).print_create_yyvs (3, a_file)
+				i := i + 1
+			end
 			a_file.put_line ("%T%Tend")
 		end
 
@@ -412,6 +431,7 @@ feature {NONE} -- Generation
 			types: DS_ARRAYED_LIST [PR_TYPE]
 			a_type: PR_TYPE
 			i, nb: INTEGER
+			l_basic_type: ?PR_BASIC_TYPE
 		do
 			types := machine.grammar.types
 			nb := types.count
@@ -429,6 +449,11 @@ feature {NONE} -- Generation
 					a_file.put_string ("%T%T%Tl_yyvs")
 					a_file.put_integer (a_type.id)
 					a_file.put_string ("_default_item: ")
+					l_basic_type ?= a_type
+					if l_basic_type = Void then
+						a_file.put_string ("?")
+					end
+
 					a_file.put_line (a_type.name)
 					i := i + 1
 				end
@@ -993,7 +1018,7 @@ feature {NONE} -- Generation
 			i, nb: INTEGER
 			states: DS_ARRAYED_LIST [PR_STATE]
 			a_state: PR_STATE
-			an_action: PR_ERROR_ACTION
+			an_action: ?PR_ERROR_ACTION
 		do
 			a_file.put_line ("%Tyy_do_error_action (yy_act: INTEGER) is")
 			a_file.put_line ("%T%T%T-- Execute error action.")
@@ -1062,7 +1087,7 @@ feature {NONE} -- Generation
 			inspect_size: INTEGER
 			states: DS_ARRAYED_LIST [PR_STATE]
 			a_state: PR_STATE
-			an_action: PR_ERROR_ACTION
+			an_action: ?PR_ERROR_ACTION
 		do
 				-- SmartEiffel generates C code which triggers a
 				-- stack overflow of the C compiler if there are

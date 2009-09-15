@@ -25,7 +25,7 @@ inherit
 			is_first as list_is_first,
 			is_last as list_is_last
 		end
-			
+
 	KL_IMPORTED_STRING_ROUTINES
 		undefine
 			is_equal, copy
@@ -33,7 +33,7 @@ inherit
 
 feature -- Access
 
-	element_by_name (a_name: STRING): XM_ELEMENT is
+	element_by_name (a_name: STRING): ?XM_ELEMENT is
 			-- Direct child element with name `a_name';
 			-- If there are more than one element with that name, anyone may be returned.
 			-- Return Void if no element with that name is a child of current node.
@@ -45,7 +45,7 @@ feature -- Access
 			--namespace: Result /= Void implies same_namespace (Result)
 		end
 
-	element_by_qualified_name (a_uri: STRING; a_name: STRING): XM_ELEMENT is
+	element_by_qualified_name (a_uri: STRING; a_name: STRING): ?XM_ELEMENT is
 			-- Direct child element with given qualified name;
 			-- If there are more than one element with that name, anyone may be returned.
 			-- Return Void if no element with that name is a child of current node.
@@ -56,7 +56,7 @@ feature -- Access
 		ensure
 			element_not_void: has_element_by_qualified_name (a_uri, a_name) = (Result /= Void)
 		end
-		
+
 	has_element_by_name (a_name: STRING): BOOLEAN is
 			-- Has current node at least one direct child
 			-- element with the name `a_name'?
@@ -64,7 +64,7 @@ feature -- Access
 			a_name_not_void: a_name /= Void
 		deferred
 		end
-		
+
 	has_element_by_qualified_name (a_uri: STRING; a_name: STRING): BOOLEAN is
 			-- Has current node at least one direct child
 			-- element with given qualified name ?
@@ -73,13 +73,14 @@ feature -- Access
 			a_name_not_void: a_name /= Void
 		deferred
 		end
-		
+
 	elements: DS_LIST [XM_ELEMENT] is
 			-- List of all direct child elements in current element
 			-- (Create a new list at each call.)
 		local
 			a_cursor: DS_LINEAR_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
+			l_element: ?XM_ELEMENT
 		do
 			create typer
 			create {DS_BILINKED_LIST [XM_ELEMENT]} Result.make
@@ -87,7 +88,9 @@ feature -- Access
 			from a_cursor.start until a_cursor.after loop
 				a_cursor.item.process (typer)
 				if typer.is_element then
-					Result.force_last (typer.element)
+					l_element := typer.element
+					check l_element /= Void end -- implied by `typer.is_element'
+					Result.force_last (l_element)
 				end
 				a_cursor.forth
 			end
@@ -97,23 +100,26 @@ feature -- Access
 
 feature -- Text
 
-	text: STRING is
+	text: ?STRING is
 			-- Concatenation of all texts directly found in
 			-- current element; Void if no text found
 			-- (Return a new string at each call.)
 		local
 			typer: XM_NODE_TYPER
 			a_cursor: DS_LINEAR_CURSOR [XM_NODE]
+			l_char_data: ?XM_CHARACTER_DATA
 		do
 			create typer
 			a_cursor := new_cursor
 			from a_cursor.start until a_cursor.after loop
 				a_cursor.item.process (typer)
 				if typer.is_character_data then
+					l_char_data := typer.character_data
+					check l_char_data /= Void end -- implied by `typer.is_character_data'
 					if Result = Void then
-						Result := STRING_.cloned_string (typer.character_data.content)
+						Result := STRING_.cloned_string (l_char_data.content)
 					else
-						Result := STRING_.appended_string (Result, typer.character_data.content)
+						Result := STRING_.appended_string (Result, l_char_data.content)
 					end
 				end
 				a_cursor.forth
@@ -132,7 +138,7 @@ feature {XM_NODE} -- Removal
 			-- object identity.
 		deferred
 		end
-		
+
 feature -- Processing
 
 	process_children (a_processor: XM_NODE_PROCESSOR) is
@@ -156,17 +162,22 @@ feature -- Processing
 		local
 			a_cursor: DS_LINEAR_CURSOR [XM_NODE]
 			typer: XM_NODE_TYPER
+			l_node: XM_NODE
+			l_element: ?XM_ELEMENT
 		do
 			create typer
 			a_cursor := new_cursor
 			from a_cursor.start until a_cursor.after loop
-				a_cursor.item.process (a_processor)
-				a_cursor.item.process (typer)
+				l_node := a_cursor.item
+				l_node.process (a_processor)
+				l_node.process (typer)
 				if typer.is_element then
-					typer.element.process_children_recursive (a_processor)
+					l_element := typer.element
+					check l_element /= Void end -- implied by `typer.is_element'
+					l_element.process_children_recursive (a_processor)
 				end
 				a_cursor.forth
 			end
 		end
-		
+
 end

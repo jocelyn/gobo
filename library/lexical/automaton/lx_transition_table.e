@@ -56,7 +56,7 @@ feature -- Status report
 
 feature -- Access
 
-	target (a_label: INTEGER): G is
+	target (a_label: INTEGER): ?G is
 			-- Target reached through transition `a_label';
 			-- Void if no such transition exists
 		require
@@ -69,7 +69,7 @@ feature -- Access
 			-- Difference between current transitions and `other';
 			-- Differences are either marked with current's target,
 			-- if it exists, or `null' otherwise. Common targets are
-			-- marked with a void target 
+			-- marked with a void target
 		require
 			other_not_void: other /= Void
 			same_lower: lower = other.lower
@@ -202,7 +202,7 @@ feature -- Removal
 			end
 		ensure
 			one_less: count <= old count
-			removed: target (label) = Void or else target (label) = target (label).default
+			removed: not {el_target: like target} target (label) or else el_target = el_target.default
 		end
 
 	clear_all is
@@ -242,12 +242,12 @@ feature -- Comparison
 
 feature {LX_TRANSITION_TABLE} -- Implementation
 
-	storage: ARRAY [G]
+	storage: ARRAY [?G]
 			-- Transitions indexed by labels
 
 feature {NONE} -- Implementation
 
-	array_routines: KL_ARRAY_ROUTINES [G]
+	array_routines: KL_ARRAY_ROUTINES [?G]
 			-- Routines that ought to be in class ARRAY
 
 invariant

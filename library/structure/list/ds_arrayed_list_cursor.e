@@ -96,7 +96,7 @@ feature {DS_ARRAYED_LIST} -- Implementation
 
 feature {DS_ARRAYED_LIST} -- Implementation
 
-	next_cursor: DS_ARRAYED_LIST_CURSOR [G]
+	next_cursor: ?DS_ARRAYED_LIST_CURSOR [G]
 			-- Next cursor
 			-- (Used by `container' to keep track of traversing
 			-- cursors (i.e. cursors associated with `container'

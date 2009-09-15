@@ -23,7 +23,7 @@ inherit
 
 feature -- Access
 
-	parent: XM_COMPOSITE
+	parent: ?XM_COMPOSITE
 			-- Parent of current node;
 			-- Void if current node is root
 
@@ -33,25 +33,35 @@ feature -- Status report
 			-- Parent element.
 		require
 			not_root_node: not is_root_node
-			not_root_element: not parent.is_root_node
+			not_root_element: {p: like parent} parent and then not p.is_root_node
 		local
 			typer: XM_NODE_TYPER
+			l_parent: like parent
+			l_element: ?XM_ELEMENT
 		do
 			create typer
-			parent.process (typer)
+			l_parent := parent
+			check l_parent /= Void end -- implied by not is_root_node
+			l_parent.process (typer)
 			check precondition: typer.is_element end
-			Result := typer.element
+			l_element := typer.element
+			check l_element /= Void end -- implied by `precondition: typer.is_element'
+			Result := l_element
 		ensure
 			result_not_void: Result /= Void
 		end
 
 	root_node: XM_DOCUMENT is
 			-- Root node of current node
+		local
+			l_parent: like parent
 		do
 			check not_root_node: not is_root_node end
 			-- is_root_node case dealt by descendant because
 			-- we cannot do Result := Current here.
-			Result := parent.root_node
+			l_parent := parent
+			check l_parent /= Void end -- implied by `not_root_node'
+			Result := l_parent.root_node
 		ensure
 			result_not_void: Result /= Void
 		end
@@ -59,11 +69,15 @@ feature -- Status report
 	level: INTEGER is
 			-- Depth at which current node appears relative to its root
 			-- (The root node has the level 1.)
+		local
+			l_parent: like parent
 		do
 			if is_root_node then
 				Result := 1
 			else
-				Result := parent.level + 1
+				l_parent := parent
+				check l_parent /= Void end -- implied by `not is_root_node'
+				Result := l_parent.level + 1
 			end
 		ensure
 			root_level: is_root_node implies (Result = 1)
@@ -80,19 +94,35 @@ feature -- Status report
 	is_first: BOOLEAN is
 			-- Is this node the first in its parent's child list,
 			-- or the root node?
+		local
+			l_parent: like parent
 		do
-			Result := is_root_node or else (parent.first = Current)
+			if is_root_node then
+				Result := True
+			else
+				l_parent := parent
+				check l_parent /= Void end -- implied by `not is_root_node'
+				Result := l_parent.first = Current
+			end
 		ensure
-			definition: Result = (is_root_node or else (parent.first = Current))
+			definition: Result = (is_root_node or else {p: like parent} parent and then (p.first = Current))
 		end
 
 	is_last: BOOLEAN is
 			-- Is this node the last in its parent's child list,
 			-- or the root node?
+		local
+			l_parent: like parent
 		do
-			Result := is_root_node or else (parent.last = Current)
+			if is_root_node then
+				Result := True
+			else
+				l_parent := parent
+				check l_parent /= Void end -- implied by `not is_root_node'
+				Result := l_parent.last = Current
+			end
 		ensure
-			definition: Result = (is_root_node or else (parent.last = Current))
+			definition: Result = (is_root_node or else {p: like parent} parent and then (p.last = Current))
 		end
 
 feature -- Element change

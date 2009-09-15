@@ -51,7 +51,7 @@ feature -- Access
 	rules: DS_ARRAYED_LIST [PR_RULE]
 			-- Rules of current grammar
 
-	start_symbol: PR_VARIABLE
+	start_symbol: ?PR_VARIABLE
 			-- Start symbol
 
 	expected_conflicts: INTEGER
@@ -80,7 +80,7 @@ feature -- Access
 
 feature -- User-defined Eiffel code
 
-	eiffel_code: STRING
+	eiffel_code: ?STRING
 			-- User-defined Eiffel code
 			-- (Appears in section 3)
 
@@ -417,7 +417,8 @@ feature -- Processing
 			i, j, nb: INTEGER
 			a_rule: PR_RULE
 			token_found, stop: BOOLEAN
-			lhs, a_variable: PR_VARIABLE
+			lhs: PR_VARIABLE
+			a_variable: ?PR_VARIABLE
 			rhs: DS_ARRAYED_LIST [PR_SYMBOL]
 			a_list: DS_ARRAYED_LIST [PR_VARIABLE]
 			old_todo, todo, tmp: DS_ARRAYED_LIST [DS_ARRAYED_LIST [PR_VARIABLE]]
@@ -577,8 +578,10 @@ feature {NONE} -- Processing
 			useful: BOOLEAN
 			i: INTEGER
 			a_rule: PR_RULE
+			l_start_symbol: like start_symbol
 		do
-			useful := start_symbol /= Void and then start_symbol.is_useful
+			l_start_symbol := start_symbol
+			useful := l_start_symbol /= Void and then l_start_symbol.is_useful
 			i := variables.count
 			from
 			until
@@ -588,8 +591,9 @@ feature {NONE} -- Processing
 				i := i - 1
 			end
 			if useful then
-				start_symbol.set_useful (True)
-				traverse_variable (start_symbol)
+				check l_start_symbol /= Void end -- implied by `useful'
+				l_start_symbol.set_useful (True)
+				traverse_variable (l_start_symbol)
 			end
 			i := rules.count
 			from
@@ -614,7 +618,7 @@ feature {NONE} -- Processing
 		local
 			rhs: DS_ARRAYED_LIST [PR_SYMBOL]
 			r: DS_ARRAYED_LIST [PR_RULE]
-			variable2: PR_VARIABLE
+			variable2: ?PR_VARIABLE
 			a_symbol: PR_SYMBOL
 			a_rule: PR_RULE
 			i, j: INTEGER

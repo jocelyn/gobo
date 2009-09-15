@@ -25,7 +25,7 @@ inherit
 
 	KL_SHARED_FILE_SYSTEM
 		export {NONE} all end
-		
+
 	XM_SHARED_CATALOG_MANAGER
 
 create
@@ -40,7 +40,7 @@ feature {NONE} -- Initialization
 		end
 
 feature -- Status report	
-	
+
 	supports_registering_schemes: BOOLEAN is
 			-- Does `Current' support resgitering scheme resolvers?
 		do
@@ -50,7 +50,7 @@ feature -- Status report
 	is_stack_empty: BOOLEAN is
 			-- Is URI stack empty?
 		do
-			Result := shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.is_stack_empty 
+			Result := shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.is_stack_empty
 		end
 
 	uri: UT_URI is
@@ -72,13 +72,13 @@ feature -- Element change
 		do
 			shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.clear_uri_stack
 		end
-	
+
 	register_scheme (a_scheme: XM_URI_RESOLVER) is
 			-- Register scheme.
 		do
 			shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.register_scheme (a_scheme)
 		end
-	
+
 feature -- Actions
 
 	resolve_uri (a_uri_reference: STRING) is
@@ -93,9 +93,9 @@ feature -- Actions
 			else
 				a_resolved_uri := shared_catalog_manager.resolved_uri_reference (a_uri_reference)
 				if STRING_.same_string (a_resolved_uri, a_uri_reference) then
-					
+
 					-- Failure - try making it an absolute URI
-					
+
 					create a_uri.make (a_uri_reference)
 					if a_uri.is_relative then
 						create a_uri.make_resolve (shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.uri, a_uri_reference)
@@ -113,7 +113,7 @@ feature -- Actions
 		do
 			resolve_public ("", a_system)
 		end
-		
+
 	resolve_public (a_public: STRING; a_system: STRING) is
 			-- Resolve a public/system identified pair to an input stream.
 			-- (Default implementation: resolve using system ID only.)
@@ -126,9 +126,9 @@ feature -- Actions
 			else
 				a_resolved_uri := shared_catalog_manager.resolved_external_entity (a_public, a_system)
 				if STRING_.same_string (a_resolved_uri, a_system) then
-					
+
 					-- Failure - try making it an absolute URI
-					
+
 					create a_uri.make (a_system)
 					if a_uri.is_relative then
 						create a_uri.make_resolve (shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.uri, a_system)
@@ -138,22 +138,22 @@ feature -- Actions
 				shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.resolve (a_resolved_uri)
 			end
 		end
-		
+
 	resolve_finish is
 			-- The parser has finished with the last resolved entity.
 		do
 			shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.resolve_finish
 		end
-		
+
 feature -- Result
 
-	last_uri_reference_stream: KI_CHARACTER_INPUT_STREAM is
+	last_uri_reference_stream: ?KI_CHARACTER_INPUT_STREAM is
 			-- Last stream initialised from URI reference.
 		do
 			Result := shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.last_stream
 		end
 
-	last_system_id: UT_URI
+	last_system_id: ?UT_URI
 			-- System id used to actually open `last_uri_reference_stream'
 
 	has_uri_reference_error: BOOLEAN is
@@ -161,26 +161,26 @@ feature -- Result
 		do
 			Result := shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.has_error
 		end
-		
-	last_uri_reference_error: STRING is
+
+	last_uri_reference_error: ?STRING is
 			-- Last error message.
 		do
 			Result := shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.last_error
 		end
-		
-	last_stream: KI_CHARACTER_INPUT_STREAM is
+
+	last_stream: ?KI_CHARACTER_INPUT_STREAM is
 			-- Last stream initialised from external entity.
 		do
 			Result := shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.last_stream
 		end
-	
+
 	has_error: BOOLEAN is
 			-- Did the last resolution attempt succeed?
 		do
 			Result := shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.has_error
 		end
-		
-	last_error: STRING is
+
+	last_error: ?STRING is
 			-- Last error message.
 		do
 			Result := shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.last_error
@@ -194,9 +194,13 @@ feature -- Result
 
 	last_media_type: UT_MEDIA_TYPE is
 			-- Media type, if available.
+		local
+			l_last_media_type: ?UT_MEDIA_TYPE
 		do
-			Result := shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.last_media_type
+			l_last_media_type := shared_catalog_manager.bootstrap_resolver.uri_scheme_resolver.last_media_type
+			check l_last_media_type /= Void end -- implied by inherited precondition `has_media_type'
+			Result := l_last_media_type
 		end
 
 end
-	
+

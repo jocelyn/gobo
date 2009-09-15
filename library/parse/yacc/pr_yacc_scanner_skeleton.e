@@ -75,7 +75,7 @@ feature -- Access
 	filename: STRING is
 			-- Name of file being parsed
 		local
-			file_buffer: YY_FILE_BUFFER
+			file_buffer: ?YY_FILE_BUFFER
 		do
 			file_buffer ?= input_buffer
 			if file_buffer /= Void then
@@ -119,7 +119,7 @@ feature {NONE} -- Implementation
 	last_error: INTEGER
 			-- Index of last %error read
 
-	rule: PR_RULE
+	rule: ?PR_RULE
 			-- Rule being parsed
 
 	process_dollar_n (n: INTEGER; max: INTEGER; a_rule: PR_RULE) is

@@ -32,7 +32,7 @@ feature -- Access
 
 feature {NONE} -- Element change
 
-	on_node_added (a_node: like root_node) is
+	on_node_added (a_node: like new_tree_node) is
 			-- `a_node' was just added to the binary search tree.
 			-- If some modifications need to be made, they should
 			-- take place in here. So the algorithms stay as
@@ -51,8 +51,8 @@ feature {NONE} -- Element change
 				end
 			invariant
 				correct_parent: l_parent /= Void implies l_child.parent = l_parent
-				left_child: l_parent /= Void and l_is_left_child implies l_parent.left_child = l_child
-				right_child: l_parent /= Void and not l_is_left_child implies l_parent.right_child = l_child
+				left_child: (l_parent /= Void and l_is_left_child) implies l_parent.left_child = l_child
+				right_child: (l_parent /= Void and not l_is_left_child) implies l_parent.right_child = l_child
 			until
 				l_parent = Void
 			loop
@@ -92,7 +92,7 @@ feature {NONE} -- Element change
 			end
 		end
 
-	insert_case_2 (a_child, a_parent: like root_node; a_is_left_child: BOOLEAN) is
+	insert_case_2 (a_child, a_parent: like new_tree_node; a_is_left_child: BOOLEAN) is
 			-- The child was added on the side of the parent with
 			-- the greater weight and the child itself has a greater
 			-- weight on this side as well.
@@ -119,18 +119,19 @@ feature {NONE} -- Element change
 			rotated: a_parent.parent = a_child
 		end
 
-	insert_case_3_a (a_child, a_parent: like root_node) is
+	insert_case_3_a (a_child, a_parent: like new_tree_node) is
 			-- Perform a double rotation to `a_child'.
 		require
 			a_child_not_void: a_child /= Void
 			a_parent_not_void: a_parent /= Void
 			a_child_is_left_child: a_parent.left_child = a_child
 			a_child_balance_is_one: a_child.balance = 1
-			correct_sub_structure: a_child.right_child.balance = 0 implies a_child.right_child.left_child = Void
+--			correct_sub_structure: a_child.right_child.balance = 0 implies a_child.right_child.left_child = Void
 		local
 			l_grand_child: like root_node
 		do
 			l_grand_child := a_child.right_child
+			check l_grand_child /= Void end
 			rotate_left_right (a_child)
 			check
 				correctly_moved_1: l_grand_child.left_child = a_child
@@ -150,18 +151,19 @@ feature {NONE} -- Element change
 			l_grand_child.set_balance (0)
 		end
 
-	insert_case_3_b (a_child, a_parent: like root_node) is
+	insert_case_3_b (a_child, a_parent: like new_tree_node) is
 			-- Perform a double rotation to `a_child'.
 		require
 			a_child_not_void: a_child /= Void
 			a_parent_not_void: a_parent /= Void
 			a_child_is_right_child: a_parent.right_child = a_child
 			a_child_balance_is_minus_one: a_child.balance = -1
-			correct_sub_structure: a_child.left_child.balance = 0 implies a_child.left_child.left_child = Void
+--			correct_sub_structure: a_child.left_child.balance = 0 implies a_child.left_child.left_child = Void
 		local
 			l_grand_child: like root_node
 		do
 			l_grand_child := a_child.left_child
+			check l_grand_child /= Void end
 			rotate_right_left (a_child)
 			check
 				correctly_moved_1: l_grand_child.left_child = a_parent
@@ -183,7 +185,7 @@ feature {NONE} -- Element change
 
 feature {NONE} -- Removal
 
-	on_node_removed (a_old_node, a_node: like root_node; a_was_left_child: BOOLEAN) is
+	on_node_removed (a_old_node, a_node: like new_tree_node; a_was_left_child: BOOLEAN) is
 			-- The previsous `left_child' or `right_child' -
 			-- depending on `a_was_left_child' - of `a_node'
 			-- was just removed.
@@ -207,6 +209,7 @@ feature {NONE} -- Removal
 					else
 						l_child := l_parent.left_child
 					end
+					check l_child /= Void end
 					if l_is_left_child = (l_parent.balance = 1) and then l_child.balance = 0 then
 						remove_case_2 (l_child, l_is_left_child)
 							-- Stop condition.
@@ -244,7 +247,7 @@ feature {NONE} -- Removal
 			end
 		end
 
-	remove_case_1 (a_parent: like root_node; a_is_left_child: BOOLEAN) is
+	remove_case_1 (a_parent: like new_tree_node; a_is_left_child: BOOLEAN) is
 			-- Set `a_parent''s balance according to `a_is_left_child'.
 		require
 			a_parent_not_void: a_parent /= Void
@@ -256,7 +259,7 @@ feature {NONE} -- Removal
 			end
 		end
 
-	remove_case_2 (a_child: like root_node; a_is_left_child: BOOLEAN) is
+	remove_case_2 (a_child: like new_tree_node; a_is_left_child: BOOLEAN) is
 			-- Rotate `a_child' according to `a_is_left_child' and
 			-- set the balance of `a_child'.
 		require
@@ -271,7 +274,7 @@ feature {NONE} -- Removal
 			end
 		end
 
-	remove_case_3 (a_child, a_parent: like root_node; a_is_left_child: BOOLEAN) is
+	remove_case_3 (a_child, a_parent: like new_tree_node; a_is_left_child: BOOLEAN) is
 			-- Case 3.
 		require
 			a_child_not_void: a_child /= Void
@@ -286,24 +289,31 @@ feature {NONE} -- Removal
 			a_child.set_balance (0)
 		end
 
-	remove_case_4 (a_child: like root_node; a_is_left_child: BOOLEAN): like root_node is
+	remove_case_4 (a_child: like new_tree_node; a_is_left_child: BOOLEAN): like new_tree_node is
 			-- Return the left or right child of `a_child' according to `a_is_left_child'
 			-- and performs a double rotation.
 		require
 			a_child_not_void: a_child /= Void
+		local
+			l_node: like root_node
 		do
 			if a_is_left_child then
-				Result := a_child.left_child
+				l_node := a_child.left_child
+				check l_node /= Void end
+				Result := l_node
 				rotate_right_left (a_child)
 			else
-				Result := a_child.right_child
+				l_node := a_child.right_child
+				check l_node /= Void end
+				Result := l_node
 				rotate_left_right (a_child)
 			end
+			check Result /= Void end
 		ensure
 			result_not_void: Result /= Void
 		end
 
-	remove_case_5 (a_grand_child, a_child, a_parent: like root_node; a_is_left_child: BOOLEAN) is
+	remove_case_5 (a_grand_child, a_child, a_parent: like new_tree_node; a_is_left_child: BOOLEAN) is
 			-- Case 5.
 		require
 			a_grand_child_not_void: a_grand_child /= Void
@@ -334,7 +344,7 @@ feature {NONE} -- Removal
 
 feature {NONE} -- Implementation
 
-	root_node: DS_AVL_TREE_CONTAINER_NODE [G, K]
+	root_node: ?DS_AVL_TREE_CONTAINER_NODE [G, K]
 			-- Root node of the tree
 
 end

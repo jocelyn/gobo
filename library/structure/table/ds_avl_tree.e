@@ -50,7 +50,7 @@ feature -- Access
 
 feature {NONE} -- Implementation
 
-	root_node: DS_AVL_TREE_NODE [G, K]
+	root_node: ?DS_AVL_TREE_NODE [G, K]
 			-- Root node of the tree
 
 end

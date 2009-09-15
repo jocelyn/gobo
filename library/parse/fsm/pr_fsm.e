@@ -247,15 +247,17 @@ feature -- Setting
 			j, nb2: INTEGER
 			a_state: PR_STATE
 			positions: DS_ARRAYED_LIST [PR_POSITION]
-			a_position, action_position: PR_POSITION
+			a_position: PR_POSITION
+			action_position: ?PR_POSITION
 			all_before, has_conflict: BOOLEAN
-			an_action, other_action: PR_ERROR_ACTION
+			an_action, other_action: ?PR_ERROR_ACTION
 			start_rules: DS_ARRAYED_LIST [PR_RULE]
 			start_positions: DS_ARRAYED_LIST [PR_POSITION]
 			line1, line2: INTEGER
 			nb_conflicts: INTEGER
 			message: STRING
 			warning: UT_MESSAGE
+			l_start_symbol: ?PR_VARIABLE
 		do
 			nb := states.count
 			from
@@ -310,7 +312,9 @@ feature -- Setting
 				end
 				if all_before then
 						-- Try to find the start symbols/rules.
-					start_rules := grammar.start_symbol.rules
+					l_start_symbol := grammar.start_symbol
+					check l_start_symbol /= Void end -- implied by invariant `valid_grammar'
+					start_rules := l_start_symbol.rules
 					create start_positions.make (nb2)
 					from
 						j := 1
@@ -392,16 +396,18 @@ feature -- Setting
 			k, nb3: INTEGER
 			a_state: PR_STATE
 			positions: DS_ARRAYED_LIST [PR_POSITION]
-			conflicts: DS_ARRAYED_LIST [PR_POSITION]
-			a_position, action_position: PR_POSITION
+			conflicts: ?DS_ARRAYED_LIST [PR_POSITION]
+			a_position: PR_POSITION
+			action_position: ?PR_POSITION
 			all_before: BOOLEAN
-			an_action, other_action: PR_ERROR_ACTION
+			an_action, other_action: ?PR_ERROR_ACTION
 			start_rules: DS_ARRAYED_LIST [PR_RULE]
 			start_positions: DS_ARRAYED_LIST [PR_POSITION]
 			line1, line2: INTEGER
 			nb_conflicts: INTEGER
 			message: STRING
 			warning: UT_MESSAGE
+			l_start_symbol: ?PR_VARIABLE
 		do
 			nb := states.count
 			from
@@ -460,7 +466,9 @@ feature -- Setting
 				end
 				if all_before then
 						-- Try to find the start symbols/rules.
-					start_rules := grammar.start_symbol.rules
+					l_start_symbol := grammar.start_symbol
+					check l_start_symbol /= Void end -- implied by invariant `valid_grammar'
+					start_rules := l_start_symbol.rules
 					create start_positions.make (nb2)
 					from
 						j := 1
@@ -596,9 +604,10 @@ feature {NONE} -- Processing (nondeterministic)
 			-- Create and insert start state.
 		local
 			a_state: PR_STATE
-			a_variable: PR_VARIABLE
+			a_variable: ?PR_VARIABLE
 		do
 			a_variable := grammar.start_symbol
+			check a_variable /= Void end -- implied by invariant `valid_grammar' ?
 				-- States are indexed from 0.
 			create a_state.make (0, a_variable)
 			put_closure_positions (a_state, a_variable)
@@ -626,7 +635,7 @@ feature {NONE} -- Processing (nondeterministic)
 			next_to_final_state: PR_STATE
 			final_state: PR_STATE
 			termination_state: PR_STATE
-			start_symbol: PR_VARIABLE
+			start_symbol: ?PR_VARIABLE
 			eof_token: PR_TOKEN
 		do
 			if not states.extendible (3) then
@@ -634,6 +643,7 @@ feature {NONE} -- Processing (nondeterministic)
 			end
 			start_state := states.first
 			start_symbol := grammar.start_symbol
+			check start_symbol /= Void end
 			if start_state.has_shift (start_symbol) then
 				next_to_final_state := start_state.shift (start_symbol)
 			else
@@ -687,7 +697,7 @@ feature {NONE} -- Processing (nondeterministic)
 			target: PR_STATE
 			a_symbol: PR_SYMBOL
 			a_symbol_id: INTEGER
-			a_variable: PR_VARIABLE
+			a_variable: ?PR_VARIABLE
 			transitions: ARRAY [PR_STATE]
 			nb_transitions: INTEGER
 			shifts: DS_ARRAYED_LIST [PR_STATE]
@@ -767,7 +777,7 @@ feature {NONE} -- Processing (nondeterministic)
 			rules: DS_ARRAYED_LIST [PR_RULE]
 			a_rule: PR_RULE
 			variables: DS_ARRAYED_LIST [PR_VARIABLE]
-			a_variable: PR_VARIABLE
+			a_variable: ?PR_VARIABLE
 			flattener: DS_NESTED_LIST_FLATTENER [PR_RULE]
 		do
 			rules := grammar.rules
@@ -809,7 +819,8 @@ feature {NONE} -- Processing (nondeterministic)
 		local
 			i, nb: INTEGER
 			a_code: INTEGER
-			state_list: DS_ARRAYED_LIST [PR_STATE]
+			state_list: ?DS_ARRAYED_LIST [PR_STATE]
+			l_result: ?like new_state
 		do
 				-- The rule positions in `a_state' are sorted so
 				-- that we can compare states quickly.
@@ -818,15 +829,16 @@ feature {NONE} -- Processing (nondeterministic)
 			cached_states.search (a_code)
 			if cached_states.found then
 				state_list := cached_states.found_item
+				check state_list /= Void end -- implied by `cached_states.found'
 				from
 					i := 1
 					nb := state_list.count
 				until
-					Result /= Void or i > nb
+					l_result /= Void or i > nb
 				loop
-					Result := state_list.item (i)
-					if not Result.same_state (a_state) then
-						Result := Void
+					l_result := state_list.item (i)
+					if not l_result.same_state (a_state) then
+						l_result := Void
 						i := i + 1
 					end
 				end
@@ -834,13 +846,14 @@ feature {NONE} -- Processing (nondeterministic)
 				create state_list.make (2)
 				cached_states.put_new (state_list, a_code)
 			end
-			if Result = Void then
-				Result := a_state
+			if l_result = Void then
+				l_result := a_state
 					-- States are indexed from 0.
-				Result.set_id (states.count)
+				l_result.set_id (states.count)
 				states.put_last (a_state)
 				state_list.force_last (a_state)
 			end
+			Result := l_result
 		ensure
 			new_state_not_void: Result /= Void
 			same_state: Result.same_state (a_state)
@@ -869,8 +882,8 @@ feature {NONE} -- Processing (deterministic)
 			state1, state2: PR_STATE
 			a_transition: PR_TRANSITION
 			a_symbol: PR_SYMBOL
-			a_variable: PR_VARIABLE
-			a_token: PR_TOKEN
+			a_variable: ?PR_VARIABLE
+			a_token: ?PR_TOKEN
 			a_rule: PR_RULE
 		do
 			create reductions.make
@@ -939,6 +952,7 @@ feature {NONE} -- Processing (deterministic)
 					i := i - 1
 				end
 				a_variable ?= a_transition.symbol
+				check a_variable /= Void end -- implied by ... ?
 				rules := a_variable.rules
 				i := rules.count
 				from

@@ -72,7 +72,7 @@ feature -- Access
 			next_position: Result.index = index + 1
 		end
 
-	error_action: PR_ERROR_ACTION is
+	error_action: ?PR_ERROR_ACTION is
 			-- Action to be executed when a syntax error
 			-- occurs at current position; Void is none
 		do
@@ -121,7 +121,7 @@ feature -- Comparison
 	same_position (other: like Current): BOOLEAN is
 			-- Are current position and `other' considered the same?
 			-- (Do not redefine `is_equal' here because it is
-			-- incompatible with the semantic inherited from 
+			-- incompatible with the semantic inherited from
 			-- COMPARABLE.)
 		require
 			other_not_void: other /= Void

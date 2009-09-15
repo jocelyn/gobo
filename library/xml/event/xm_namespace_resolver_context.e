@@ -75,7 +75,7 @@ feature -- Status report
 		require
 			a_prefix_not_void: a_prefix /= Void
 		do
-			Result := context.count > 0 and then context.last.has (a_prefix)
+			Result := {l_context: like context} context and then l_context.count > 0 and then l_context.last.has (a_prefix)
 		end
 
 	has (a_prefix: STRING): BOOLEAN is

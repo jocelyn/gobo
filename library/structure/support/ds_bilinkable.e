@@ -25,7 +25,7 @@ create
 
 feature -- Access
 
-	left: like Current
+	left: ?like Current
 			-- Left neighbor
 
 feature -- Element change
@@ -63,7 +63,7 @@ feature -- Element change
 
 feature {DS_BILINKABLE} -- Implementation
 
-	attach_right (other: like Current) is
+	attach_right (other: ?like Current) is
 			-- Put `other' to right of cell.
 		do
 			right := other
@@ -71,7 +71,7 @@ feature {DS_BILINKABLE} -- Implementation
 			linked: right = other
 		end
 
-	attach_left (other: like Current) is
+	attach_left (other: ?like Current) is
 			-- Put `other' to left of cell.
 		do
 			left := other

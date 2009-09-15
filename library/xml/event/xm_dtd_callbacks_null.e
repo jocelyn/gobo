@@ -29,7 +29,7 @@ feature {NONE} -- Initialization
 
 feature -- Document type definuition callbacks
 
-	on_doctype (a_name: STRING; an_id: XM_DTD_EXTERNAL_ID; has_internal_subset: BOOLEAN) is
+	on_doctype (a_name: STRING; an_id: ?XM_DTD_EXTERNAL_ID; has_internal_subset: BOOLEAN) is
 			-- Document type declaration.
 		do
 		end
@@ -44,8 +44,8 @@ feature -- Document type definuition callbacks
 		do
 		end
 
-	on_entity_declaration (entity_name: STRING; is_parameter: BOOLEAN; value: STRING;
-		an_id: XM_DTD_EXTERNAL_ID; notation_name: STRING) is
+	on_entity_declaration (entity_name: STRING; is_parameter: BOOLEAN; value: ?STRING;
+		an_id: ?XM_DTD_EXTERNAL_ID; notation_name: ?STRING) is
 			-- Entity declaration.
 		do
 		end

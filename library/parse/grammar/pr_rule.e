@@ -55,7 +55,7 @@ feature -- Access
 	rhs: DS_ARRAYED_LIST [PR_SYMBOL]
 			-- Right-hand-side of current rule
 
-	error_actions: DS_ARRAYED_LIST [PR_ERROR_ACTION]
+	error_actions: DS_ARRAYED_LIST [?PR_ERROR_ACTION]
 			-- Action to be executed if a syntax error occurs
 			-- before the i-th symbol of `rhs'
 
@@ -401,7 +401,7 @@ feature -- Output
 				a_file.put_line ("%T%Tend")
 				a_file.put_line ("%Tend")
 			end
-			a_file.put_line ("%Tyyvs.put (yyval, yyvsp)")
+			a_file.put_line ("%Tyyvs.force (yyval, yyvsp)")
 			a_file.put_line ("end")
 		end
 

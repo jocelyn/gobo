@@ -44,7 +44,9 @@ feature {NONE} -- Initialization
 		local
 			i, nb: INTEGER
 			state, nfa_state: LX_NFA_STATE
-			epsilon_transition: LX_EPSILON_TRANSITION [LX_NFA_STATE]
+			l_transition: ?LX_TRANSITION [LX_NFA_STATE]
+			l_epsilon_transition: ?LX_EPSILON_TRANSITION [LX_NFA_STATE]
+			l_rule: ?LX_RULE
 		do
 			nb := nfa_states.count
 			create states.make (nb)
@@ -57,31 +59,34 @@ feature {NONE} -- Initialization
 				i > nb
 			loop
 				state := nfa_states.item (i)
-				if state.transition /= Void then
-					epsilon_transition ?= state.transition
-					if epsilon_transition = Void then
-						states.force_last (state)
-						code := code + state.id
-					else
+				l_transition := state.transition
+				if l_transition /= Void then
+					if {epsilon_transition: LX_EPSILON_TRANSITION [LX_NFA_STATE]} l_transition then
 						nfa_state := epsilon_transition.target
 						if not nfa_states.has (nfa_state) then
 							nfa_states.force_last (nfa_state)
 							nb := nb + 1
 						end
+					else
+						states.force_last (state)
+						code := code + state.id
 					end
 				end
-				if state.epsilon_transition /= Void then
-					nfa_state := state.epsilon_transition.target
+				l_epsilon_transition := state.epsilon_transition
+				if l_epsilon_transition /= Void then
+					nfa_state := l_epsilon_transition.target
 					if not nfa_states.has (nfa_state) then
 						nfa_states.force_last (nfa_state)
 						nb := nb + 1
 					end
 				end
-				if state.is_accepting then
+				l_rule := state.accepted_rule
+				if l_rule /= Void then
+					check state.is_accepting end
 					if state.is_accepting_head then
-						accepted_head_rules.force_last (state.accepted_rule)
+						accepted_head_rules.force_last (l_rule)
 					else
-						accepted_rules.force_last (state.accepted_rule)
+						accepted_rules.force_last (l_rule)
 					end
 					if states.is_empty or else states.last /= state then
 						states.force_last (state)
@@ -145,7 +150,7 @@ feature -- Access
 			definition: Result = transitions.upper
 		end
 
-	next_state (symbol: INTEGER): LX_DFA_STATE is
+	next_state (symbol: INTEGER): ?LX_DFA_STATE is
 			-- Next DFA state reachable through transition labeled `symbol';
 			-- Void if no such transition exists
 		require
@@ -211,7 +216,7 @@ feature {LX_DFA} -- DFA construction
 			-- state through transition labeled `symbol'
 		local
 			i, nb: INTEGER
-			transition: LX_TRANSITION [LX_NFA_STATE]
+			transition: ?LX_TRANSITION [LX_NFA_STATE]
 			nfa_states: DS_ARRAYED_LIST [LX_NFA_STATE]
 		do
 			nb := states.count
@@ -242,7 +247,7 @@ feature {LX_DFA} -- DFA construction
 --			recordable: forall NFA `transition', transition.recordable (equiv_classes)
 		local
 			i, nb: INTEGER
-			transition: LX_TRANSITION [LX_NFA_STATE]
+			transition: ?LX_TRANSITION [LX_NFA_STATE]
 		do
 			nb := states.count
 			from

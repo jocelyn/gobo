@@ -91,11 +91,16 @@ feature -- Access
 			-- Decoded string where the percent-encoded characters
 			-- are in the UTF-8 character set
 			-- (This may return a STRING object of another type than STRING)
+		local
+			l_decoded_utf8_impl: like decoded_utf8_impl
 		do
-			if decoded_utf8_impl = Void then
-				decoded_utf8_impl := Url_encoding.unescape_utf8 (encoded)
+			l_decoded_utf8_impl := decoded_utf8_impl
+			if l_decoded_utf8_impl = Void then
+				l_decoded_utf8_impl := Url_encoding.unescape_utf8 (encoded)
+				check l_decoded_utf8_impl /= Void end -- implied by ???
+				decoded_utf8_impl := l_decoded_utf8_impl
 			end
-			Result := decoded_utf8_impl
+			Result := l_decoded_utf8_impl
 		end
 
 feature {NONE} -- Implementation

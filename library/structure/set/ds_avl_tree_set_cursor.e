@@ -42,12 +42,12 @@ feature -- Access
 
 feature {DS_BINARY_SEARCH_TREE_CONTAINER} -- Access
 
-	position: DS_AVL_TREE_SET_NODE [G]
+	position: ?DS_AVL_TREE_SET_NODE [G]
 			-- Current position in the underlying tree
 
 feature {DS_BILINEAR} -- Implementation
 
-	next_cursor: DS_AVL_TREE_SET_CURSOR [G]
+	next_cursor: ?DS_AVL_TREE_SET_CURSOR [G]
 			-- Next cursor
 			-- (Used by `container' to keep track of traversing
 			-- cursors (i.e. cursors associated with `container'

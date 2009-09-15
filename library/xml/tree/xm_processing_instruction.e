@@ -54,7 +54,7 @@ feature {NONE} -- Initialization
 			a_parent.force_last (Current)
 		ensure
 			parent_set: parent = a_parent
-			in_parent: parent.last = Current
+			in_parent: a_parent.last = Current
 			target_set: target = a_target
 			data_set: data = a_data
 		end
@@ -72,7 +72,7 @@ feature {NONE} -- Initialization
 			a_parent.force_last (Current)
 		ensure
 			parent_set: parent = a_parent
-			in_parent: parent.last = Current
+			in_parent: a_parent.last = Current
 			target_set: target = a_target
 			data_set: data = a_data
 		end

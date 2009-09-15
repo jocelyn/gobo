@@ -89,7 +89,7 @@ feature {DS_SPARSE_CONTAINER} -- Implementation
 
 feature {DS_SPARSE_CONTAINER} -- Implementation
 
-	next_cursor: DS_SPARSE_CONTAINER_CURSOR [G, K]
+	next_cursor: ?DS_SPARSE_CONTAINER_CURSOR [G, K]
 			-- Next cursor
 			-- (Used by `container' to keep track of traversing
 			-- cursors (i.e. cursors associated with `container'

@@ -47,8 +47,12 @@ feature -- Access
 	item: G is
 			-- Item at cursor position
 			-- (Performance: O(1).)
+		local
+			l_current_cell: like current_cell
 		do
-			Result := current_cell.item
+			l_current_cell := current_cell
+			check l_current_cell /= Void end
+			Result := l_current_cell.item
 		end
 
 	container: DS_LINKED_LIST [G]
@@ -79,13 +83,17 @@ feature -- Element change
 	replace (v: G) is
 			-- Replace item at cursor position by `v'.
 			-- (Performance: O(1).)
+		local
+			l_current_cell: like current_cell
 		do
-			current_cell.put (v)
+			l_current_cell := current_cell
+			check l_current_cell /= Void end
+			l_current_cell.put (v)
 		end
 
 feature {DS_LINKED_LIST, DS_LINKED_LIST_CURSOR} -- Implementation
 
-	current_cell: DS_LINKABLE [G]
+	current_cell: ?DS_LINKABLE [G]
 			-- Cell at cursor position
 
 feature {DS_LINKED_LIST} -- Implementation
@@ -139,7 +147,7 @@ feature {DS_LINKED_LIST} -- Implementation
 
 feature {DS_LINKED_LIST} -- Implementation
 
-	next_cursor: DS_LINKED_LIST_CURSOR [G]
+	next_cursor: ?DS_LINKED_LIST_CURSOR [G]
 			-- Next cursor
 			-- (Used by `container' to keep track of traversing
 			-- cursors (i.e. cursors associated with `container'

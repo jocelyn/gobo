@@ -68,6 +68,14 @@ feature -- General structures
 			stack_not_void: Result /= Void
 		end
 
+	new_detachable_string_stack: DS_LINKED_STACK [?STRING] is
+			-- New string stack
+		do
+			create Result.make_default
+		ensure
+			stack_not_void: Result /= Void
+		end
+
 	new_string_queue: DS_LINKED_QUEUE [STRING] is
 			-- New string queue
 		do

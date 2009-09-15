@@ -83,17 +83,20 @@ feature {NONE} -- Generation
 
 	print_token (a_token: PR_TOKEN; a_file: KI_TEXT_OUTPUT_STREAM) is
 			-- Print `a_token' to `a_file'.
+		local
+			s: ?STRING
 		do
 			a_file.put_line ("%T%T%T<token>")
 			a_file.put_string ("%T%T%T%T<name>")
 			print_escaped (a_token.name, a_file)
 			a_file.put_line ("</name>")
 			a_file.put_string ("%T%T%T%T<literal")
-			if a_token.literal_string = Void then
+			s := a_token.literal_string
+			if s = Void then
 				a_file.put_line ("/>")
 			else
 				a_file.put_string (">")
-				print_escaped (a_token.literal_string, a_file)
+				print_escaped (s, a_file)
 				a_file.put_line ("</literal>")
 			end
 			a_file.put_line ("%T%T%T</token>")

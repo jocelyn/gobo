@@ -64,7 +64,7 @@ feature -- Element change
 
 feature -- Access
 
-	matched_position (a_string: STRING): DS_PAIR [INTEGER, INTEGER] is
+	matched_position (a_string: STRING): ?DS_PAIR [INTEGER, INTEGER] is
 			-- Position of the longest-leftmost token matched
 			-- by current pattern in `a_string'
 		require

@@ -68,7 +68,8 @@ feature {NONE} -- Initialization
 				-- Parser state:
 			in_external_dtd := False
 				-- Callbacks forwarding
-			create {XM_CALLBACKS_NULL} callbacks.make
+			set_callbacks (create {XM_CALLBACKS_NULL}.make)
+
 				-- Entities:
 			entities := new_entities_table
 			pe_entities := new_entities_table
@@ -136,12 +137,16 @@ feature {NONE} -- Implementation
 
 	parse_from_entity is
 			-- Parse from entity resolver
+		local
+			l_error: ?STRING
 		do
 			if not entity_resolver.has_error then
 				scanner.set_input_from_resolver (entity_resolver)
 				parse_with_events
 			else
-				force_error (entity_resolver.last_error)
+				l_error := entity_resolver.last_error
+				check l_error /= Void end -- implied by `has_error'
+				force_error (l_error)
 			end
 		end
 
@@ -172,7 +177,7 @@ feature -- Namespace mode
 
 feature {NONE} -- Namespaces
 
-	namespace_force_last (a_name: XM_EIFFEL_PARSER_NAME; a_string: STRING) is
+	namespace_force_last (a_name: ?XM_EIFFEL_PARSER_NAME; a_string: ?STRING) is
 			-- Force last namespace name component, or error.
 		require
 			a_name_not_void: a_name /= Void
@@ -206,13 +211,17 @@ feature -- Error reporting
 
 	last_error_description: STRING is
 			-- Textual description of last error
+		local
+			s: like internal_last_error_description
 		do
-			Result := internal_last_error_description
+			s := internal_last_error_description
+			check s /= Void end -- implied by precondition `not is_correct'
+			Result := s
 		end
 
 feature {NONE} -- Error reporting
 
-	internal_last_error_description: STRING
+	internal_last_error_description: ?STRING
 			-- Textual description of last error, if any
 
 feature -- Error
@@ -253,11 +262,14 @@ feature -- Error
 
 	positions: DS_LIST [XM_POSITION] is
 			-- Current stack of positions, starting with the current entity.
+		local
+			l_error_positions: like error_positions
 		do
-			if error_positions = Void then
+			l_error_positions := error_positions
+			if l_error_positions = Void then
 				Result := new_positions
 			else
-				Result := error_positions
+				Result := l_error_positions
 			end
 		end
 
@@ -277,7 +289,7 @@ feature -- Error
 
 feature {NONE} -- Error
 
-	error_positions: like positions
+	error_positions: ?like positions
 			-- Position stack in case of error.
 
 	reset_error_state is
@@ -449,8 +461,10 @@ feature {NONE} -- Factory
 
 feature {NONE} -- Encoding
 
-	apply_encoding (an_encoding: STRING) is
+	apply_encoding (an_encoding: ?STRING) is
 			-- Set encoding on current scanner.
+			--| NOTE: `an_encoding' should be attached,
+			--| but is detachable for easier use of geyacc in void-safe mode		
 		require
 			not_void: an_encoding /= Void
 		do
@@ -463,7 +477,7 @@ feature {NONE} -- Encoding
 
 feature {NONE} -- DTD
 
-	set_element_repetition (a_node: XM_DTD_ELEMENT_CONTENT; a_value: STRING) is
+	set_element_repetition (a_node: ?XM_DTD_ELEMENT_CONTENT; a_value: ?STRING) is
 			-- Set repetition status of a node.
 		require
 			a_node_not_void: a_node /= Void
@@ -487,7 +501,7 @@ feature {NONE} -- DTD
 	Zero_or_more_repetition: STRING is "*"
 			-- Special symbol: Zero or more
 
-	element_name (a_name: STRING): XM_DTD_ELEMENT_CONTENT is
+	element_name (a_name: ?STRING): XM_DTD_ELEMENT_CONTENT is
 			-- New element content name node
 		require
 			a_name_not_void: a_name /= Void
@@ -497,7 +511,7 @@ feature {NONE} -- DTD
 			element_name_not_void: Result /= Void
 		end
 
-	on_attribute_declarations (ele_name: STRING; some_attributes: DS_LINEAR [XM_DTD_ATTRIBUTE_CONTENT]) is
+	on_attribute_declarations (ele_name: ?STRING; some_attributes: ?DS_LINEAR [XM_DTD_ATTRIBUTE_CONTENT]) is
 			-- Send all element declarations.
 		require
 			ele_not_void: ele_name /= Void
@@ -505,20 +519,26 @@ feature {NONE} -- DTD
 			no_void_attributes: not some_attributes.has_void
 		local
 			a_cursor: DS_LINEAR_CURSOR [XM_DTD_ATTRIBUTE_CONTENT]
+			l_name: ?STRING
 		do
 			a_cursor := some_attributes.new_cursor
 			from a_cursor.start until a_cursor.after loop
 					-- TODO: missing part
-				on_attribute_declaration (ele_name, a_cursor.item.name, a_cursor.item)
+				l_name := a_cursor.item.name
+				check l_name /= Void end -- implied by ... ?
+				on_attribute_declaration (ele_name, l_name, a_cursor.item)
 				a_cursor.forth
 			end
 		end
 
 feature {NONE} -- Entities
 
-	new_literal_entity (a_name, a_value: STRING): XM_EIFFEL_ENTITY_DEF is
+	new_literal_entity (a_name, a_value: ?STRING): XM_EIFFEL_ENTITY_DEF is
 			-- New literal entity definition
+			--| NOTE: `a_name, a_value' should be attached,
+			--| but are detachable for easier use of geyacc in void-safe mode		
 		require
+			a_name_not_void: a_name /= Void
 			a_value_not_void: a_value /= Void
 		do
 			create Result.make_literal (a_name, a_value)
@@ -526,8 +546,10 @@ feature {NONE} -- Entities
 			entity_not_void: Result /= Void
 		end
 
-	new_external_entity (a_value: XM_DTD_EXTERNAL_ID): XM_EIFFEL_ENTITY_DEF is
+	new_external_entity (a_value: ?XM_DTD_EXTERNAL_ID): XM_EIFFEL_ENTITY_DEF is
 			-- New external entity definition
+			--| NOTE: `a_value' should be attached,
+			--| but is detachable for easier use of geyacc in void-safe mode		
 		require
 			a_value_not_void: a_value /= Void
 		do
@@ -538,17 +560,22 @@ feature {NONE} -- Entities
 
 feature {NONE} -- Entities
 
-	when_entity_declared (a_name: STRING; a_def: XM_EIFFEL_ENTITY_DEF) is
+	when_entity_declared (a_name: ?STRING; a_def: ?XM_EIFFEL_ENTITY_DEF) is
 			-- Entity has been declared.
 		require
 			a_name_not_void: a_name /= Void
+		local
+			l_value: ?STRING
 		do
 			debug ("xml_parser")
 				std.error.put_string ("Entity declared: ")
 				std.error.put_string (a_name)
-				if a_def /= Void and then a_def.value /= Void then
-					std.error.put_string (" value: ")
-					std.error.put_string (a_def.value)
+				if a_def /= Void then
+					l_value := a_def.value
+					if l_value /= Void then
+						std.error.put_string (" value: ")
+						std.error.put_string (l_value)
+					end
 				end
 				std.error.put_new_line
 			end
@@ -561,18 +588,24 @@ feature {NONE} -- Entities
 			end
 		end
 
-	when_pe_entity_declared (a_name: STRING; in_def: XM_EIFFEL_ENTITY_DEF) is
+	when_pe_entity_declared (a_name: ?STRING; in_def: ?XM_EIFFEL_ENTITY_DEF) is
 			-- PE entity has been declared.
 		require
 			a_name_not_void: a_name /= Void
 		local
 			a_def: XM_EIFFEL_PE_ENTITY_DEF
+			l_value: ?STRING
 		do
 			debug ("xml_parser")
 				std.error.put_string ("PE entity declared: ")
 				std.error.put_string (a_name)
-				std.error.put_string (" value: ")
-				std.error.put_string (in_def.value)
+				if in_def /= Void then
+					l_value := in_def.value	
+					if l_value /= Void then
+						std.error.put_string (" value: ")
+						std.error.put_string (l_value)
+					end
+				end
 				std.error.put_new_line
 			end
 				-- 4.2: when multiple declaration take first one.
@@ -586,7 +619,7 @@ feature {NONE} -- Entities
 			end
 		end
 
-	entity_referenced_in_entity_value (a_name: STRING): STRING is
+	entity_referenced_in_entity_value (a_name: ?STRING): ?STRING is
 			-- Named parameter entity has been referenced in entity value
 		require
 			a_name_not_void: a_name /= Void
@@ -603,16 +636,20 @@ feature {NONE} -- Entities
 			end
 		end
 
-	defined_entity_referenced (a_def: XM_EIFFEL_ENTITY_DEF): STRING is
+	defined_entity_referenced (a_def: XM_EIFFEL_ENTITY_DEF): ?STRING is
 			-- Resolved defined entity in quoted value
 		require
 			a_def_not_void: a_def /= Void
+		local
+			l_external_id: ?XM_DTD_EXTERNAL_ID
 		do
 			if a_def.is_literal then
 					-- 4.4.5 Included in literal.
 				Result := a_def.value
 			else
-				Result := external_entity_to_string (a_def.external_id)
+				l_external_id := a_def.external_id
+				check l_external_id /= Void end -- implied by `not a_def.is_literal' and invariant
+				Result := external_entity_to_string (l_external_id)
 			end
 		end
 
@@ -621,29 +658,39 @@ feature {NONE} -- Entities
 		require
 			a_resolver_not_void: a_resolver /= Void
 			an_id_not_void: an_id /= Void
+		local
+			l_system_id, l_public_id: ?STRING
 		do
+			l_system_id := an_id.system_id
+			check l_system_id /= Void end -- implied by ... ?
 			if an_id.is_public then
-				a_resolver.resolve_public (an_id.public_id, an_id.system_id)
+				l_public_id := an_id.public_id
+				check l_public_id /= Void end -- implied by `an_id.is_public'
+				a_resolver.resolve_public (l_public_id, l_system_id)
 			else
-				a_resolver.resolve (an_id.system_id)
+				a_resolver.resolve (l_system_id)
 			end
 		end
 
-	external_entity_to_string (a_sys: XM_DTD_EXTERNAL_ID): STRING is
+	external_entity_to_string (a_sys: XM_DTD_EXTERNAL_ID): ?STRING is
 			-- External entity to string
 		require
 			a_sys_not_void: a_sys /= Void
 		local
 			a_stream: XM_EIFFEL_INPUT_STREAM
+			l_last_stream: ?KI_CHARACTER_INPUT_STREAM
+			l_error: ?STRING
 			i: INTEGER
 		do
 			resolve_external_id (entity_resolver, a_sys)
 			if not entity_resolver.has_error then
-				create a_stream.make_from_stream (entity_resolver.last_stream)
+				l_last_stream := entity_resolver.last_stream
+				check l_last_stream /= Void end -- implied by `not entity_resolver.has_error'
+				create a_stream.make_from_stream (l_last_stream)
 				a_stream.read_string (INTEGER_.Platform.Maximum_integer)
 				Result := a_stream.last_string
-				if entity_resolver.last_stream.is_closable then
-					entity_resolver.last_stream.close
+				if l_last_stream.is_closable then
+					l_last_stream.close
 				end
 				entity_resolver.resolve_finish
 				-- newline normalization XML1.0:2.11
@@ -669,17 +716,21 @@ feature {NONE} -- Entities
 					i := i + 1
 				end
 			else
-				force_error (entity_resolver.last_error)
+				l_error := entity_resolver.last_error
+				check l_error /= Void end -- implies `entity_resolver.has_error'
+				force_error (l_error)
 			end
 		end
 
 feature {NONE} -- DTD
 
-	when_external_dtd (a_system: XM_DTD_EXTERNAL_ID) is
+	when_external_dtd (a_system: ?XM_DTD_EXTERNAL_ID) is
 			-- Load external DTD from system name.
 		require
 			a_system_not_void: a_system /= Void
 			has_system: a_system.system_id /= Void
+		local
+			l_error: ?STRING
 		do
 			debug ("xml_parser")
 				std.error.put_string ("[when_external_dtd]")
@@ -695,7 +746,9 @@ feature {NONE} -- DTD
 				if dtd_resolver = null_resolver then
 					force_error (Error_doctype_external_no_resolver)
 				else
-					force_error (dtd_resolver.last_error)
+					l_error := dtd_resolver.last_error
+					check l_error /= Void end -- implied by `not has_error'
+					force_error (l_error)
 				end
 			end
 		end
@@ -722,18 +775,20 @@ feature {NONE} -- Scanner implementation
 	read_token is
 			-- Read token from scanner.
 		local
-			last_text: STRING
+			last_text: like last_string_value
+			s: ?STRING
 		do
 				-- Read token from scanner.
 			scanner.read_token
 			last_token := scanner.last_token
-			last_string_value := scanner.last_value
+			last_text := scanner.last_value
+			last_string_value := last_text
 			debug ("xml_parser")
 
 				std.error.put_string (token_name (last_token))
 				std.error.put_string ("/")
-				if last_string_value /= Void then
-					std.error.put_string (last_string_value.out)
+				if last_text /= Void then
+					std.error.put_string (last_text.out)
 					std.error.put_string ("/")
 				end
 				std.error.put_string (scanner.text_count.out)
@@ -751,22 +806,37 @@ feature {NONE} -- Scanner implementation
 				-- If this is a PE entity reference, temporarily
 				-- switch scanner. Token is left for validation.
 			last_text := last_string_value
+
 			--check for_all tokens_below: last_value is STRING end
-
-			if last_token = DOCTYPE_PEREFERENCE then
-				process_pe_entity (onstring_ascii (last_text))
-			elseif last_token = DOCTYPE_PEREFERENCE_UTF8 then
-				process_pe_entity (onstring_utf8 (last_text))
-
-			elseif last_token = CONTENT_ENTITY  then
-				process_entity (onstring_ascii (last_text))
-			elseif last_token = CONTENT_ENTITY_UTF8  then
-				process_entity (onstring_utf8 (last_text))
-
-			elseif last_token = ATTRIBUTE_ENTITY then
-				process_attribute_entity (onstring_ascii (last_text))
-			elseif last_token = ATTRIBUTE_ENTITY_UTF8 then
-				process_attribute_entity (onstring_utf8 (last_text))
+			inspect last_token
+			when DOCTYPE_PEREFERENCE, DOCTYPE_PEREFERENCE_UTF8 then
+				check last_text /= Void end -- implied by ... ?
+				if last_token = DOCTYPE_PEREFERENCE then
+					s := onstring_ascii (last_text)
+				elseif last_token = DOCTYPE_PEREFERENCE_UTF8 then
+					s := onstring_utf8 (last_text)
+				end
+				check s /= Void end -- implied by ... ? Note that `onstring_utf8' could return Void ..
+				process_pe_entity (s)
+			when CONTENT_ENTITY, CONTENT_ENTITY_UTF8 then
+				check last_text /= Void end -- implied by ... ?			
+				if last_token = CONTENT_ENTITY  then
+					s := onstring_ascii (last_text)
+				elseif last_token = CONTENT_ENTITY_UTF8  then
+					s := onstring_utf8 (last_text)
+				end
+				check s /= Void end -- implied by ... ? Note that `onstring_utf8' could return Void ..
+				process_entity (s)
+			when ATTRIBUTE_ENTITY, ATTRIBUTE_ENTITY_UTF8  then
+				check last_text /= Void end -- implied by ... ?				
+				if last_token = ATTRIBUTE_ENTITY then
+					s := onstring_ascii (last_text)
+				elseif last_token = ATTRIBUTE_ENTITY_UTF8 then
+					s := onstring_utf8 (last_text)
+				end
+				check s /= Void end -- implied by ... ? Note that `onstring_utf8' could return Void ..
+				process_attribute_entity (s)
+			else
 			end
 		end
 
@@ -819,10 +889,14 @@ feature {NONE} -- Scanner entity processing
 			-- reset it with previous scanner state.
 		require
 			a_def_not_void: a_def /= Void
+		local
+			l_error: ?STRING
 		do
 			a_def.apply_input_buffer
 			if a_def.has_error then
-				force_error (a_def.last_error)
+				l_error := a_def.last_error
+				check l_error /= Void end -- implied by `a_def.has_error'
+				force_error (l_error)
 			else
 					-- Push scanner.
 				debug ("xml_parser")
@@ -838,9 +912,10 @@ feature {NONE} -- Scanner entity processing
 
 feature {NONE} -- String mode
 
-	onstring_ascii (a_string: STRING): STRING is
+	onstring_ascii (a_string: ?STRING): STRING is
 			-- Incoming ascii string.
 		require
+			a_string_attached: a_string /= Void
 			ascii: unicode.is_ascii_string (a_string)
 		do
 			if is_string_mode_unicode then -- force all unicode
@@ -850,9 +925,10 @@ feature {NONE} -- String mode
 			end
 		end
 
-	onstring_utf8 (a_string: STRING): STRING is
+	onstring_utf8 (a_string: ?STRING): ?STRING is
 			-- Incoming UTF8 encoded string.
 		require
+			a_string_attached: a_string /= Void
 			not_ascii: not unicode.is_ascii_string (a_string)
 		do
 			if is_string_mode_ascii then

@@ -607,7 +607,7 @@ feature {DS_SPARSE_SET_CURSOR} -- Implementation
 
 feature {NONE} -- Implementation
 
-	key_equality_tester: KL_EQUALITY_TESTER [G] is
+	key_equality_tester: ?KL_EQUALITY_TESTER [G] is
 			-- Equality tester for keys;
 			-- A void equality tester means that `='
 			-- will be used as comparison criterion.
@@ -633,6 +633,11 @@ feature {NONE} -- Implementation
 		do
 		end
 
+	key_storage_put_default (i: INTEGER) is
+			-- Put default value at position `i' in `key_storage'.
+		do
+		end
+
 	clone_key_storage is
 			-- Clone `key_storage'.
 		do
@@ -640,6 +645,11 @@ feature {NONE} -- Implementation
 
 	key_storage_resize (n: INTEGER) is
 			-- Resize `key_storage'.
+		do
+		end
+
+	key_storage_keep_head (n: INTEGER_32)
+			-- Keep the first `n' items in `key_storage'.
 		do
 		end
 

@@ -35,11 +35,14 @@ feature -- Action(s)
 
 	resolve (a_system_name: STRING) is
 			-- Open file with corresponding name.
+		local
+			l_last_stream: like last_stream
 		do
 			last_error := Void
-			create {KL_BINARY_INPUT_FILE} last_stream.make (a_system_name)
-			last_stream.open_read
-			if not last_stream.is_open_read then
+			create {KL_BINARY_INPUT_FILE} l_last_stream.make (a_system_name)
+			last_stream := l_last_stream
+			l_last_stream.open_read
+			if not l_last_stream.is_open_read then
 				last_error := STRING_.concat ("cannot open input file: ", a_system_name)
 				last_stream := Void
 			end
@@ -47,10 +50,10 @@ feature -- Action(s)
 
 feature -- Result
 
-	last_stream: KI_BINARY_INPUT_FILE
+	last_stream: ?KI_BINARY_INPUT_FILE
 			-- File matching stream
 
-	last_error: STRING
+	last_error: ?STRING
 			-- Error
 
 	has_error: BOOLEAN is

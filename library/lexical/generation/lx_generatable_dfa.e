@@ -43,12 +43,16 @@ feature {NONE} -- Initialization
 			a_description_not_void: a_description /= Void
 		local
 			max: INTEGER
-			equiv_classes: LX_EQUIVALENCE_CLASSES
+			equiv_classes: ?LX_EQUIVALENCE_CLASSES
+			l_input_filename: ?like input_filename
+			l_yy_ec: like yy_ec
 		do
-			input_filename := a_description.input_filename
-			if input_filename = Void then
-				input_filename := Default_input_filename
+			l_input_filename := a_description.input_filename
+			if l_input_filename = Void then
+				l_input_filename := Default_input_filename
 			end
+			input_filename := l_input_filename
+
 			characters_count := a_description.characters_count
 			array_size := a_description.array_size
 			inspect_used := a_description.inspect_used
@@ -67,8 +71,9 @@ feature {NONE} -- Initialization
 			max := characters_count
 			equiv_classes := a_description.equiv_classes
 			if equiv_classes /= Void and then equiv_classes.built then
-				yy_ec := equiv_classes.to_array (0, max)
-				yyNull_equiv_class := yy_ec.item (max)
+				l_yy_ec := equiv_classes.to_array (0, max)
+				yy_ec := l_yy_ec
+				yyNull_equiv_class := l_yy_ec.item (max)
 				max := equiv_classes.count
 			else
 				yyNull_equiv_class := max
@@ -172,15 +177,17 @@ feature {NONE} -- Generation
 			a_file_open_write: a_file.is_open_write
 		local
 			i, nb: INTEGER
+			l_eiffel_header: like eiffel_header
 		do
-			if eiffel_header /= Void then
-				nb := eiffel_header.count
+			l_eiffel_header := eiffel_header
+			if l_eiffel_header /= Void then
+				nb := l_eiffel_header.count
 				from
 					i := 1
 				until
 					i > nb
 				loop
-					a_file.put_string (eiffel_header.item (i))
+					a_file.put_string (l_eiffel_header.item (i))
 					i := i + 1
 				end
 			end
@@ -669,9 +676,12 @@ feature {NONE} -- Generation
 		require
 			a_file_not_void: a_file /= Void
 			a_file_open_write: a_file.is_open_write
+		local
+			s: like eiffel_code
 		do
-			if eiffel_code /= Void then
-				a_file.put_string (eiffel_code)
+			s := eiffel_code
+			if s /= Void then
+				a_file.put_string (s)
 			end
 		end
 
@@ -748,7 +758,7 @@ feature {NONE} -- Generation
 		end
 
 	print_rule_line_numbers (a_state: LX_DFA_STATE; a_file: KI_TEXT_OUTPUT_STREAM) is
-			-- Print the (sorted) list of the line numbers of 
+			-- Print the (sorted) list of the line numbers of
 			-- the rules associated to the NFA states making up
 			-- `a_state' to `a_file'.
 		require
@@ -818,25 +828,27 @@ feature {NONE} -- Generation
 			i, j, nb: INTEGER
 			transitions: LX_TRANSITION_TABLE [LX_DFA_STATE]
 			has_transition: ARRAY [BOOLEAN]
+			l_yy_ec: like yy_ec
 		do
 			nb := characters_count
 			transitions := a_state.transitions
 			create has_transition.make (0, nb - 1)
-			if yy_ec /= Void then
+			l_yy_ec := yy_ec
+			if l_yy_ec /= Void then
 					-- Equivalence classes are used.
 				from
 					i := 1
 				until
 					i >= nb
 				loop
-					j := yy_ec.item (i)
+					j := l_yy_ec.item (i)
 					if transitions.valid_label (j) then
 						has_transition.put (transitions.target (j) /= Void, i)
 					end
 					i := i + 1
 				end
 					-- Null transition.
-				j := yy_ec.item (nb)
+				j := l_yy_ec.item (nb)
 				if transitions.valid_label (j) then
 					has_transition.put (transitions.target (j) /= Void, 0)
 				end
@@ -1025,10 +1037,10 @@ feature {NONE} -- Access
 	input_filename: STRING
 			-- Input filename
 
-	eiffel_code: STRING
+	eiffel_code: ?STRING
 			-- User-defined Eiffel code
 
-	eiffel_header: DS_ARRAYED_LIST [STRING]
+	eiffel_header: ?DS_ARRAYED_LIST [STRING]
 			-- User-defined Eiffel header
 
 	bol_needed: BOOLEAN
@@ -1091,7 +1103,7 @@ feature {NONE} -- Constants
 invariant
 
 	minimum_symbol: minimum_symbol = 1
-	no_void_eiffel_header: eiffel_header /= Void implies not eiffel_header.has_void
+	no_void_eiffel_header: {ot_eiffel_header: like eiffel_header} eiffel_header implies not ot_eiffel_header.has_void
 	characters_count_positive: characters_count > 0
 	array_size_positive: array_size >= 0
 	input_filename_not_void: input_filename /= Void

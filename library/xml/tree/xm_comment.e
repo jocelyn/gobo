@@ -17,7 +17,7 @@ inherit
 	XM_DOCUMENT_NODE
 
 	XM_ELEMENT_NODE
-	
+
 create
 
 	make,
@@ -50,10 +50,10 @@ feature {NONE} -- Initialization
 			a_parent.force_last (Current)
 		ensure
 			parent_set: parent = a_parent
-			in_parent: parent.last = Current
+			in_parent: a_parent.last = Current
 			data_set: data = a_data
 		end
-		
+
 	make_last_in_document (a_parent: XM_DOCUMENT; a_data: like data) is
 			-- Create a new comment node,
 			-- and add it to parent.
@@ -65,10 +65,10 @@ feature {NONE} -- Initialization
 			a_parent.force_last (Current)
 		ensure
 			parent_set: parent = a_parent
-			in_parent: parent.last = Current
+			in_parent: a_parent.last = Current
 			data_set: data = a_data
 		end
-		
+
 feature -- Access
 
 	data: STRING
@@ -85,7 +85,7 @@ feature -- Setting
 		ensure
 			set: data = a_data
 		end
-		
+
 feature -- Processing
 
 	process (a_processor: XM_NODE_PROCESSOR) is

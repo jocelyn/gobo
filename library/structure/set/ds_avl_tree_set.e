@@ -61,7 +61,7 @@ feature -- Access
 
 feature {NONE} -- Implementation
 
-	root_node: DS_AVL_TREE_SET_NODE [G]
+	root_node: ?DS_AVL_TREE_SET_NODE [G]
 			-- Root node of tree
 
 end

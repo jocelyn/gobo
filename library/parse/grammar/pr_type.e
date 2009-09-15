@@ -32,7 +32,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (an_id: INTEGER; a_type_mark: STRING; a_name: like name) is
+	make (an_id: INTEGER; a_type_mark: ?STRING; a_name: like name) is
 			-- Create a new type named `a_name'.
 		require
 			valid_id: id >= 0
@@ -54,7 +54,7 @@ feature {NONE} -- Initialization
 			name_set: a_type_mark = Void implies name = a_name
 		end
 
-	make_generic (an_id: INTEGER; a_type_mark: STRING; a_name: like name; generics: DS_ARRAYED_LIST [PR_TYPE]) is
+	make_generic (an_id: INTEGER; a_type_mark: ?STRING; a_name: like name; generics: DS_ARRAYED_LIST [PR_TYPE]) is
 			-- Create a new generic type named `a_name' and generic
 			-- parameters `generics'.
 		require
@@ -95,7 +95,7 @@ feature {NONE} -- Initialization
 			id_set: id = an_id
 		end
 
-	make_labeled_tuple (an_id: INTEGER; a_type_mark: STRING; a_name: like name; generics: DS_ARRAYED_LIST [PR_LABELED_TYPE]) is
+	make_labeled_tuple (an_id: INTEGER; a_type_mark: ?STRING; a_name: like name; generics: DS_ARRAYED_LIST [PR_LABELED_TYPE]) is
 			-- Create a new labeled tuple type named `a_name' and generic
 			-- parameters `generics'.
 		require
@@ -155,7 +155,7 @@ feature {NONE} -- Initialization
 			id_set: id = an_id
 		end
 
-	make_anchored (an_id: INTEGER; a_type_mark: STRING; a_name: like name) is
+	make_anchored (an_id: INTEGER; a_type_mark: ?STRING; a_name: like name) is
 			-- Create a new anchored type
 			-- of the form "like `a_name'".
 		require
@@ -180,7 +180,7 @@ feature {NONE} -- Initialization
 			id_set: id = an_id
 		end
 
-	make_like_current (an_id: INTEGER; a_type_mark: STRING) is
+	make_like_current (an_id: INTEGER; a_type_mark: ?STRING) is
 			-- Create a new  type of the form "like Current".
 		require
 			valid_id: id >= 0
@@ -208,14 +208,14 @@ feature -- Access
 	name: STRING
 			-- Type name
 
-	alias_name: STRING
+	alias_name: ?STRING
 			-- Name to be used in `last_value_name', typically "last_<alias_name>_value".
 			-- Use `name' instead if `alias_name' is Void or empty.
 
 	last_value_name: STRING is
 			-- Name of last value entity
 		local
-			l_name: STRING
+			l_name: ?STRING
 			i, nb: INTEGER
 			c: CHARACTER
 		do
@@ -326,11 +326,19 @@ feature -- Output
 			indent_positive: indent >= 0
 			a_file_not_void: a_file /= Void
 			a_file_open_write: a_file.is_open_write
+		local
+			l_is_basic_type: BOOLEAN
+			l_basic_type: ?PR_BASIC_TYPE
 		do
+			l_basic_type ?= Current
+			l_is_basic_type := l_basic_type /= Void
 			print_indentation (indent, a_file)
 			a_file.put_string ("yyvs")
 			a_file.put_integer (id)
 			a_file.put_string (": SPECIAL [")
+			if not l_is_basic_type then
+				a_file.put_string ("?")
+			end
 			a_file.put_string (name)
 			a_file.put_line ("]")
 			print_indentation (indent + 2, a_file)
@@ -359,6 +367,9 @@ feature -- Output
 			a_file.put_string ("yyspecial_routines")
 			a_file.put_integer (id)
 			a_file.put_string (": KL_SPECIAL_ROUTINES [")
+			if not l_is_basic_type then
+				a_file.put_string ("?")
+			end
 			a_file.put_string (name)
 			a_file.put_line ("]")
 			print_indentation (indent + 2, a_file)
@@ -391,6 +402,7 @@ feature -- Output
 			a_file.put_integer (id)
 			a_file.put_line (" := yyInitial_yyvs_size")
 			print_indentation (indent, a_file)
+
 			a_file.put_string ("yyvs")
 			a_file.put_integer (id)
 			a_file.put_string (" := yyspecial_routines")
@@ -408,10 +420,6 @@ feature -- Output
 			a_file_open_write: a_file.is_open_write
 		do
 			print_indentation (indent, a_file)
-			a_file.put_string ("if yyvs")
-			a_file.put_integer (id)
-			a_file.put_line (" /= Void then")
-			print_indentation (indent + 1, a_file)
 			a_file.put_string ("yyvs")
 			a_file.put_integer (id)
 			a_file.put_string (".fill_with (l_yyvs")
@@ -419,8 +427,6 @@ feature -- Output
 			a_file.put_string ("_default_item, 0, yyvs")
 			a_file.put_integer (id)
 			a_file.put_line (".upper)")
-			print_indentation (indent, a_file)
-			a_file.put_line ("end")
 		end
 
 	print_increment_yyvsp (nb: INTEGER; indent: INTEGER; a_file: KI_TEXT_OUTPUT_STREAM) is
@@ -446,7 +452,7 @@ feature -- Output
 		end
 
 	print_push_yyval (indent: INTEGER; a_file: KI_TEXT_OUTPUT_STREAM) is
-			-- Print "yyvs.put (yyval, yyvsp)" to `a_file'.
+			-- Print "yyvs.force (yyval, yyvsp)" to `a_file'.
 		require
 			indent_positive: indent >= 0
 			a_file_not_void: a_file /= Void
@@ -455,7 +461,7 @@ feature -- Output
 			print_indentation (indent, a_file)
 			a_file.put_string ("yyvs")
 			a_file.put_integer (id)
-			a_file.put_string (".put (yyval")
+			a_file.put_string (".force (yyval")
 			a_file.put_integer (id)
 			a_file.put_string (", yyvsp")
 			a_file.put_integer (id)
@@ -463,7 +469,7 @@ feature -- Output
 		end
 
 	print_push_last_value (indent: INTEGER; a_file: KI_TEXT_OUTPUT_STREAM) is
-			-- Print "yyvsp := yyvsp + 1; yyvs.put (last_value, yyvsp)" to `a_file'.
+			-- Print "yyvsp := yyvsp + 1; yyvs.force (last_value, yyvsp)" to `a_file'.
 		require
 			indent_positive: indent >= 0
 			a_file_not_void: a_file /= Void
@@ -476,10 +482,11 @@ feature -- Output
 			a_file.put_integer (id)
 			a_file.put_line (" + 1")
 			print_resize_yyvs (indent, a_file)
+
 			print_indentation (indent, a_file)
 			a_file.put_string ("yyvs")
 			a_file.put_integer (id)
-			a_file.put_string (".put (")
+			a_file.put_string (".force (")
 			a_file.put_string (last_value_name)
 			a_file.put_string (", yyvsp")
 			a_file.put_integer (id)
@@ -516,27 +523,20 @@ feature -- Output
 			a_file.put_integer (id)
 			a_file.put_line (" then")
 			print_indentation (indent + 1, a_file)
-			a_file.put_string ("if yyvs")
-			a_file.put_integer (id)
-			a_file.put_line (" = Void then")
-			print_create_yyvs (indent + 2, a_file)
-			print_indentation (indent + 1, a_file)
-			a_file.put_line ("else")
-			print_indentation (indent + 2, a_file)
 			a_file.put_line ("debug (%"GEYACC%")")
-			print_indentation (indent + 3, a_file)
+			print_indentation (indent + 2, a_file)
 			a_file.put_string ("std.error.put_line (%"Resize yyvs")
 			a_file.put_integer (id)
 			a_file.put_line ("%")")
-			print_indentation (indent + 2, a_file)
+			print_indentation (indent + 1, a_file)
 			a_file.put_line ("end")
-			print_indentation (indent + 2, a_file)
+			print_indentation (indent + 1, a_file)
 			a_file.put_string ("yyvsc")
 			a_file.put_integer (id)
 			a_file.put_string (" := yyvsc")
 			a_file.put_integer (id)
 			a_file.put_line (" + yyInitial_yyvs_size")
-			print_indentation (indent + 2, a_file)
+			print_indentation (indent + 1, a_file)
 			a_file.put_string ("yyvs")
 			a_file.put_integer (id)
 			a_file.put_string (" := yyspecial_routines")
@@ -546,8 +546,6 @@ feature -- Output
 			a_file.put_string (", yyvsc")
 			a_file.put_integer (id)
 			a_file.put_line (")")
-			print_indentation (indent + 1, a_file)
-			a_file.put_line ("end")
 			print_indentation (indent, a_file)
 			a_file.put_line ("end")
 		end
@@ -557,10 +555,16 @@ feature -- Output
 		require
 			a_file_not_void: a_file /= Void
 			a_file_open_write: a_file.is_open_write
+		local
+			l_basic_type: ?PR_BASIC_TYPE
 		do
 			a_file.put_string ("%T%T%Tyyval")
 			a_file.put_integer (id)
 			a_file.put_string (": ")
+			l_basic_type ?= Current
+			if l_basic_type = Void then
+				a_file.put_string ("?")
+			end
 			a_file.put_string (name)
 		end
 

@@ -36,7 +36,7 @@ feature {NONE} -- Initialization
 	make is
 			-- Create a new parser.
 		do
-			yyss := SPECIAL_INTEGER_.make (yyInitial_stack_size)
+			yyss := SPECIAL_INTEGER_.make_filled (0, yyInitial_stack_size)
 			yy_create_value_stacks
 			yy_build_parser_tables
 		end
@@ -113,7 +113,7 @@ feature -- Parsing
 					yyssp := yyssp + 1
 					if yyssp >= yystacksize then
 						yystacksize := yystacksize + yyInitial_stack_size
-						yyss := SPECIAL_INTEGER_.resize (yyss, yystacksize)
+						yyss := SPECIAL_INTEGER_.resize_with_default (0, yyss, yystacksize)
 						debug ("GEYACC")
 							std.error.put_string ("Stack (yyss) size increased to ")
 							std.error.put_integer (yystacksize)
@@ -125,7 +125,7 @@ feature -- Parsing
 						std.error.put_integer (yystate)
 						std.error.put_character ('%N')
 					end
-					yyss.put (yystate, yyssp)
+					yyss.force (yystate, yyssp)
 						-- Do appropriate processing given the current state.
 						-- Read a lookahead token if one is needed.
 					yyn := yypact.item (yystate)

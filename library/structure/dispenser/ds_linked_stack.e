@@ -110,8 +110,15 @@ feature -- Access
 
 	item: G is
 			-- Item at top of stack
+		local
+			l_first_cell: like first_cell
 		do
-			Result := first_cell.item
+			l_first_cell := first_cell
+			check 
+					-- precondition `not_empty' and invariant `first_cell'
+				first_cell_not_void: l_first_cell /= Void 
+			end
+			Result := l_first_cell.item
 		end
 
 feature -- Measurement
@@ -165,8 +172,12 @@ feature -- Duplication
 				if not other.is_empty then
 					from
 						old_cell := other.first_cell
-						create first_cell.make (old_cell.item)
-						a_cell := first_cell
+						check 
+								-- condition `not other.is_empty' and invariant `first_cell' on `other'
+							first_cell_not_void: old_cell /= Void 
+						end
+						create a_cell.make (old_cell.item)
+						first_cell := a_cell
 						old_cell := old_cell.right
 					until
 						old_cell = Void
@@ -197,6 +208,10 @@ feature -- Comparison
 				until
 					a_cell = Void
 				loop
+					check 
+						-- other_cell is not Void because `a_cell /= Void', `other.count = count' and invariant `first_cell'
+						other_cell_not_void: other_cell /= Void 
+					end
 					if a_cell.item /= other_cell.item then
 						Result := False
 							-- Jump out of the loop.
@@ -215,10 +230,12 @@ feature -- Element change
 			-- Push `v' on stack.
 		local
 			a_cell: like first_cell
+			l_first_cell: like first_cell
 		do
 			create a_cell.make (v)
-			if first_cell /= Void then
-				a_cell.put_right (first_cell)
+			l_first_cell := first_cell
+			if l_first_cell /= Void then
+				a_cell.put_right (l_first_cell)
 			end
 			first_cell := a_cell
 			count := count + 1
@@ -226,8 +243,15 @@ feature -- Element change
 
 	replace (v: G) is
 			-- Replace top item by `v'.
+		local
+			l_first_cell: like first_cell
 		do
-			first_cell.put (v)
+			l_first_cell := first_cell
+			check 
+					-- inherited precondition `not_empty' and invariant `first_cell'
+				first_cell_not_void: l_first_cell /= Void 
+			end
+			l_first_cell.put (v)
 		end
 
 	extend, append (other: DS_LINEAR [G]) is
@@ -235,6 +259,7 @@ feature -- Element change
 			-- Add `other.first' first, etc.
 		local
 			a_cell, new_first: like first_cell
+			l_first_cell: like first_cell
 			other_cursor: DS_LINEAR_CURSOR [G]
 		do
 			if not other.is_empty then
@@ -242,8 +267,9 @@ feature -- Element change
 				from
 					other_cursor.start
 					create a_cell.make (other_cursor.item)
-					if first_cell /= Void then
-						a_cell.put_right (first_cell)
+					l_first_cell := first_cell
+					if l_first_cell /= Void then
+						a_cell.put_right (l_first_cell)
 					end
 					new_first := a_cell
 					other_cursor.forth
@@ -264,8 +290,15 @@ feature -- Removal
 
 	remove is
 			-- Remove top item from stack.
+		local
+			l_first_cell: like first_cell
 		do
-			first_cell := first_cell.right
+			l_first_cell := first_cell
+			check 
+					-- inherited precondition `not_empty' and invariant `first_cell'
+				first_cell_not_void: l_first_cell /= Void 
+			end
+			first_cell := l_first_cell.right
 			count := count - 1
 		end
 
@@ -279,12 +312,20 @@ feature -- Removal
 				wipe_out
 			else
 				a_cell := first_cell
+				check 
+						-- inherited precondition `not_empty' and invariant `first_cell'
+					first_cell_not_void: a_cell /= Void 
+				end
 				from
 					i := 1
 				until
 					i > n
 				loop
 					a_cell := a_cell.right
+					check 
+							-- inherited precondition `valid_n' and `i <= n < count'
+						a_cell_right_not_void: a_cell /= Void 
+					end 
 					i := i + 1
 				end
 				first_cell := a_cell
@@ -388,7 +429,7 @@ feature -- Iteration
 
 feature {DS_LINKED_STACK} -- Implementation
 
-	first_cell: DS_LINKABLE [G]
+	first_cell: ?DS_LINKABLE [G]
 			-- First cell in stack
 
 invariant

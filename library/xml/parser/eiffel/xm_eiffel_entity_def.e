@@ -30,7 +30,7 @@ inherit
 			normalized_newline,
 			has_normalized_newline
 		end
-		
+
 	UC_IMPORTED_UTF8_ROUTINES
 		export {NONE} all end
 
@@ -57,7 +57,7 @@ feature {NONE} -- Initialization
 			value_set: value = a_value
 		end
 
-	make_external (a_resolver: like resolver; an_id: like external_id) is
+	make_external (a_resolver: like resolver; an_id: !like external_id) is
 			-- Create a new external entity definition from `a_value'.
 		require
 			a_resolver_not_void: a_resolver /= Void
@@ -77,11 +77,22 @@ feature {NONE} -- Initialization
 			-- Create a new entity definition from `other'.
 		require
 			other_not_void: other /= Void
+		local
+			l_external_id: like external_id
+			l_literal_name, l_value: ?STRING
 		do
 			if other.is_external then
-				make_external (other.resolver, other.external_id)
+				l_external_id := other.external_id
+				check l_external_id /= Void end -- implied by `other.is_external'
+				make_external (other.resolver, l_external_id)
 			else
-				make_literal (other.literal_name, other.value)
+				l_literal_name := other.literal_name
+				l_value := other.value
+				check
+					l_literal_name /= Void and
+					l_value /= Void
+				end -- implied by `not other.is_external' and invariant `type', `value_not_void'
+				make_literal (l_literal_name, l_value)
 			end
 		ensure
 			is_external: is_external = other.is_external
@@ -92,7 +103,7 @@ feature {NONE} -- Initialization
 feature -- Resolver
 
 	resolver: XM_EXTERNAL_RESOLVER
-	
+
 feature -- Status report
 
 	is_external: BOOLEAN is
@@ -100,7 +111,7 @@ feature -- Status report
 		do
 			Result := external_id /= Void
 		end
-		
+
 	is_literal: BOOLEAN is
 			-- Is current entity a literal entity?
 		do
@@ -111,22 +122,28 @@ feature -- Status report
 
 feature -- Access
 
-	literal_name: STRING
+	literal_name: ?STRING
 			-- Literal entity name
-	value: STRING
+	value: ?STRING
 			-- Literal entity value
 
-	external_id: XM_DTD_EXTERNAL_ID
+	external_id: ?XM_DTD_EXTERNAL_ID
 			-- Resolve external value.
 
 	hash_code: INTEGER is
 			-- Hash code value
 			-- (on the entity name aspect)
+		local
+			l_value: like value
+			l_external_id: like external_id
 		do
-			if value /= Void then
-				Result := value.hash_code
+			l_value := value
+			if l_value /= Void then
+				Result := l_value.hash_code
 			elseif is_external then
-				Result := external_id.hash_code
+				l_external_id := external_id
+				check l_external_id /= Void end
+				Result := l_external_id.hash_code
 			end
 		end
 
@@ -136,6 +153,11 @@ feature -- Scanner: set input buffer
 			-- Set input buffer.
 		local
 			str_stream: KL_STRING_INPUT_STREAM
+			l_value: like value
+			l_literal_name: like literal_name
+			l_external_id: like external_id
+			l_error: ?STRING
+			l_public_id, l_system_id: ?STRING
 		do
 			if in_use then
 				fatal_error (Error_recursive_entity)
@@ -145,22 +167,34 @@ feature -- Scanner: set input buffer
 				-- the value we get may be UC_STRING, so it must be
 				-- converted back to UTF8 for the scanner which operates
 				-- on UTF8-in-STRING input
-				create str_stream.make (utf8.to_utf8 (value))
+				l_value := value
+				check l_value /= Void end -- implied by `is_literal' and invariant `type, value_not_void'
+				create str_stream.make (utf8.to_utf8 (l_value))
 				set_input_stream (str_stream)
-				input_name := literal_name
+				l_literal_name := literal_name
+				check l_literal_name /= Void end -- implied by `is_literal'
+				input_name := l_literal_name
 			else
 					-- External entity in a file.
 				reset
-				if external_id.is_public then
-					resolver.resolve_public (external_id.public_id, external_id.system_id)
+				l_external_id := external_id
+				check l_external_id /= Void end -- implied by `not is_literal' and invariant `type, value_not_void'
+				l_system_id := l_external_id.system_id
+				check l_system_id /= Void end -- implied by ... ?				
+				if l_external_id.is_public then
+					l_public_id := l_external_id.public_id
+					check l_public_id /= Void end -- implied by `l_external_id.is_public'
+					resolver.resolve_public (l_public_id, l_system_id)
 				else
-					resolver.resolve (external_id.system_id)
+					resolver.resolve (l_system_id)
 				end
 				if not resolver.has_error then
 					set_input_from_resolver (resolver)
 					-- `has_error'/`last_error' set by `set_input_file'.
 				else
-					fatal_error (resolver.last_error)
+					l_error := resolver.last_error
+					check l_error /= Void end -- implied by `resolver.has_error'
+					fatal_error (l_error)
 				end
 			end
 		end

@@ -65,19 +65,23 @@ feature {NONE} -- Initialization
 			a_parent.force_last (Current)
 		ensure
 			parent_set: parent = a_parent
-			in_parent: parent.last = Current
+			in_parent: a_parent.last = Current
 			name_set: name = a_name
 			ns_prefix_set: namespace = a_ns
 			value_set: value = a_value
 		end
-		
+
 feature -- Status report
 
 	is_namespace_declaration: BOOLEAN is
 			-- Is current attribute a namespace declaration?
+		local
+			l_ns_prefix: like ns_prefix
 		do
 			if has_prefix then
-				Result := same_string (Xmlns, ns_prefix)
+				l_ns_prefix := ns_prefix
+				check l_ns_prefix /= Void end -- implied by `has_prefix'
+				Result := same_string (Xmlns, l_ns_prefix)
 			else
 				Result := same_string (Xmlns, name)
 			end

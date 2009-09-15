@@ -49,8 +49,12 @@ feature -- Access
 			-- The string value of the most recently read token
 		require
 			no_lexical_error: is_lexical_error = False
+		local
+			l_result: like current_token_value
 		do
-			Result := current_token_value
+			l_result := current_token_value
+			check l_result /= Void end -- implied by not is_lexical_error
+			Result := l_result
 		ensure
 			last_token_value_not_void: Result /= Void
 		end
@@ -66,8 +70,12 @@ feature -- Access
 			-- Error text
 		require
 			lexical_error: is_lexical_error
+		local
+			l_error: ?STRING
 		do
-			Result := internal_last_lexical_error
+			l_error := internal_last_lexical_error
+			check l_error /= Void end -- implied by `is_lexical_error'
+			Result := l_error
 		ensure
 			text_not_void: Result /= Void
 		end
@@ -79,7 +87,7 @@ feature -- Status report
 
 	is_whitespace_reporting: BOOLEAN
 			-- Are whitespace characters to be reported as a token?
-	
+
 	is_input_stream_exhausted: BOOLEAN is
 			-- Are there more characters to read?
 		do
@@ -95,7 +103,7 @@ feature -- Status setting
 		ensure
 			whitespace_reporting_set: is_whitespace_reporting = a_boolean
 		end
-		
+
 feature --Element change
 
 	next is
@@ -160,7 +168,7 @@ feature --Element change
 		end
 
 feature {NONE} -- Implementation
-	
+
 	report_lexical_error (a_message: STRING) is
 			-- Report a lexical error.
 		require
@@ -171,24 +179,25 @@ feature {NONE} -- Implementation
 			internal_last_lexical_error := a_message
 		ensure
 			in_error: is_lexical_error
-			correct_error_value: STRING_.same_string (internal_last_lexical_error, a_message)
+			correct_error_value: {el_internal_last_lexical_error: STRING} internal_last_lexical_error
+					and then STRING_.same_string (el_internal_last_lexical_error, a_message)
 		end
 
 	input_index: INTEGER
 			-- The current position within `input'
 
-	internal_last_lexical_error: STRING
+	internal_last_lexical_error: ?STRING
 			-- Error text of last lexical error
 
 	current_token: INTEGER
 			-- The number identifying the most recently read token
 
-	current_token_value: STRING
+	current_token_value: ?STRING
 			-- The string value of the most recently read token
 
 	was_whitespace_found: BOOLEAN
 			-- Set when `eat_whitespace' finds whitespace characters
-	
+
 	whitespace: STRING is " %R%T%N"
 		-- White space charaters as per XML 1.0
 
@@ -213,11 +222,12 @@ feature {NONE} -- Implementation
 			end
 		ensure
 			whitespace_found_sets_token: was_whitespace_found implies current_token = Whitespace_token
-				and then STRING_.same_string (current_token_value, whitespace)
+				and then {el_current_token_value: like current_token_value} current_token_value
+				and then STRING_.same_string (el_current_token_value, whitespace)
 			whitespace_not_found_unsets_token: not was_whitespace_found implies current_token_value = Void
 			next_character_not_whitespace: is_input_stream_exhausted or else not whitespace.has (input.item (input_index))
 		end
-	
+
 	accumulate_string_token is
 			-- Accumulate characters and return a string.
 		require
@@ -237,7 +247,7 @@ feature {NONE} -- Implementation
 					finished := True
 				else
 					inspect
-						input.item (input_index)						
+						input.item (input_index)
 					when '(', ')', '^' then
 						finished := True
 					else
@@ -255,4 +265,4 @@ feature {NONE} -- Implementation
 		end
 
 end
-	
+

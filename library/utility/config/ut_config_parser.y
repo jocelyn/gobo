@@ -68,31 +68,51 @@ Instruction: If_condition Instructions Endif
 	| P_DEFINE P_NAME P_EOL
 		{
 			if not ignored then
-				define_value ("", $2)
+				if {l_define_value_2: STRING} $2 then
+					define_value ("", l_define_value_2)
+				else
+					check False end
+				end
 			end
 		}
 	| P_UNDEF P_NAME P_EOL
 		{
 			if not ignored then
-				undefine_value ($2)
+				if {l_undefine_value_2: STRING} $2 then
+					undefine_value (l_undefine_value_2)
+				else
+					check False end
+				end
 			end
 		}
 	| P_INCLUDE P_STRING P_EOL
 		{
 			if not ignored then
-				process_include ($2)
+				if {l_process_include_2: STRING} $2 then
+					process_include (l_process_include_2)
+				else
+					check False end
+				end
 			end
 		}
 	| P_NAME P_COLON P_VALUE P_EOL
 		{
 			if not ignored then
-				config_values.force ($3, $1)
+				if {l_instr_3: STRING} $3 and {l_instr_1: STRING} $1 then
+					config_values.force (l_instr_3, l_instr_1)
+				else
+					check False end
+				end
 			end
 		}
 	| P_NAME P_COLON P_EOL
 		{
 			if not ignored then
-				config_values.force ("", $1)
+				if {l_instr_s1: STRING} $1 then
+					config_values.force ("", l_instr_s1)
+				else
+					check False end
+				end
 			end
 		}
 	| P_EOL
@@ -119,7 +139,11 @@ If_condition: P_IFDEF Condition P_EOL
 
 Condition: P_NAME
 		{
-			$$ := is_defined ($1)
+			if {l_is_defined_1: STRING} $1 then
+				$$ := is_defined (l_is_defined_1)
+			else
+				check False end
+			end
 		}
 	| '(' Condition ')'
 		{

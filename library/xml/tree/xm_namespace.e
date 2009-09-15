@@ -58,7 +58,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	ns_prefix: STRING
+	ns_prefix: ?STRING
 			-- Prefix of current namespace
 
 	uri: STRING
@@ -91,23 +91,34 @@ feature -- Status report
 
 	same_prefix (other: XM_NAMESPACE): BOOLEAN is
 			-- Same
+		local
+			l_ns_prefix, l_other_ns_prefix: like ns_prefix
 		do
+			l_ns_prefix := ns_prefix
+			l_other_ns_prefix := other.ns_prefix
 			Result := is_equal (other) and then
-				((ns_prefix = other.ns_prefix) or else
-					((ns_prefix /= Void and other.ns_prefix /= Void) and then STRING_.same_string (ns_prefix, other.ns_prefix)))
+				((l_ns_prefix = l_other_ns_prefix) or else
+					((l_ns_prefix /= Void and l_other_ns_prefix /= Void) and then STRING_.same_string (l_ns_prefix, l_other_ns_prefix)))
 		ensure
 			equal: Result implies is_equal (other)
 			same_prefix: Result implies
-				(ns_prefix = other.ns_prefix or else STRING_.same_string (ns_prefix, other.ns_prefix))
+				(ns_prefix = other.ns_prefix or else (
+					{el_ns_prefix: like ns_prefix} ns_prefix
+					and then {el_other_ns_prefix: like ns_prefix} other.ns_prefix
+					and then STRING_.same_string (el_ns_prefix, el_other_ns_prefix))
+					)
 		end
 
 	has_prefix: BOOLEAN is
 			-- Is there an explicit prefix?
 			-- (not a default namespace declaration)
+		local
+			l_ns_prefix: like ns_prefix
 		do
-			Result := (ns_prefix /= Void and then ns_prefix.count > 0)
+			l_ns_prefix := ns_prefix
+			Result := (l_ns_prefix /= Void and then l_ns_prefix.count > 0)
 		ensure
-			definition: Result = (ns_prefix /= Void and then ns_prefix.count > 0)
+			definition: Result = ({el_ns_prefix: like ns_prefix} ns_prefix and then el_ns_prefix.count > 0)
 		end
 
 invariant

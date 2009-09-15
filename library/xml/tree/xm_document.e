@@ -38,33 +38,40 @@ feature {NONE} -- Initialization
 		require
 			not_void: a_name /= Void
 			not_empty: a_name.count > 0
+		local
+			l_root_element: like root_element
 		do
-			create root_element.make (Current, a_name, a_ns)
+			create l_root_element.make_without_parent (a_name, a_ns)
+			root_element := l_root_element
+			l_root_element.set_parent (Current)
 			list_make
-			force_last (root_element)
+			force_last (l_root_element)
 		ensure
 			root_element_name_set: root_element.name = a_name
 		end
 
 	Default_name: STRING is "root"
-		
+
 feature {NONE} -- Parent processing
 
 	before_addition (a_node: XM_NODE) is
 			-- Remove node from original parent if not us.
+		local
+			l_parent: like parent
 		do
 			if a_node /= Void then
 				check addable: addable_item (a_node) end
 					-- Remove from previous parent.
-				if a_node.parent /= Void then
-					a_node.parent.equality_delete (a_node)
+				l_parent := a_node.parent
+				if l_parent /= Void then
+					l_parent.equality_delete (a_node)
 				end
 				a_node.node_set_parent (Current)
 			end
 		ensure then
 			parent_accepted: a_node /= Void implies a_node.parent = Current
 		end
-		
+
 	addable_item (a_node: XM_NODE): BOOLEAN is
 			-- Is this not of the correct type for addition?
 			-- (document node)
@@ -79,7 +86,7 @@ feature {NONE} -- Parent processing
 					or typer.is_element
 			end
 		end
-		
+
 feature {XM_NODE} -- Removal
 
 	equality_delete (v: XM_NODE) is
@@ -104,7 +111,7 @@ feature {XM_NODE} -- Removal
 				end
 			end
 		end
-		
+
 feature -- Access
 
 	root_element: XM_ELEMENT
@@ -115,7 +122,7 @@ feature -- Access
 		do
 			Result := Current
 		end
-		
+
 feature -- Setting
 
 	set_root_element (an_element: like root_element) is
@@ -127,7 +134,7 @@ feature -- Setting
 			root_element := an_element
 			force_last (an_element)
 		ensure
-			root_element_parent: root_element.parent = Current
+			root_element_parent: an_element.parent = Current
 			root_element_set: root_element = an_element
 			last_set: last = root_element
 		end
@@ -156,7 +163,7 @@ feature {NONE} -- Implementation
 		
 feature -- Access
 
-	element_by_name (a_name: STRING): XM_ELEMENT is
+	element_by_name (a_name: STRING): ?XM_ELEMENT is
 			-- Direct child element with name `a_name';
 			-- If there are more than one element with that name, anyone may be returned.
 			-- Return Void if no element with that name is a child of current node.
@@ -168,7 +175,7 @@ feature -- Access
 			root_element: has_element_by_name (a_name) implies Result = root_element
 		end
 		
-	element_by_qualified_name (a_uri: STRING; a_name: STRING): XM_ELEMENT is
+	element_by_qualified_name (a_uri: STRING; a_name: STRING): ?XM_ELEMENT is
 			-- Root element, if name matches, Void otherwise.
 		do
 			if has_element_by_qualified_name (a_uri, a_name) then

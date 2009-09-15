@@ -38,7 +38,7 @@ feature -- Status
 	has_error: BOOLEAN
 			-- Has an error occurred?
 
-	last_error: STRING
+	last_error: ?STRING
 			-- Error message
 
 feature -- Document
@@ -93,7 +93,7 @@ feature -- Meta
 
 feature -- Tag
 
-	on_start_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_start_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- Start of start tag.
 			-- Default: forward event to 'next'.
 		do
@@ -102,7 +102,7 @@ feature -- Tag
 			end
 		end
 
-	on_attribute (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING; a_value: STRING) is
+	on_attribute (a_namespace, a_prefix: ?STRING; a_local_part: STRING; a_value: STRING) is
 			-- Attribute.
 			-- Default: forward event to 'next'.
 		do
@@ -120,7 +120,7 @@ feature -- Tag
 			end
 		end
 
-	on_end_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_end_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- End tag.
 			-- Default: forward event to 'next'.
 		do

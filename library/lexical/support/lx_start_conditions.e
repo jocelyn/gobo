@@ -30,7 +30,7 @@ create
 feature {NONE} -- Initialization
 
 	make_with_initial (a_capacity: INTEGER) is
-			-- Create a new start condition list and 
+			-- Create a new start condition list and
 			-- insert the "INITIAL" start condition.
 		require
 			a_capacity_positive: a_capacity > 0
@@ -79,20 +79,23 @@ feature -- Access
 		local
 			i, nb: INTEGER
 			a_lower_name: STRING
+			l_result: ?like start_condition
 		do
 			from
 				i := 1
 				nb := count
 				a_lower_name := a_name.as_lower
 			until
-				Result /= Void or i > nb
+				l_result /= Void or i > nb
 			loop
-				Result := item (i)
-				if not a_lower_name.is_equal (Result.name.as_lower) then
-					Result := Void
+				l_result := item (i)
+				if not a_lower_name.is_equal (l_result.name.as_lower) then
+					l_result := Void
 					i := i + 1
 				end
 			end
+			check l_result /= Void end -- implied by precondition `has_start_condition'
+			Result := l_result
 		ensure
 			start_condition_not_void: Result /= Void
 		end

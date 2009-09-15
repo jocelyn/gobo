@@ -1,15 +1,15 @@
 indexing
 
 	description:
-	
+
 		"Standard pipe of callbacks filter leading to construction of a tree of XM_NODEs"
-	
+
 	library: "Gobo Eiffel XML Library"
 	copyright: "Copyright (c) 2002, Eric Bezault and others"
 	license: "MIT License"
 	date: "$Date$"
 	revision: "$Revision$"
-	
+
 class XM_TREE_CALLBACKS_PIPE
 
 inherit
@@ -43,7 +43,7 @@ feature {NONE} -- Initialization
 				error,
 				tree >>)
 		end
-		
+
 feature -- Filters (part of the pipe)
 
 	start: XM_CALLBACKS_FILTER
@@ -60,7 +60,7 @@ feature -- Filters (part of the pipe)
 
 feature -- Shortcuts
 
-	document: XM_DOCUMENT is
+	document: ?XM_DOCUMENT is
 			-- Document (from tree building filter)
 		require
 			not_error: not error.has_error
@@ -72,8 +72,12 @@ feature -- Shortcuts
 			-- Error (from error filter)
 		require
 			error: error.has_error
+		local
+			l_last_error: ?STRING
 		do
-			Result := error.last_error
+			l_last_error := error.last_error
+			check l_last_error /= Void end -- implied by precondition `error'
+			Result := l_last_error
 		ensure
 			last_error_not_void: Result /= Void
 		end

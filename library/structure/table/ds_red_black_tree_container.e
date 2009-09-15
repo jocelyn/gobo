@@ -32,7 +32,7 @@ feature -- Access
 
 feature {NONE} -- Element change
 
-	on_node_added (a_node: like root_node) is
+	on_node_added (a_node: like new_tree_node) is
 			-- `a_node' was just added to the binary search tree.
 			-- If some modifications need to be made, they should
 			-- take place in here. So the algorithms stay as
@@ -40,6 +40,7 @@ feature {NONE} -- Element change
 		local
 			l_node: like root_node
 			l_uncle: like root_node
+			l_parent: like root_node
 			l_grand_parent: like root_node
 		do
 				-- Insert case 1.
@@ -54,13 +55,16 @@ feature {NONE} -- Element change
 					l_node := Void
 				else
 						-- Insert case 2.
-					if l_node.parent.is_black then
+					l_parent := l_node.parent
+					check l_parent /= Void end -- implied by ... ?
+					if l_parent.is_black then
 							-- Stop condition.
 						l_node := Void
 					else
 							-- Insert case 3.
 						l_uncle := l_node.uncle
 						l_grand_parent := l_node.grand_parent
+						check l_grand_parent /= Void end -- implied by ... ?
 						if l_uncle /= Void and then l_uncle.is_red then
 							insert_case_3 (l_node, l_uncle, l_grand_parent)
 								-- Back to insert case 1.
@@ -68,8 +72,10 @@ feature {NONE} -- Element change
 						else
 								-- Insert case 4.
 							l_node := insert_case_4 (l_node, l_grand_parent)
+							check l_node /= Void end -- implied by postcondition of `insert_case_4'
 								-- Insert case 5.
 							l_grand_parent := l_node.grand_parent
+							check l_grand_parent /= Void end -- implied by ... ?							
 							insert_case_5 (l_node, l_grand_parent)
 								-- Stop condition.
 							l_node := Void
@@ -79,23 +85,27 @@ feature {NONE} -- Element change
 			end
 		end
 
-	insert_case_3 (a_node, a_uncle, a_grand_parent: like root_node) is
+	insert_case_3 (a_node, a_uncle, a_grand_parent: like new_tree_node) is
 			-- Case 3.
 		require
 			a_node_not_void: a_node /= Void
 			a_uncle_not_void: a_uncle /= Void
 			a_grand_parent_not_void: a_grand_parent /= Void
+		local
+			l_parent: like root_node
 		do
-			a_node.parent.set_is_red (False)
+			l_parent := a_node.parent
+			check l_parent /= Void end -- implied by ... ?
+			l_parent.set_is_red (False)
 			a_uncle.set_is_red (False)
 			a_grand_parent.set_is_red (True)
 		ensure
-			parent_is_black: a_node.parent.is_black
+			parent_is_black: {el_parent: like root_node} a_node.parent and then el_parent.is_black
 			a_uncle_is_black: a_uncle.is_black
 			a_grand_parens_is_red: a_grand_parent.is_red
 		end
 
-	insert_case_4 (a_node, a_grand_parent: like root_node): like root_node is
+	insert_case_4 (a_node, a_grand_parent: like new_tree_node): like root_node is
 			-- Case 4.
 		require
 			a_node_not_void: a_node /= Void
@@ -104,6 +114,7 @@ feature {NONE} -- Element change
 			l_parent: like root_node
 		do
 			l_parent := a_node.parent
+			check l_parent /= Void end -- implied by ... ?
 			if a_node = l_parent.right_child and l_parent = a_grand_parent.left_child then
 				rotate_left (a_node)
 				Result := a_node.left_child
@@ -117,7 +128,7 @@ feature {NONE} -- Element change
 			result_not_void: Result /= Void
 		end
 
-	insert_case_5 (a_node, a_grand_parent: like root_node) is
+	insert_case_5 (a_node, a_grand_parent: like new_tree_node) is
 			-- Case 5.
 		require
 			a_node_not_void: a_node /= Void
@@ -126,10 +137,11 @@ feature {NONE} -- Element change
 			l_parent: like root_node
 		do
 			l_parent := a_node.parent
+			check l_parent /= Void end -- implied by ... ?
 			l_parent.set_is_red (False)
 			a_grand_parent.set_is_red (True)
 			if a_node = l_parent.left_child and l_parent = a_grand_parent.left_child then
-				rotate_right (a_node.parent)
+				rotate_right (l_parent)
 			else
 				check
 					else_case_1: a_node = l_parent.right_child
@@ -143,13 +155,17 @@ feature {NONE} -- Removal
 
 	on_root_node_removed is
 			-- There is a new `root_node', check that it is black.
+		local
+			l_node: like root_node
 		do
-			if root_node.is_red then
-				root_node.set_is_red (False)
+			l_node := root_node
+			check l_node /= Void end -- implied by inherited precondition `root_node_not_void'
+			if l_node.is_red then
+				l_node.set_is_red (False)
 			end
 		end
 
-	on_node_removed (a_old_node, a_node: like root_node; a_was_left_child: BOOLEAN) is
+	on_node_removed (a_old_node, a_node: like new_tree_node; a_was_left_child: BOOLEAN) is
 			-- The previsous `left_child' or `right_child'
 			-- (depending on `a_was_left_child') of `a_node'
 			-- was just removed.
@@ -160,6 +176,7 @@ feature {NONE} -- Removal
 			l_child_is_red: BOOLEAN
 			l_sibling: like root_node
 			l_sibling_is_red: BOOLEAN
+			l_sibling_left_child, l_sibling_right_child: like root_node
 		do
 			l_is_left_child := a_was_left_child
 			l_parent := a_node
@@ -168,6 +185,7 @@ feature {NONE} -- Removal
 			else
 				l_child := l_parent.right_child
 			end
+			check l_child /= Void end -- implied by ... ?
 			l_child_is_red := is_node_red (l_child)
 			if a_old_node.is_black then
 				if l_child_is_red then
@@ -185,16 +203,20 @@ feature {NONE} -- Removal
 							else
 								l_sibling := l_parent.left_child
 							end
+							check l_sibling /= Void end -- implied by ... ?
 							l_sibling_is_red := is_node_red (l_sibling)
 							if l_sibling_is_red then
 								l_sibling := remove_case_2 (l_parent, l_sibling, l_is_left_child)
 								l_sibling_is_red := is_node_red (l_sibling)
 							end
 								-- Delete case 3.
+							check l_sibling /= Void end -- implied by ... ?
+							l_sibling_left_child := l_sibling.left_child
+							l_sibling_right_child := l_sibling.right_child
 							if
 								l_parent.is_black and not l_sibling_is_red and
-								(l_sibling.left_child = Void or else l_sibling.left_child.is_black) and
-								(l_sibling.right_child = Void or else l_sibling.right_child.is_black)
+								(l_sibling_left_child = Void or else l_sibling_left_child.is_black) and
+								(l_sibling_right_child = Void or else l_sibling_right_child.is_black)
 							then
 								l_sibling.set_is_red (True)
 									-- Prepare for next loop.
@@ -205,8 +227,8 @@ feature {NONE} -- Removal
 									-- Delete case 4.
 								if
 									l_parent.is_red and not l_sibling_is_red and
-									(l_sibling.left_child = Void or else l_sibling.left_child.is_black) and
-									(l_sibling.right_child = Void or else l_sibling.right_child.is_black)
+									(l_sibling_left_child = Void or else l_sibling_left_child.is_black) and
+									(l_sibling_right_child = Void or else l_sibling_right_child.is_black)
 								then
 									l_sibling.set_is_red (True)
 									l_parent.set_is_red (False)
@@ -217,6 +239,7 @@ feature {NONE} -- Removal
 									l_sibling := remove_case_5 (l_parent, l_sibling, l_sibling_is_red, l_is_left_child)
 									l_sibling_is_red := is_node_red (l_sibling)
 										-- Delete case 6.
+									check l_sibling /= Void end -- implied by ... ?
 									remove_case_6 (l_parent, l_sibling, l_is_left_child)
 										-- Stop condition.
 									l_parent := Void
@@ -228,7 +251,7 @@ feature {NONE} -- Removal
 			end
 		end
 
-	remove_case_2 (a_parent, a_sibling: like root_node; a_is_left_child: BOOLEAN): like root_node is
+	remove_case_2 (a_parent, a_sibling: like new_tree_node; a_is_left_child: BOOLEAN): like root_node is
 			-- Case 2.
 		require
 			a_parent_not_void: a_parent /= Void
@@ -245,39 +268,46 @@ feature {NONE} -- Removal
 			end
 		end
 
-	remove_case_5 (a_parent, a_sibling: like root_node; a_sibling_is_red, a_is_left_child: BOOLEAN): like root_node is
+	remove_case_5 (a_parent, a_sibling: like new_tree_node; a_sibling_is_red, a_is_left_child: BOOLEAN): like root_node is
 			-- Case 5.
 		require
+			a_parent_not_void: a_parent /= Void
 			a_sibling_not_void: a_sibling /= Void
+		local
+			l_right_child, l_left_child: like root_node
 		do
+			l_left_child := a_sibling.left_child
+			l_right_child := a_sibling.right_child
 			if
 				a_is_left_child and not a_sibling_is_red and
-				(a_sibling.left_child /= Void and then a_sibling.left_child.is_red) and
-				(a_sibling.right_child = Void or else a_sibling.right_child.is_black)
+				(l_left_child /= Void and then l_left_child.is_red) and
+				(l_right_child = Void or else l_right_child.is_black)
 			then
 				a_sibling.set_is_red (True)
-				a_sibling.left_child.set_is_red (False)
-				rotate_right (a_sibling.left_child)
+				l_left_child.set_is_red (False)
+				rotate_right (l_left_child)
 				Result := a_parent.right_child
 			elseif
 				not a_is_left_child and a_sibling.is_black and
-				(a_sibling.right_child /= Void and then a_sibling.right_child.is_red) and
-				(a_sibling.left_child = Void or else a_sibling.left_child.is_black)
+				(l_right_child /= Void and then l_right_child.is_red) and
+				(l_left_child = Void or else l_left_child.is_black)
 			then
 				a_sibling.set_is_red (True)
-				a_sibling.right_child.set_is_red (False)
-				rotate_left (a_sibling.right_child)
+				l_right_child.set_is_red (False)
+				rotate_left (l_right_child)
 				Result := a_parent.left_child
 			else
 				Result := a_sibling
 			end
 		end
 
-	remove_case_6 (a_parent, a_sibling: like root_node; a_is_left_child: BOOLEAN) is
+	remove_case_6 (a_parent, a_sibling: like new_tree_node; a_is_left_child: BOOLEAN) is
 			-- Case 6.
 		require
 			a_parent_not_void: a_parent /= Void
 			a_sibling_not_void: a_sibling /= Void
+		local
+			l_child: like root_node
 		do
 			if a_parent.is_red then
 				a_sibling.set_is_red (True)
@@ -286,16 +316,20 @@ feature {NONE} -- Removal
 			end
 			a_parent.set_is_red (False)
 			if a_is_left_child then
+				l_child := a_sibling.right_child
+				check l_child /= Void end -- implied by ... ?
 				check
-					right_red: a_sibling.right_child.is_red
+					right_red: l_child.is_red
 				end
-				a_sibling.right_child.set_is_red (False)
+				l_child.set_is_red (False)
 				rotate_left (a_sibling)
 			else
+				l_child := a_sibling.left_child
+				check l_child /= Void end -- implied by ... ?						
 				check
-					left_red: a_sibling.left_child.is_red
+					left_red: l_child.is_red
 				end
-				a_sibling.left_child.set_is_red (False)
+				l_child.set_is_red (False)
 				rotate_right (a_sibling)
 			end
 		end
@@ -316,21 +350,24 @@ feature {NONE} -- Status report
 
 	all_paths_have_same_number_of_black_nodes: BOOLEAN is
 			-- Property of Red-Black Trees
+		local
+			l_node: like root_node
 		do
 			Result := True
-			if root_node /= Void then
-				Result := root_node.number_of_black_nodes_in_branches >= 0
+			l_node := root_node
+			if l_node /= Void then
+				Result := l_node.number_of_black_nodes_in_branches >= 0
 			end
 		end
 
 feature {NONE} -- Implementation
 
-	root_node: DS_RED_BLACK_TREE_CONTAINER_NODE [G, K]
+	root_node: ?DS_RED_BLACK_TREE_CONTAINER_NODE [G, K]
 			-- Root node of the tree
 
 invariant
 
-	root_node_is_black: root_node /= Void and not is_removing implies root_node.is_black
+	root_node_is_black: ({l_root_node: like root_node} root_node and not is_removing) implies l_root_node.is_black
 	all_paths_have_same_number_of_black_nodes: all_paths_have_same_number_of_black_nodes
 
 end

@@ -123,7 +123,7 @@ feature -- Access
 	action_factory: LX_ACTION_FACTORY
 			-- Semantic action factory
 
-	options_overrider: LX_DESCRIPTION_OVERRIDER
+	options_overrider: ?LX_DESCRIPTION_OVERRIDER
 			-- Overrider of options specified in the input file
 
 feature -- Setting
@@ -148,7 +148,7 @@ feature -- Setting
 
 feature -- Status report
 
-	rule: LX_RULE
+	rule: ?LX_RULE
 			-- Rule being parsed
 
 	in_trail_context: BOOLEAN
@@ -304,10 +304,12 @@ feature {NONE} -- Measurement
 			singleton_column_known: singleton_column >= 0
 		end
 
-	process_singleton_symbol_class (a_symbol_class: LX_SYMBOL_CLASS) is
+	process_singleton_symbol_class (a_symbol_class: ?LX_SYMBOL_CLASS) is
 			-- Update `singleton_{line,column,count}'.
 			-- Singleton: CCL_OP
 			-- Singleton: Full_CCl
+			--| NOTE: `a_symbol_class' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
 		require
 			a_symbol_class_not_void: a_symbol_class /= Void
 		do
@@ -463,8 +465,8 @@ feature {NONE} -- Factory
 			-- symbol transition labeled `symbol'
 		local
 			a_name: STRING
-			a_character_class: LX_SYMBOL_CLASS
-			equiv_classes: LX_EQUIVALENCE_CLASSES
+			a_character_class: ?LX_SYMBOL_CLASS
+			equiv_classes: ?LX_EQUIVALENCE_CLASSES
 		do
 			equiv_classes := description.equiv_classes
 			if equiv_classes /= Void then
@@ -476,7 +478,9 @@ feature {NONE} -- Factory
 				a_name := symbol.out
 				character_classes.search (a_name)
 				if character_classes.found then
-					Result := new_symbol_class_nfa (character_classes.found_item)
+					a_character_class := character_classes.found_item
+					check a_character_class /= Void end -- proved by `.found'
+					Result := new_symbol_class_nfa (a_character_class)
 				else
 					create a_character_class.make (1)
 					a_character_class.put (symbol)
@@ -499,9 +503,11 @@ feature {NONE} -- Factory
 			nfa_not_void: Result /= Void
 		end
 
-	new_symbol_class_nfa (symbols: LX_SYMBOL_CLASS): LX_NFA is
+	new_symbol_class_nfa (symbols: ?LX_SYMBOL_CLASS): LX_NFA is
 			-- New NFA made of two states and a symbol
 			-- class transition labeled `symbols'
+			--| NOTE: `symbols' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
 		require
 			symbols_not_void: symbols /= Void
 		do
@@ -524,8 +530,8 @@ feature {NONE} -- Factory
 		local
 			lower_char: INTEGER
 			a_name: STRING
-			a_character_class: LX_SYMBOL_CLASS
-			equiv_classes: LX_EQUIVALENCE_CLASSES
+			a_character_class: ?LX_SYMBOL_CLASS
+			equiv_classes: ?LX_EQUIVALENCE_CLASSES
 		do
 			if description.case_insensitive then
 				equiv_classes := description.equiv_classes
@@ -535,7 +541,9 @@ feature {NONE} -- Factory
 					a_name := lower_char.out
 					character_classes.search (a_name)
 					if character_classes.found then
-						Result := new_symbol_class_nfa (character_classes.found_item)
+						a_character_class := character_classes.found_item
+						check a_character_class /= Void end -- implied by `.found'
+						Result := new_symbol_class_nfa (a_character_class)
 					else
 						create a_character_class.make (2)
 						a_character_class.put (a_char)
@@ -550,7 +558,9 @@ feature {NONE} -- Factory
 					a_name := a_char.out
 					character_classes.search (a_name)
 					if character_classes.found then
-						Result := new_symbol_class_nfa (character_classes.found_item)
+						a_character_class := character_classes.found_item
+						check a_character_class /= Void end -- implied by `.found'						
+						Result := new_symbol_class_nfa (a_character_class)
 					else
 						create a_character_class.make (2)
 						a_character_class.put (a_char - Case_diff)
@@ -575,14 +585,16 @@ feature {NONE} -- Factory
 			nfa_not_void: Result /= Void
 		end
 
-	new_nfa_from_character_class (a_character_class: LX_SYMBOL_CLASS): LX_NFA is
+	new_nfa_from_character_class (a_character_class: ?LX_SYMBOL_CLASS): LX_NFA is
 			-- New NFA with a transition labeled with `a_character_class'
 			-- (Sort symbols in `a_character_class' if necessary and
 			-- eventually register to `description.equiv_classes'.)
+			--| NOTE: `a_character_class' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
 		require
 			a_character_class_not_void: a_character_class /= Void
 		local
-			equiv_classes: LX_EQUIVALENCE_CLASSES
+			equiv_classes: ?LX_EQUIVALENCE_CLASSES
 		do
 			if a_character_class.sort_needed then
 				a_character_class.sort
@@ -596,9 +608,11 @@ feature {NONE} -- Factory
 			nfa_not_void: Result /= Void
 		end
 
-	new_bounded_iteration_nfa (a_nfa: LX_NFA; i, j: INTEGER): LX_NFA is
+	new_bounded_iteration_nfa (a_nfa: ?LX_NFA; i, j: INTEGER): LX_NFA is
 			-- New NFA that matches whatever matched `a_nfa' from
 			-- `i' number of times to `j' number of times
+			--| NOTE: `a_nfa' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
 		require
 			a_nfa_not_void: a_nfa /= Void
 		do
@@ -624,8 +638,10 @@ feature {NONE} -- Factory
 			nfa_not_void: Result /= Void
 		end
 
-	new_unbounded_iteration_nfa (a_nfa: LX_NFA; i: INTEGER): LX_NFA is
+	new_unbounded_iteration_nfa (a_nfa: ?LX_NFA; i: INTEGER): LX_NFA is
 			-- New NFA that matches `i' or more occurrences of `a_nfa'
+			--| NOTE: `a_nfa' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
 		require
 			a_nfa_not_void: a_nfa /= Void
 		do
@@ -640,9 +656,11 @@ feature {NONE} -- Factory
 			nfa_not_void: Result /= Void
 		end
 
-	new_iteration_nfa (a_nfa: LX_NFA; i: INTEGER): LX_NFA is
+	new_iteration_nfa (a_nfa: ?LX_NFA; i: INTEGER): LX_NFA is
 			-- New NFA that matches whatever `a_nfa'
 			-- matched `i' number of times
+			--| NOTE: `a_nfa' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
 		require
 			a_nfa_not_void: a_nfa /= Void
 		do
@@ -659,9 +677,11 @@ feature {NONE} -- Factory
 
 feature {NONE} -- Implementation
 
-	push_start_condition (a_name: STRING; stack: LX_START_CONDITIONS) is
+	push_start_condition (a_name: ?STRING; stack: LX_START_CONDITIONS) is
 			-- Push start condition named `a_name' on top of `stack'.
 			-- Do nothing if that start condition is already in `stack'.
+			--| NOTE: `a_name' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
 		require
 			a_name_not_void: a_name /= Void
 			stack_not_void: stack /= Void
@@ -680,22 +700,50 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	process_rule (a_nfa: LX_NFA) is
+	process_nfa_build_concatenation (a_nfa: LX_NFA; other: ?LX_NFA) is
+			-- Process `build_concatenation' on `a_nfa' with argument `other'
+			--| NOTE: `other' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
+		require
+			a_nfa_attached: a_nfa /= Void
+			other_attached: other /= Void
+		do
+			a_nfa.build_concatenation (other)
+		end
+
+	process_nfa_build_union (a_nfa: LX_NFA; other: ?LX_NFA) is
+			-- Process `build_union' on `a_nfa' with argument `other'
+			--| NOTE: `other' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
+		require
+			a_nfa_attached: a_nfa /= Void
+			other_attached: other /= Void
+		do
+			a_nfa.build_union (other)
+		end
+
+	process_rule (a_nfa: ?LX_NFA) is
 			-- Process a rule.
+			--| NOTE: `a_nfa' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
 		require
 			a_nfa_not_void: a_nfa /= Void
 			rule_not_void: rule /= Void
+		local
+			l_rule: like rule
 		do
-			a_nfa.set_accepted_rule (rule)
-			rule.set_pattern (a_nfa)
-			description.rules.force_last (rule)
-			pending_rules.force_last (rule)
-			rule.set_line_nb (rule_line_nb)
-			rule.set_trail_context (has_trail_context)
-			rule.set_head_count (head_count)
-			rule.set_trail_count (trail_count)
-			rule.set_line_count (head_line)
-			rule.set_column_count (head_column)
+			l_rule := rule
+			check l_rule /= Void end -- implied by precondition `rule_not_void'
+			a_nfa.set_accepted_rule (l_rule)
+			l_rule.set_pattern (a_nfa)
+			description.rules.force_last (l_rule)
+			pending_rules.force_last (l_rule)
+			l_rule.set_line_nb (rule_line_nb)
+			l_rule.set_trail_context (has_trail_context)
+			l_rule.set_head_count (head_count)
+			l_rule.set_trail_count (trail_count)
+			l_rule.set_line_count (head_line)
+			l_rule.set_column_count (head_column)
 			if has_trail_context and then not (head_count >= 0 or trail_count >= 0) then
 				description.set_variable_trail_context (True)
 			end
@@ -708,22 +756,28 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	process_bol_rule (a_nfa: LX_NFA) is
+	process_bol_rule (a_nfa: ?LX_NFA) is
 			-- Process a beginning-of-line rule.
+			--| NOTE: `a_nfa' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
 		require
 			a_nfa_not_void: a_nfa /= Void
 			rule_not_void: rule /= Void
+		local
+			l_rule: like rule
 		do
-			a_nfa.set_accepted_rule (rule)
-			rule.set_pattern (a_nfa)
-			description.rules.force_last (rule)
-			pending_rules.force_last (rule)
-			rule.set_line_nb (rule_line_nb)
-			rule.set_trail_context (has_trail_context)
-			rule.set_head_count (head_count)
-			rule.set_trail_count (trail_count)
-			rule.set_line_count (head_line)
-			rule.set_column_count (head_column)
+			l_rule := rule
+			check l_rule /= Void end -- implied by precondition `rule_not_void'
+			a_nfa.set_accepted_rule (l_rule)
+			l_rule.set_pattern (a_nfa)
+			description.rules.force_last (l_rule)
+			pending_rules.force_last (l_rule)
+			l_rule.set_line_nb (rule_line_nb)
+			l_rule.set_trail_context (has_trail_context)
+			l_rule.set_head_count (head_count)
+			l_rule.set_trail_count (trail_count)
+			l_rule.set_line_count (head_line)
+			l_rule.set_column_count (head_column)
 			if has_trail_context and then not (head_count >= 0 or trail_count >= 0) then
 				description.set_variable_trail_context (True)
 			end
@@ -764,9 +818,13 @@ feature {NONE} -- Implementation
 			i, nb: INTEGER
 			a_start_condition: LX_START_CONDITION
 			eof_rules: DS_ARRAYED_LIST [LX_RULE]
+			l_rule: like rule
 		do
 			eof_rules := description.eof_rules
 			nb := stack.count
+			l_rule := rule
+			check l_rule /= Void end -- implied by ... ?
+
 			from
 				i := 1
 			until
@@ -782,7 +840,7 @@ feature {NONE} -- Implementation
 						-- Save `rule' as an end-of-file rule.
 					eof_rules.force_last (a_rule)
 					pending_rules.force_last (a_rule)
-					rule.set_line_nb (rule_line_nb)
+					l_rule.set_line_nb (rule_line_nb)
 				end
 				i := i + 1
 			end
@@ -795,20 +853,23 @@ feature {NONE} -- Implementation
 		local
 			a_character_class: LX_SYMBOL_CLASS
 			a_nfa: LX_NFA
+			l_rule: like rule
 		do
 			create a_character_class.make (0)
 			a_character_class.set_negated (True)
 			a_nfa := new_symbol_class_nfa (a_character_class)
-			a_nfa.set_accepted_rule (rule)
-			rule.set_pattern (a_nfa)
-			description.rules.force_last (rule)
-			pending_rules.force_last (rule)
-			rule.set_line_nb (0)
-			rule.set_trail_context (False)
-			rule.set_head_count (1)
-			rule.set_trail_count (0)
-			rule.set_line_count (Zero_or_more)
-			rule.set_column_count (Zero_or_more)
+			l_rule := rule
+			check l_rule /= Void end -- implied by `rule_not_void'
+			a_nfa.set_accepted_rule (l_rule)
+			l_rule.set_pattern (a_nfa)
+			description.rules.force_last (l_rule)
+			pending_rules.force_last (l_rule)
+			l_rule.set_line_nb (0)
+			l_rule.set_trail_context (False)
+			l_rule.set_head_count (1)
+			l_rule.set_trail_count (0)
+			l_rule.set_line_count (Zero_or_more)
+			l_rule.set_column_count (Zero_or_more)
 			description.start_conditions.add_nfa_to_all (a_nfa)
 			if description.no_default_rule then
 				set_action ("last_token := yyError_token%N%
@@ -818,15 +879,17 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	append_character_to_string (a_char: INTEGER; a_string: LX_NFA): LX_NFA is
+	append_character_to_string (a_char: INTEGER; a_string: ?LX_NFA): LX_NFA is
 			-- Append character `a_char' at end of string `a_string'.
+			--| NOTE: `a_string' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
 		require
 			a_string_not_void: a_string /= Void
 		local
 			a_name: STRING
 			lower_char: INTEGER
-			a_character_class: LX_SYMBOL_CLASS
-			equiv_classes: LX_EQUIVALENCE_CLASSES
+			a_character_class: ?LX_SYMBOL_CLASS
+			equiv_classes: ?LX_EQUIVALENCE_CLASSES
 		do
 			if description.case_insensitive then
 				equiv_classes := description.equiv_classes
@@ -836,8 +899,10 @@ feature {NONE} -- Implementation
 					a_name := lower_char.out
 					character_classes.search (a_name)
 					if character_classes.found then
+						a_character_class := character_classes.found_item
+						check a_character_class /= Void end -- implied by `.found'
 						Result := a_string
-						Result.build_concatenation (new_symbol_class_nfa (character_classes.found_item))
+						Result.build_concatenation (new_symbol_class_nfa (a_character_class))
 					else
 						create a_character_class.make (2)
 						a_character_class.put (a_char)
@@ -853,8 +918,11 @@ feature {NONE} -- Implementation
 					a_name := a_char.out
 					character_classes.search (a_name)
 					if character_classes.found then
+						a_character_class := character_classes.found_item
+						check a_character_class /= Void end -- implied by `.found'
+
 						Result := a_string
-						Result.build_concatenation (new_symbol_class_nfa (character_classes.found_item))
+						Result.build_concatenation (new_symbol_class_nfa (a_character_class))
 					else
 						create a_character_class.make (2)
 						a_character_class.put (a_char - Case_diff)
@@ -884,8 +952,10 @@ feature {NONE} -- Implementation
 			string_set: Result = a_string
 		end
 
-	append_character_to_character_class (a_char: INTEGER; a_character_class: LX_SYMBOL_CLASS): LX_SYMBOL_CLASS is
+	append_character_to_character_class (a_char: INTEGER; a_character_class: ?LX_SYMBOL_CLASS): LX_SYMBOL_CLASS is
 			-- Append character `a_char' to `a_character_class'.
+			--| NOTE: `a_character_class' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
 		require
 			a_character_class_not_void: a_character_class /= Void
 		do
@@ -912,7 +982,7 @@ feature {NONE} -- Implementation
 			character_class_set: Result = a_character_class
 		end
 
-	append_character_set_to_character_class (char1, char2: INTEGER; a_character_class: LX_SYMBOL_CLASS): LX_SYMBOL_CLASS is
+	append_character_set_to_character_class (char1, char2: INTEGER; a_character_class: ?LX_SYMBOL_CLASS): LX_SYMBOL_CLASS is
 			-- Append character set `char1'-`char2' to `a_character_class'.
 		require
 			a_character_class_not_void: a_character_class /= Void
@@ -960,19 +1030,25 @@ feature {NONE} -- Implementation
 			character_class_set: Result = a_character_class
 		end
 
-	append_trail_context_to_regexp (a_trail, a_regexp: LX_NFA): LX_NFA is
+	append_trail_context_to_regexp (a_trail, a_regexp: ?LX_NFA): LX_NFA is
 			-- Append trailing context `a_trail'
 			-- to regular expression `a_regexp'.
+			--| NOTE: `a_regexp' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
 		require
 			a_trail_not_void: a_trail /= Void
 			a_regexp_not_void: a_regexp /= Void
+		local
+			l_rule: like rule
 		do
 			a_trail.set_beginning_as_normal
 			if not (head_count >= 0 or trail_count >= 0) then
 					-- Variable trailing context rule.
 					-- Mark the first part of the rule as the accepting
 					-- "head" part of a trailing context rule.
-				a_regexp.set_accepted_rule (rule)
+				l_rule := rule
+				check l_rule /= Void end -- implied by ... ?
+				a_regexp.set_accepted_rule (l_rule)
 			end
 			Result := a_regexp
 			Result.build_concatenation (a_trail)
@@ -980,9 +1056,11 @@ feature {NONE} -- Implementation
 			regexp_set: Result = a_regexp
 		end
 
-	append_eol_to_regexp (a_regexp: LX_NFA): LX_NFA is
+	append_eol_to_regexp (a_regexp: ?LX_NFA): LX_NFA is
 			-- Append end-of-line trailing context (i.e. "$")
 			-- to regular expression `a_regexp'.
+			--| NOTE: `a_regexp' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
 		require
 			a_regexp_not_void: a_regexp /= Void
 		do
@@ -997,12 +1075,15 @@ feature {NONE} -- Implementation
 			-- "." character class (i.e. all characters except new_line)
 		local
 			dot_string: STRING
-			equiv_classes: LX_EQUIVALENCE_CLASSES
+			equiv_classes: ?LX_EQUIVALENCE_CLASSES
+			a_character_class: ?LX_SYMBOL_CLASS
 		do
 			dot_string := "."
 			character_classes.search (dot_string)
 			if character_classes.found then
-				Result := character_classes.found_item
+				a_character_class := character_classes.found_item
+				check a_character_class /= Void end -- implied by `.found'
+				Result := a_character_class
 			else
 				create Result.make (1)
 				Result.put (New_line_code)
@@ -1017,8 +1098,10 @@ feature {NONE} -- Implementation
 			dot_character_class_not_void: Result /= Void
 		end
 
-	set_action (a_text: STRING) is
+	set_action (a_text: ?STRING) is
 			-- Set pending rules' action using `a_text'.
+			--| NOTE: `a_text' should be attached, 
+			--| but is detachable for easier use of geyacc in void-safe mode
 		require
 			a_text_not_void: a_text /= Void
 		local
@@ -1044,10 +1127,11 @@ feature {NONE} -- Implementation
 		require
 			equiv_classes_not_void: description.equiv_classes /= Void
 		local
-			cursor: DS_HASH_TABLE_CURSOR [LX_SYMBOL_CLASS, STRING]
-			equiv_classes: LX_EQUIVALENCE_CLASSES
+			cursor: DS_HASH_TABLE_CURSOR [LX_SYMBOL_CLASS, ?STRING]
+			equiv_classes: ?LX_EQUIVALENCE_CLASSES
 		do
 			equiv_classes := description.equiv_classes
+			check equiv_classes /= Void end -- implied by precondition `equiv_classes_not_void'
 			equiv_classes.build
 			cursor := character_classes.new_cursor
 			from
@@ -1059,7 +1143,7 @@ feature {NONE} -- Implementation
 				cursor.forth
 			end
 		ensure
-			built: description.equiv_classes.built
+			built: {el_equiv_classes: LX_EQUIVALENCE_CLASSES} description.equiv_classes and then el_equiv_classes.built
 		end
 
 	check_options is
@@ -1079,9 +1163,12 @@ feature {NONE} -- Implementation
 
 	override_options is
 			-- Override options specified in the input file.
+		local
+			l_options_overrider: like options_overrider
 		do
-			if options_overrider /= Void then
-				options_overrider.override_description (description)
+			l_options_overrider := options_overrider
+			if l_options_overrider /= Void then
+				l_options_overrider.override_description (description)
 			end
 		end
 

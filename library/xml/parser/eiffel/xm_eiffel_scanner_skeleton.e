@@ -72,12 +72,15 @@ feature -- Input
 		require
 			not_void: a_stream /= Void
 			readable: a_stream.is_open_read
+		local
+			l_input_filter: like input_filter
 		do
 			input_stream := a_stream
 			input_resolver := Void
 
-			create input_filter.make_from_stream (a_stream)
-			set_input_buffer (new_file_buffer (input_filter))
+			create l_input_filter.make_from_stream (a_stream)
+			input_filter := l_input_filter
+			set_input_buffer (new_file_buffer (l_input_filter))
 		ensure
 			input_stream_set: input_stream = a_stream
 			input_resolver_reset: input_resolver = Void
@@ -85,30 +88,39 @@ feature -- Input
 
 	set_input_from_resolver (a_resolver: XM_EXTERNAL_RESOLVER) is
 			-- Set input buffer from a resolver's last resolved
-			-- stream and remember resolver to close it. 
+			-- stream and remember resolver to close it.
 		require
 			a_resolver_not_void: a_resolver /= Void
 			a_resolver_resolved: not a_resolver.has_error
+		local
+			s: like input_stream
 		do
-			set_input_stream (a_resolver.last_stream)
+			s := a_resolver.last_stream
+			check s /= Void end -- implied by `a_resolver_resolved'
+			set_input_stream (s)
 			input_resolver := a_resolver
 		ensure
-			input_stream_set: input_stream = a_resolver.last_stream			
+			input_stream_set: input_stream = a_resolver.last_stream
 			input_resolver_reset: input_resolver = a_resolver
 		end
-			
+
 	close_input is
 			-- Close input buffer if needed.
+		local
+			l_input_stream: like input_stream
+			l_input_resolver: like input_resolver
 		do
-			if input_stream /= Void then
-				if input_resolver /= Void then
+			l_input_stream := input_stream
+			if l_input_stream /= Void then
+				l_input_resolver := input_resolver
+				if l_input_resolver /= Void then
 						-- Close a stream if it comes from a resolver,
 						-- otherwise the client owns it and is in charge
 						-- of closing it.
-					if input_stream.is_closable then
-						input_stream.close
+					if l_input_stream.is_closable then
+						l_input_stream.close
 					end
-					input_resolver.resolve_finish
+					l_input_resolver.resolve_finish
 				end
 				input_stream := Void
 				input_resolver := Void
@@ -117,32 +129,40 @@ feature -- Input
 
 feature {NONE} -- Input
 
-	input_stream: KI_CHARACTER_INPUT_STREAM
+	input_stream: ?KI_CHARACTER_INPUT_STREAM
 			-- Saved stream for closing on end of stream
-	
-	input_resolver: XM_EXTERNAL_RESOLVER
+
+	input_resolver: ?XM_EXTERNAL_RESOLVER
 			-- Saved resolver for closure.
 
-	input_filter: XM_EIFFEL_INPUT_STREAM
+	input_filter: ?XM_EIFFEL_INPUT_STREAM
 			-- Saved filter for encoding changes
 
 feature -- Encoding
 
-	is_applicable_encoding (an_encoding: STRING): BOOLEAN is
+	is_applicable_encoding (an_encoding: ?STRING): BOOLEAN is
 			-- Is this encoding known?
+		local
+			l_input_filter: like input_filter
 		do
-			check filter_set: input_filter /= Void end
-			Result := input_filter.is_valid_encoding (an_encoding)
-				and then input_filter.is_applicable_encoding (an_encoding)
+			l_input_filter := input_filter
+			check filter_set: l_input_filter /= Void end
+			if l_input_filter.is_valid_encoding (an_encoding) then
+				check an_encoding /= Void end -- implied by `is_valid_encoding'
+				Result := l_input_filter.is_applicable_encoding (an_encoding)
+			end
 		end
 
 	set_encoding (an_encoding: STRING) is
 			-- Set encoding.
 		require
 			valid_encoding: is_applicable_encoding (an_encoding)
+		local
+			l_input_filter: like input_filter
 		do
-			check filter_set: input_filter /= Void end
-			input_filter.set_encoding (an_encoding)
+			l_input_filter := input_filter
+			check filter_set: l_input_filter /= Void end
+			l_input_filter.set_encoding (an_encoding)
 		end
 
 feature {NONE} -- Encodings
@@ -160,7 +180,7 @@ feature -- Error reporting
 			Result := last_error /= Void
 		end
 
-	last_error: STRING
+	last_error: ?STRING
 			-- Last error
 
 	fatal_error (a_message: STRING) is
@@ -176,13 +196,13 @@ feature -- Error reporting
 		ensure
 			result_not_void: Result /= Void
 		end
-		
+
 feature -- Access
 
 	input_name: STRING
 			-- Name of object being scanned
 
-	last_value: STRING
+	last_value: ?STRING
 			-- Semantic value of last token read
 
 feature {NONE} -- Character entity

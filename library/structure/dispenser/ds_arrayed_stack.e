@@ -42,7 +42,7 @@ feature {NONE} -- Initialization
 			positive_n: n >= 0
 		do
 			create special_routines
-			storage := special_routines.make (n + 1)
+			storage := special_routines.make (n)
 			capacity := n
 		ensure
 			empty: is_empty
@@ -88,7 +88,7 @@ feature -- Status report
 				until
 					i < 1
 				loop
-					if a_tester.test (storage.item (i), v) then
+					if a_tester.test (storage.item (i - 1), v) then
 						Result := True
 							-- Jump out of the loop.
 						i := 0
@@ -103,7 +103,7 @@ feature -- Status report
 				until
 					i < 1
 				loop
-					if storage.item (i) = v then
+					if storage.item (i - 1) = v then
 						Result := True
 							-- Jump out of the loop.
 						i := 0
@@ -127,7 +127,7 @@ feature -- Access
 	item: G is
 			-- Item at top of stack
 		do
-			Result := storage.item (count)
+			Result := storage.item (count - 1)
 		end
 
 	i_th (i: INTEGER): G is
@@ -136,7 +136,7 @@ feature -- Access
 			i_large_enough: i >= 1
 			i_small_enough: i <= count
 		do
-			Result := storage.item (i)
+			Result := storage.item (i - 1)
 		end
 
 feature -- Measurement
@@ -162,7 +162,7 @@ feature -- Measurement
 				until
 					i < 1
 				loop
-					if a_tester.test (storage.item (i), v) then
+					if a_tester.test (storage.item (i - 1), v) then
 						Result := Result + 1
 					end
 					i := i - 1
@@ -174,7 +174,7 @@ feature -- Measurement
 				until
 					i < 1
 				loop
-					if storage.item (i) = v then
+					if storage.item (i - 1) = v then
 						Result := Result + 1
 					end
 					i := i - 1
@@ -212,7 +212,7 @@ feature -- Comparison
 				until
 					not Result or i > nb
 				loop
-					Result := storage.item (i) = other_storage.item (i)
+					Result := storage.item (i - 1) = other_storage.item (i - 1)
 					i := i + 1
 				end
 			end
@@ -224,7 +224,7 @@ feature -- Element change
 			-- Push `v' on stack.
 		do
 			count := count + 1
-			storage.put (v, count)
+			storage.force (v, count - 1)
 		end
 
 	force (v: G) is
@@ -235,13 +235,13 @@ feature -- Element change
 				resize (new_capacity (count + 1))
 			end
 			count := count + 1
-			storage.put (v, count)
+			storage.force (v, count - 1)
 		end
 
 	replace (v: G) is
 			-- Replace top item by `v'.
 		do
-			storage.put (v, count)
+			storage.put (v, count - 1)
 		end
 
 	extend (other: DS_LINEAR [G]) is
@@ -258,7 +258,7 @@ feature -- Element change
 			until
 				other_cursor.after
 			loop
-				storage.put (other_cursor.item, i)
+				storage.put (other_cursor.item, i - 1)
 				i := i + 1
 				other_cursor.forth
 			end
@@ -283,31 +283,31 @@ feature -- Removal
 
 	remove is
 			-- Remove top item from stack.
-		local
-			dead_item: G
 		do
-			storage.put (dead_item, count)
+			storage.remove_tail (1)
 			count := count - 1
 		end
 
 	prune (n: INTEGER) is
 			-- Remove `n' items from stack.
 		do
-			clear_items (count - n + 1, count)
+			storage.remove_tail (n)
 			count := count - n
 		end
 
 	keep (n: INTEGER) is
 			-- Keep `n' items in stack.
 		do
-			clear_items (n + 1, count)
+			if n < storage.count then
+				storage.remove_tail (n)
+			end
 			count := n
 		end
 
 	wipe_out is
 			-- Remove all items from stack.
 		do
-			clear_items (1, count)
+			storage.wipe_out
 			count := 0
 		end
 
@@ -317,7 +317,7 @@ feature -- Resizing
 			-- Resize stack so that it can contain
 			-- at least `n' items. Do not lose any item.
 		do
-			storage := special_routines.resize (storage, n + 1)
+			storage := special_routines.resize (storage, n)
 			capacity := n
 		end
 
@@ -334,7 +334,7 @@ feature -- Iteration
 			until
 				i < 1
 			loop
-				an_action.call ([storage.item (i)])
+				an_action.call ([storage.item (i - 1)])
 				i := i - 1
 			end
 		end
@@ -351,7 +351,7 @@ feature -- Iteration
 			until
 				i < 1
 			loop
-				l_item := storage.item (i)
+				l_item := storage.item (i - 1)
 				if a_test.item ([l_item]) then
 					an_action.call ([l_item])
 				end
@@ -370,7 +370,7 @@ feature -- Iteration
 			until
 				i < 1
 			loop
-				if a_test.item ([storage.item (i)]) then
+				if a_test.item ([storage.item (i - 1)]) then
 					Result := True
 						-- Jump out of the loop.
 					i := 0
@@ -392,7 +392,7 @@ feature -- Iteration
 			until
 				i < 1
 			loop
-				if not a_test.item ([storage.item (i)]) then
+				if not a_test.item ([storage.item (i - 1)]) then
 					Result := False
 						-- Jump out of the loop.
 					i := 0
@@ -409,25 +409,24 @@ feature {DS_ARRAYED_STACK} -- Implementation
 
 feature {NONE} -- Implementation
 
-	clear_items (s, e: INTEGER) is
-			-- Clear items in `storage' within bounds `s'..`e'.
-		require
-			s_large_enough: s >= 1
-			e_small_enough: e <= capacity
-			valid_bound: s <= e + 1
-		local
-			dead_item: G
-			i: INTEGER
-		do
-			from
-				i := s
-			until
-				i > e
-			loop
-				storage.put (dead_item, i)
-				i := i + 1
-			end
-		end
+--	clear_items (s, e: INTEGER) is
+--			-- Clear items in `storage' within bounds `s'..`e'.
+--		require
+--			s_large_enough: s >= 1
+--			e_small_enough: e <= capacity
+--			valid_bound: s <= e + 1
+--		local
+--			i: INTEGER
+--		do
+--			from
+--				i := s
+--			until
+--				i > e
+--			loop
+--				storage.put_default (i - 1)
+--				i := i + 1
+--			end
+--		end
 
 	special_routines: KL_SPECIAL_ROUTINES [G]
 			-- Routines that ought to be in SPECIAL
@@ -435,7 +434,7 @@ feature {NONE} -- Implementation
 invariant
 
 	storage_not_void: storage /= Void
-	capacity_definition: capacity = storage.count - 1
+	capacity_definition: capacity >= storage.count
 	special_routines_not_void: special_routines /= Void
 
 end

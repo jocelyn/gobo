@@ -47,8 +47,9 @@ feature -- Input
 		do
 			debug ("xml_parser")
 				std.error.put_string ("--dtd-scanner--")
-				if has_error then
-					std.error.put_string (last_error)
+				if {l_error: like last_error} last_error then
+					check has_error: has_error end
+					std.error.put_string (l_error)
 				end
 			end
 			if not decl_start_sent then

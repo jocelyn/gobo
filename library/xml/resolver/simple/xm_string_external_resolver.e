@@ -1,15 +1,15 @@
 indexing
-	
+
 	description:
-	
+
 		"External resolver using strings for entity content"
-	
+
 	library: "Gobo Eiffel XML Library"
 	copyright: "Copyright (c) 2004, Andreas Leitner and others"
 	license: "MIT License"
 	date: "$Date$"
 	revision: "$Revision$"
-	
+
 class XM_STRING_EXTERNAL_RESOLVER
 
 inherit
@@ -25,7 +25,7 @@ inherit
 create
 
 	make
-	
+
 feature {NONE} -- Creation
 
 	make is
@@ -37,7 +37,7 @@ feature {NONE} -- Creation
 		ensure
 			empty: strings.is_empty
 		end
-		
+
 feature -- Access
 
 	strings: DS_HASH_TABLE [STRING, STRING]
@@ -59,10 +59,10 @@ feature -- Action(s)
 
 feature -- Result
 
-	last_stream: KI_CHARACTER_INPUT_STREAM
+	last_stream: ?KI_CHARACTER_INPUT_STREAM
 			-- File matching stream.
 
-	last_error: STRING
+	last_error: ?STRING
 			-- Last error.
 
 	has_error: BOOLEAN is

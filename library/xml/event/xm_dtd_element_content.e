@@ -137,12 +137,27 @@ feature {NONE} -- Initialization (derived)
 
 feature -- Data
 
-	name: STRING
+	name: ?STRING
 			-- Name, IF leaf item
 		--require is_name
 		--ensure Result /= Void
 
-	items: DS_LIST [XM_DTD_ELEMENT_CONTENT]
+	attached_items: !like items
+			-- List of subitems
+		require
+			not_is_name: not is_name
+			items_attached: items /= Void
+		local
+			l_items: like items
+		do
+			l_items := items
+			check l_items /= Void end -- implied by preconditions
+			Result := l_items
+		ensure
+			Result /= Void
+		end
+
+	items: ?DS_LIST [XM_DTD_ELEMENT_CONTENT]
 			-- List of subitems
 		--require not is_name
 		--ensure Result /= Void
@@ -163,9 +178,13 @@ feature -- Output
 			-- Output as in DTD.
 		local
 			a_cursor: DS_LINEAR_CURSOR [XM_DTD_ELEMENT_CONTENT]
+			s: ?STRING
+			l_items: like items
 		do
 			if is_name then
-				Result := name
+				s := name
+				check s /= Void end -- implied by `is_name'
+				Result := s
 				if not is_one then
 					Result.append_character (repetition)
 				end
@@ -175,7 +194,9 @@ feature -- Output
 				Result := "EMPTY"
 			else
 				Result := STRING_.cloned_string ("(")
-				a_cursor := items.new_cursor
+				l_items := items
+				check l_items /= Void end -- implied by `not is_name'
+				a_cursor := l_items.new_cursor
 				from a_cursor.start until a_cursor.after loop
 					Result := STRING_.appended_string (Result, a_cursor.item.out)
 					a_cursor.forth
@@ -333,7 +354,7 @@ feature -- Content (final)
 		do
 			Result := type = '?'
 		ensure
-			empty: Result implies (not is_name and items.count = 0)
+			empty: Result implies (not is_name and then {l_items: like items} items and then l_items.count = 0)
 			chardata: Result implies is_character_data_allowed
 		end
 
@@ -342,7 +363,7 @@ feature -- Content (final)
 		do
 			Result := type = '0'
 		ensure
-			empty: Result implies (not is_name and items.count = 0)
+			empty: Result implies (not is_name and then {l_items: like items} items and then l_items.count = 0)
 		end
 
 	set_content_any is

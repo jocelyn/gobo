@@ -80,7 +80,7 @@ feature -- User-defined options
 			-- Should a backing-up report be generated?
 			-- ("-b" option)
 
-	backing_up_filename: STRING
+	backing_up_filename: ?STRING
 			-- Filename for backing-up reports
 
 	case_insensitive: BOOLEAN
@@ -161,10 +161,10 @@ feature -- User-defined options
 	line_pragma: BOOLEAN
 			-- Should line pragma be generated?
 
-	input_filename: STRING
+	input_filename: ?STRING
 			-- Name of input file
 
-	output_filename: STRING
+	output_filename: ?STRING
 			-- Name of output file
 
 feature -- Option setting
@@ -368,7 +368,7 @@ feature -- Access
 	eof_rules: DS_ARRAYED_LIST [LX_RULE]
 			-- Rules for end-of-file semantic actions
 
-	equiv_classes: LX_EQUIVALENCE_CLASSES
+	equiv_classes: ?LX_EQUIVALENCE_CLASSES
 			-- Equivalence classes
 			-- (Void when not `equiv_classes_used'.)
 
@@ -383,7 +383,7 @@ feature -- Access
 
 feature -- User-defined Eiffel code
 
-	eiffel_code: STRING
+	eiffel_code: ?STRING
 			-- User-defined Eiffel code
 			-- (Appears in section 3)
 
@@ -443,8 +443,8 @@ feature -- Setting
 			create equiv_classes.make (1, characters_count)
 		ensure
 			equiv_classes_created: equiv_classes /= Void
-			lower_set: equiv_classes.lower = 1
-			upper_set: equiv_classes.upper = characters_count
+			lower_set: {e1: like equiv_classes} equiv_classes and then e1.lower = 1
+			upper_set: {e2: like equiv_classes} equiv_classes and then e2.upper = characters_count
 		end
 
 	set_bol_needed (b: like bol_needed) is

@@ -48,13 +48,13 @@ feature {NONE} -- Initalization
 			callbacks_not_void: a_callback /= Void
 			dtd_callbacks_not_void: a_dtd_callback /= Void
 		do
-			callbacks := a_callback
-			dtd_callbacks := a_dtd_callback
+			set_next_filter (a_callback)
+			set_next_dtd (a_dtd_callback)
 		end
 
 feature -- Tag
 
-	on_start_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_start_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- Start of start tag.
 		do
 			is_disallowed := True
@@ -67,6 +67,7 @@ feature -- Meta
 			-- Processing instruction.
 		local
 			a_catalog_name: STRING
+			l_other_pi: like other_pi
 		do
 			if STRING_.same_string (a_name, "xml-stylesheet") then
 				is_disallowed := True
@@ -75,9 +76,11 @@ feature -- Meta
 					shared_catalog_manager.debug_message (1, "Oasis-xml-catalog processing instruction appears too late in the document", "ignored")
 				else
 					if is_doubtful then
-						shared_catalog_manager.debug_message (2, "Oasis-xml-catalog processing instruction might be erroneous as it appears after other PI", other_pi)
+						l_other_pi := other_pi
+						check l_other_pi /= Void end -- implied  because other_pi is set at the same time as is_doubtful is set to True
+						shared_catalog_manager.debug_message (2, "Oasis-xml-catalog processing instruction might be erroneous as it appears after other PI", l_other_pi)
 					end
-					if a_content.substring_index ("catalog=%"", 1) = 1 and then a_content.count > 11 and then a_content.index_of ('"', a_content.count) > 0 then 
+					if a_content.substring_index ("catalog=%"", 1) = 1 and then a_content.count > 11 and then a_content.index_of ('"', a_content.count) > 0 then
 						a_catalog_name := a_content.substring (10, a_content.count - 1)
 						shared_catalog_manager.add_pi_catalog (a_catalog_name)
 					else
@@ -109,7 +112,7 @@ feature -- Document type definition callbacks
 			is_disallowed := True
 			Precursor (a_name, a_content)
 		end
-	
+
 
 feature {NONE} -- Implementation
 
@@ -119,9 +122,9 @@ feature {NONE} -- Implementation
 	is_doubtful: BOOLEAN
 			-- Have other PIs appeared?
 
-	other_pi: STRING
+	other_pi: ?STRING
 			-- Processing instruction which raised doubtful status
 
 invariant
-	
+
 end

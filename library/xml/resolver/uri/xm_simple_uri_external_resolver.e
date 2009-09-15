@@ -1,5 +1,5 @@
 indexing
-	
+
 	description:
 
 		"URI resolver:handles relative URI resolution, delegates scheme specific URL resolution"
@@ -28,7 +28,7 @@ create
 
 	make,
 	make_with_base
-	
+
 feature {NONE} -- Creation
 
 	make is
@@ -39,7 +39,7 @@ feature {NONE} -- Creation
 			create schemes.make_map_default
 			schemes.set_key_equality_tester (string_equality_tester)
 		end
-		
+
 	make_with_base (a_uri: UT_URI) is
 			-- Create resolver with specified base URI.
 		require
@@ -53,7 +53,7 @@ feature -- Status report
 
 	uris: DS_STACK [UT_URI]
 			-- Base URI stack.
-			-- (A client or descendant may be entitled to put in and remove 
+			-- (A client or descendant may be entitled to put in and remove
 			-- intermediate values directly.)
 
 	supports_registering_schemes: BOOLEAN is
@@ -65,7 +65,7 @@ feature -- Status report
 	is_stack_empty: BOOLEAN is
 			-- Is URI stack empty?
 		do
-			Result := uris.is_empty 
+			Result := uris.is_empty
 		end
 
 	uri: UT_URI is
@@ -76,7 +76,7 @@ feature -- Status report
 
 	schemes: DS_HASH_TABLE [XM_URI_RESOLVER, STRING]
 			-- Registered scheme resolvers.
-			
+
 feature -- Setting
 
 	register_scheme (a_scheme: XM_URI_RESOLVER) is
@@ -124,7 +124,7 @@ feature -- Operation(s)
 			debug ("xml_resolver")
 				io.put_string ("resolve ")
 				io.put_string (a_string_uri)
-				if has_error then 
+				if has_error then
 					io.put_string (" failed")
 				else
 					io.put_string (" ok")
@@ -158,54 +158,69 @@ feature -- URI
 			-- Resolve an absolute URI.
 		require
 			an_uri_not_void: an_uri /= Void
+		local
+			l_last_resolver: like last_resolver
+			l_scheme: ?STRING
 		do
 			last_resolver := Void
-			if schemes.has (an_uri.scheme) then
-				last_resolver := schemes.item (an_uri.scheme)
-				last_resolver.resolve (an_uri)
+			l_scheme := an_uri.scheme
+			if l_scheme /= Void and then schemes.has (l_scheme) then
+				l_last_resolver := schemes.item (l_scheme)
+				last_resolver := l_last_resolver
+				l_last_resolver.resolve (an_uri)
 			end
 		end
 
 feature {NONE} -- Implementation
 
-	last_resolver: XM_URI_RESOLVER
+	last_resolver: ?XM_URI_RESOLVER
 			-- Last resolver used.
 
 feature -- Result
 
-	last_stream: KI_CHARACTER_INPUT_STREAM is
+	last_stream: ?KI_CHARACTER_INPUT_STREAM is
 			-- Last stream initialised from external entity.
+		local
+			l_last_resolver: like last_resolver
 		do
-			Result := last_resolver.last_stream
+			l_last_resolver := last_resolver
+			check l_last_resolver /= Void end -- implied by precondition `not_error'
+			Result := l_last_resolver.last_stream
 		end
 
 	has_error: BOOLEAN is
 			-- Did the last resolution attempt succeed?
+		local
+			l_last_resolver: like last_resolver
 		do
-			if last_resolver /= Void then
-				Result := last_resolver.has_error
+			l_last_resolver := last_resolver
+			if l_last_resolver /= Void then
+				Result := l_last_resolver.has_error
 			else
 				Result := True
 			end
 		end
-	
-	last_error: STRING is
+
+	last_error: ?STRING is
 			-- Last error message.
+		local
+			l_last_resolver: like last_resolver
 		do
-			if last_resolver /= Void then
-				Result := last_resolver.last_error
+			l_last_resolver := last_resolver
+			if l_last_resolver /= Void then
+				Result := l_last_resolver.last_error
 			else
 				Result := Unknown_scheme_error
 			end
 		end
 
-	last_uri_reference_stream: KI_CHARACTER_INPUT_STREAM is
+	last_uri_reference_stream: ?KI_CHARACTER_INPUT_STREAM is
 			-- Last stream initialised from URI reference.
 		do
 			Result := last_stream
 		end
 
-	last_system_id: UT_URI is
+	last_system_id: ?UT_URI is
 			-- System id used to actually open `last_uri_reference_stream'
 		do
 			Result := uri
@@ -216,8 +231,8 @@ feature -- Result
 		do
 			Result := has_error
 		end
-		
-	last_uri_reference_error: STRING is
+
+	last_uri_reference_error: ?STRING is
 			-- Last error message.
 		do
 			Result := last_error
@@ -225,14 +240,22 @@ feature -- Result
 
 	has_media_type: BOOLEAN is
 			-- Is the media type available.
+		local
+			l_last_resolver: like last_resolver
 		do
-			Result := last_resolver.has_media_type
+			l_last_resolver := last_resolver
+			check l_last_resolver /= Void end -- implied by ... ?
+			Result := l_last_resolver.has_media_type
 		end
 
-	last_media_type: UT_MEDIA_TYPE is
+	last_media_type: ?UT_MEDIA_TYPE is
 			-- Media type, if available.
+		local
+			l_last_resolver: like last_resolver
 		do
-			Result := last_resolver.last_media_type
+			l_last_resolver := last_resolver
+			check l_last_resolver /= Void end -- implied by precondition `has_media_type'
+			Result := l_last_resolver.last_media_type
 		end
 
 feature {NONE} -- Errors
@@ -242,5 +265,5 @@ feature {NONE} -- Errors
 invariant
 
 	uris_not_void: uris /= Void
-	
+
 end

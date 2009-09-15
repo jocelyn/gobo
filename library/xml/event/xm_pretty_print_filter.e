@@ -59,7 +59,7 @@ feature -- Meta
 
 feature -- Tag
 
-	on_start_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_start_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- Print start of start tag.
 		do
 			output_constant (Stag_start)
@@ -67,7 +67,7 @@ feature -- Tag
 			Precursor (a_namespace, a_prefix, a_local_part)
 		end
 
-	on_attribute (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING; a_value: STRING) is
+	on_attribute (a_namespace, a_prefix: ?STRING; a_local_part: STRING; a_value: STRING) is
 			-- Print attribute.
 		do
 			output_constant (Space_s)
@@ -86,7 +86,7 @@ feature -- Tag
 			Precursor
 		end
 
-	on_end_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_end_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- Print end tag.
 		do
 			output_constant (Etag_start)
@@ -217,12 +217,13 @@ feature {NONE} -- Output
 			end
 		end
 
-	output_name (a_prefix: STRING; a_local_part: STRING) is
+	output_name (a_prefix: ?STRING; a_local_part: STRING) is
 			-- Output prefix:name.
 		require
 			a_local_part_not_void: a_local_part /= Void
 		do
 			if has_prefix (a_prefix) then
+				check a_prefix /= Void end -- implied by `has_prefix (a_prefix)'
 				output (a_prefix)
 				output_constant (Prefix_separator)
 			end

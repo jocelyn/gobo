@@ -53,7 +53,7 @@ feature -- Access
 
 feature {NONE} -- Access
 
-	new_tree_node (a_item: G; a_key: K): like root_node is
+	new_tree_node (a_item: G; a_key: K): !like root_node is
 			-- Returns a new tree node instance where `a_item' is
 			-- associated with `a_key'.
 		do
@@ -90,6 +90,7 @@ feature -- Element change
 			check
 				found: exact_insert_position_found
 			end
+			check l_node_attached: l_node /= Void end -- implied by previous assertion `found'
 			l_node.set_item (v)
 		end
 
@@ -132,7 +133,7 @@ feature -- Element change
 
 feature {NONE} -- Element change
 
-	on_node_added (a_node: like root_node) is
+	on_node_added (a_node: like new_tree_node) is
 			-- `a_node' was just added to the binary search tree.
 			-- This feature is basically used by balanced binary
 			-- search tree variants. They are informed which
@@ -152,7 +153,7 @@ feature {NONE} -- Removal
 		do
 		end
 
-	on_node_removed (a_old_node, a_node: like root_node; a_was_left_child: BOOLEAN) is
+	on_node_removed (a_old_node, a_node: like new_tree_node; a_was_left_child: BOOLEAN) is
 			-- `a_old_node' was just removed from the tree.
 			-- The parent of `a_old_node' was `a_node'.
 			-- Depending on `a_was_left_child' `a_old_node'
@@ -167,10 +168,13 @@ feature -- Duplication
 	copy (other: like Current) is
 			-- Copy `other' to current.
 		local
+			l_old_cursor_position: like root_node
 			l_other_node: like root_node
+			l_internal_cursor: like detachable_internal_cursor
 		do
 			if other /= Current then
-				if internal_cursor = Void then
+				l_internal_cursor := detachable_internal_cursor
+				if l_internal_cursor = Void then
 					set_internal_cursor (new_cursor)
 				end
 				key_comparator := other.key_comparator
@@ -190,7 +194,7 @@ feature -- Duplication
 
 feature {NONE} -- Implementation
 
-	root_node: DS_BINARY_SEARCH_TREE_NODE [G, K]
+	root_node: ?DS_BINARY_SEARCH_TREE_NODE [G, K]
 			-- Root node
 
 end

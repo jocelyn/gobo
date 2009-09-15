@@ -91,11 +91,14 @@ feature -- Pathname
 			a_uri_not_void: a_uri /= Void
 		local
 			a_cursor: DS_ARRAYED_LIST_CURSOR [UT_URI_STRING]
-			a_possible_drive: STRING
-			a_segment: STRING
+			a_possible_drive: ?STRING
+			a_segment: ?STRING
 			a_uri_authority_item: ?UT_URI_STRING
 		do
-			if not a_uri.has_valid_scheme or else a_uri.scheme.same_string (File_scheme) then
+			if
+				not a_uri.has_valid_scheme or else
+				({l_scheme: STRING} a_uri.scheme and then l_scheme.same_string (File_scheme))
+			then
 				create Result.make
 				if a_uri.has_authority then
 					a_uri_authority_item := a_uri.authority_item
@@ -122,11 +125,10 @@ feature -- Pathname
 							Result.append_name (a_possible_drive)
 						end
 						-- Remaining items.
-						from a_cursor.forth until a_cursor.after loop
+						from a_cursor.forth until a_cursor.after or Result = Void loop
 							a_segment := uri_component_to_pathname (a_cursor.item)
 							if a_segment = Void then
 								Result := Void
-								a_cursor.go_after
 							else
 								Result.append_name (a_segment)
 								a_cursor.forth

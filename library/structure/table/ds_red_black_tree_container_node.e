@@ -21,9 +21,12 @@ feature {DS_RED_BLACK_TREE_CONTAINER, DS_RED_BLACK_TREE_CONTAINER_NODE} -- Acces
 	grand_parent: like parent is
 			-- Parent of `parent';
 			-- May be Void
+		local
+			l_parent: like parent
 		do
-			if parent /= Void then
-				Result := parent.parent
+			l_parent := parent
+			if l_parent /= Void then
+				Result := l_parent.parent
 			else
 				Result := Void
 			end
@@ -37,6 +40,7 @@ feature {DS_RED_BLACK_TREE_CONTAINER, DS_RED_BLACK_TREE_CONTAINER_NODE} -- Acces
 			tmp_grand_parent: like parent
 		do
 			tmp_grand_parent := grand_parent
+			check tmp_grand_parent /= Void end -- implied by precondition `grand_parent_not_void'
 			if parent = tmp_grand_parent.left_child then
 				Result := tmp_grand_parent.right_child
 			else
@@ -60,7 +64,7 @@ feature {DS_RED_BLACK_TREE_CONTAINER} -- Status report
 		require
 			a_node_not_void: a_node /= Void
 		local
-			l_node: like Current
+			l_node: ?like Current
 		do
 			from
 				l_node := Current
@@ -89,12 +93,15 @@ feature {DS_RED_BLACK_TREE_CONTAINER, DS_RED_BLACK_TREE_CONTAINER_NODE} -- Measu
 			-- otherwise -1
 		local
 			left, right: INTEGER
+			l_child: ?like Current
 		do
-			if left_child /= Void then
-				left := left_child.number_of_black_nodes_in_branches
+			l_child := left_child
+			if l_child /= Void then
+				left := l_child.number_of_black_nodes_in_branches
 			end
-			if right_child /= Void then
-				right := right_child.number_of_black_nodes_in_branches
+			l_child := right_child
+			if l_child /= Void then
+				right := l_child.number_of_black_nodes_in_branches
 			end
 			if left = right then
 				Result := left

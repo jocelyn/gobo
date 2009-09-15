@@ -20,7 +20,7 @@ inherit
 		rename
 			set_callbacks as set_next
 		end
-		
+
 	XM_FORWARD_CALLBACKS
 		-- implementation of default behaviour:
 		-- forwarding to 'next' processor in chain
@@ -39,7 +39,7 @@ feature {NONE} -- Initialization
 	make_null is
 			-- Next is null processor.
 		do
-			create {XM_CALLBACKS_NULL} next.make
+			set_next (create {XM_CALLBACKS_NULL}.make)
 		end
 
 invariant

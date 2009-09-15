@@ -32,12 +32,12 @@ feature -- Access
 
 feature {DS_LINKED_LIST, DS_LINKED_LIST_CURSOR} -- Implementation
 
-	current_cell: DS_BILINKABLE [G]
+	current_cell: ?DS_BILINKABLE [G]
 			-- Cell at cursor position
 
 feature {DS_BILINKED_LIST} -- Implementation
 
-	next_cursor: DS_BILINKED_LIST_CURSOR [G]
+	next_cursor: ?DS_BILINKED_LIST_CURSOR [G]
 			-- Next cursor
 			-- (Used by `container' to keep track of traversing
 			-- cursors (i.e. cursors associated with `container'

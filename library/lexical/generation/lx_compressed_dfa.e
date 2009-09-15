@@ -72,9 +72,9 @@ feature -- Access
 
 	dangerous_variable_trail_rules: DS_ARRAYED_LIST [LX_RULE] is
 			-- Rules containing "dangerous" variable trailing context.
-			-- A trailing context is dangerous if both the head and the 
+			-- A trailing context is dangerous if both the head and the
 			-- trailing part are of variable size and there is a DFA
-			-- state which contains both an accepting state for the 
+			-- state which contains both an accepting state for the
 			-- rule and NFA states which occur after the beginning
 			-- of the trailing context.
 			-- When such a rule is matched, it is impossible to tell
@@ -165,6 +165,10 @@ feature {NONE} -- Generation
 
 	print_eiffel_tables (a_file: KI_TEXT_OUTPUT_STREAM) is
 			-- Print Eiffel code for compressed tables to `a_file'.
+		local
+			l_yy_ec: like yy_ec
+			l_yy_meta: like yy_meta
+			l_yy_acclist: like yy_acclist
 		do
 			print_eiffel_array ("yy_nxt_template", yy_nxt, a_file)
 			a_file.put_character ('%N')
@@ -173,19 +177,22 @@ feature {NONE} -- Generation
 			print_eiffel_array ("yy_base_template", yy_base, a_file)
 			a_file.put_character ('%N')
 			print_eiffel_array ("yy_def_template", yy_def, a_file)
-			if yy_ec /= Void then
+			l_yy_ec := yy_ec
+			if l_yy_ec /= Void then
 				a_file.put_character ('%N')
-				print_eiffel_array ("yy_ec_template", yy_ec, a_file)
+				print_eiffel_array ("yy_ec_template", l_yy_ec, a_file)
 			end
-			if yy_meta /= Void then
+			l_yy_meta := yy_meta
+			if l_yy_meta /= Void then
 				a_file.put_character ('%N')
-				print_eiffel_array ("yy_meta_template", yy_meta, a_file)
+				print_eiffel_array ("yy_meta_template", l_yy_meta, a_file)
 			end
 			a_file.put_character ('%N')
 			print_eiffel_array ("yy_accept_template", yy_accept, a_file)
-			if yy_acclist /= Void then
+			l_yy_acclist := yy_acclist
+			if l_yy_acclist /= Void then
 				a_file.put_character ('%N')
-				print_eiffel_array ("yy_acclist_template", yy_acclist, a_file)
+				print_eiffel_array ("yy_acclist_template", l_yy_acclist, a_file)
 			end
 		end
 
@@ -229,12 +236,14 @@ feature -- Building
 			i: INTEGER
 			a_state: LX_DFA_STATE
 			singleton: LX_SINGLETON
+			l_singletons: like singletons
 		do
 			first_free := 1
 			table_end := 0
 			templates_count := 0
 			create protos.make
-			create singletons.make (Singletons_capacity)
+			create l_singletons.make (Singletons_capacity)
+			singletons := l_singletons
 			if meta_equiv_classes_used then
 				create meta_equiv_classes.make (minimum_symbol, maximum_symbol)
 			end
@@ -266,7 +275,7 @@ feature -- Building
 			build_transitions (a_state)
 				-- Make sure it jams on end of buffer.
 			create singleton.make (a_state.id, Jam_id, 0, 0)
-			singletons.put_last (singleton)
+			l_singletons.put_last (singleton)
 			from
 				i := i + 1
 			until
@@ -494,13 +503,17 @@ feature {NONE} -- Compression
 			common_states: DS_ARRAYED_LIST [LX_DFA_STATE]
 			frequencies: DS_ARRAYED_LIST [INTEGER]
 			st_cursor: DS_ARRAYED_LIST_CURSOR [LX_DFA_STATE]
-			common_state: LX_DFA_STATE
+			common_state: ?LX_DFA_STATE
 			common_freq: INTEGER
-			proto, new_proto: LX_PROTO
+			proto: ?LX_PROTO
+			new_proto: LX_PROTO
 			cursor, proto_cursor: DS_BILINKED_LIST_CURSOR [LX_PROTO]
-			difference, new_diff: LX_TRANSITION_TABLE [LX_DFA_STATE]
+			difference: ?LX_TRANSITION_TABLE [LX_DFA_STATE]
+			new_diff: LX_TRANSITION_TABLE [LX_DFA_STATE]
 			min_diff: INTEGER
 			default_id: INTEGER
+			l_templates: like templates
+			l_protos: like protos
 		do
 			transitions := state.transitions
 			trans_nb := transitions.count
@@ -547,13 +560,15 @@ feature {NONE} -- Compression
 					end
 					i := i + 1
 				end
-				proto_cursor := protos.new_cursor
-				if not protos.is_empty then
-					proto := protos.first
+				l_protos := protos
+				check l_protos /= Void end -- implied by protos_not_void
+				proto_cursor := l_protos.new_cursor
+				if not l_protos.is_empty then
+					proto := l_protos.first
 					proto_cursor.start
 				end
 				min_diff := trans_nb
-				cursor := protos.new_cursor
+				cursor := l_protos.new_cursor
 				cursor.start
 				if common_freq * 100 > trans_nb * Check_common_percentage then
 					from
@@ -576,8 +591,8 @@ feature {NONE} -- Compression
 						-- entered into the proto list, it will no be
 						-- considered as a template.
 					common_state := null_state
-					if not protos.is_empty then
-						proto := protos.first
+					if not l_protos.is_empty then
+						proto := l_protos.first
 						proto_cursor.go_to (cursor)
 						difference := transitions.difference (proto.transitions, null_state)
 						min_diff := difference.count
@@ -611,29 +626,34 @@ feature {NONE} -- Compression
 					-- Check if the proto we've decided on as our best bet
 					-- is close enough to the state we want to match to
 					-- be usable.
+				check common_state /= Void end -- implied by ... ?
 				if min_diff * 100 > trans_nb * Acceptable_diff_percentage then
 						-- No good. If the state is homogeneous enough,
 						-- we make a template out of it. Otherwise, we
 						-- make a proto.
 					if common_freq * 100 >= trans_nb * Template_same_percentage then
-						templates.put (state, common_state)
-						template := templates.last
-						default_id := -templates.count
-						protos.put (default_id, template, common_state)
+						l_templates := templates
+						check l_templates /= Void end -- implied by templates_not_void
+						l_templates.put (state, common_state)
+						template := l_templates.last
+						default_id := -l_templates.count
+						l_protos.put (default_id, template, common_state)
 						put_entry (state.id, default_id, transitions.difference (template, null_state))
 					else
-						protos.put (state.id, transitions.cloned_object, common_state)
+						l_protos.put (state.id, transitions.cloned_object, common_state)
 						put_entry (state.id, Jam_id, transitions)
 					end
 				else
 						-- Use the proto.
+					check proto /= Void end -- implied by ... ?
+					check difference /= Void end -- implied by ... ?
 					put_entry (state.id, proto.state_id, difference)
 						-- Move `proto' to the front of the proto queue.
-					protos.move_to_front (proto_cursor)
+					l_protos.move_to_front (proto_cursor)
 						-- If this state was sufficiently different from
 						-- the proto we built it from, make it a proto too.
 					if min_diff * 100 >= trans_nb * New_proto_diff_percentage then
-						protos.put (state.id, transitions.cloned_object, common_state)
+						l_protos.put (state.id, transitions.cloned_object, common_state)
 					end
 				end
 					-- Release cursor to GC.
@@ -654,7 +674,8 @@ feature {NONE} -- Compression
 			base_addr, table_base, table_last: INTEGER
 			yy_chk_, yy_nxt_: ARRAY [INTEGER]
 			singleton: LX_SINGLETON
-			target: LX_DFA_STATE
+			target: ?LX_DFA_STATE
+			l_singletons: like singletons
 		do
 			inspect transitions.count
 			when 0 then
@@ -670,9 +691,12 @@ feature {NONE} -- Compression
 					-- Save it for later to fill in holes in tables.
 				min_label := transitions.minimum_label
 				target := transitions.target (min_label)
+				check target /= Void end -- implied by ... ?
 				create singleton.make (state_id, default_id, min_label, target.id)
-				if not singletons.is_full then
-					singletons.put_last (singleton)
+				l_singletons := singletons
+				check l_singletons /= Void end -- implied by singletons_not_void
+				if not l_singletons.is_full then
+					l_singletons.put_last (singleton)
 				else
 					put_singleton (singleton)
 				end
@@ -721,7 +745,8 @@ feature {NONE} -- Compression
 					until
 						i > max_label
 					loop
-						if transitions.target (i) /= Void and yy_chk_.item (base_addr + i - min_label) /= 0 then
+						target := transitions.target (i)
+						if target /= Void and yy_chk_.item (base_addr + i - min_label) /= 0 then
 								-- `base_addr' unsuitable. Find another.
 							from
 								base_addr := base_addr + 1
@@ -764,8 +789,9 @@ feature {NONE} -- Compression
 				until
 					i > max_label
 				loop
-					if transitions.target (i) /= Void then
-						yy_nxt_.put (transitions.target (i).id, table_base + i)
+					target := transitions.target (i)
+					if target /= Void then
+						yy_nxt_.put (target.id, table_base + i)
 						yy_chk_.put (state_id, table_base + i)
 					end
 					i := i + 1
@@ -838,16 +864,22 @@ feature {NONE} -- Compression
 		local
 			cursor: DS_LINKED_LIST_CURSOR [LX_TRANSITION_TABLE [LX_DFA_STATE]]
 			template: LX_TRANSITION_TABLE [LX_DFA_STATE]
+			l_templates: like templates
 			i, max_index: INTEGER
+			l_meta_equiv_classes: like meta_equiv_classes
 		do
+			l_templates := templates
+			check l_templates /= Void end -- implied by `templates_not_void'
+
 			yyTemplate_mark := states.count + 2
-			if meta_equiv_classes /= Void then
-				meta_equiv_classes.build
-				yy_meta := meta_equiv_classes.to_array (0, maximum_symbol)
+			l_meta_equiv_classes := meta_equiv_classes
+			if l_meta_equiv_classes /= Void then
+				l_meta_equiv_classes.build
+				yy_meta := l_meta_equiv_classes.to_array (0, maximum_symbol)
 			else
 				yy_meta := Void
 			end
-			templates_count := templates.count + 1
+			templates_count := l_templates.count + 1
 			max_index := states.count + templates_count
 			if states.capacity < max_index then
 				INTEGER_ARRAY_.resize (yy_base, 0, max_index)
@@ -855,13 +887,13 @@ feature {NONE} -- Compression
 			end
 				-- Leave room for the jam-state after the last real state.
 			i := states.count + 2
-			cursor := templates.new_cursor
+			cursor := l_templates.new_cursor
 			from
 				cursor.start
 			until
 				cursor.after
 			loop
-				template := templates.equiv_template (cursor.item)
+				template := l_templates.equiv_template (cursor.item)
 					-- It is assumed in the skeleton that if we're using
 					-- meta-equivalence classes, the yy_def entry for all
 					-- templates is the jam template, i.e. templates never
@@ -880,13 +912,16 @@ feature {NONE} -- Compression
 			singletons_not_void: singletons /= Void
 		local
 			i: INTEGER
+			l_singletons: like singletons
 		do
+			l_singletons := singletons
+			check l_singletons /= Void end -- implied by `singletons_not_void'
 			from
-				i := singletons.count
+				i := l_singletons.count
 			until
 				i < 1
 			loop
-				put_singleton (singletons.item (i))
+				put_singleton (l_singletons.item (i))
 				i := i - 1
 			end
 		end
@@ -972,7 +1007,7 @@ feature {NONE} -- Compression
 
 feature {NONE} -- Compression data
 
-	meta_equiv_classes: LX_EQUIVALENCE_CLASSES
+	meta_equiv_classes: ?LX_EQUIVALENCE_CLASSES
 			-- Meta equivalence classes which are sets of classes
 			-- with identical transitions out of templates;
 			-- Void if meta equivalence classes are not used
@@ -980,7 +1015,7 @@ feature {NONE} -- Compression data
 	meta_equiv_classes_used: BOOLEAN
 			-- Should meta-equivalence classes be used?
 
-	protos: LX_PROTO_QUEUE
+	protos: ?LX_PROTO_QUEUE
 			-- Queue of most recently used protos, which are DFA states
 			-- with transition tables that have a high probability of
 			-- either being redundant (a state processed later will have
@@ -990,14 +1025,14 @@ feature {NONE} -- Compression data
 			-- similar enough to be usable, and therefore compacting the
 			-- output tables
 
-	templates: LX_TEMPLATE_LIST
+	templates: ?LX_TEMPLATE_LIST
 			-- Templates are a special type of proto. If a transition
 			-- table is homogeneous or nearly homogeneous (all transitions
 			-- go to the same destination) then the odds are good that
 			-- future states will also go to the same destination state
 			-- on basically the same symbol set. These homogeneous states
 			-- are so common when dealing with large rule sets that they
-			-- merit special attention. If the transition table were 
+			-- merit special attention. If the transition table were
 			-- simply made into a proto, then (typically) each subsequent,
 			-- similar state will differ from the proto for two
 			-- out-transitions. One of these out-transitions will be that
@@ -1007,7 +1042,7 @@ feature {NONE} -- Compression data
 			-- on the other hand, go to the common state on every
 			-- transition symbol, and therefore cost only one difference
 
-	singletons: DS_ARRAYED_LIST [LX_SINGLETON]
+	singletons: ?DS_ARRAYED_LIST [LX_SINGLETON]
 			-- States with only one out-transition, saved
 			-- for later to fill in holes in tables
 
@@ -1084,7 +1119,7 @@ feature {NONE} -- Constants
 
 	Proto_size_percentage: INTEGER is 15
 			-- Percentage the number of out-transitions a state must be
-			-- of the number of equivalence classes in order to be 
+			-- of the number of equivalence classes in order to be
 			-- considered for table compaction by using protos
 
 	Template_same_percentage: INTEGER is 60

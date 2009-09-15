@@ -39,7 +39,7 @@ indexing
 	copyright: "Copyright (c) 2001-2002, Eric Bezault and others"
 	license: "MIT License"
 	date: "$Date$"
-	revision:   "$Revision$"
+	revision: "$Revision$"
 
 class LX_DFA_WILDCARD
 

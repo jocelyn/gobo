@@ -32,6 +32,7 @@ feature -- Scanning
 			yy_act: INTEGER
 			yy_goto: INTEGER
 			yy_c: INTEGER
+			l_yy_ec: like yy_ec
 			l_content_area: like yy_content_area
 		do
 				-- This routine is implemented with a loop whose body
@@ -76,11 +77,12 @@ feature -- Scanning
 						-- Find the next match.
 					l_content_area := yy_content_area
 					from
-						if yy_ec /= Void then
+						l_yy_ec := yy_ec
+						if l_yy_ec /= Void then
 							if l_content_area /= Void then
-								yy_c := yy_ec.item (l_content_area.item (yy_cp).code)
+								yy_c := l_yy_ec.item (l_content_area.item (yy_cp).code)
 							else
-								yy_c := yy_ec.item (yy_content.item (yy_cp).code)
+								yy_c := l_yy_ec.item (yy_content.item (yy_cp).code)
 							end
 						else
 							if l_content_area /= Void then
@@ -98,11 +100,12 @@ feature -- Scanning
 							yy_last_accepting_cpos := yy_cp
 						end
 						yy_cp := yy_cp + 1
-						if yy_ec /= Void then
+						l_yy_ec := yy_ec
+						if l_yy_ec /= Void then
 							if l_content_area /= Void then
-								yy_c := yy_ec.item (l_content_area.item (yy_cp).code)
+								yy_c := l_yy_ec.item (l_content_area.item (yy_cp).code)
 							else
-								yy_c := yy_ec.item (yy_content.item (yy_cp).code)
+								yy_c := l_yy_ec.item (yy_content.item (yy_cp).code)
 							end
 						else
 							if l_content_area /= Void then
@@ -214,7 +217,7 @@ feature {NONE} -- Tables
 			-- States to enter upon reading symbol;
 			-- indexed by (current_state_id * yyNb_rows + symbol)
 
-	yy_ec: SPECIAL [INTEGER]
+	yy_ec: ?SPECIAL [INTEGER]
 			-- Equivalence classes;
 			-- Void if equivalence classes are not used
 
@@ -236,6 +239,7 @@ feature {NONE} -- Implementation
 		local
 			yy_cp, yy_nb: INTEGER
 			yy_c: INTEGER
+			l_yy_ec: like yy_ec
 			l_content_area: like yy_content_area
 		do
 				-- Find the start state.
@@ -253,10 +257,11 @@ feature {NONE} -- Implementation
 				else
 					yy_c := yy_content.item (yy_cp).code
 				end
+				l_yy_ec := yy_ec
 				if yy_c = 0 then
 					yy_c := yyNull_equiv_class
-				elseif yy_ec /= Void then
-					yy_c := yy_ec.item (yy_c)
+				elseif l_yy_ec /= Void then
+					yy_c := l_yy_ec.item (yy_c)
 				end
 				Result := yy_nxt.item (Result * yyNb_rows + yy_c)
 				if yyBacking_up and then yy_accept.item (Result) /= 0 then

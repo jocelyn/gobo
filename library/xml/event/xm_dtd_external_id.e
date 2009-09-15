@@ -52,23 +52,27 @@ feature -- Status report
 
 feature -- Access
 
-	base: STRING
+	base: ?STRING
 			-- Base URI
 
-	system_id: STRING
+	system_id: ?STRING
 			-- SYSTEM
 
-	public_id: STRING
+	public_id: ?STRING
 			-- PUBLIC
 
 	hash_code: INTEGER is
 			-- Hash code
+		local
+			l_id: ?STRING
 		do
-			if public_id /= Void then
-				Result := public_id.hash_code // 3
+			l_id := public_id
+			if l_id /= Void then
+				Result := l_id.hash_code // 3
 			end
-			if system_id /= Void then
-				Result := Result + (system_id.hash_code // 3)
+			l_id := system_id
+			if l_id /= Void then
+				Result := Result + (l_id.hash_code // 3)
 			end
 		end
 
@@ -102,20 +106,29 @@ feature -- Output
 
 	out: STRING is
 			-- Print as in input.
+		local
+			l_id: ?STRING
+			s: ?STRING
 		do
-			if public_id /= Void then
-				Result := STRING_.cloned_string ("PUBLIC ")
-				Result := STRING_.appended_string (Result, public_id)
+			l_id := public_id
+			if l_id /= Void then
+				s := STRING_.cloned_string ("PUBLIC ")
+				s := STRING_.appended_string (s, l_id)
 			end
-			
-			if system_id /= Void then
-				if Result = Void then
-					Result := STRING_.cloned_string ("SYSTEM")
+
+			l_id := system_id
+			if l_id /= Void then
+				if s = Void then
+					s := STRING_.cloned_string ("SYSTEM")
 				end
-				Result.append_character (' ')
-				Result := STRING_.appended_string (Result, system_id)
-				Result.append_character (' ')
+				s.append_character (' ')
+				s := STRING_.appended_string (s, l_id)
+				s.append_character (' ')
 			end
+			if s = Void then
+				create s.make_empty --| to satisfy postcondition Result /= Void
+			end
+			Result := s
 		end
 
 end

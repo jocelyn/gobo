@@ -17,7 +17,7 @@ inherit
 	XM_ELEMENT_NODE
 
 	KL_IMPORTED_STRING_ROUTINES
-	
+
 feature -- Status report
 
 	has_namespace: BOOLEAN is
@@ -31,24 +31,27 @@ feature -- Status report
 	has_prefix: BOOLEAN is
 			-- Has a prefix been used to define the namespace?
 			-- (It could also be that the namespace used was the default namespace)
+		local
+			l_ns_prefix: like ns_prefix
 		do
-			Result := (ns_prefix /= Void and then ns_prefix.count > 0)
+			l_ns_prefix := ns_prefix
+			Result := (l_ns_prefix /= Void and then l_ns_prefix.count > 0)
 		ensure
-			definition: Result = (ns_prefix /= Void and then ns_prefix.count > 0)
+			definition: Result = ({el_ns_prefix: like ns_prefix} ns_prefix and then el_ns_prefix.count > 0)
 		end
-		
+
 	same_namespace (other: XM_NAMED_NODE): BOOLEAN is
 			-- Has current node same namespace as other?
 		require
 			other_not_void: other /= Void
 		do
 			Result := ((not has_namespace) and (not other.has_namespace))
-				or ((has_namespace and other.has_namespace) and then namespace.is_equal (other.namespace))
+				or ((has_namespace and other.has_namespace) and then namespace ~ other.namespace)
 		ensure
 			equal_namespaces: Result implies (((not has_namespace) and (not other.has_namespace))
 				or else namespace.is_equal (other.namespace))
 		end
-	
+
 	same_name (other: XM_NAMED_NODE): BOOLEAN is
 			-- Has current node same name and namespace as other?
 		require
@@ -72,7 +75,7 @@ feature -- Status report
 			definition: Result = (STRING_.same_string (a_uri, namespace.uri)
 					and STRING_.same_string (a_name, name))
 		end
-	
+
 feature -- Access
 
 	name: STRING
@@ -80,10 +83,10 @@ feature -- Access
 
 	namespace: XM_NAMESPACE
 			-- Namespace of the name of current node
-	
+
 feature -- Access
 
-	ns_prefix: STRING is
+	ns_prefix: ?STRING is
 			-- Namespace prefix used to declare the namespace of the
 			-- name of current node
 		require
@@ -93,7 +96,7 @@ feature -- Access
 		ensure
 			definition: Result = namespace.ns_prefix
 		end
-		
+
 	ns_uri: STRING is
 			-- URI of namespace.
 		require
@@ -103,7 +106,7 @@ feature -- Access
 		ensure
 			definition: Result = namespace.uri
 		end
-		
+
 feature -- Element change
 
 	set_name (a_name: like name) is

@@ -81,19 +81,22 @@ feature -- DTD
 			-- Attribute declaration, one event per attribute.
 		local
 			l_sub: DS_BILINKED_LIST [XM_DTD_ATTRIBUTE_CONTENT]
+			l_defaults: like defaults
 		do
 				-- Default attribute values.
 			if a_model.has_default_value then
-				if defaults = Void then
-					defaults := new_dtd_attribute_content_list_table
+				l_defaults := defaults
+				if l_defaults = Void then
+					l_defaults := new_dtd_attribute_content_list_table
+					defaults := l_defaults
 				end
-				if not defaults.has (a_element_name) then
+				if not l_defaults.has (a_element_name) then
 					create l_sub.make_default
-					defaults.force_new (l_sub, a_element_name)
+					l_defaults.force_new (l_sub, a_element_name)
 				end
 					-- First declaration is binding.
-				if not has_attribute (defaults.item (a_element_name),a_name) then
-					defaults.item (a_element_name).force_last (a_model)
+				if not has_attribute (l_defaults.item (a_element_name), a_name) then
+					l_defaults.item (a_element_name).force_last (a_model)
 				end
 			end
 				-- NMTOKEN values.
@@ -104,7 +107,7 @@ feature -- DTD
 
 feature {NONE} -- DTD implementation
 
-	defaults: DS_HASH_TABLE [DS_LIST [XM_DTD_ATTRIBUTE_CONTENT], STRING]
+	defaults: ?DS_HASH_TABLE [DS_LIST [XM_DTD_ATTRIBUTE_CONTENT], STRING]
 			-- Attributes defaults
 
 	has_attribute (a_sub: DS_LIST [XM_DTD_ATTRIBUTE_CONTENT]; a_name: STRING): BOOLEAN is
@@ -114,10 +117,12 @@ feature {NONE} -- DTD implementation
 			a_name_not_void: a_name /= Void
 		local
 			it: DS_LINEAR_CURSOR [XM_DTD_ATTRIBUTE_CONTENT]
+			l_it_item_name: ?STRING
 		do
 			it := a_sub.new_cursor
 			from it.start until it.after loop
-				if same_string (it.item.name, a_name) then
+				l_it_item_name := it.item.name
+				if l_it_item_name /= Void and then same_string (l_it_item_name, a_name) then
 					Result := True
 					it.go_after
 				else
@@ -128,20 +133,28 @@ feature {NONE} -- DTD implementation
 
 feature -- Content
 
-	on_start_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_start_tag (a_namespace, a_prefix: ?STRING; a_local_part: STRING) is
 			-- Start of start tag.
 			-- Store name of current element.
 		local
 			it: DS_LINEAR_CURSOR [XM_DTD_ATTRIBUTE_CONTENT]
+			l_defaults: like defaults
+			l_it_item_name: ?STRING
+			l_default_value: ?STRING
 		do
 			reset_attributes
-			if defaults /= Void and then defaults.has (dtd_name (a_prefix, a_local_part)) then
-				it := defaults.item (dtd_name (a_prefix, a_local_part)).new_cursor
+			l_defaults := defaults
+			if l_defaults /= Void and then l_defaults.has (dtd_name (a_prefix, a_local_part)) then
+				it := l_defaults.item (dtd_name (a_prefix, a_local_part)).new_cursor
 				from it.start until it.after loop
+					l_it_item_name := it.item.name
+					check l_it_item_name /= Void end --| should not be Void at this point
+					l_default_value := it.item.default_value
+					check l_default_value /= Void end -- implied by being from an item contained by `defaults' (TO CHECK)
 					push_attribute (Void,
-						dtd_prefix (it.item.name),
-						dtd_local (it.item.name),
-						it.item.default_value)
+						dtd_prefix (l_it_item_name),
+						dtd_local (l_it_item_name),
+						l_default_value)
 					it.forth
 				end
 			end
@@ -149,7 +162,7 @@ feature -- Content
 			Precursor (a_namespace, a_prefix, a_local_part)
 		end
 
-	on_attribute (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING; a_value: STRING) is
+	on_attribute (a_namespace, a_prefix: ?STRING; a_local_part: STRING; a_value: STRING) is
 			-- Remove from defaults attributes which are explicitely
 			-- declared.
 		do
@@ -187,32 +200,41 @@ feature {NONE} -- Attribute queue
 				or a = Space_char.code
 		end
 
-	push_attribute (a_ns, a_prefix, a_local, a_value: STRING) is
+	push_attribute (a_ns, a_prefix: ?STRING; a_local: STRING; a_value: STRING) is
 			-- Push attributes, if attribute name already
 			-- in list overwrite the value.
 		local
 			found: BOOLEAN
 			i, nb: INTEGER
+			l_names: like names
+			l_values: like values
 		do
 				-- Create structure if not.
-			if names = Void then
+			l_names := names
+			if l_names = Void then
 				--namespaces := new_string_arrayed_list
-				names := new_string_arrayed_list
-				values := new_string_arrayed_list
+				l_names := new_string_arrayed_list
+				names := l_names
+				l_values := new_string_arrayed_list
+				values := l_values
+			else
+				l_values := values
+				check l_values /= Void end -- implied by invariant `names_attached_implies_values_attached' + names /= Void
 			end
+
 				-- Replace existing attribute.
-			nb := names.count
+			nb := l_names.count
 			from i := 1 until i > nb loop
-				if same_string (dtd_name (a_prefix, a_local), names.item (i)) then
-					values.replace (a_value, i)
+				if same_string (dtd_name (a_prefix, a_local), l_names.item (i)) then
+					l_values.replace (a_value, i)
 					found := True
 				end
 				i := i + 1
 			end
 			if not found then
 				--namespaces.force_last (a_ns)
-				names.force_last (dtd_name (a_prefix, a_local))
-				values.force_last (a_value)
+				l_names.force_last (dtd_name (a_prefix, a_local))
+				l_values.force_last (a_value)
 			end
 		end
 
@@ -220,30 +242,36 @@ feature {NONE} -- Attribute queue
 			-- Pop attributes queued.
 		local
 			i, nb: INTEGER
+			l_names: like names
+			l_values: like values
 		do
-			if names /= Void then
-				nb := names.count
+			l_names := names
+			if l_names /= Void then
+				nb := l_names.count
+				l_values := values
+				check l_values /= Void end -- implied by names_attached_implies_values_attached
 				from i := 1 until i > nb loop
 					forward_attribute (Void, --namespaces.item (i),
-						dtd_prefix (names.item (i)),
-						dtd_local (names.item (i)),
-						values.item (i))
+						dtd_prefix (l_names.item (i)),
+						dtd_local (l_names.item (i)),
+						l_values.item (i))
 					i := i + 1
 				end
 			end
 		end
 
-	namespaces, names, values: DS_LIST [STRING]
+	namespaces, names, values: ?DS_LIST [STRING]
 			-- Mean version of DS_ARRAYED_LIST [ATTRIBUTE_EVENT]
 
 feature {NONE} -- Content implementation
 
-	dtd_name (a_prefix, a_local: STRING): STRING is
+	dtd_name (a_prefix: ?STRING; a_local: STRING): STRING is
 			-- Name for DTD (without namespaces)
 		require
 			a_local_not_void: a_local /= Void
 		do
 			if has_prefix (a_prefix) then
+				check a_prefix /= Void end -- implied by has_prefix (a_prefix)
 				Result := STRING_.concat (a_prefix, Prefix_separator)
 				Result := STRING_.appended_string (Result, a_local)
 			else
@@ -254,7 +282,7 @@ feature {NONE} -- Content implementation
 			no_prefix_same: not has_prefix (a_prefix) implies (Result = a_local)
 		end
 
-	dtd_prefix (a_dtd_name: STRING): STRING is
+	dtd_prefix (a_dtd_name: STRING): ?STRING is
 			-- Prefix from a DTD name
 		require
 			a_dtd_name_not_void: a_dtd_name /= Void
@@ -292,42 +320,48 @@ feature {NONE} -- Content implementation
 
 feature {NONE} -- Tokens implementation
 
-	tokens: DS_HASH_TABLE [DS_HASH_TABLE [BOOLEAN, STRING], STRING]
+	tokens: ?DS_HASH_TABLE [DS_HASH_TABLE [BOOLEAN, STRING], STRING]
 			-- NMTOKENs for space normalisation, table of
 			-- is_token for (element, attribute).
 
-	element_tokens: DS_HASH_TABLE [BOOLEAN, STRING]
+	element_tokens: ?DS_HASH_TABLE [BOOLEAN, STRING]
 			-- Set of token attributes for current element.
 
 	token_on_attribute_declaration (an_element_name, a_name: STRING; a_model: XM_DTD_ATTRIBUTE_CONTENT) is
 			-- Attribute declaration, one event per attribute.
 		local
 			a_token_sub: like element_tokens
+			l_tokens: like tokens
 		do
 				-- NMTOKEN values.
-			if tokens = Void then
-				tokens := new_tokens_table
+			l_tokens := tokens
+			if l_tokens = Void then
+				l_tokens := new_tokens_table
+				tokens := l_tokens
 			end
-			if not tokens.has (an_element_name) then
+			if not l_tokens.has (an_element_name) then
 				a_token_sub := new_boolean_string_table
-				tokens.force_new (a_token_sub, an_element_name)
+				l_tokens.force_new (a_token_sub, an_element_name)
 			end
 				-- First precedes.
-			if not tokens.item (an_element_name).has (a_name) then
-				tokens.item (an_element_name).force_new (a_model.is_token, a_name)
+			if not l_tokens.item (an_element_name).has (a_name) then
+				l_tokens.item (an_element_name).force_new (a_model.is_token, a_name)
 			end
 		end
 
-	token_on_start_tag (a_prefix, a_local: STRING) is
+	token_on_start_tag (a_prefix: ?STRING; a_local: STRING) is
 			-- Initialize at start tag.
+		local
+			l_tokens: like tokens
 		do
 			element_tokens := Void
-			if tokens /= Void and then tokens.has (dtd_name (a_prefix, a_local)) then
-				element_tokens := tokens.item (dtd_name (a_prefix, a_local))
+			l_tokens := tokens
+			if l_tokens /= Void and then l_tokens.has (dtd_name (a_prefix, a_local)) then
+				element_tokens := l_tokens.item (dtd_name (a_prefix, a_local))
 			end
 		end
 
-	forward_attribute (a_ns, a_prefix, a_local, a_value: STRING) is
+	forward_attribute (a_ns, a_prefix: ?STRING; a_local: STRING; a_value: STRING) is
 			-- Push attributes, if attribute name already
 			-- in list overwrite the value.
 		require
@@ -335,11 +369,13 @@ feature {NONE} -- Tokens implementation
 		local
 			a_string: STRING
 			i, nb: INTEGER
+			l_element_tokens: like element_tokens
 		do
+			l_element_tokens := element_tokens
 			if
-				element_tokens /= Void and then
-				element_tokens.has (dtd_name (a_prefix, a_local)) and then
-				element_tokens.item (dtd_name (a_prefix, a_local))
+				l_element_tokens /= Void and then
+				l_element_tokens.has (dtd_name (a_prefix, a_local)) and then
+				l_element_tokens.item (dtd_name (a_prefix, a_local))
 			then
 					-- Normalize value.
 				a_string := STRING_.cloned_string (a_value)
@@ -367,5 +403,8 @@ feature {NONE} -- Tokens implementation
 			end
 			next.on_attribute (a_ns, a_prefix, a_local, a_string)
 		end
+
+invariant
+	names_attached_implies_values_attached: names /= Void implies values /= Void
 
 end

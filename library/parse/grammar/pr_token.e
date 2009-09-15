@@ -90,7 +90,7 @@ feature -- Access
 			-- Precedence level
 			-- (0 means that no `precedence' has been assigned.)
 
-	literal_string: STRING
+	literal_string: ?STRING
 			-- Literal string that can be used instead
 			-- of curren token's name in rules
 			-- (Void if no such string.)

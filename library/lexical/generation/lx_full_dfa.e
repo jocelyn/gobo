@@ -93,11 +93,14 @@ feature {NONE} -- Generation
 
 	print_eiffel_tables (a_file: KI_TEXT_OUTPUT_STREAM) is
 			-- Print Eiffel code for full tables to `a_file'.
+		local
+			l_yy_ec: like yy_ec
 		do
 			print_eiffel_array ("yy_nxt_template", yy_nxt, a_file)
-			if yy_ec /= Void then
+			l_yy_ec := yy_ec
+			if l_yy_ec /= Void then
 				a_file.put_character ('%N')
-				print_eiffel_array ("yy_ec_template", yy_ec, a_file)
+				print_eiffel_array ("yy_ec_template", l_yy_ec, a_file)
 			end
 			a_file.put_character ('%N')
 			print_eiffel_array ("yy_accept_template", yy_accept, a_file)
@@ -168,7 +171,8 @@ feature {NONE} -- Building
 		local
 			yy_nxt_: ARRAY [INTEGER]
 			i, j, k, nb: INTEGER
-			a_state, target: LX_DFA_STATE
+			a_state: LX_DFA_STATE
+			target: ?LX_DFA_STATE
 			transitions: LX_TRANSITION_TABLE [LX_DFA_STATE]
 			eob_state_id: INTEGER
 		do

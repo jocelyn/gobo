@@ -153,8 +153,8 @@ feature -- Duplication
 			old_states: like states
 			new_state, old_state: like start_state
 			i, nb: INTEGER
-			transition: LX_TRANSITION [LX_NFA_STATE]
-			epsilon_transition: LX_EPSILON_TRANSITION [LX_NFA_STATE]
+			transition: ?LX_TRANSITION [LX_NFA_STATE]
+			epsilon_transition: ?LX_EPSILON_TRANSITION [LX_NFA_STATE]
 		do
 			standard_copy (other)
 			old_states := states
@@ -200,7 +200,7 @@ feature -- Comparison
 			-- Is current automaton equal to `other'?
 		do
 			if ANY_.same_types (Current, other) then
-					-- This routine has been redefined to follow 
+					-- This routine has been redefined to follow
 					-- the redefinition of `copy'. The new implementation
 					-- is not really impressive but a better implementation
 					-- would take too much effort to write for little
@@ -211,7 +211,7 @@ feature -- Comparison
 
 feature -- Setting
 
-	set_accepted_rule (a_rule: LX_RULE) is
+	set_accepted_rule (a_rule: ?LX_RULE) is
 			-- Make `final_state' be an accepting state
 			-- for `a_rule'.
 		do

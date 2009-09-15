@@ -36,7 +36,7 @@ feature -- Access
 
 feature {DS_BILINEAR_TABLE} -- Implementation
 
-	next_cursor: DS_BILINEAR_TABLE_CURSOR [G, K]
+	next_cursor: ?DS_BILINEAR_TABLE_CURSOR [G, K]
 			-- Next cursor
 			-- (Used by `container' to keep track of traversing
 			-- cursors (i.e. cursors associated with `container'

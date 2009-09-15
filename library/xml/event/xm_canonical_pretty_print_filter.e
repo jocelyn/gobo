@@ -37,7 +37,7 @@ feature -- Meta
 feature {NONE} -- Escaped
 
 	is_escaped (a_char: INTEGER): BOOLEAN is
-			-- Is this character to be escaped? 
+			-- Is this character to be escaped?
 			-- Include line separators and tab, quote, but not non-ascii characters.
 		do
 			Result := a_char = Lt_char.code
@@ -58,5 +58,5 @@ feature {NONE} -- Escaped
 				Result := Precursor (a_char)
 			end
 		end
-		
+
 end
