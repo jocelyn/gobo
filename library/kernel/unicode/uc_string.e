@@ -114,6 +114,7 @@ inherit
 			insert,
 			prepend,
 			prepend_string,
+			plus_string_general,
 			append_string_general,
 			keep_head,
 			keep_tail,
@@ -208,6 +209,7 @@ inherit
 			insert,
 			prepend,
 			prepend_string,
+			plus_string_general,
 			append_string_general,
 			keep_head,
 			keep_tail,
@@ -1820,6 +1822,14 @@ feature -- Element change
 			if s /= Void then
 				prepend (s)
 			end
+		end
+
+	plus_string_general (s: STRING): like Current
+			-- <Precursor>
+		do
+			Result := new_string (count + s.count)
+			Result.append (Current)
+			Result.append_string_general (s)
 		end
 
 	append_string_general (s: STRING) is
