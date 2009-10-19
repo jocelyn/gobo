@@ -1835,7 +1835,11 @@ feature -- Element change
 	append_string_general (s: STRING) is
 			-- Append a copy of `s' at end.
 		do
-			append (s)
+			if {ls: STRING} s then
+				append (ls)
+			else
+				precursor (s)
+			end
 		end
 
 	append_unicode_character (c: UC_CHARACTER) is
