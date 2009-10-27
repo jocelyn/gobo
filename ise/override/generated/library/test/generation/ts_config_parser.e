@@ -51,25 +51,25 @@ feature {NONE} -- Implementation
 			end
 			create yyspecial_routines1
 			yyvsc1 := yyInitial_yyvs_size
-			yyvs1 := yyspecial_routines1.make (yyvsc1)
+			yyvs1 := yyspecial_routines1.make_filled (({ANY}).default, yyvsc1)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs2")
 			end
 			create yyspecial_routines2
 			yyvsc2 := yyInitial_yyvs_size
-			yyvs2 := yyspecial_routines2.make (yyvsc2)
+			yyvs2 := yyspecial_routines2.make_filled (({ET_IDENTIFIER}).default, yyvsc2)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs3")
 			end
 			create yyspecial_routines3
 			yyvsc3 := yyInitial_yyvs_size
-			yyvs3 := yyspecial_routines3.make (yyvsc3)
+			yyvs3 := yyspecial_routines3.make_filled (({TS_CLUSTER}).default, yyvsc3)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs4")
 			end
 			create yyspecial_routines4
 			yyvsc4 := yyInitial_yyvs_size
-			yyvs4 := yyspecial_routines4.make (yyvsc4)
+			yyvs4 := yyspecial_routines4.make_filled (({DS_ARRAYED_LIST [TS_CLUSTER]}).default, yyvsc4)
 		end
 
 	yy_init_value_stacks is
@@ -109,9 +109,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs1")
 					end
 					yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-					yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+					yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 				end
-				yyvs1.force (last_any_value, yyvsp1)
+				yyvs1.put (last_any_value, yyvsp1)
 			when 2 then
 				yyvsp2 := yyvsp2 + 1
 				if yyvsp2 >= yyvsc2 then
@@ -119,9 +119,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs2")
 					end
 					yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-					yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+					yyvs2 := yyspecial_routines2.resize_with_default (({ET_IDENTIFIER}).default, yyvs2, yyvsc2)
 				end
-				yyvs2.force (last_et_identifier_value, yyvsp2)
+				yyvs2.put (last_et_identifier_value, yyvsp2)
 			else
 				debug ("GEYACC")
 					std.error.put_string ("Error in parser: not a token type: ")
@@ -144,9 +144,9 @@ feature {NONE} -- Implementation
 					std.error.put_line ("Resize yyvs1")
 				end
 				yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-				yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+				yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 			end
-			yyvs1.force (yyval1, yyvsp1)
+			yyvs1.put (yyval1, yyvsp1)
 		end
 
 	yy_pop_last_value (yystate: INTEGER) is
@@ -197,7 +197,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp1 := yyvsp1 -3
 	yyvsp2 := yyvsp2 -1
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 2 then
 --|#line 46 "ts_config_parser.y"
@@ -214,9 +214,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 3 then
 --|#line 52 "ts_config_parser.y"
@@ -233,9 +233,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 4 then
 --|#line 53 "ts_config_parser.y"
@@ -246,7 +246,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 5 then
 --|#line 54 "ts_config_parser.y"
@@ -258,7 +258,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 6 then
 --|#line 57 "ts_config_parser.y"
@@ -269,7 +269,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 7 then
 --|#line 58 "ts_config_parser.y"
@@ -281,7 +281,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 8 then
 --|#line 61 "ts_config_parser.y"
@@ -298,7 +298,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp1 := yyvsp1 -2
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 9 then
 --|#line 68 "ts_config_parser.y"
@@ -315,7 +315,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp1 := yyvsp1 -2
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 10 then
 --|#line 75 "ts_config_parser.y"
@@ -328,7 +328,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp1 := yyvsp1 -2
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 11 then
 --|#line 77 "ts_config_parser.y"
@@ -341,7 +341,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp1 := yyvsp1 -2
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 12 then
 --|#line 79 "ts_config_parser.y"
@@ -354,7 +354,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp1 := yyvsp1 -2
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 13 then
 --|#line 81 "ts_config_parser.y"
@@ -367,7 +367,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp1 := yyvsp1 -2
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 14 then
 --|#line 85 "ts_config_parser.y"
@@ -386,9 +386,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({DS_ARRAYED_LIST [TS_CLUSTER]}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 15 then
 --|#line 90 "ts_config_parser.y"
@@ -408,9 +408,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({DS_ARRAYED_LIST [TS_CLUSTER]}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 16 then
 --|#line 95 "ts_config_parser.y"
@@ -422,7 +422,7 @@ yyval4 := yyvs4.item (yyvsp4)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 17 then
 --|#line 99 "ts_config_parser.y"
@@ -442,9 +442,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({DS_ARRAYED_LIST [TS_CLUSTER]}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 18 then
 --|#line 104 "ts_config_parser.y"
@@ -456,7 +456,7 @@ yyval4 := yyvs4.item (yyvsp4); yyval4.force_last (yyvs3.item (yyvsp3))
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp3 := yyvsp3 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 19 then
 --|#line 108 "ts_config_parser.y"
@@ -475,9 +475,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs3")
 		end
 		yyvsc3 := yyvsc3 + yyInitial_yyvs_size
-		yyvs3 := yyspecial_routines3.resize (yyvs3, yyvsc3)
+		yyvs3 := yyspecial_routines3.resize_with_default (({TS_CLUSTER}).default, yyvs3, yyvsc3)
 	end
-	yyvs3.force (yyval3, yyvsp3)
+	yyvs3.put (yyval3, yyvsp3)
 end
 when 20 then
 --|#line 112 "ts_config_parser.y"
@@ -488,7 +488,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 21 then
 --|#line 114 "ts_config_parser.y"
@@ -499,7 +499,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 			else
 				debug ("GEYACC")
@@ -650,7 +650,7 @@ feature {NONE} -- Table templates
 
 feature {NONE} -- Semantic value stacks
 
-	yyvs1: SPECIAL [?ANY]
+	frozen yyvs1: SPECIAL [?ANY]
 			-- Stack for semantic values of type ANY
 
 	yyvsc1: INTEGER
@@ -659,10 +659,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp1: INTEGER
 			-- Top of semantic value stack `yyvs1'
 
-	yyspecial_routines1: KL_SPECIAL_ROUTINES [?ANY]
+	frozen yyspecial_routines1: KL_SPECIAL_ROUTINES [?ANY]
 			-- Routines that ought to be in SPECIAL [ANY]
 
-	yyvs2: SPECIAL [?ET_IDENTIFIER]
+	frozen yyvs2: SPECIAL [?ET_IDENTIFIER]
 			-- Stack for semantic values of type ET_IDENTIFIER
 
 	yyvsc2: INTEGER
@@ -671,10 +671,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp2: INTEGER
 			-- Top of semantic value stack `yyvs2'
 
-	yyspecial_routines2: KL_SPECIAL_ROUTINES [?ET_IDENTIFIER]
+	frozen yyspecial_routines2: KL_SPECIAL_ROUTINES [?ET_IDENTIFIER]
 			-- Routines that ought to be in SPECIAL [ET_IDENTIFIER]
 
-	yyvs3: SPECIAL [?TS_CLUSTER]
+	frozen yyvs3: SPECIAL [?TS_CLUSTER]
 			-- Stack for semantic values of type TS_CLUSTER
 
 	yyvsc3: INTEGER
@@ -683,10 +683,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp3: INTEGER
 			-- Top of semantic value stack `yyvs3'
 
-	yyspecial_routines3: KL_SPECIAL_ROUTINES [?TS_CLUSTER]
+	frozen yyspecial_routines3: KL_SPECIAL_ROUTINES [?TS_CLUSTER]
 			-- Routines that ought to be in SPECIAL [TS_CLUSTER]
 
-	yyvs4: SPECIAL [?DS_ARRAYED_LIST [TS_CLUSTER]]
+	frozen yyvs4: SPECIAL [?DS_ARRAYED_LIST [TS_CLUSTER]]
 			-- Stack for semantic values of type DS_ARRAYED_LIST [TS_CLUSTER]
 
 	yyvsc4: INTEGER
@@ -695,7 +695,7 @@ feature {NONE} -- Semantic value stacks
 	yyvsp4: INTEGER
 			-- Top of semantic value stack `yyvs4'
 
-	yyspecial_routines4: KL_SPECIAL_ROUTINES [?DS_ARRAYED_LIST [TS_CLUSTER]]
+	frozen yyspecial_routines4: KL_SPECIAL_ROUTINES [?DS_ARRAYED_LIST [TS_CLUSTER]]
 			-- Routines that ought to be in SPECIAL [DS_ARRAYED_LIST [TS_CLUSTER]]
 
 feature {NONE} -- Constants

@@ -1,11 +1,11 @@
 setlocal
 chdir ..
-set PATH=%cd%\src\bin;%PATH%
+chdir ..
+set PATH=%cd%\ise\src\bin;%PATH%
 
-chdir svn
 geant install
 
-chdir ..\override
-call update_generated.py
+chdir ise\override
+call git_update_generated.py
 
 endlocal

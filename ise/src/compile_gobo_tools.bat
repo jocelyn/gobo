@@ -2,7 +2,7 @@
 setlocal
 
 mkdir bin
-set ECCMD= ec -finalize -c_compile -clean -project_path %CD% -experiment -config 
+set ECCMD= ecb -finalize -c_compile -clean -project_path %CD% -experiment -config 
 
 :compile_start
 if not exist "bin\geant.exe" goto geant

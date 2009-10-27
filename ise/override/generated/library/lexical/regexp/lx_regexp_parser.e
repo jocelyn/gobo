@@ -58,31 +58,31 @@ feature {NONE} -- Implementation
 			end
 			create yyspecial_routines1
 			yyvsc1 := yyInitial_yyvs_size
-			yyvs1 := yyspecial_routines1.make (yyvsc1)
+			yyvs1 := yyspecial_routines1.make_filled (({ANY}).default, yyvsc1)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs2")
 			end
 			create yyspecial_routines2
 			yyvsc2 := yyInitial_yyvs_size
-			yyvs2 := yyspecial_routines2.make (yyvsc2)
+			yyvs2 := yyspecial_routines2.make_filled (({INTEGER}).default, yyvsc2)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs3")
 			end
 			create yyspecial_routines3
 			yyvsc3 := yyInitial_yyvs_size
-			yyvs3 := yyspecial_routines3.make (yyvsc3)
+			yyvs3 := yyspecial_routines3.make_filled (({LX_SYMBOL_CLASS}).default, yyvsc3)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs4")
 			end
 			create yyspecial_routines4
 			yyvsc4 := yyInitial_yyvs_size
-			yyvs4 := yyspecial_routines4.make (yyvsc4)
+			yyvs4 := yyspecial_routines4.make_filled (({STRING}).default, yyvsc4)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs5")
 			end
 			create yyspecial_routines5
 			yyvsc5 := yyInitial_yyvs_size
-			yyvs5 := yyspecial_routines5.make (yyvsc5)
+			yyvs5 := yyspecial_routines5.make_filled (({LX_NFA}).default, yyvsc5)
 		end
 
 	yy_init_value_stacks is
@@ -125,9 +125,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs1")
 					end
 					yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-					yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+					yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 				end
-				yyvs1.force (last_any_value, yyvsp1)
+				yyvs1.put (last_any_value, yyvsp1)
 			when 2 then
 				yyvsp2 := yyvsp2 + 1
 				if yyvsp2 >= yyvsc2 then
@@ -135,9 +135,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs2")
 					end
 					yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-					yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+					yyvs2 := yyspecial_routines2.resize_with_default (({INTEGER}).default, yyvs2, yyvsc2)
 				end
-				yyvs2.force (last_integer_value, yyvsp2)
+				yyvs2.put (last_integer_value, yyvsp2)
 			when 3 then
 				yyvsp3 := yyvsp3 + 1
 				if yyvsp3 >= yyvsc3 then
@@ -145,9 +145,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs3")
 					end
 					yyvsc3 := yyvsc3 + yyInitial_yyvs_size
-					yyvs3 := yyspecial_routines3.resize (yyvs3, yyvsc3)
+					yyvs3 := yyspecial_routines3.resize_with_default (({LX_SYMBOL_CLASS}).default, yyvs3, yyvsc3)
 				end
-				yyvs3.force (last_lx_symbol_class_value, yyvsp3)
+				yyvs3.put (last_lx_symbol_class_value, yyvsp3)
 			when 4 then
 				yyvsp4 := yyvsp4 + 1
 				if yyvsp4 >= yyvsc4 then
@@ -155,9 +155,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs4")
 					end
 					yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-					yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+					yyvs4 := yyspecial_routines4.resize_with_default (({STRING}).default, yyvs4, yyvsc4)
 				end
-				yyvs4.force (last_string_value, yyvsp4)
+				yyvs4.put (last_string_value, yyvsp4)
 			else
 				debug ("GEYACC")
 					std.error.put_string ("Error in parser: not a token type: ")
@@ -180,9 +180,9 @@ feature {NONE} -- Implementation
 					std.error.put_line ("Resize yyvs1")
 				end
 				yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-				yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+				yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 			end
-			yyvs1.force (yyval1, yyvsp1)
+			yyvs1.put (yyval1, yyvsp1)
 		end
 
 	yy_pop_last_value (yystate: INTEGER) is
@@ -236,7 +236,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 2 then
 --|#line 58 "lx_regexp_parser.y"
@@ -259,9 +259,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 3 then
 --|#line 69 "lx_regexp_parser.y"
@@ -274,7 +274,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp5 := yyvsp5 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 4 then
 --|#line 73 "lx_regexp_parser.y"
@@ -293,9 +293,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 5 then
 --|#line 77 "lx_regexp_parser.y"
@@ -307,7 +307,7 @@ end
 		
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 6 then
 --|#line 83 "lx_regexp_parser.y"
@@ -322,7 +322,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp5 := yyvsp5 -1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 7 then
 --|#line 89 "lx_regexp_parser.y"
@@ -340,7 +340,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 8 then
 --|#line 98 "lx_regexp_parser.y"
@@ -357,7 +357,7 @@ end
 		
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 9 then
 --|#line 107 "lx_regexp_parser.y"
@@ -373,7 +373,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp5 := yyvsp5 -1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 10 then
 --|#line 114 "lx_regexp_parser.y"
@@ -390,7 +390,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp5 := yyvsp5 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 11 then
 --|#line 123 "lx_regexp_parser.y"
@@ -405,7 +405,7 @@ end
 		
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 12 then
 --|#line 130 "lx_regexp_parser.y"
@@ -428,7 +428,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp5 := yyvsp5 -2
 	yyvsp1 := yyvsp1 -1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 13 then
 --|#line 130 "lx_regexp_parser.y"
@@ -448,9 +448,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({LX_NFA}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 14 then
 --|#line 151 "lx_regexp_parser.y"
@@ -469,7 +469,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 15 then
 --|#line 163 "lx_regexp_parser.y"
@@ -487,7 +487,7 @@ end
 		
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 16 then
 --|#line 173 "lx_regexp_parser.y"
@@ -509,7 +509,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp5 := yyvsp5 -1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 17 then
 --|#line 188 "lx_regexp_parser.y"
@@ -524,7 +524,7 @@ end
 		
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 18 then
 --|#line 197 "lx_regexp_parser.y"
@@ -544,9 +544,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({LX_NFA}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 19 then
 --|#line 202 "lx_regexp_parser.y"
@@ -562,7 +562,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 20 then
 --|#line 209 "lx_regexp_parser.y"
@@ -578,7 +578,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 21 then
 --|#line 216 "lx_regexp_parser.y"
@@ -594,7 +594,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 22 then
 --|#line 223 "lx_regexp_parser.y"
@@ -609,7 +609,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 6
 	yyvsp1 := yyvsp1 -3
 	yyvsp2 := yyvsp2 -2
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 23 then
 --|#line 228 "lx_regexp_parser.y"
@@ -624,7 +624,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp1 := yyvsp1 -3
 	yyvsp2 := yyvsp2 -1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 24 then
 --|#line 233 "lx_regexp_parser.y"
@@ -639,7 +639,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp1 := yyvsp1 -2
 	yyvsp2 := yyvsp2 -1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 25 then
 --|#line 238 "lx_regexp_parser.y"
@@ -659,9 +659,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({LX_NFA}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 26 then
 --|#line 243 "lx_regexp_parser.y"
@@ -681,9 +681,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({LX_NFA}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 27 then
 --|#line 248 "lx_regexp_parser.y"
@@ -703,9 +703,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({LX_NFA}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 28 then
 --|#line 253 "lx_regexp_parser.y"
@@ -718,7 +718,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -2
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 29 then
 --|#line 257 "lx_regexp_parser.y"
@@ -734,7 +734,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -2
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 30 then
 --|#line 266 "lx_regexp_parser.y"
@@ -750,7 +750,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp4 := yyvsp4 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs3.force (yyval3, yyvsp3)
+	yyvs3.put (yyval3, yyvsp3)
 end
 when 31 then
 --|#line 272 "lx_regexp_parser.y"
@@ -767,7 +767,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp4 := yyvsp4 -1
 	yyvsp1 := yyvsp1 -2
-	yyvs3.force (yyval3, yyvsp3)
+	yyvs3.put (yyval3, yyvsp3)
 end
 when 32 then
 --|#line 281 "lx_regexp_parser.y"
@@ -786,9 +786,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs3")
 		end
 		yyvsc3 := yyvsc3 + yyInitial_yyvs_size
-		yyvs3 := yyspecial_routines3.resize (yyvs3, yyvsc3)
+		yyvs3 := yyspecial_routines3.resize_with_default (({LX_SYMBOL_CLASS}).default, yyvs3, yyvsc3)
 	end
-	yyvs3.force (yyval3, yyvsp3)
+	yyvs3.put (yyval3, yyvsp3)
 end
 when 33 then
 --|#line 285 "lx_regexp_parser.y"
@@ -801,7 +801,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp2 := yyvsp2 -1
-	yyvs3.force (yyval3, yyvsp3)
+	yyvs3.put (yyval3, yyvsp3)
 end
 when 34 then
 --|#line 289 "lx_regexp_parser.y"
@@ -822,9 +822,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs3")
 		end
 		yyvsc3 := yyvsc3 + yyInitial_yyvs_size
-		yyvs3 := yyspecial_routines3.resize (yyvs3, yyvsc3)
+		yyvs3 := yyspecial_routines3.resize_with_default (({LX_SYMBOL_CLASS}).default, yyvs3, yyvsc3)
 	end
-	yyvs3.force (yyval3, yyvsp3)
+	yyvs3.put (yyval3, yyvsp3)
 end
 when 35 then
 --|#line 294 "lx_regexp_parser.y"
@@ -838,7 +838,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp2 := yyvsp2 -2
 	yyvsp1 := yyvsp1 -1
-	yyvs3.force (yyval3, yyvsp3)
+	yyvs3.put (yyval3, yyvsp3)
 end
 when 36 then
 --|#line 300 "lx_regexp_parser.y"
@@ -857,9 +857,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({LX_NFA}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 37 then
 --|#line 305 "lx_regexp_parser.y"
@@ -873,7 +873,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp2 := yyvsp2 -1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 			else
 				debug ("GEYACC")
@@ -1032,7 +1032,7 @@ feature {NONE} -- Table templates
 
 feature {NONE} -- Semantic value stacks
 
-	yyvs1: SPECIAL [?ANY]
+	frozen yyvs1: SPECIAL [?ANY]
 			-- Stack for semantic values of type ANY
 
 	yyvsc1: INTEGER
@@ -1041,10 +1041,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp1: INTEGER
 			-- Top of semantic value stack `yyvs1'
 
-	yyspecial_routines1: KL_SPECIAL_ROUTINES [?ANY]
+	frozen yyspecial_routines1: KL_SPECIAL_ROUTINES [?ANY]
 			-- Routines that ought to be in SPECIAL [ANY]
 
-	yyvs2: SPECIAL [INTEGER]
+	frozen yyvs2: SPECIAL [INTEGER]
 			-- Stack for semantic values of type INTEGER
 
 	yyvsc2: INTEGER
@@ -1053,10 +1053,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp2: INTEGER
 			-- Top of semantic value stack `yyvs2'
 
-	yyspecial_routines2: KL_SPECIAL_ROUTINES [INTEGER]
+	frozen yyspecial_routines2: KL_SPECIAL_ROUTINES [INTEGER]
 			-- Routines that ought to be in SPECIAL [INTEGER]
 
-	yyvs3: SPECIAL [?LX_SYMBOL_CLASS]
+	frozen yyvs3: SPECIAL [?LX_SYMBOL_CLASS]
 			-- Stack for semantic values of type LX_SYMBOL_CLASS
 
 	yyvsc3: INTEGER
@@ -1065,10 +1065,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp3: INTEGER
 			-- Top of semantic value stack `yyvs3'
 
-	yyspecial_routines3: KL_SPECIAL_ROUTINES [?LX_SYMBOL_CLASS]
+	frozen yyspecial_routines3: KL_SPECIAL_ROUTINES [?LX_SYMBOL_CLASS]
 			-- Routines that ought to be in SPECIAL [LX_SYMBOL_CLASS]
 
-	yyvs4: SPECIAL [?STRING]
+	frozen yyvs4: SPECIAL [?STRING]
 			-- Stack for semantic values of type STRING
 
 	yyvsc4: INTEGER
@@ -1077,10 +1077,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp4: INTEGER
 			-- Top of semantic value stack `yyvs4'
 
-	yyspecial_routines4: KL_SPECIAL_ROUTINES [?STRING]
+	frozen yyspecial_routines4: KL_SPECIAL_ROUTINES [?STRING]
 			-- Routines that ought to be in SPECIAL [STRING]
 
-	yyvs5: SPECIAL [?LX_NFA]
+	frozen yyvs5: SPECIAL [?LX_NFA]
 			-- Stack for semantic values of type LX_NFA
 
 	yyvsc5: INTEGER
@@ -1089,7 +1089,7 @@ feature {NONE} -- Semantic value stacks
 	yyvsp5: INTEGER
 			-- Top of semantic value stack `yyvs5'
 
-	yyspecial_routines5: KL_SPECIAL_ROUTINES [?LX_NFA]
+	frozen yyspecial_routines5: KL_SPECIAL_ROUTINES [?LX_NFA]
 			-- Routines that ought to be in SPECIAL [LX_NFA]
 
 feature {NONE} -- Constants

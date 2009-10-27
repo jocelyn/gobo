@@ -333,7 +333,7 @@ feature -- Output
 			l_basic_type ?= Current
 			l_is_basic_type := l_basic_type /= Void
 			print_indentation (indent, a_file)
-			a_file.put_string ("yyvs")
+			a_file.put_string ("frozen yyvs")
 			a_file.put_integer (id)
 			a_file.put_string (": SPECIAL [")
 			if not l_is_basic_type then
@@ -364,7 +364,7 @@ feature -- Output
 			a_file.put_line ("'")
 			a_file.put_new_line
 			print_indentation (indent, a_file)
-			a_file.put_string ("yyspecial_routines")
+			a_file.put_string ("frozen yyspecial_routines")
 			a_file.put_integer (id)
 			a_file.put_string (": KL_SPECIAL_ROUTINES [")
 			if not l_is_basic_type then
@@ -407,7 +407,8 @@ feature -- Output
 			a_file.put_integer (id)
 			a_file.put_string (" := yyspecial_routines")
 			a_file.put_integer (id)
-			a_file.put_string (".make (yyvsc")
+			a_file.put_string (".make_filled (({" + name + "}).default, ")
+			a_file.put_string ("yyvsc")
 			a_file.put_integer (id)
 			a_file.put_line (")")
 		end
@@ -452,7 +453,7 @@ feature -- Output
 		end
 
 	print_push_yyval (indent: INTEGER; a_file: KI_TEXT_OUTPUT_STREAM) is
-			-- Print "yyvs.force (yyval, yyvsp)" to `a_file'.
+			-- Print "yyvs.put (yyval, yyvsp)" to `a_file'.
 		require
 			indent_positive: indent >= 0
 			a_file_not_void: a_file /= Void
@@ -461,7 +462,7 @@ feature -- Output
 			print_indentation (indent, a_file)
 			a_file.put_string ("yyvs")
 			a_file.put_integer (id)
-			a_file.put_string (".force (yyval")
+			a_file.put_string (".put (yyval")
 			a_file.put_integer (id)
 			a_file.put_string (", yyvsp")
 			a_file.put_integer (id)
@@ -469,7 +470,7 @@ feature -- Output
 		end
 
 	print_push_last_value (indent: INTEGER; a_file: KI_TEXT_OUTPUT_STREAM) is
-			-- Print "yyvsp := yyvsp + 1; yyvs.force (last_value, yyvsp)" to `a_file'.
+			-- Print "yyvsp := yyvsp + 1; yyvs.put (last_value, yyvsp)" to `a_file'.
 		require
 			indent_positive: indent >= 0
 			a_file_not_void: a_file /= Void
@@ -486,7 +487,7 @@ feature -- Output
 			print_indentation (indent, a_file)
 			a_file.put_string ("yyvs")
 			a_file.put_integer (id)
-			a_file.put_string (".force (")
+			a_file.put_string (".put (")
 			a_file.put_string (last_value_name)
 			a_file.put_string (", yyvsp")
 			a_file.put_integer (id)
@@ -541,7 +542,8 @@ feature -- Output
 			a_file.put_integer (id)
 			a_file.put_string (" := yyspecial_routines")
 			a_file.put_integer (id)
-			a_file.put_string (".resize (yyvs")
+			a_file.put_string (".resize_with_default (({" + name + "}).default, ")
+			a_file.put_string ("yyvs")
 			a_file.put_integer (id)
 			a_file.put_string (", yyvsc")
 			a_file.put_integer (id)

@@ -51,67 +51,67 @@ feature {NONE} -- Implementation
 			end
 			create yyspecial_routines1
 			yyvsc1 := yyInitial_yyvs_size
-			yyvs1 := yyspecial_routines1.make (yyvsc1)
+			yyvs1 := yyspecial_routines1.make_filled (({ANY}).default, yyvsc1)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs2")
 			end
 			create yyspecial_routines2
 			yyvsc2 := yyInitial_yyvs_size
-			yyvs2 := yyspecial_routines2.make (yyvsc2)
+			yyvs2 := yyspecial_routines2.make_filled (({XM_EIFFEL_PARSER_NAME}).default, yyvsc2)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs3")
 			end
 			create yyspecial_routines3
 			yyvsc3 := yyInitial_yyvs_size
-			yyvs3 := yyspecial_routines3.make (yyvsc3)
+			yyvs3 := yyspecial_routines3.make_filled (({DS_HASH_SET [XM_EIFFEL_PARSER_NAME]}).default, yyvsc3)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs4")
 			end
 			create yyspecial_routines4
 			yyvsc4 := yyInitial_yyvs_size
-			yyvs4 := yyspecial_routines4.make (yyvsc4)
+			yyvs4 := yyspecial_routines4.make_filled (({STRING}).default, yyvsc4)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs5")
 			end
 			create yyspecial_routines5
 			yyvsc5 := yyInitial_yyvs_size
-			yyvs5 := yyspecial_routines5.make (yyvsc5)
+			yyvs5 := yyspecial_routines5.make_filled (({XM_DTD_EXTERNAL_ID}).default, yyvsc5)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs6")
 			end
 			create yyspecial_routines6
 			yyvsc6 := yyInitial_yyvs_size
-			yyvs6 := yyspecial_routines6.make (yyvsc6)
+			yyvs6 := yyspecial_routines6.make_filled (({XM_DTD_ELEMENT_CONTENT}).default, yyvsc6)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs7")
 			end
 			create yyspecial_routines7
 			yyvsc7 := yyInitial_yyvs_size
-			yyvs7 := yyspecial_routines7.make (yyvsc7)
+			yyvs7 := yyspecial_routines7.make_filled (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvsc7)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs8")
 			end
 			create yyspecial_routines8
 			yyvsc8 := yyInitial_yyvs_size
-			yyvs8 := yyspecial_routines8.make (yyvsc8)
+			yyvs8 := yyspecial_routines8.make_filled (({DS_BILINKED_LIST [XM_DTD_ATTRIBUTE_CONTENT]}).default, yyvsc8)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs9")
 			end
 			create yyspecial_routines9
 			yyvsc9 := yyInitial_yyvs_size
-			yyvs9 := yyspecial_routines9.make (yyvsc9)
+			yyvs9 := yyspecial_routines9.make_filled (({DS_BILINKED_LIST [STRING]}).default, yyvsc9)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs10")
 			end
 			create yyspecial_routines10
 			yyvsc10 := yyInitial_yyvs_size
-			yyvs10 := yyspecial_routines10.make (yyvsc10)
+			yyvs10 := yyspecial_routines10.make_filled (({BOOLEAN}).default, yyvsc10)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs11")
 			end
 			create yyspecial_routines11
 			yyvsc11 := yyInitial_yyvs_size
-			yyvs11 := yyspecial_routines11.make (yyvsc11)
+			yyvs11 := yyspecial_routines11.make_filled (({XM_EIFFEL_DECLARATION}).default, yyvsc11)
 		end
 
 	yy_init_value_stacks is
@@ -172,9 +172,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs1")
 					end
 					yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-					yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+					yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 				end
-				yyvs1.force (last_any_value, yyvsp1)
+				yyvs1.put (last_any_value, yyvsp1)
 			when 4 then
 				yyvsp4 := yyvsp4 + 1
 				if yyvsp4 >= yyvsc4 then
@@ -182,9 +182,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs4")
 					end
 					yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-					yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+					yyvs4 := yyspecial_routines4.resize_with_default (({STRING}).default, yyvs4, yyvsc4)
 				end
-				yyvs4.force (last_string_value, yyvsp4)
+				yyvs4.put (last_string_value, yyvsp4)
 			else
 				debug ("GEYACC")
 					std.error.put_string ("Error in parser: not a token type: ")
@@ -207,9 +207,9 @@ feature {NONE} -- Implementation
 					std.error.put_line ("Resize yyvs1")
 				end
 				yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-				yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+				yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 			end
-			yyvs1.force (yyval1, yyvsp1)
+			yyvs1.put (yyval1, yyvsp1)
 		end
 
 	yy_pop_last_value (yystate: INTEGER) is
@@ -279,7 +279,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 2 then
 --|#line 134 "xm_eiffel_parser.y"
@@ -299,9 +299,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs2")
 		end
 		yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-		yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+		yyvs2 := yyspecial_routines2.resize_with_default (({XM_EIFFEL_PARSER_NAME}).default, yyvs2, yyvsc2)
 	end
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 3 then
 --|#line 139 "xm_eiffel_parser.y"
@@ -322,9 +322,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs2")
 		end
 		yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-		yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+		yyvs2 := yyspecial_routines2.resize_with_default (({XM_EIFFEL_PARSER_NAME}).default, yyvs2, yyvsc2)
 	end
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 4 then
 --|#line 145 "xm_eiffel_parser.y"
@@ -345,9 +345,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs2")
 		end
 		yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-		yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+		yyvs2 := yyspecial_routines2.resize_with_default (({XM_EIFFEL_PARSER_NAME}).default, yyvs2, yyvsc2)
 	end
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 5 then
 --|#line 151 "xm_eiffel_parser.y"
@@ -362,7 +362,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp4 := yyvsp4 -2
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 6 then
 --|#line 157 "xm_eiffel_parser.y"
@@ -377,7 +377,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 7 then
 --|#line 165 "xm_eiffel_parser.y"
@@ -388,7 +388,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 8 then
 --|#line 166 "xm_eiffel_parser.y"
@@ -399,7 +399,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 9 then
 --|#line 173 "xm_eiffel_parser.y"
@@ -410,7 +410,7 @@ end
 yyval4 := onstring_ascii (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 10 then
 --|#line 174 "xm_eiffel_parser.y"
@@ -421,7 +421,7 @@ end
 yyval4 := onstring_utf8 (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 11 then
 --|#line 177 "xm_eiffel_parser.y"
@@ -432,7 +432,7 @@ end
 yyval4 := onstring_ascii (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 12 then
 --|#line 178 "xm_eiffel_parser.y"
@@ -443,7 +443,7 @@ end
 yyval4 := onstring_utf8 (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 13 then
 --|#line 181 "xm_eiffel_parser.y"
@@ -454,7 +454,7 @@ end
 yyval4 := onstring_ascii (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 14 then
 --|#line 182 "xm_eiffel_parser.y"
@@ -465,7 +465,7 @@ end
 yyval4 := onstring_utf8 (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 15 then
 --|#line 185 "xm_eiffel_parser.y"
@@ -476,7 +476,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 16 then
 --|#line 186 "xm_eiffel_parser.y"
@@ -487,7 +487,7 @@ end
 yyval4 := onstring_ascii (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 17 then
 --|#line 187 "xm_eiffel_parser.y"
@@ -498,7 +498,7 @@ end
 yyval4 := onstring_utf8 (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 18 then
 --|#line 190 "xm_eiffel_parser.y"
@@ -509,7 +509,7 @@ end
 yyval4 := onstring_ascii (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 19 then
 --|#line 191 "xm_eiffel_parser.y"
@@ -520,7 +520,7 @@ end
 yyval4 := onstring_utf8 (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 20 then
 --|#line 194 "xm_eiffel_parser.y"
@@ -531,7 +531,7 @@ end
 yyval4 := onstring_ascii (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 21 then
 --|#line 195 "xm_eiffel_parser.y"
@@ -542,7 +542,7 @@ end
 yyval4 := onstring_utf8 (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 22 then
 --|#line 198 "xm_eiffel_parser.y"
@@ -553,7 +553,7 @@ end
 yyval4 := onstring_ascii (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 23 then
 --|#line 199 "xm_eiffel_parser.y"
@@ -564,7 +564,7 @@ end
 yyval4 := onstring_utf8 (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 24 then
 --|#line 202 "xm_eiffel_parser.y"
@@ -575,7 +575,7 @@ end
 yyval4 := onstring_ascii (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 25 then
 --|#line 203 "xm_eiffel_parser.y"
@@ -586,7 +586,7 @@ end
 yyval4 := onstring_utf8 (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 26 then
 --|#line 206 "xm_eiffel_parser.y"
@@ -597,7 +597,7 @@ end
 yyval4 := onstring_ascii (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 27 then
 --|#line 207 "xm_eiffel_parser.y"
@@ -608,7 +608,7 @@ end
 yyval4 := onstring_utf8 (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 28 then
 --|#line 214 "xm_eiffel_parser.y"
@@ -619,7 +619,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 29 then
 --|#line 215 "xm_eiffel_parser.y"
@@ -630,7 +630,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 30 then
 --|#line 216 "xm_eiffel_parser.y"
@@ -641,7 +641,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 31 then
 --|#line 217 "xm_eiffel_parser.y"
@@ -652,7 +652,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 32 then
 --|#line 218 "xm_eiffel_parser.y"
@@ -663,7 +663,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 33 then
 --|#line 219 "xm_eiffel_parser.y"
@@ -674,7 +674,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 34 then
 --|#line 220 "xm_eiffel_parser.y"
@@ -685,7 +685,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 35 then
 --|#line 221 "xm_eiffel_parser.y"
@@ -696,7 +696,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 36 then
 --|#line 222 "xm_eiffel_parser.y"
@@ -707,7 +707,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 37 then
 --|#line 223 "xm_eiffel_parser.y"
@@ -718,7 +718,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 38 then
 --|#line 224 "xm_eiffel_parser.y"
@@ -729,7 +729,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 39 then
 --|#line 225 "xm_eiffel_parser.y"
@@ -740,7 +740,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 40 then
 --|#line 226 "xm_eiffel_parser.y"
@@ -751,7 +751,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 41 then
 --|#line 227 "xm_eiffel_parser.y"
@@ -762,7 +762,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 42 then
 --|#line 228 "xm_eiffel_parser.y"
@@ -773,7 +773,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 43 then
 --|#line 231 "xm_eiffel_parser.y"
@@ -790,9 +790,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 44 then
 --|#line 232 "xm_eiffel_parser.y"
@@ -803,7 +803,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 45 then
 --|#line 235 "xm_eiffel_parser.y"
@@ -814,7 +814,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 46 then
 --|#line 236 "xm_eiffel_parser.y"
@@ -826,7 +826,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 47 then
 --|#line 239 "xm_eiffel_parser.y"
@@ -844,9 +844,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 48 then
 --|#line 240 "xm_eiffel_parser.y"
@@ -869,9 +869,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 49 then
 --|#line 252 "xm_eiffel_parser.y"
@@ -883,7 +883,7 @@ yyval4 := shared_empty_string
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 50 then
 --|#line 254 "xm_eiffel_parser.y"
@@ -895,7 +895,7 @@ yyval4 := yyvs4.item (yyvsp4 - 1)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp4 := yyvsp4 -2
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 51 then
 --|#line 256 "xm_eiffel_parser.y"
@@ -907,7 +907,7 @@ yyval4 := yyvs4.item (yyvsp4 - 1)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp4 := yyvsp4 -2
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 52 then
 --|#line 260 "xm_eiffel_parser.y"
@@ -919,7 +919,7 @@ yyval4 := string_concat (yyvs4.item (yyvsp4 - 1), yyvs4.item (yyvsp4))
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 53 then
 --|#line 262 "xm_eiffel_parser.y"
@@ -931,7 +931,7 @@ yyval4 := string_appended_string (yyvs4.item (yyvsp4 - 1), yyvs4.item (yyvsp4))
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 54 then
 --|#line 266 "xm_eiffel_parser.y"
@@ -942,7 +942,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 55 then
 --|#line 268 "xm_eiffel_parser.y"
@@ -953,7 +953,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 56 then
 --|#line 272 "xm_eiffel_parser.y"
@@ -964,7 +964,7 @@ end
 yyval4 := entity_referenced_in_entity_value (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 57 then
 --|#line 278 "xm_eiffel_parser.y"
@@ -976,7 +976,7 @@ yyval4 := shared_empty_string
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 58 then
 --|#line 280 "xm_eiffel_parser.y"
@@ -988,7 +988,7 @@ yyval4 := yyvs4.item (yyvsp4 - 1)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp4 := yyvsp4 -2
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 59 then
 --|#line 282 "xm_eiffel_parser.y"
@@ -1000,7 +1000,7 @@ yyval4 := yyvs4.item (yyvsp4 - 1)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp4 := yyvsp4 -2
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 60 then
 --|#line 286 "xm_eiffel_parser.y"
@@ -1012,7 +1012,7 @@ yyval4 := string_concat (yyvs4.item (yyvsp4 - 1), yyvs4.item (yyvsp4))
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 61 then
 --|#line 288 "xm_eiffel_parser.y"
@@ -1024,7 +1024,7 @@ yyval4 := string_appended_string (yyvs4.item (yyvsp4 - 1), yyvs4.item (yyvsp4))
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 62 then
 --|#line 292 "xm_eiffel_parser.y"
@@ -1035,7 +1035,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 63 then
 --|#line 293 "xm_eiffel_parser.y"
@@ -1046,7 +1046,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 64 then
 --|#line 294 "xm_eiffel_parser.y"
@@ -1057,7 +1057,7 @@ end
 force_error (Error_lt_not_allowed_attribute_value) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 65 then
 --|#line 297 "xm_eiffel_parser.y"
@@ -1068,7 +1068,7 @@ end
 yyval4 := shared_empty_string 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 66 then
 --|#line 298 "xm_eiffel_parser.y"
@@ -1079,7 +1079,7 @@ end
 yyval4 := shared_empty_string 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 67 then
 --|#line 303 "xm_eiffel_parser.y"
@@ -1097,9 +1097,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 68 then
 --|#line 305 "xm_eiffel_parser.y"
@@ -1117,9 +1117,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 69 then
 --|#line 309 "xm_eiffel_parser.y"
@@ -1137,9 +1137,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 70 then
 --|#line 311 "xm_eiffel_parser.y"
@@ -1157,9 +1157,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 71 then
 --|#line 315 "xm_eiffel_parser.y"
@@ -1170,7 +1170,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 72 then
 --|#line 317 "xm_eiffel_parser.y"
@@ -1181,7 +1181,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 73 then
 --|#line 321 "xm_eiffel_parser.y"
@@ -1193,7 +1193,7 @@ yyval4 := string_concat (yyvs4.item (yyvsp4 - 1), yyvs4.item (yyvsp4))
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 74 then
 --|#line 323 "xm_eiffel_parser.y"
@@ -1205,7 +1205,7 @@ yyval4 := string_appended_string (yyvs4.item (yyvsp4 - 1), yyvs4.item (yyvsp4))
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 75 then
 --|#line 327 "xm_eiffel_parser.y"
@@ -1216,7 +1216,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 76 then
 --|#line 328 "xm_eiffel_parser.y"
@@ -1227,7 +1227,7 @@ end
 force_error (Error_no_dash_dash_in_comment) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 77 then
 --|#line 333 "xm_eiffel_parser.y"
@@ -1239,7 +1239,7 @@ process_on_processing_instruction (yyvs4.item (yyvsp4 - 2), yyvs4.item (yyvsp4 -
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp4 := yyvsp4 -4
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 78 then
 --|#line 335 "xm_eiffel_parser.y"
@@ -1251,7 +1251,7 @@ process_on_processing_instruction (yyvs4.item (yyvsp4 - 1), shared_empty_string)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp4 := yyvsp4 -3
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 79 then
 --|#line 337 "xm_eiffel_parser.y"
@@ -1269,9 +1269,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 80 then
 --|#line 340 "xm_eiffel_parser.y"
@@ -1283,7 +1283,7 @@ process_on_dtd_processing_instruction (yyvs4.item (yyvsp4 - 2), yyvs4.item (yyvs
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp4 := yyvsp4 -4
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 81 then
 --|#line 342 "xm_eiffel_parser.y"
@@ -1295,7 +1295,7 @@ process_on_dtd_processing_instruction (yyvs4.item (yyvsp4 - 1), shared_empty_str
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp4 := yyvsp4 -3
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 82 then
 --|#line 344 "xm_eiffel_parser.y"
@@ -1313,9 +1313,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 83 then
 --|#line 347 "xm_eiffel_parser.y"
@@ -1327,7 +1327,7 @@ yyval4 := string_concat (yyvs4.item (yyvsp4 - 1), yyvs4.item (yyvsp4))
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 84 then
 --|#line 349 "xm_eiffel_parser.y"
@@ -1339,7 +1339,7 @@ yyval4 := string_concat (yyvs4.item (yyvsp4 - 1), yyvs4.item (yyvsp4))
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 85 then
 --|#line 351 "xm_eiffel_parser.y"
@@ -1350,7 +1350,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 86 then
 --|#line 355 "xm_eiffel_parser.y"
@@ -1362,7 +1362,7 @@ yyval4 := string_concat (yyvs4.item (yyvsp4 - 1), yyvs4.item (yyvsp4))
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 87 then
 --|#line 357 "xm_eiffel_parser.y"
@@ -1374,7 +1374,7 @@ yyval4 := string_appended_string (yyvs4.item (yyvsp4 - 1), yyvs4.item (yyvsp4))
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 88 then
 --|#line 361 "xm_eiffel_parser.y"
@@ -1385,7 +1385,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 89 then
 --|#line 362 "xm_eiffel_parser.y"
@@ -1396,7 +1396,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 90 then
 --|#line 363 "xm_eiffel_parser.y"
@@ -1407,7 +1407,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 91 then
 --|#line 366 "xm_eiffel_parser.y"
@@ -1418,7 +1418,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 92 then
 --|#line 367 "xm_eiffel_parser.y"
@@ -1429,7 +1429,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 93 then
 --|#line 372 "xm_eiffel_parser.y"
@@ -1447,9 +1447,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 94 then
 --|#line 373 "xm_eiffel_parser.y"
@@ -1467,9 +1467,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 95 then
 --|#line 376 "xm_eiffel_parser.y"
@@ -1480,7 +1480,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 96 then
 --|#line 377 "xm_eiffel_parser.y"
@@ -1492,7 +1492,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 97 then
 --|#line 380 "xm_eiffel_parser.y"
@@ -1503,7 +1503,7 @@ end
 process_on_content (yyvs4.item (yyvsp4)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 98 then
 --|#line 386 "xm_eiffel_parser.y"
@@ -1521,7 +1521,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp11 := yyvsp11 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 99 then
 --|#line 397 "xm_eiffel_parser.y"
@@ -1539,9 +1539,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs11")
 		end
 		yyvsc11 := yyvsc11 + yyInitial_yyvs_size
-		yyvs11 := yyspecial_routines11.resize (yyvs11, yyvsc11)
+		yyvs11 := yyspecial_routines11.resize_with_default (({XM_EIFFEL_DECLARATION}).default, yyvs11, yyvsc11)
 	end
-	yyvs11.force (yyval11, yyvsp11)
+	yyvs11.put (yyval11, yyvsp11)
 end
 when 100 then
 --|#line 399 "xm_eiffel_parser.y"
@@ -1552,7 +1552,7 @@ end
 yyval11 := yyvs11.item (yyvsp11) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs11.force (yyval11, yyvsp11)
+	yyvs11.put (yyval11, yyvsp11)
 end
 when 101 then
 --|#line 401 "xm_eiffel_parser.y"
@@ -1564,7 +1564,7 @@ yyval11 := yyvs11.item (yyvsp11)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs11.force (yyval11, yyvsp11)
+	yyvs11.put (yyval11, yyvsp11)
 end
 when 102 then
 --|#line 405 "xm_eiffel_parser.y"
@@ -1581,9 +1581,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 103 then
 --|#line 406 "xm_eiffel_parser.y"
@@ -1594,7 +1594,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 104 then
 --|#line 407 "xm_eiffel_parser.y"
@@ -1606,7 +1606,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 105 then
 --|#line 410 "xm_eiffel_parser.y"
@@ -1623,9 +1623,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 106 then
 --|#line 411 "xm_eiffel_parser.y"
@@ -1636,7 +1636,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 107 then
 --|#line 414 "xm_eiffel_parser.y"
@@ -1647,7 +1647,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 108 then
 --|#line 415 "xm_eiffel_parser.y"
@@ -1659,7 +1659,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 109 then
 --|#line 418 "xm_eiffel_parser.y"
@@ -1679,7 +1679,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp4 := yyvsp4 -3
-	yyvs11.force (yyval11, yyvsp11)
+	yyvs11.put (yyval11, yyvsp11)
 end
 when 110 then
 --|#line 429 "xm_eiffel_parser.y"
@@ -1698,9 +1698,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs11")
 		end
 		yyvsc11 := yyvsc11 + yyInitial_yyvs_size
-		yyvs11 := yyspecial_routines11.resize (yyvs11, yyvsc11)
+		yyvs11 := yyspecial_routines11.resize_with_default (({XM_EIFFEL_DECLARATION}).default, yyvs11, yyvsc11)
 	end
-	yyvs11.force (yyval11, yyvsp11)
+	yyvs11.put (yyval11, yyvsp11)
 end
 when 111 then
 --|#line 432 "xm_eiffel_parser.y"
@@ -1718,9 +1718,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs11")
 		end
 		yyvsc11 := yyvsc11 + yyInitial_yyvs_size
-		yyvs11 := yyspecial_routines11.resize (yyvs11, yyvsc11)
+		yyvs11 := yyspecial_routines11.resize_with_default (({XM_EIFFEL_DECLARATION}).default, yyvs11, yyvsc11)
 	end
-	yyvs11.force (yyval11, yyvsp11)
+	yyvs11.put (yyval11, yyvsp11)
 end
 when 112 then
 --|#line 434 "xm_eiffel_parser.y"
@@ -1741,9 +1741,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs11")
 		end
 		yyvsc11 := yyvsc11 + yyInitial_yyvs_size
-		yyvs11 := yyspecial_routines11.resize (yyvs11, yyvsc11)
+		yyvs11 := yyspecial_routines11.resize_with_default (({XM_EIFFEL_DECLARATION}).default, yyvs11, yyvsc11)
 	end
-	yyvs11.force (yyval11, yyvsp11)
+	yyvs11.put (yyval11, yyvsp11)
 end
 when 113 then
 --|#line 439 "xm_eiffel_parser.y"
@@ -1769,9 +1769,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs11")
 		end
 		yyvsc11 := yyvsc11 + yyInitial_yyvs_size
-		yyvs11 := yyspecial_routines11.resize (yyvs11, yyvsc11)
+		yyvs11 := yyspecial_routines11.resize_with_default (({XM_EIFFEL_DECLARATION}).default, yyvs11, yyvsc11)
 	end
-	yyvs11.force (yyval11, yyvsp11)
+	yyvs11.put (yyval11, yyvsp11)
 end
 when 114 then
 --|#line 449 "xm_eiffel_parser.y"
@@ -1799,9 +1799,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs11")
 		end
 		yyvsc11 := yyvsc11 + yyInitial_yyvs_size
-		yyvs11 := yyspecial_routines11.resize (yyvs11, yyvsc11)
+		yyvs11 := yyspecial_routines11.resize_with_default (({XM_EIFFEL_DECLARATION}).default, yyvs11, yyvsc11)
 	end
-	yyvs11.force (yyval11, yyvsp11)
+	yyvs11.put (yyval11, yyvsp11)
 end
 when 115 then
 --|#line 462 "xm_eiffel_parser.y"
@@ -1812,7 +1812,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 116 then
 --|#line 463 "xm_eiffel_parser.y"
@@ -1824,7 +1824,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 117 then
 --|#line 464 "xm_eiffel_parser.y"
@@ -1836,7 +1836,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 118 then
 --|#line 465 "xm_eiffel_parser.y"
@@ -1848,7 +1848,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp4 := yyvsp4 -2
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 119 then
 --|#line 468 "xm_eiffel_parser.y"
@@ -1860,7 +1860,7 @@ yyval4 := yyvs4.item (yyvsp4 - 1)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp4 := yyvsp4 -4
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 120 then
 --|#line 470 "xm_eiffel_parser.y"
@@ -1872,7 +1872,7 @@ yyval4 := yyvs4.item (yyvsp4 - 1)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp4 := yyvsp4 -4
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 121 then
 --|#line 474 "xm_eiffel_parser.y"
@@ -1883,7 +1883,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 122 then
 --|#line 475 "xm_eiffel_parser.y"
@@ -1894,7 +1894,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 123 then
 --|#line 476 "xm_eiffel_parser.y"
@@ -1912,9 +1912,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 124 then
 --|#line 479 "xm_eiffel_parser.y"
@@ -1925,7 +1925,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 125 then
 --|#line 480 "xm_eiffel_parser.y"
@@ -1937,7 +1937,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 126 then
 --|#line 483 "xm_eiffel_parser.y"
@@ -1949,7 +1949,7 @@ process_on_doctype (yyvs4.item (yyvsp4), Void, True)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 127 then
 --|#line 487 "xm_eiffel_parser.y"
@@ -1962,7 +1962,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp1 := yyvsp1 -2
 	yyvsp4 := yyvsp4 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 128 then
 --|#line 491 "xm_eiffel_parser.y"
@@ -1977,7 +1977,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp4 := yyvsp4 -1
 	yyvsp1 := yyvsp1 -2
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 129 then
 --|#line 498 "xm_eiffel_parser.y"
@@ -1997,7 +1997,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -2
 	yyvsp5 := yyvsp5 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 130 then
 --|#line 511 "xm_eiffel_parser.y"
@@ -2017,7 +2017,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 131 then
 --|#line 523 "xm_eiffel_parser.y"
@@ -2034,9 +2034,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 132 then
 --|#line 524 "xm_eiffel_parser.y"
@@ -2047,7 +2047,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 133 then
 --|#line 527 "xm_eiffel_parser.y"
@@ -2058,7 +2058,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 134 then
 --|#line 528 "xm_eiffel_parser.y"
@@ -2070,7 +2070,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 135 then
 --|#line 531 "xm_eiffel_parser.y"
@@ -2081,7 +2081,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 136 then
 --|#line 532 "xm_eiffel_parser.y"
@@ -2092,7 +2092,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 137 then
 --|#line 537 "xm_eiffel_parser.y"
@@ -2109,9 +2109,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 138 then
 --|#line 538 "xm_eiffel_parser.y"
@@ -2123,7 +2123,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp4 := yyvsp4 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 139 then
 --|#line 539 "xm_eiffel_parser.y"
@@ -2136,7 +2136,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 140 then
 --|#line 542 "xm_eiffel_parser.y"
@@ -2147,7 +2147,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 141 then
 --|#line 543 "xm_eiffel_parser.y"
@@ -2159,7 +2159,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 142 then
 --|#line 548 "xm_eiffel_parser.y"
@@ -2170,7 +2170,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 143 then
 --|#line 549 "xm_eiffel_parser.y"
@@ -2181,7 +2181,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 144 then
 --|#line 550 "xm_eiffel_parser.y"
@@ -2192,7 +2192,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 145 then
 --|#line 551 "xm_eiffel_parser.y"
@@ -2203,7 +2203,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 146 then
 --|#line 552 "xm_eiffel_parser.y"
@@ -2214,7 +2214,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 147 then
 --|#line 553 "xm_eiffel_parser.y"
@@ -2225,7 +2225,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 148 then
 --|#line 554 "xm_eiffel_parser.y"
@@ -2243,9 +2243,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 149 then
 --|#line 555 "xm_eiffel_parser.y"
@@ -2263,9 +2263,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 150 then
 --|#line 560 "xm_eiffel_parser.y"
@@ -2283,9 +2283,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs10")
 		end
 		yyvsc10 := yyvsc10 + yyInitial_yyvs_size
-		yyvs10 := yyspecial_routines10.resize (yyvs10, yyvsc10)
+		yyvs10 := yyspecial_routines10.resize_with_default (({BOOLEAN}).default, yyvs10, yyvsc10)
 	end
-	yyvs10.force (yyval10, yyvsp10)
+	yyvs10.put (yyval10, yyvsp10)
 end
 when 151 then
 --|#line 561 "xm_eiffel_parser.y"
@@ -2303,9 +2303,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs10")
 		end
 		yyvsc10 := yyvsc10 + yyInitial_yyvs_size
-		yyvs10 := yyspecial_routines10.resize (yyvs10, yyvsc10)
+		yyvs10 := yyspecial_routines10.resize_with_default (({BOOLEAN}).default, yyvs10, yyvsc10)
 	end
-	yyvs10.force (yyval10, yyvsp10)
+	yyvs10.put (yyval10, yyvsp10)
 end
 when 152 then
 --|#line 562 "xm_eiffel_parser.y"
@@ -2323,9 +2323,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs10")
 		end
 		yyvsc10 := yyvsc10 + yyInitial_yyvs_size
-		yyvs10 := yyspecial_routines10.resize (yyvs10, yyvsc10)
+		yyvs10 := yyspecial_routines10.resize_with_default (({BOOLEAN}).default, yyvs10, yyvsc10)
 	end
-	yyvs10.force (yyval10, yyvsp10)
+	yyvs10.put (yyval10, yyvsp10)
 end
 when 153 then
 --|#line 563 "xm_eiffel_parser.y"
@@ -2343,9 +2343,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs10")
 		end
 		yyvsc10 := yyvsc10 + yyInitial_yyvs_size
-		yyvs10 := yyspecial_routines10.resize (yyvs10, yyvsc10)
+		yyvs10 := yyspecial_routines10.resize_with_default (({BOOLEAN}).default, yyvs10, yyvsc10)
 	end
-	yyvs10.force (yyval10, yyvsp10)
+	yyvs10.put (yyval10, yyvsp10)
 end
 when 154 then
 --|#line 568 "xm_eiffel_parser.y"
@@ -2356,7 +2356,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 155 then
 --|#line 569 "xm_eiffel_parser.y"
@@ -2377,9 +2377,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 156 then
 --|#line 575 "xm_eiffel_parser.y"
@@ -2394,7 +2394,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 157 then
 --|#line 581 "xm_eiffel_parser.y"
@@ -2407,7 +2407,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 158 then
 --|#line 582 "xm_eiffel_parser.y"
@@ -2419,7 +2419,7 @@ force_error (Error_element_content)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 159 then
 --|#line 588 "xm_eiffel_parser.y"
@@ -2433,7 +2433,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp4 := yyvsp4 -2
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 160 then
 --|#line 593 "xm_eiffel_parser.y"
@@ -2449,7 +2449,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp4 := yyvsp4 -2
 	yyvsp1 := yyvsp1 -1
 	yyvsp3 := yyvsp3 -1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 161 then
 --|#line 598 "xm_eiffel_parser.y"
@@ -2468,9 +2468,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs2")
 		end
 		yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-		yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+		yyvs2 := yyspecial_routines2.resize_with_default (({XM_EIFFEL_PARSER_NAME}).default, yyvs2, yyvsc2)
 	end
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 162 then
 --|#line 601 "xm_eiffel_parser.y"
@@ -2491,9 +2491,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 163 then
 --|#line 606 "xm_eiffel_parser.y"
@@ -2509,7 +2509,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp4 := yyvsp4 -2
 	yyvsp2 := yyvsp2 -1
 	yyvsp3 := yyvsp3 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 164 then
 --|#line 613 "xm_eiffel_parser.y"
@@ -2522,7 +2522,7 @@ end
 		
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 165 then
 --|#line 620 "xm_eiffel_parser.y"
@@ -2547,9 +2547,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs3")
 		end
 		yyvsc3 := yyvsc3 + yyInitial_yyvs_size
-		yyvs3 := yyspecial_routines3.resize (yyvs3, yyvsc3)
+		yyvs3 := yyspecial_routines3.resize_with_default (({DS_HASH_SET [XM_EIFFEL_PARSER_NAME]}).default, yyvs3, yyvsc3)
 	end
-	yyvs3.force (yyval3, yyvsp3)
+	yyvs3.put (yyval3, yyvsp3)
 end
 when 166 then
 --|#line 630 "xm_eiffel_parser.y"
@@ -2573,7 +2573,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs3.force (yyval3, yyvsp3)
+	yyvs3.put (yyval3, yyvsp3)
 end
 when 167 then
 --|#line 646 "xm_eiffel_parser.y"
@@ -2587,7 +2587,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp4 := yyvsp4 -2
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 168 then
 --|#line 651 "xm_eiffel_parser.y"
@@ -2599,7 +2599,7 @@ force_error (Error_attribute)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 169 then
 --|#line 655 "xm_eiffel_parser.y"
@@ -2613,7 +2613,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp4 := yyvsp4 -2
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 170 then
 --|#line 660 "xm_eiffel_parser.y"
@@ -2632,9 +2632,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs2")
 		end
 		yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-		yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+		yyvs2 := yyspecial_routines2.resize_with_default (({XM_EIFFEL_PARSER_NAME}).default, yyvs2, yyvsc2)
 	end
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 171 then
 --|#line 663 "xm_eiffel_parser.y"
@@ -2645,7 +2645,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 172 then
 --|#line 664 "xm_eiffel_parser.y"
@@ -2657,7 +2657,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 173 then
 --|#line 667 "xm_eiffel_parser.y"
@@ -2675,9 +2675,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 174 then
 --|#line 668 "xm_eiffel_parser.y"
@@ -2688,7 +2688,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 175 then
 --|#line 669 "xm_eiffel_parser.y"
@@ -2699,7 +2699,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 176 then
 --|#line 670 "xm_eiffel_parser.y"
@@ -2710,7 +2710,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 177 then
 --|#line 671 "xm_eiffel_parser.y"
@@ -2721,7 +2721,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 178 then
 --|#line 672 "xm_eiffel_parser.y"
@@ -2739,9 +2739,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 179 then
 --|#line 673 "xm_eiffel_parser.y"
@@ -2752,7 +2752,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 180 then
 --|#line 676 "xm_eiffel_parser.y"
@@ -2770,9 +2770,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 181 then
 --|#line 677 "xm_eiffel_parser.y"
@@ -2790,9 +2790,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 182 then
 --|#line 678 "xm_eiffel_parser.y"
@@ -2810,9 +2810,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 183 then
 --|#line 681 "xm_eiffel_parser.y"
@@ -2823,7 +2823,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 184 then
 --|#line 683 "xm_eiffel_parser.y"
@@ -2834,7 +2834,7 @@ end
 yyval4 := yyvs4.item (yyvsp4) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 185 then
 --|#line 689 "xm_eiffel_parser.y"
@@ -2848,7 +2848,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -3
 	yyvsp6 := yyvsp6 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 186 then
 --|#line 691 "xm_eiffel_parser.y"
@@ -2860,7 +2860,7 @@ force_error (Error_doctype_element)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 187 then
 --|#line 694 "xm_eiffel_parser.y"
@@ -2879,9 +2879,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs6")
 		end
 		yyvsc6 := yyvsc6 + yyInitial_yyvs_size
-		yyvs6 := yyspecial_routines6.resize (yyvs6, yyvsc6)
+		yyvs6 := yyspecial_routines6.resize_with_default (({XM_DTD_ELEMENT_CONTENT}).default, yyvs6, yyvsc6)
 	end
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 188 then
 --|#line 696 "xm_eiffel_parser.y"
@@ -2900,9 +2900,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs6")
 		end
 		yyvsc6 := yyvsc6 + yyInitial_yyvs_size
-		yyvs6 := yyspecial_routines6.resize (yyvs6, yyvsc6)
+		yyvs6 := yyspecial_routines6.resize_with_default (({XM_DTD_ELEMENT_CONTENT}).default, yyvs6, yyvsc6)
 	end
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 189 then
 --|#line 698 "xm_eiffel_parser.y"
@@ -2914,7 +2914,7 @@ yyval6 := yyvs6.item (yyvsp6)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 190 then
 --|#line 700 "xm_eiffel_parser.y"
@@ -2925,7 +2925,7 @@ end
 yyval6 := yyvs6.item (yyvsp6) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 191 then
 --|#line 704 "xm_eiffel_parser.y"
@@ -2937,7 +2937,7 @@ yyval6 := yyvs6.item (yyvsp6)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 192 then
 --|#line 706 "xm_eiffel_parser.y"
@@ -2949,7 +2949,7 @@ yyval6 := yyvs6.item (yyvsp6); set_element_repetition (yyval6, yyvs4.item (yyvsp
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 193 then
 --|#line 708 "xm_eiffel_parser.y"
@@ -2961,7 +2961,7 @@ yyval6 := yyvs6.item (yyvsp6)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 194 then
 --|#line 710 "xm_eiffel_parser.y"
@@ -2973,7 +2973,7 @@ yyval6 := yyvs6.item (yyvsp6); set_element_repetition (yyval6, yyvs4.item (yyvsp
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 195 then
 --|#line 714 "xm_eiffel_parser.y"
@@ -2991,9 +2991,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs6")
 		end
 		yyvsc6 := yyvsc6 + yyInitial_yyvs_size
-		yyvs6 := yyspecial_routines6.resize (yyvs6, yyvsc6)
+		yyvs6 := yyspecial_routines6.resize_with_default (({XM_DTD_ELEMENT_CONTENT}).default, yyvs6, yyvsc6)
 	end
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 196 then
 --|#line 716 "xm_eiffel_parser.y"
@@ -3011,9 +3011,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs6")
 		end
 		yyvsc6 := yyvsc6 + yyInitial_yyvs_size
-		yyvs6 := yyspecial_routines6.resize (yyvs6, yyvsc6)
+		yyvs6 := yyspecial_routines6.resize_with_default (({XM_DTD_ELEMENT_CONTENT}).default, yyvs6, yyvsc6)
 	end
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 197 then
 --|#line 718 "xm_eiffel_parser.y"
@@ -3025,7 +3025,7 @@ yyval6 := yyvs6.item (yyvsp6)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 198 then
 --|#line 720 "xm_eiffel_parser.y"
@@ -3037,7 +3037,7 @@ yyval6 := yyvs6.item (yyvsp6); set_element_repetition (yyval6, yyvs4.item (yyvsp
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 199 then
 --|#line 722 "xm_eiffel_parser.y"
@@ -3049,7 +3049,7 @@ yyval6 := yyvs6.item (yyvsp6)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 200 then
 --|#line 724 "xm_eiffel_parser.y"
@@ -3061,7 +3061,7 @@ yyval6 := yyvs6.item (yyvsp6); set_element_repetition (yyval6, yyvs4.item (yyvsp
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 201 then
 --|#line 728 "xm_eiffel_parser.y"
@@ -3073,7 +3073,7 @@ yyval4 := Zero_or_more_repetition
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 202 then
 --|#line 730 "xm_eiffel_parser.y"
@@ -3085,7 +3085,7 @@ yyval4 := One_or_more_repetition
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 203 then
 --|#line 732 "xm_eiffel_parser.y"
@@ -3097,7 +3097,7 @@ yyval4 := Zero_or_one_repetition
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 204 then
 --|#line 736 "xm_eiffel_parser.y"
@@ -3110,7 +3110,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp6 := yyvsp6 -1
 	yyvsp1 := yyvsp1 -3
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 205 then
 --|#line 740 "xm_eiffel_parser.y"
@@ -3121,7 +3121,7 @@ end
 create yyval6.make_choice; dtd_element_content_items_force_last (yyval6, yyvs6.item (yyvsp6)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 206 then
 --|#line 742 "xm_eiffel_parser.y"
@@ -3134,7 +3134,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp6 := yyvsp6 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 207 then
 --|#line 747 "xm_eiffel_parser.y"
@@ -3146,7 +3146,7 @@ yyval6 := yyvs6.item (yyvsp6)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -2
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 208 then
 --|#line 751 "xm_eiffel_parser.y"
@@ -3157,7 +3157,7 @@ end
 create yyval6.make_sequence; dtd_element_content_items_force_last (yyval6, yyvs6.item (yyvsp6)) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 209 then
 --|#line 753 "xm_eiffel_parser.y"
@@ -3170,7 +3170,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp6 := yyvsp6 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 210 then
 --|#line 757 "xm_eiffel_parser.y"
@@ -3188,9 +3188,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs6")
 		end
 		yyvsc6 := yyvsc6 + yyInitial_yyvs_size
-		yyvs6 := yyspecial_routines6.resize (yyvs6, yyvsc6)
+		yyvs6 := yyspecial_routines6.resize_with_default (({XM_DTD_ELEMENT_CONTENT}).default, yyvs6, yyvsc6)
 	end
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 211 then
 --|#line 759 "xm_eiffel_parser.y"
@@ -3209,9 +3209,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs6")
 		end
 		yyvsc6 := yyvsc6 + yyInitial_yyvs_size
-		yyvs6 := yyspecial_routines6.resize (yyvs6, yyvsc6)
+		yyvs6 := yyspecial_routines6.resize_with_default (({XM_DTD_ELEMENT_CONTENT}).default, yyvs6, yyvsc6)
 	end
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 212 then
 --|#line 761 "xm_eiffel_parser.y"
@@ -3224,7 +3224,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 6
 	yyvsp1 := yyvsp1 -4
 	yyvsp4 := yyvsp4 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 213 then
 --|#line 765 "xm_eiffel_parser.y"
@@ -3242,9 +3242,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs6")
 		end
 		yyvsc6 := yyvsc6 + yyInitial_yyvs_size
-		yyvs6 := yyspecial_routines6.resize (yyvs6, yyvsc6)
+		yyvs6 := yyspecial_routines6.resize_with_default (({XM_DTD_ELEMENT_CONTENT}).default, yyvs6, yyvsc6)
 	end
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 214 then
 --|#line 767 "xm_eiffel_parser.y"
@@ -3257,7 +3257,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 215 then
 --|#line 773 "xm_eiffel_parser.y"
@@ -3269,7 +3269,7 @@ yyval4 := yyvs4.item (yyvsp4)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 216 then
 --|#line 777 "xm_eiffel_parser.y"
@@ -3281,7 +3281,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 217 then
 --|#line 780 "xm_eiffel_parser.y"
@@ -3293,7 +3293,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 218 then
 --|#line 783 "xm_eiffel_parser.y"
@@ -3305,7 +3305,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 219 then
 --|#line 786 "xm_eiffel_parser.y"
@@ -3323,9 +3323,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 220 then
 --|#line 789 "xm_eiffel_parser.y"
@@ -3337,7 +3337,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 221 then
 --|#line 794 "xm_eiffel_parser.y"
@@ -3350,7 +3350,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -3
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 222 then
 --|#line 796 "xm_eiffel_parser.y"
@@ -3364,7 +3364,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -3
 	yyvsp8 := yyvsp8 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 223 then
 --|#line 798 "xm_eiffel_parser.y"
@@ -3376,7 +3376,7 @@ force_error (Error_doctype_attribute)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 224 then
 --|#line 802 "xm_eiffel_parser.y"
@@ -3400,9 +3400,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs8")
 		end
 		yyvsc8 := yyvsc8 + yyInitial_yyvs_size
-		yyvs8 := yyspecial_routines8.resize (yyvs8, yyvsc8)
+		yyvs8 := yyspecial_routines8.resize_with_default (({DS_BILINKED_LIST [XM_DTD_ATTRIBUTE_CONTENT]}).default, yyvs8, yyvsc8)
 	end
-	yyvs8.force (yyval8, yyvsp8)
+	yyvs8.put (yyval8, yyvsp8)
 end
 when 225 then
 --|#line 811 "xm_eiffel_parser.y"
@@ -3421,7 +3421,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp7 := yyvsp7 -1
-	yyvs8.force (yyval8, yyvsp8)
+	yyvs8.put (yyval8, yyvsp8)
 end
 when 226 then
 --|#line 823 "xm_eiffel_parser.y"
@@ -3443,7 +3443,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp7 := yyvsp7 -1
 	yyvsp1 := yyvsp1 -3
 	yyvsp4 := yyvsp4 -1
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 227 then
 --|#line 834 "xm_eiffel_parser.y"
@@ -3462,9 +3462,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 228 then
 --|#line 837 "xm_eiffel_parser.y"
@@ -3482,9 +3482,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 229 then
 --|#line 839 "xm_eiffel_parser.y"
@@ -3495,7 +3495,7 @@ end
 yyval7 := yyvs7.item (yyvsp7) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 230 then
 --|#line 841 "xm_eiffel_parser.y"
@@ -3506,7 +3506,7 @@ end
 yyval7 := yyvs7.item (yyvsp7) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 231 then
 --|#line 845 "xm_eiffel_parser.y"
@@ -3524,9 +3524,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 232 then
 --|#line 847 "xm_eiffel_parser.y"
@@ -3544,9 +3544,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 233 then
 --|#line 849 "xm_eiffel_parser.y"
@@ -3564,9 +3564,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 234 then
 --|#line 851 "xm_eiffel_parser.y"
@@ -3584,9 +3584,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 235 then
 --|#line 853 "xm_eiffel_parser.y"
@@ -3604,9 +3604,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 236 then
 --|#line 855 "xm_eiffel_parser.y"
@@ -3624,9 +3624,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 237 then
 --|#line 857 "xm_eiffel_parser.y"
@@ -3644,9 +3644,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 238 then
 --|#line 861 "xm_eiffel_parser.y"
@@ -3664,9 +3664,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 239 then
 --|#line 863 "xm_eiffel_parser.y"
@@ -3684,9 +3684,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 240 then
 --|#line 867 "xm_eiffel_parser.y"
@@ -3699,7 +3699,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp1 := yyvsp1 -2
 	yyvsp4 := yyvsp4 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 241 then
 --|#line 870 "xm_eiffel_parser.y"
@@ -3717,9 +3717,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 242 then
 --|#line 871 "xm_eiffel_parser.y"
@@ -3732,7 +3732,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 243 then
 --|#line 874 "xm_eiffel_parser.y"
@@ -3744,7 +3744,7 @@ yyval9 := yyvs9.item (yyvsp9)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -2
-	yyvs9.force (yyval9, yyvsp9)
+	yyvs9.put (yyval9, yyvsp9)
 end
 when 244 then
 --|#line 878 "xm_eiffel_parser.y"
@@ -3769,9 +3769,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs9")
 		end
 		yyvsc9 := yyvsc9 + yyInitial_yyvs_size
-		yyvs9 := yyspecial_routines9.resize (yyvs9, yyvsc9)
+		yyvs9 := yyspecial_routines9.resize_with_default (({DS_BILINKED_LIST [STRING]}).default, yyvs9, yyvsc9)
 	end
-	yyvs9.force (yyval9, yyvsp9)
+	yyvs9.put (yyval9, yyvsp9)
 end
 when 245 then
 --|#line 887 "xm_eiffel_parser.y"
@@ -3791,7 +3791,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp1 := yyvsp1 -2
 	yyvsp4 := yyvsp4 -1
-	yyvs9.force (yyval9, yyvsp9)
+	yyvs9.put (yyval9, yyvsp9)
 end
 when 246 then
 --|#line 899 "xm_eiffel_parser.y"
@@ -3809,9 +3809,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 247 then
 --|#line 901 "xm_eiffel_parser.y"
@@ -3829,9 +3829,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 248 then
 --|#line 903 "xm_eiffel_parser.y"
@@ -3850,9 +3850,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 249 then
 --|#line 905 "xm_eiffel_parser.y"
@@ -3870,9 +3870,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({XM_DTD_ATTRIBUTE_CONTENT}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 250 then
 --|#line 911 "xm_eiffel_parser.y"
@@ -3883,7 +3883,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 251 then
 --|#line 912 "xm_eiffel_parser.y"
@@ -3894,7 +3894,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 252 then
 --|#line 913 "xm_eiffel_parser.y"
@@ -3906,7 +3906,7 @@ force_error (Error_doctype_conditional_section)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 253 then
 --|#line 916 "xm_eiffel_parser.y"
@@ -3918,7 +3918,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 254 then
 --|#line 917 "xm_eiffel_parser.y"
@@ -3931,7 +3931,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 255 then
 --|#line 920 "xm_eiffel_parser.y"
@@ -3944,7 +3944,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -3
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 256 then
 --|#line 923 "xm_eiffel_parser.y"
@@ -3957,7 +3957,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 257 then
 --|#line 926 "xm_eiffel_parser.y"
@@ -3970,7 +3970,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -3
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 258 then
 --|#line 930 "xm_eiffel_parser.y"
@@ -3987,9 +3987,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 259 then
 --|#line 931 "xm_eiffel_parser.y"
@@ -4000,7 +4000,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 260 then
 --|#line 934 "xm_eiffel_parser.y"
@@ -4011,7 +4011,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 261 then
 --|#line 935 "xm_eiffel_parser.y"
@@ -4023,7 +4023,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 262 then
 --|#line 938 "xm_eiffel_parser.y"
@@ -4041,9 +4041,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 263 then
 --|#line 939 "xm_eiffel_parser.y"
@@ -4055,7 +4055,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp4 := yyvsp4 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 264 then
 --|#line 948 "xm_eiffel_parser.y"
@@ -4066,7 +4066,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 265 then
 --|#line 949 "xm_eiffel_parser.y"
@@ -4077,7 +4077,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 266 then
 --|#line 950 "xm_eiffel_parser.y"
@@ -4089,7 +4089,7 @@ force_error (Error_doctype_entity)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 267 then
 --|#line 953 "xm_eiffel_parser.y"
@@ -4105,7 +4105,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 7
 	yyvsp1 := yyvsp1 -2
 	yyvsp4 := yyvsp4 -4
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 268 then
 --|#line 959 "xm_eiffel_parser.y"
@@ -4122,7 +4122,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp1 := yyvsp1 -2
 	yyvsp4 := yyvsp4 -3
 	yyvsp5 := yyvsp5 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 269 then
 --|#line 965 "xm_eiffel_parser.y"
@@ -4138,7 +4138,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp1 := yyvsp1 -2
 	yyvsp4 := yyvsp4 -4
 	yyvsp5 := yyvsp5 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 270 then
 --|#line 972 "xm_eiffel_parser.y"
@@ -4154,7 +4154,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 9
 	yyvsp1 := yyvsp1 -3
 	yyvsp4 := yyvsp4 -5
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 271 then
 --|#line 978 "xm_eiffel_parser.y"
@@ -4171,7 +4171,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp1 := yyvsp1 -3
 	yyvsp4 := yyvsp4 -4
 	yyvsp5 := yyvsp5 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 272 then
 --|#line 986 "xm_eiffel_parser.y"
@@ -4189,9 +4189,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({XM_DTD_EXTERNAL_ID}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 273 then
 --|#line 988 "xm_eiffel_parser.y"
@@ -4209,9 +4209,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({XM_DTD_EXTERNAL_ID}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 274 then
 --|#line 992 "xm_eiffel_parser.y"
@@ -4224,7 +4224,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp4 := yyvsp4 -1
 	yyvsp1 := yyvsp1 -2
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 275 then
 --|#line 998 "xm_eiffel_parser.y"
@@ -4241,9 +4241,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 276 then
 --|#line 999 "xm_eiffel_parser.y"
@@ -4255,7 +4255,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp4 := yyvsp4 -3
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 277 then
 --|#line 1000 "xm_eiffel_parser.y"
@@ -4268,7 +4268,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 6
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -4
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 278 then
 --|#line 1001 "xm_eiffel_parser.y"
@@ -4280,7 +4280,7 @@ force_error (Error_xml_declaration)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 279 then
 --|#line 1004 "xm_eiffel_parser.y"
@@ -4292,7 +4292,7 @@ yyval4 := yyvs4.item (yyvsp4 - 1)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp4 := yyvsp4 -4
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 280 then
 --|#line 1006 "xm_eiffel_parser.y"
@@ -4304,7 +4304,7 @@ yyval4 := yyvs4.item (yyvsp4 - 1)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp4 := yyvsp4 -4
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 281 then
 --|#line 1012 "xm_eiffel_parser.y"
@@ -4318,7 +4318,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp1 := yyvsp1 -2
 	yyvsp4 := yyvsp4 -3
 	yyvsp5 := yyvsp5 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 282 then
 --|#line 1014 "xm_eiffel_parser.y"
@@ -4332,7 +4332,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp1 := yyvsp1 -2
 	yyvsp4 := yyvsp4 -3
 	yyvsp5 := yyvsp5 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 283 then
 --|#line 1016 "xm_eiffel_parser.y"
@@ -4344,7 +4344,7 @@ force_error (Error_doctype_notation)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 284 then
 --|#line 1020 "xm_eiffel_parser.y"
@@ -4362,9 +4362,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({XM_DTD_EXTERNAL_ID}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 			else
 				debug ("GEYACC")
@@ -4881,7 +4881,7 @@ feature {NONE} -- Table templates
 
 feature {NONE} -- Semantic value stacks
 
-	yyvs1: SPECIAL [?ANY]
+	frozen yyvs1: SPECIAL [?ANY]
 			-- Stack for semantic values of type ANY
 
 	yyvsc1: INTEGER
@@ -4890,10 +4890,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp1: INTEGER
 			-- Top of semantic value stack `yyvs1'
 
-	yyspecial_routines1: KL_SPECIAL_ROUTINES [?ANY]
+	frozen yyspecial_routines1: KL_SPECIAL_ROUTINES [?ANY]
 			-- Routines that ought to be in SPECIAL [ANY]
 
-	yyvs2: SPECIAL [?XM_EIFFEL_PARSER_NAME]
+	frozen yyvs2: SPECIAL [?XM_EIFFEL_PARSER_NAME]
 			-- Stack for semantic values of type XM_EIFFEL_PARSER_NAME
 
 	yyvsc2: INTEGER
@@ -4902,10 +4902,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp2: INTEGER
 			-- Top of semantic value stack `yyvs2'
 
-	yyspecial_routines2: KL_SPECIAL_ROUTINES [?XM_EIFFEL_PARSER_NAME]
+	frozen yyspecial_routines2: KL_SPECIAL_ROUTINES [?XM_EIFFEL_PARSER_NAME]
 			-- Routines that ought to be in SPECIAL [XM_EIFFEL_PARSER_NAME]
 
-	yyvs3: SPECIAL [?DS_HASH_SET [XM_EIFFEL_PARSER_NAME]]
+	frozen yyvs3: SPECIAL [?DS_HASH_SET [XM_EIFFEL_PARSER_NAME]]
 			-- Stack for semantic values of type DS_HASH_SET [XM_EIFFEL_PARSER_NAME]
 
 	yyvsc3: INTEGER
@@ -4914,10 +4914,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp3: INTEGER
 			-- Top of semantic value stack `yyvs3'
 
-	yyspecial_routines3: KL_SPECIAL_ROUTINES [?DS_HASH_SET [XM_EIFFEL_PARSER_NAME]]
+	frozen yyspecial_routines3: KL_SPECIAL_ROUTINES [?DS_HASH_SET [XM_EIFFEL_PARSER_NAME]]
 			-- Routines that ought to be in SPECIAL [DS_HASH_SET [XM_EIFFEL_PARSER_NAME]]
 
-	yyvs4: SPECIAL [?STRING]
+	frozen yyvs4: SPECIAL [?STRING]
 			-- Stack for semantic values of type STRING
 
 	yyvsc4: INTEGER
@@ -4926,10 +4926,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp4: INTEGER
 			-- Top of semantic value stack `yyvs4'
 
-	yyspecial_routines4: KL_SPECIAL_ROUTINES [?STRING]
+	frozen yyspecial_routines4: KL_SPECIAL_ROUTINES [?STRING]
 			-- Routines that ought to be in SPECIAL [STRING]
 
-	yyvs5: SPECIAL [?XM_DTD_EXTERNAL_ID]
+	frozen yyvs5: SPECIAL [?XM_DTD_EXTERNAL_ID]
 			-- Stack for semantic values of type XM_DTD_EXTERNAL_ID
 
 	yyvsc5: INTEGER
@@ -4938,10 +4938,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp5: INTEGER
 			-- Top of semantic value stack `yyvs5'
 
-	yyspecial_routines5: KL_SPECIAL_ROUTINES [?XM_DTD_EXTERNAL_ID]
+	frozen yyspecial_routines5: KL_SPECIAL_ROUTINES [?XM_DTD_EXTERNAL_ID]
 			-- Routines that ought to be in SPECIAL [XM_DTD_EXTERNAL_ID]
 
-	yyvs6: SPECIAL [?XM_DTD_ELEMENT_CONTENT]
+	frozen yyvs6: SPECIAL [?XM_DTD_ELEMENT_CONTENT]
 			-- Stack for semantic values of type XM_DTD_ELEMENT_CONTENT
 
 	yyvsc6: INTEGER
@@ -4950,10 +4950,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp6: INTEGER
 			-- Top of semantic value stack `yyvs6'
 
-	yyspecial_routines6: KL_SPECIAL_ROUTINES [?XM_DTD_ELEMENT_CONTENT]
+	frozen yyspecial_routines6: KL_SPECIAL_ROUTINES [?XM_DTD_ELEMENT_CONTENT]
 			-- Routines that ought to be in SPECIAL [XM_DTD_ELEMENT_CONTENT]
 
-	yyvs7: SPECIAL [?XM_DTD_ATTRIBUTE_CONTENT]
+	frozen yyvs7: SPECIAL [?XM_DTD_ATTRIBUTE_CONTENT]
 			-- Stack for semantic values of type XM_DTD_ATTRIBUTE_CONTENT
 
 	yyvsc7: INTEGER
@@ -4962,10 +4962,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp7: INTEGER
 			-- Top of semantic value stack `yyvs7'
 
-	yyspecial_routines7: KL_SPECIAL_ROUTINES [?XM_DTD_ATTRIBUTE_CONTENT]
+	frozen yyspecial_routines7: KL_SPECIAL_ROUTINES [?XM_DTD_ATTRIBUTE_CONTENT]
 			-- Routines that ought to be in SPECIAL [XM_DTD_ATTRIBUTE_CONTENT]
 
-	yyvs8: SPECIAL [?DS_BILINKED_LIST [XM_DTD_ATTRIBUTE_CONTENT]]
+	frozen yyvs8: SPECIAL [?DS_BILINKED_LIST [XM_DTD_ATTRIBUTE_CONTENT]]
 			-- Stack for semantic values of type DS_BILINKED_LIST [XM_DTD_ATTRIBUTE_CONTENT]
 
 	yyvsc8: INTEGER
@@ -4974,10 +4974,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp8: INTEGER
 			-- Top of semantic value stack `yyvs8'
 
-	yyspecial_routines8: KL_SPECIAL_ROUTINES [?DS_BILINKED_LIST [XM_DTD_ATTRIBUTE_CONTENT]]
+	frozen yyspecial_routines8: KL_SPECIAL_ROUTINES [?DS_BILINKED_LIST [XM_DTD_ATTRIBUTE_CONTENT]]
 			-- Routines that ought to be in SPECIAL [DS_BILINKED_LIST [XM_DTD_ATTRIBUTE_CONTENT]]
 
-	yyvs9: SPECIAL [?DS_BILINKED_LIST [STRING]]
+	frozen yyvs9: SPECIAL [?DS_BILINKED_LIST [STRING]]
 			-- Stack for semantic values of type DS_BILINKED_LIST [STRING]
 
 	yyvsc9: INTEGER
@@ -4986,10 +4986,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp9: INTEGER
 			-- Top of semantic value stack `yyvs9'
 
-	yyspecial_routines9: KL_SPECIAL_ROUTINES [?DS_BILINKED_LIST [STRING]]
+	frozen yyspecial_routines9: KL_SPECIAL_ROUTINES [?DS_BILINKED_LIST [STRING]]
 			-- Routines that ought to be in SPECIAL [DS_BILINKED_LIST [STRING]]
 
-	yyvs10: SPECIAL [BOOLEAN]
+	frozen yyvs10: SPECIAL [BOOLEAN]
 			-- Stack for semantic values of type BOOLEAN
 
 	yyvsc10: INTEGER
@@ -4998,10 +4998,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp10: INTEGER
 			-- Top of semantic value stack `yyvs10'
 
-	yyspecial_routines10: KL_SPECIAL_ROUTINES [BOOLEAN]
+	frozen yyspecial_routines10: KL_SPECIAL_ROUTINES [BOOLEAN]
 			-- Routines that ought to be in SPECIAL [BOOLEAN]
 
-	yyvs11: SPECIAL [?XM_EIFFEL_DECLARATION]
+	frozen yyvs11: SPECIAL [?XM_EIFFEL_DECLARATION]
 			-- Stack for semantic values of type XM_EIFFEL_DECLARATION
 
 	yyvsc11: INTEGER
@@ -5010,7 +5010,7 @@ feature {NONE} -- Semantic value stacks
 	yyvsp11: INTEGER
 			-- Top of semantic value stack `yyvs11'
 
-	yyspecial_routines11: KL_SPECIAL_ROUTINES [?XM_EIFFEL_DECLARATION]
+	frozen yyspecial_routines11: KL_SPECIAL_ROUTINES [?XM_EIFFEL_DECLARATION]
 			-- Routines that ought to be in SPECIAL [XM_EIFFEL_DECLARATION]
 
 feature {NONE} -- Constants

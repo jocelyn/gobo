@@ -58,709 +58,709 @@ feature {NONE} -- Implementation
 			end
 			create yyspecial_routines1
 			yyvsc1 := yyInitial_yyvs_size
-			yyvs1 := yyspecial_routines1.make (yyvsc1)
+			yyvs1 := yyspecial_routines1.make_filled (({ANY}).default, yyvsc1)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs2")
 			end
 			create yyspecial_routines2
 			yyvsc2 := yyInitial_yyvs_size
-			yyvs2 := yyspecial_routines2.make (yyvsc2)
+			yyvs2 := yyspecial_routines2.make_filled (({ET_KEYWORD}).default, yyvsc2)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs3")
 			end
 			create yyspecial_routines3
 			yyvsc3 := yyInitial_yyvs_size
-			yyvs3 := yyspecial_routines3.make (yyvsc3)
+			yyvs3 := yyspecial_routines3.make_filled (({ET_AGENT_KEYWORD}).default, yyvsc3)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs4")
 			end
 			create yyspecial_routines4
 			yyvsc4 := yyInitial_yyvs_size
-			yyvs4 := yyspecial_routines4.make (yyvsc4)
+			yyvs4 := yyspecial_routines4.make_filled (({ET_PRECURSOR_KEYWORD}).default, yyvsc4)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs5")
 			end
 			create yyspecial_routines5
 			yyvsc5 := yyInitial_yyvs_size
-			yyvs5 := yyspecial_routines5.make (yyvsc5)
+			yyvs5 := yyspecial_routines5.make_filled (({ET_SYMBOL}).default, yyvsc5)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs6")
 			end
 			create yyspecial_routines6
 			yyvsc6 := yyInitial_yyvs_size
-			yyvs6 := yyspecial_routines6.make (yyvsc6)
+			yyvs6 := yyspecial_routines6.make_filled (({ET_POSITION}).default, yyvsc6)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs7")
 			end
 			create yyspecial_routines7
 			yyvsc7 := yyInitial_yyvs_size
-			yyvs7 := yyspecial_routines7.make (yyvsc7)
+			yyvs7 := yyspecial_routines7.make_filled (({ET_BIT_CONSTANT}).default, yyvsc7)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs8")
 			end
 			create yyspecial_routines8
 			yyvsc8 := yyInitial_yyvs_size
-			yyvs8 := yyspecial_routines8.make (yyvsc8)
+			yyvs8 := yyspecial_routines8.make_filled (({ET_BOOLEAN_CONSTANT}).default, yyvsc8)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs9")
 			end
 			create yyspecial_routines9
 			yyvsc9 := yyInitial_yyvs_size
-			yyvs9 := yyspecial_routines9.make (yyvsc9)
+			yyvs9 := yyspecial_routines9.make_filled (({ET_BREAK}).default, yyvsc9)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs10")
 			end
 			create yyspecial_routines10
 			yyvsc10 := yyInitial_yyvs_size
-			yyvs10 := yyspecial_routines10.make (yyvsc10)
+			yyvs10 := yyspecial_routines10.make_filled (({ET_CHARACTER_CONSTANT}).default, yyvsc10)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs11")
 			end
 			create yyspecial_routines11
 			yyvsc11 := yyInitial_yyvs_size
-			yyvs11 := yyspecial_routines11.make (yyvsc11)
+			yyvs11 := yyspecial_routines11.make_filled (({ET_CURRENT}).default, yyvsc11)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs12")
 			end
 			create yyspecial_routines12
 			yyvsc12 := yyInitial_yyvs_size
-			yyvs12 := yyspecial_routines12.make (yyvsc12)
+			yyvs12 := yyspecial_routines12.make_filled (({ET_FREE_OPERATOR}).default, yyvsc12)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs13")
 			end
 			create yyspecial_routines13
 			yyvsc13 := yyInitial_yyvs_size
-			yyvs13 := yyspecial_routines13.make (yyvsc13)
+			yyvs13 := yyspecial_routines13.make_filled (({ET_IDENTIFIER}).default, yyvsc13)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs14")
 			end
 			create yyspecial_routines14
 			yyvsc14 := yyInitial_yyvs_size
-			yyvs14 := yyspecial_routines14.make (yyvsc14)
+			yyvs14 := yyspecial_routines14.make_filled (({ET_INTEGER_CONSTANT}).default, yyvsc14)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs15")
 			end
 			create yyspecial_routines15
 			yyvsc15 := yyInitial_yyvs_size
-			yyvs15 := yyspecial_routines15.make (yyvsc15)
+			yyvs15 := yyspecial_routines15.make_filled (({ET_KEYWORD_OPERATOR}).default, yyvsc15)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs16")
 			end
 			create yyspecial_routines16
 			yyvsc16 := yyInitial_yyvs_size
-			yyvs16 := yyspecial_routines16.make (yyvsc16)
+			yyvs16 := yyspecial_routines16.make_filled (({ET_MANIFEST_STRING}).default, yyvsc16)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs17")
 			end
 			create yyspecial_routines17
 			yyvsc17 := yyInitial_yyvs_size
-			yyvs17 := yyspecial_routines17.make (yyvsc17)
+			yyvs17 := yyspecial_routines17.make_filled (({ET_REAL_CONSTANT}).default, yyvsc17)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs18")
 			end
 			create yyspecial_routines18
 			yyvsc18 := yyInitial_yyvs_size
-			yyvs18 := yyspecial_routines18.make (yyvsc18)
+			yyvs18 := yyspecial_routines18.make_filled (({ET_RESULT}).default, yyvsc18)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs19")
 			end
 			create yyspecial_routines19
 			yyvsc19 := yyInitial_yyvs_size
-			yyvs19 := yyspecial_routines19.make (yyvsc19)
+			yyvs19 := yyspecial_routines19.make_filled (({ET_RETRY_INSTRUCTION}).default, yyvsc19)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs20")
 			end
 			create yyspecial_routines20
 			yyvsc20 := yyInitial_yyvs_size
-			yyvs20 := yyspecial_routines20.make (yyvsc20)
+			yyvs20 := yyspecial_routines20.make_filled (({ET_SYMBOL_OPERATOR}).default, yyvsc20)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs21")
 			end
 			create yyspecial_routines21
 			yyvsc21 := yyInitial_yyvs_size
-			yyvs21 := yyspecial_routines21.make (yyvsc21)
+			yyvs21 := yyspecial_routines21.make_filled (({ET_VOID}).default, yyvsc21)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs22")
 			end
 			create yyspecial_routines22
 			yyvsc22 := yyInitial_yyvs_size
-			yyvs22 := yyspecial_routines22.make (yyvsc22)
+			yyvs22 := yyspecial_routines22.make_filled (({ET_SEMICOLON_SYMBOL}).default, yyvsc22)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs23")
 			end
 			create yyspecial_routines23
 			yyvsc23 := yyInitial_yyvs_size
-			yyvs23 := yyspecial_routines23.make (yyvsc23)
+			yyvs23 := yyspecial_routines23.make_filled (({ET_BRACKET_SYMBOL}).default, yyvsc23)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs24")
 			end
 			create yyspecial_routines24
 			yyvsc24 := yyInitial_yyvs_size
-			yyvs24 := yyspecial_routines24.make (yyvsc24)
+			yyvs24 := yyspecial_routines24.make_filled (({ET_QUESTION_MARK_SYMBOL}).default, yyvsc24)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs25")
 			end
 			create yyspecial_routines25
 			yyvsc25 := yyInitial_yyvs_size
-			yyvs25 := yyspecial_routines25.make (yyvsc25)
+			yyvs25 := yyspecial_routines25.make_filled (({ET_ACTUAL_ARGUMENT_LIST}).default, yyvsc25)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs26")
 			end
 			create yyspecial_routines26
 			yyvsc26 := yyInitial_yyvs_size
-			yyvs26 := yyspecial_routines26.make (yyvsc26)
+			yyvs26 := yyspecial_routines26.make_filled (({ET_ACTUAL_PARAMETER_ITEM}).default, yyvsc26)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs27")
 			end
 			create yyspecial_routines27
 			yyvsc27 := yyInitial_yyvs_size
-			yyvs27 := yyspecial_routines27.make (yyvsc27)
+			yyvs27 := yyspecial_routines27.make_filled (({ET_ACTUAL_PARAMETER_LIST}).default, yyvsc27)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs28")
 			end
 			create yyspecial_routines28
 			yyvsc28 := yyInitial_yyvs_size
-			yyvs28 := yyspecial_routines28.make (yyvsc28)
+			yyvs28 := yyspecial_routines28.make_filled (({ET_AGENT_ARGUMENT_OPERAND}).default, yyvsc28)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs29")
 			end
 			create yyspecial_routines29
 			yyvsc29 := yyInitial_yyvs_size
-			yyvs29 := yyspecial_routines29.make (yyvsc29)
+			yyvs29 := yyspecial_routines29.make_filled (({ET_AGENT_ARGUMENT_OPERAND_ITEM}).default, yyvsc29)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs30")
 			end
 			create yyspecial_routines30
 			yyvsc30 := yyInitial_yyvs_size
-			yyvs30 := yyspecial_routines30.make (yyvsc30)
+			yyvs30 := yyspecial_routines30.make_filled (({ET_AGENT_ARGUMENT_OPERAND_LIST}).default, yyvsc30)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs31")
 			end
 			create yyspecial_routines31
 			yyvsc31 := yyInitial_yyvs_size
-			yyvs31 := yyspecial_routines31.make (yyvsc31)
+			yyvs31 := yyspecial_routines31.make_filled (({ET_AGENT_TARGET}).default, yyvsc31)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs32")
 			end
 			create yyspecial_routines32
 			yyvsc32 := yyInitial_yyvs_size
-			yyvs32 := yyspecial_routines32.make (yyvsc32)
+			yyvs32 := yyspecial_routines32.make_filled (({ET_ALIAS_NAME}).default, yyvsc32)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs33")
 			end
 			create yyspecial_routines33
 			yyvsc33 := yyInitial_yyvs_size
-			yyvs33 := yyspecial_routines33.make (yyvsc33)
+			yyvs33 := yyspecial_routines33.make_filled (({ET_ASSIGNER}).default, yyvsc33)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs34")
 			end
 			create yyspecial_routines34
 			yyvsc34 := yyInitial_yyvs_size
-			yyvs34 := yyspecial_routines34.make (yyvsc34)
+			yyvs34 := yyspecial_routines34.make_filled (({ET_BRACKET_ARGUMENT_LIST}).default, yyvsc34)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs35")
 			end
 			create yyspecial_routines35
 			yyvsc35 := yyInitial_yyvs_size
-			yyvs35 := yyspecial_routines35.make (yyvsc35)
+			yyvs35 := yyspecial_routines35.make_filled (({ET_BRACKET_EXPRESSION}).default, yyvsc35)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs36")
 			end
 			create yyspecial_routines36
 			yyvsc36 := yyInitial_yyvs_size
-			yyvs36 := yyspecial_routines36.make (yyvsc36)
+			yyvs36 := yyspecial_routines36.make_filled (({ET_CALL_AGENT}).default, yyvsc36)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs37")
 			end
 			create yyspecial_routines37
 			yyvsc37 := yyInitial_yyvs_size
-			yyvs37 := yyspecial_routines37.make (yyvsc37)
+			yyvs37 := yyspecial_routines37.make_filled (({ET_CALL_EXPRESSION}).default, yyvsc37)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs38")
 			end
 			create yyspecial_routines38
 			yyvsc38 := yyInitial_yyvs_size
-			yyvs38 := yyspecial_routines38.make (yyvsc38)
+			yyvs38 := yyspecial_routines38.make_filled (({ET_CHOICE}).default, yyvsc38)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs39")
 			end
 			create yyspecial_routines39
 			yyvsc39 := yyInitial_yyvs_size
-			yyvs39 := yyspecial_routines39.make (yyvsc39)
+			yyvs39 := yyspecial_routines39.make_filled (({ET_CHOICE_CONSTANT}).default, yyvsc39)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs40")
 			end
 			create yyspecial_routines40
 			yyvsc40 := yyInitial_yyvs_size
-			yyvs40 := yyspecial_routines40.make (yyvsc40)
+			yyvs40 := yyspecial_routines40.make_filled (({ET_CHOICE_ITEM}).default, yyvsc40)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs41")
 			end
 			create yyspecial_routines41
 			yyvsc41 := yyInitial_yyvs_size
-			yyvs41 := yyspecial_routines41.make (yyvsc41)
+			yyvs41 := yyspecial_routines41.make_filled (({ET_CHOICE_LIST}).default, yyvsc41)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs42")
 			end
 			create yyspecial_routines42
 			yyvsc42 := yyInitial_yyvs_size
-			yyvs42 := yyspecial_routines42.make (yyvsc42)
+			yyvs42 := yyspecial_routines42.make_filled (({ET_CLASS}).default, yyvsc42)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs43")
 			end
 			create yyspecial_routines43
 			yyvsc43 := yyInitial_yyvs_size
-			yyvs43 := yyspecial_routines43.make (yyvsc43)
+			yyvs43 := yyspecial_routines43.make_filled (({ET_CLIENT_ITEM}).default, yyvsc43)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs44")
 			end
 			create yyspecial_routines44
 			yyvsc44 := yyInitial_yyvs_size
-			yyvs44 := yyspecial_routines44.make (yyvsc44)
+			yyvs44 := yyspecial_routines44.make_filled (({ET_CLIENTS}).default, yyvsc44)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs45")
 			end
 			create yyspecial_routines45
 			yyvsc45 := yyInitial_yyvs_size
-			yyvs45 := yyspecial_routines45.make (yyvsc45)
+			yyvs45 := yyspecial_routines45.make_filled (({ET_COMPOUND}).default, yyvsc45)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs46")
 			end
 			create yyspecial_routines46
 			yyvsc46 := yyInitial_yyvs_size
-			yyvs46 := yyspecial_routines46.make (yyvsc46)
+			yyvs46 := yyspecial_routines46.make_filled (({ET_CONSTANT}).default, yyvsc46)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs47")
 			end
 			create yyspecial_routines47
 			yyvsc47 := yyInitial_yyvs_size
-			yyvs47 := yyspecial_routines47.make (yyvsc47)
+			yyvs47 := yyspecial_routines47.make_filled (({ET_CONSTRAINT_ACTUAL_PARAMETER_ITEM}).default, yyvsc47)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs48")
 			end
 			create yyspecial_routines48
 			yyvsc48 := yyInitial_yyvs_size
-			yyvs48 := yyspecial_routines48.make (yyvsc48)
+			yyvs48 := yyspecial_routines48.make_filled (({ET_CONSTRAINT_ACTUAL_PARAMETER_LIST}).default, yyvsc48)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs49")
 			end
 			create yyspecial_routines49
 			yyvsc49 := yyInitial_yyvs_size
-			yyvs49 := yyspecial_routines49.make (yyvsc49)
+			yyvs49 := yyspecial_routines49.make_filled (({ET_CONSTRAINT_CREATOR}).default, yyvsc49)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs50")
 			end
 			create yyspecial_routines50
 			yyvsc50 := yyInitial_yyvs_size
-			yyvs50 := yyspecial_routines50.make (yyvsc50)
+			yyvs50 := yyspecial_routines50.make_filled (({ET_CONSTRAINT_TYPE}).default, yyvsc50)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs51")
 			end
 			create yyspecial_routines51
 			yyvsc51 := yyInitial_yyvs_size
-			yyvs51 := yyspecial_routines51.make (yyvsc51)
+			yyvs51 := yyspecial_routines51.make_filled (({ET_CONVERT_FEATURE}).default, yyvsc51)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs52")
 			end
 			create yyspecial_routines52
 			yyvsc52 := yyInitial_yyvs_size
-			yyvs52 := yyspecial_routines52.make (yyvsc52)
+			yyvs52 := yyspecial_routines52.make_filled (({ET_CONVERT_FEATURE_ITEM}).default, yyvsc52)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs53")
 			end
 			create yyspecial_routines53
 			yyvsc53 := yyInitial_yyvs_size
-			yyvs53 := yyspecial_routines53.make (yyvsc53)
+			yyvs53 := yyspecial_routines53.make_filled (({ET_CONVERT_FEATURE_LIST}).default, yyvsc53)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs54")
 			end
 			create yyspecial_routines54
 			yyvsc54 := yyInitial_yyvs_size
-			yyvs54 := yyspecial_routines54.make (yyvsc54)
+			yyvs54 := yyspecial_routines54.make_filled (({ET_CREATE_EXPRESSION}).default, yyvsc54)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs55")
 			end
 			create yyspecial_routines55
 			yyvsc55 := yyInitial_yyvs_size
-			yyvs55 := yyspecial_routines55.make (yyvsc55)
+			yyvs55 := yyspecial_routines55.make_filled (({ET_CREATOR}).default, yyvsc55)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs56")
 			end
 			create yyspecial_routines56
 			yyvsc56 := yyInitial_yyvs_size
-			yyvs56 := yyspecial_routines56.make (yyvsc56)
+			yyvs56 := yyspecial_routines56.make_filled (({ET_CREATOR_LIST}).default, yyvsc56)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs57")
 			end
 			create yyspecial_routines57
 			yyvsc57 := yyInitial_yyvs_size
-			yyvs57 := yyspecial_routines57.make (yyvsc57)
+			yyvs57 := yyspecial_routines57.make_filled (({ET_DEBUG_INSTRUCTION}).default, yyvsc57)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs58")
 			end
 			create yyspecial_routines58
 			yyvsc58 := yyInitial_yyvs_size
-			yyvs58 := yyspecial_routines58.make (yyvsc58)
+			yyvs58 := yyspecial_routines58.make_filled (({ET_ELSEIF_PART}).default, yyvsc58)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs59")
 			end
 			create yyspecial_routines59
 			yyvsc59 := yyInitial_yyvs_size
-			yyvs59 := yyspecial_routines59.make (yyvsc59)
+			yyvs59 := yyspecial_routines59.make_filled (({ET_ELSEIF_PART_LIST}).default, yyvsc59)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs60")
 			end
 			create yyspecial_routines60
 			yyvsc60 := yyInitial_yyvs_size
-			yyvs60 := yyspecial_routines60.make (yyvsc60)
+			yyvs60 := yyspecial_routines60.make_filled (({ET_EXPORT}).default, yyvsc60)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs61")
 			end
 			create yyspecial_routines61
 			yyvsc61 := yyInitial_yyvs_size
-			yyvs61 := yyspecial_routines61.make (yyvsc61)
+			yyvs61 := yyspecial_routines61.make_filled (({ET_EXPORT_LIST}).default, yyvsc61)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs62")
 			end
 			create yyspecial_routines62
 			yyvsc62 := yyInitial_yyvs_size
-			yyvs62 := yyspecial_routines62.make (yyvsc62)
+			yyvs62 := yyspecial_routines62.make_filled (({ET_EXPRESSION}).default, yyvsc62)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs63")
 			end
 			create yyspecial_routines63
 			yyvsc63 := yyInitial_yyvs_size
-			yyvs63 := yyspecial_routines63.make (yyvsc63)
+			yyvs63 := yyspecial_routines63.make_filled (({ET_EXPRESSION_ITEM}).default, yyvsc63)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs64")
 			end
 			create yyspecial_routines64
 			yyvsc64 := yyInitial_yyvs_size
-			yyvs64 := yyspecial_routines64.make (yyvsc64)
+			yyvs64 := yyspecial_routines64.make_filled (({ET_EXTENDED_FEATURE_NAME}).default, yyvsc64)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs65")
 			end
 			create yyspecial_routines65
 			yyvsc65 := yyInitial_yyvs_size
-			yyvs65 := yyspecial_routines65.make (yyvsc65)
+			yyvs65 := yyspecial_routines65.make_filled (({ET_EXTERNAL_ALIAS}).default, yyvsc65)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs66")
 			end
 			create yyspecial_routines66
 			yyvsc66 := yyInitial_yyvs_size
-			yyvs66 := yyspecial_routines66.make (yyvsc66)
+			yyvs66 := yyspecial_routines66.make_filled (({ET_FEATURE_CLAUSE}).default, yyvsc66)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs67")
 			end
 			create yyspecial_routines67
 			yyvsc67 := yyInitial_yyvs_size
-			yyvs67 := yyspecial_routines67.make (yyvsc67)
+			yyvs67 := yyspecial_routines67.make_filled (({ET_FEATURE_CLAUSE_LIST}).default, yyvsc67)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs68")
 			end
 			create yyspecial_routines68
 			yyvsc68 := yyInitial_yyvs_size
-			yyvs68 := yyspecial_routines68.make (yyvsc68)
+			yyvs68 := yyspecial_routines68.make_filled (({ET_FEATURE_EXPORT}).default, yyvsc68)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs69")
 			end
 			create yyspecial_routines69
 			yyvsc69 := yyInitial_yyvs_size
-			yyvs69 := yyspecial_routines69.make (yyvsc69)
+			yyvs69 := yyspecial_routines69.make_filled (({ET_FEATURE_NAME}).default, yyvsc69)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs70")
 			end
 			create yyspecial_routines70
 			yyvsc70 := yyInitial_yyvs_size
-			yyvs70 := yyspecial_routines70.make (yyvsc70)
+			yyvs70 := yyspecial_routines70.make_filled (({ET_FEATURE_NAME_ITEM}).default, yyvsc70)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs71")
 			end
 			create yyspecial_routines71
 			yyvsc71 := yyInitial_yyvs_size
-			yyvs71 := yyspecial_routines71.make (yyvsc71)
+			yyvs71 := yyspecial_routines71.make_filled (({ET_FORMAL_ARGUMENT}).default, yyvsc71)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs72")
 			end
 			create yyspecial_routines72
 			yyvsc72 := yyInitial_yyvs_size
-			yyvs72 := yyspecial_routines72.make (yyvsc72)
+			yyvs72 := yyspecial_routines72.make_filled (({ET_FORMAL_ARGUMENT_ITEM}).default, yyvsc72)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs73")
 			end
 			create yyspecial_routines73
 			yyvsc73 := yyInitial_yyvs_size
-			yyvs73 := yyspecial_routines73.make (yyvsc73)
+			yyvs73 := yyspecial_routines73.make_filled (({ET_FORMAL_ARGUMENT_LIST}).default, yyvsc73)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs74")
 			end
 			create yyspecial_routines74
 			yyvsc74 := yyInitial_yyvs_size
-			yyvs74 := yyspecial_routines74.make (yyvsc74)
+			yyvs74 := yyspecial_routines74.make_filled (({ET_FORMAL_PARAMETER}).default, yyvsc74)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs75")
 			end
 			create yyspecial_routines75
 			yyvsc75 := yyInitial_yyvs_size
-			yyvs75 := yyspecial_routines75.make (yyvsc75)
+			yyvs75 := yyspecial_routines75.make_filled (({ET_FORMAL_PARAMETER_ITEM}).default, yyvsc75)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs76")
 			end
 			create yyspecial_routines76
 			yyvsc76 := yyInitial_yyvs_size
-			yyvs76 := yyspecial_routines76.make (yyvsc76)
+			yyvs76 := yyspecial_routines76.make_filled (({ET_FORMAL_PARAMETER_LIST}).default, yyvsc76)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs77")
 			end
 			create yyspecial_routines77
 			yyvsc77 := yyInitial_yyvs_size
-			yyvs77 := yyspecial_routines77.make (yyvsc77)
+			yyvs77 := yyspecial_routines77.make_filled (({ET_IF_INSTRUCTION}).default, yyvsc77)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs78")
 			end
 			create yyspecial_routines78
 			yyvsc78 := yyInitial_yyvs_size
-			yyvs78 := yyspecial_routines78.make (yyvsc78)
+			yyvs78 := yyspecial_routines78.make_filled (({ET_INDEXING_LIST}).default, yyvsc78)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs79")
 			end
 			create yyspecial_routines79
 			yyvsc79 := yyInitial_yyvs_size
-			yyvs79 := yyspecial_routines79.make (yyvsc79)
+			yyvs79 := yyspecial_routines79.make_filled (({ET_INDEXING_ITEM}).default, yyvsc79)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs80")
 			end
 			create yyspecial_routines80
 			yyvsc80 := yyInitial_yyvs_size
-			yyvs80 := yyspecial_routines80.make (yyvsc80)
+			yyvs80 := yyspecial_routines80.make_filled (({ET_INDEXING_TERM}).default, yyvsc80)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs81")
 			end
 			create yyspecial_routines81
 			yyvsc81 := yyInitial_yyvs_size
-			yyvs81 := yyspecial_routines81.make (yyvsc81)
+			yyvs81 := yyspecial_routines81.make_filled (({ET_INDEXING_TERM_ITEM}).default, yyvsc81)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs82")
 			end
 			create yyspecial_routines82
 			yyvsc82 := yyInitial_yyvs_size
-			yyvs82 := yyspecial_routines82.make (yyvsc82)
+			yyvs82 := yyspecial_routines82.make_filled (({ET_INDEXING_TERM_LIST}).default, yyvsc82)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs83")
 			end
 			create yyspecial_routines83
 			yyvsc83 := yyInitial_yyvs_size
-			yyvs83 := yyspecial_routines83.make (yyvsc83)
+			yyvs83 := yyspecial_routines83.make_filled (({ET_INLINE_AGENT}).default, yyvsc83)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs84")
 			end
 			create yyspecial_routines84
 			yyvsc84 := yyInitial_yyvs_size
-			yyvs84 := yyspecial_routines84.make (yyvsc84)
+			yyvs84 := yyspecial_routines84.make_filled (({ET_INSPECT_INSTRUCTION}).default, yyvsc84)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs85")
 			end
 			create yyspecial_routines85
 			yyvsc85 := yyInitial_yyvs_size
-			yyvs85 := yyspecial_routines85.make (yyvsc85)
+			yyvs85 := yyspecial_routines85.make_filled (({ET_INSTRUCTION}).default, yyvsc85)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs86")
 			end
 			create yyspecial_routines86
 			yyvsc86 := yyInitial_yyvs_size
-			yyvs86 := yyspecial_routines86.make (yyvsc86)
+			yyvs86 := yyspecial_routines86.make_filled (({ET_INVARIANTS}).default, yyvsc86)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs87")
 			end
 			create yyspecial_routines87
 			yyvsc87 := yyInitial_yyvs_size
-			yyvs87 := yyspecial_routines87.make (yyvsc87)
+			yyvs87 := yyspecial_routines87.make_filled (({ET_KEYWORD_FEATURE_NAME_LIST}).default, yyvsc87)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs88")
 			end
 			create yyspecial_routines88
 			yyvsc88 := yyInitial_yyvs_size
-			yyvs88 := yyspecial_routines88.make (yyvsc88)
+			yyvs88 := yyspecial_routines88.make_filled (({ET_LIKE_TYPE}).default, yyvsc88)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs89")
 			end
 			create yyspecial_routines89
 			yyvsc89 := yyInitial_yyvs_size
-			yyvs89 := yyspecial_routines89.make (yyvsc89)
+			yyvs89 := yyspecial_routines89.make_filled (({ET_LOCAL_VARIABLE}).default, yyvsc89)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs90")
 			end
 			create yyspecial_routines90
 			yyvsc90 := yyInitial_yyvs_size
-			yyvs90 := yyspecial_routines90.make (yyvsc90)
+			yyvs90 := yyspecial_routines90.make_filled (({ET_LOCAL_VARIABLE_ITEM}).default, yyvsc90)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs91")
 			end
 			create yyspecial_routines91
 			yyvsc91 := yyInitial_yyvs_size
-			yyvs91 := yyspecial_routines91.make (yyvsc91)
+			yyvs91 := yyspecial_routines91.make_filled (({ET_LOCAL_VARIABLE_LIST}).default, yyvsc91)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs92")
 			end
 			create yyspecial_routines92
 			yyvsc92 := yyInitial_yyvs_size
-			yyvs92 := yyspecial_routines92.make (yyvsc92)
+			yyvs92 := yyspecial_routines92.make_filled (({ET_LOOP_INVARIANTS}).default, yyvsc92)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs93")
 			end
 			create yyspecial_routines93
 			yyvsc93 := yyInitial_yyvs_size
-			yyvs93 := yyspecial_routines93.make (yyvsc93)
+			yyvs93 := yyspecial_routines93.make_filled (({ET_MANIFEST_ARRAY}).default, yyvsc93)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs94")
 			end
 			create yyspecial_routines94
 			yyvsc94 := yyInitial_yyvs_size
-			yyvs94 := yyspecial_routines94.make (yyvsc94)
+			yyvs94 := yyspecial_routines94.make_filled (({ET_MANIFEST_STRING_ITEM}).default, yyvsc94)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs95")
 			end
 			create yyspecial_routines95
 			yyvsc95 := yyInitial_yyvs_size
-			yyvs95 := yyspecial_routines95.make (yyvsc95)
+			yyvs95 := yyspecial_routines95.make_filled (({ET_MANIFEST_STRING_LIST}).default, yyvsc95)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs96")
 			end
 			create yyspecial_routines96
 			yyvsc96 := yyInitial_yyvs_size
-			yyvs96 := yyspecial_routines96.make (yyvsc96)
+			yyvs96 := yyspecial_routines96.make_filled (({ET_MANIFEST_TUPLE}).default, yyvsc96)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs97")
 			end
 			create yyspecial_routines97
 			yyvsc97 := yyInitial_yyvs_size
-			yyvs97 := yyspecial_routines97.make (yyvsc97)
+			yyvs97 := yyspecial_routines97.make_filled (({ET_OBJECT_TEST_LIST}).default, yyvsc97)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs98")
 			end
 			create yyspecial_routines98
 			yyvsc98 := yyInitial_yyvs_size
-			yyvs98 := yyspecial_routines98.make (yyvsc98)
+			yyvs98 := yyspecial_routines98.make_filled (({ET_OBSOLETE}).default, yyvsc98)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs99")
 			end
 			create yyspecial_routines99
 			yyvsc99 := yyInitial_yyvs_size
-			yyvs99 := yyspecial_routines99.make (yyvsc99)
+			yyvs99 := yyspecial_routines99.make_filled (({ET_PARENTHESIZED_EXPRESSION}).default, yyvsc99)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs100")
 			end
 			create yyspecial_routines100
 			yyvsc100 := yyInitial_yyvs_size
-			yyvs100 := yyspecial_routines100.make (yyvsc100)
+			yyvs100 := yyspecial_routines100.make_filled (({ET_PARENT}).default, yyvsc100)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs101")
 			end
 			create yyspecial_routines101
 			yyvsc101 := yyInitial_yyvs_size
-			yyvs101 := yyspecial_routines101.make (yyvsc101)
+			yyvs101 := yyspecial_routines101.make_filled (({ET_PARENT_ITEM}).default, yyvsc101)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs102")
 			end
 			create yyspecial_routines102
 			yyvsc102 := yyInitial_yyvs_size
-			yyvs102 := yyspecial_routines102.make (yyvsc102)
+			yyvs102 := yyspecial_routines102.make_filled (({ET_PARENT_LIST}).default, yyvsc102)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs103")
 			end
 			create yyspecial_routines103
 			yyvsc103 := yyInitial_yyvs_size
-			yyvs103 := yyspecial_routines103.make (yyvsc103)
+			yyvs103 := yyspecial_routines103.make_filled (({ET_POSTCONDITIONS}).default, yyvsc103)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs104")
 			end
 			create yyspecial_routines104
 			yyvsc104 := yyInitial_yyvs_size
-			yyvs104 := yyspecial_routines104.make (yyvsc104)
+			yyvs104 := yyspecial_routines104.make_filled (({ET_PRECONDITIONS}).default, yyvsc104)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs105")
 			end
 			create yyspecial_routines105
 			yyvsc105 := yyInitial_yyvs_size
-			yyvs105 := yyspecial_routines105.make (yyvsc105)
+			yyvs105 := yyspecial_routines105.make_filled (({ET_PROCEDURE}).default, yyvsc105)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs106")
 			end
 			create yyspecial_routines106
 			yyvsc106 := yyInitial_yyvs_size
-			yyvs106 := yyspecial_routines106.make (yyvsc106)
+			yyvs106 := yyspecial_routines106.make_filled (({ET_QUALIFIED_LIKE_IDENTIFIER}).default, yyvsc106)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs107")
 			end
 			create yyspecial_routines107
 			yyvsc107 := yyInitial_yyvs_size
-			yyvs107 := yyspecial_routines107.make (yyvsc107)
+			yyvs107 := yyspecial_routines107.make_filled (({ET_QUERY}).default, yyvsc107)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs108")
 			end
 			create yyspecial_routines108
 			yyvsc108 := yyInitial_yyvs_size
-			yyvs108 := yyspecial_routines108.make (yyvsc108)
+			yyvs108 := yyspecial_routines108.make_filled (({ET_RENAME_ITEM}).default, yyvsc108)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs109")
 			end
 			create yyspecial_routines109
 			yyvsc109 := yyInitial_yyvs_size
-			yyvs109 := yyspecial_routines109.make (yyvsc109)
+			yyvs109 := yyspecial_routines109.make_filled (({ET_RENAME_LIST}).default, yyvsc109)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs110")
 			end
 			create yyspecial_routines110
 			yyvsc110 := yyInitial_yyvs_size
-			yyvs110 := yyspecial_routines110.make (yyvsc110)
+			yyvs110 := yyspecial_routines110.make_filled (({ET_STATIC_CALL_EXPRESSION}).default, yyvsc110)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs111")
 			end
 			create yyspecial_routines111
 			yyvsc111 := yyInitial_yyvs_size
-			yyvs111 := yyspecial_routines111.make (yyvsc111)
+			yyvs111 := yyspecial_routines111.make_filled (({ET_STRIP_EXPRESSION}).default, yyvsc111)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs112")
 			end
 			create yyspecial_routines112
 			yyvsc112 := yyInitial_yyvs_size
-			yyvs112 := yyspecial_routines112.make (yyvsc112)
+			yyvs112 := yyspecial_routines112.make_filled (({ET_TYPE}).default, yyvsc112)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs113")
 			end
 			create yyspecial_routines113
 			yyvsc113 := yyInitial_yyvs_size
-			yyvs113 := yyspecial_routines113.make (yyvsc113)
+			yyvs113 := yyspecial_routines113.make_filled (({ET_TYPE_ITEM}).default, yyvsc113)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs114")
 			end
 			create yyspecial_routines114
 			yyvsc114 := yyInitial_yyvs_size
-			yyvs114 := yyspecial_routines114.make (yyvsc114)
+			yyvs114 := yyspecial_routines114.make_filled (({ET_TYPE_LIST}).default, yyvsc114)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs115")
 			end
 			create yyspecial_routines115
 			yyvsc115 := yyInitial_yyvs_size
-			yyvs115 := yyspecial_routines115.make (yyvsc115)
+			yyvs115 := yyspecial_routines115.make_filled (({ET_VARIANT}).default, yyvsc115)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs116")
 			end
 			create yyspecial_routines116
 			yyvsc116 := yyInitial_yyvs_size
-			yyvs116 := yyspecial_routines116.make (yyvsc116)
+			yyvs116 := yyspecial_routines116.make_filled (({ET_WHEN_PART}).default, yyvsc116)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs117")
 			end
 			create yyspecial_routines117
 			yyvsc117 := yyInitial_yyvs_size
-			yyvs117 := yyspecial_routines117.make (yyvsc117)
+			yyvs117 := yyspecial_routines117.make_filled (({ET_WHEN_PART_LIST}).default, yyvsc117)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs118")
 			end
 			create yyspecial_routines118
 			yyvsc118 := yyInitial_yyvs_size
-			yyvs118 := yyspecial_routines118.make (yyvsc118)
+			yyvs118 := yyspecial_routines118.make_filled (({ET_WRITABLE}).default, yyvsc118)
 		end
 
 	yy_init_value_stacks is
@@ -1142,9 +1142,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs1")
 					end
 					yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-					yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+					yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 				end
-				yyvs1.force (last_any_value, yyvsp1)
+				yyvs1.put (last_any_value, yyvsp1)
 			when 2 then
 				yyvsp2 := yyvsp2 + 1
 				if yyvsp2 >= yyvsc2 then
@@ -1152,9 +1152,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs2")
 					end
 					yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-					yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+					yyvs2 := yyspecial_routines2.resize_with_default (({ET_KEYWORD}).default, yyvs2, yyvsc2)
 				end
-				yyvs2.force (last_et_keyword_value, yyvsp2)
+				yyvs2.put (last_et_keyword_value, yyvsp2)
 			when 3 then
 				yyvsp3 := yyvsp3 + 1
 				if yyvsp3 >= yyvsc3 then
@@ -1162,9 +1162,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs3")
 					end
 					yyvsc3 := yyvsc3 + yyInitial_yyvs_size
-					yyvs3 := yyspecial_routines3.resize (yyvs3, yyvsc3)
+					yyvs3 := yyspecial_routines3.resize_with_default (({ET_AGENT_KEYWORD}).default, yyvs3, yyvsc3)
 				end
-				yyvs3.force (last_et_agent_keyword_value, yyvsp3)
+				yyvs3.put (last_et_agent_keyword_value, yyvsp3)
 			when 4 then
 				yyvsp4 := yyvsp4 + 1
 				if yyvsp4 >= yyvsc4 then
@@ -1172,9 +1172,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs4")
 					end
 					yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-					yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+					yyvs4 := yyspecial_routines4.resize_with_default (({ET_PRECURSOR_KEYWORD}).default, yyvs4, yyvsc4)
 				end
-				yyvs4.force (last_et_precursor_keyword_value, yyvsp4)
+				yyvs4.put (last_et_precursor_keyword_value, yyvsp4)
 			when 5 then
 				yyvsp5 := yyvsp5 + 1
 				if yyvsp5 >= yyvsc5 then
@@ -1182,9 +1182,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs5")
 					end
 					yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-					yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+					yyvs5 := yyspecial_routines5.resize_with_default (({ET_SYMBOL}).default, yyvs5, yyvsc5)
 				end
-				yyvs5.force (last_et_symbol_value, yyvsp5)
+				yyvs5.put (last_et_symbol_value, yyvsp5)
 			when 6 then
 				yyvsp6 := yyvsp6 + 1
 				if yyvsp6 >= yyvsc6 then
@@ -1192,9 +1192,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs6")
 					end
 					yyvsc6 := yyvsc6 + yyInitial_yyvs_size
-					yyvs6 := yyspecial_routines6.resize (yyvs6, yyvsc6)
+					yyvs6 := yyspecial_routines6.resize_with_default (({ET_POSITION}).default, yyvs6, yyvsc6)
 				end
-				yyvs6.force (last_et_position_value, yyvsp6)
+				yyvs6.put (last_et_position_value, yyvsp6)
 			when 7 then
 				yyvsp7 := yyvsp7 + 1
 				if yyvsp7 >= yyvsc7 then
@@ -1202,9 +1202,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs7")
 					end
 					yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-					yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+					yyvs7 := yyspecial_routines7.resize_with_default (({ET_BIT_CONSTANT}).default, yyvs7, yyvsc7)
 				end
-				yyvs7.force (last_et_bit_constant_value, yyvsp7)
+				yyvs7.put (last_et_bit_constant_value, yyvsp7)
 			when 8 then
 				yyvsp8 := yyvsp8 + 1
 				if yyvsp8 >= yyvsc8 then
@@ -1212,9 +1212,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs8")
 					end
 					yyvsc8 := yyvsc8 + yyInitial_yyvs_size
-					yyvs8 := yyspecial_routines8.resize (yyvs8, yyvsc8)
+					yyvs8 := yyspecial_routines8.resize_with_default (({ET_BOOLEAN_CONSTANT}).default, yyvs8, yyvsc8)
 				end
-				yyvs8.force (last_et_boolean_constant_value, yyvsp8)
+				yyvs8.put (last_et_boolean_constant_value, yyvsp8)
 			when 9 then
 				yyvsp9 := yyvsp9 + 1
 				if yyvsp9 >= yyvsc9 then
@@ -1222,9 +1222,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs9")
 					end
 					yyvsc9 := yyvsc9 + yyInitial_yyvs_size
-					yyvs9 := yyspecial_routines9.resize (yyvs9, yyvsc9)
+					yyvs9 := yyspecial_routines9.resize_with_default (({ET_BREAK}).default, yyvs9, yyvsc9)
 				end
-				yyvs9.force (last_et_break_value, yyvsp9)
+				yyvs9.put (last_et_break_value, yyvsp9)
 			when 10 then
 				yyvsp10 := yyvsp10 + 1
 				if yyvsp10 >= yyvsc10 then
@@ -1232,9 +1232,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs10")
 					end
 					yyvsc10 := yyvsc10 + yyInitial_yyvs_size
-					yyvs10 := yyspecial_routines10.resize (yyvs10, yyvsc10)
+					yyvs10 := yyspecial_routines10.resize_with_default (({ET_CHARACTER_CONSTANT}).default, yyvs10, yyvsc10)
 				end
-				yyvs10.force (last_et_character_constant_value, yyvsp10)
+				yyvs10.put (last_et_character_constant_value, yyvsp10)
 			when 11 then
 				yyvsp11 := yyvsp11 + 1
 				if yyvsp11 >= yyvsc11 then
@@ -1242,9 +1242,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs11")
 					end
 					yyvsc11 := yyvsc11 + yyInitial_yyvs_size
-					yyvs11 := yyspecial_routines11.resize (yyvs11, yyvsc11)
+					yyvs11 := yyspecial_routines11.resize_with_default (({ET_CURRENT}).default, yyvs11, yyvsc11)
 				end
-				yyvs11.force (last_et_current_value, yyvsp11)
+				yyvs11.put (last_et_current_value, yyvsp11)
 			when 12 then
 				yyvsp12 := yyvsp12 + 1
 				if yyvsp12 >= yyvsc12 then
@@ -1252,9 +1252,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs12")
 					end
 					yyvsc12 := yyvsc12 + yyInitial_yyvs_size
-					yyvs12 := yyspecial_routines12.resize (yyvs12, yyvsc12)
+					yyvs12 := yyspecial_routines12.resize_with_default (({ET_FREE_OPERATOR}).default, yyvs12, yyvsc12)
 				end
-				yyvs12.force (last_et_free_operator_value, yyvsp12)
+				yyvs12.put (last_et_free_operator_value, yyvsp12)
 			when 13 then
 				yyvsp13 := yyvsp13 + 1
 				if yyvsp13 >= yyvsc13 then
@@ -1262,9 +1262,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs13")
 					end
 					yyvsc13 := yyvsc13 + yyInitial_yyvs_size
-					yyvs13 := yyspecial_routines13.resize (yyvs13, yyvsc13)
+					yyvs13 := yyspecial_routines13.resize_with_default (({ET_IDENTIFIER}).default, yyvs13, yyvsc13)
 				end
-				yyvs13.force (last_et_identifier_value, yyvsp13)
+				yyvs13.put (last_et_identifier_value, yyvsp13)
 			when 14 then
 				yyvsp14 := yyvsp14 + 1
 				if yyvsp14 >= yyvsc14 then
@@ -1272,9 +1272,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs14")
 					end
 					yyvsc14 := yyvsc14 + yyInitial_yyvs_size
-					yyvs14 := yyspecial_routines14.resize (yyvs14, yyvsc14)
+					yyvs14 := yyspecial_routines14.resize_with_default (({ET_INTEGER_CONSTANT}).default, yyvs14, yyvsc14)
 				end
-				yyvs14.force (last_et_integer_constant_value, yyvsp14)
+				yyvs14.put (last_et_integer_constant_value, yyvsp14)
 			when 15 then
 				yyvsp15 := yyvsp15 + 1
 				if yyvsp15 >= yyvsc15 then
@@ -1282,9 +1282,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs15")
 					end
 					yyvsc15 := yyvsc15 + yyInitial_yyvs_size
-					yyvs15 := yyspecial_routines15.resize (yyvs15, yyvsc15)
+					yyvs15 := yyspecial_routines15.resize_with_default (({ET_KEYWORD_OPERATOR}).default, yyvs15, yyvsc15)
 				end
-				yyvs15.force (last_et_keyword_operator_value, yyvsp15)
+				yyvs15.put (last_et_keyword_operator_value, yyvsp15)
 			when 16 then
 				yyvsp16 := yyvsp16 + 1
 				if yyvsp16 >= yyvsc16 then
@@ -1292,9 +1292,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs16")
 					end
 					yyvsc16 := yyvsc16 + yyInitial_yyvs_size
-					yyvs16 := yyspecial_routines16.resize (yyvs16, yyvsc16)
+					yyvs16 := yyspecial_routines16.resize_with_default (({ET_MANIFEST_STRING}).default, yyvs16, yyvsc16)
 				end
-				yyvs16.force (last_et_manifest_string_value, yyvsp16)
+				yyvs16.put (last_et_manifest_string_value, yyvsp16)
 			when 17 then
 				yyvsp17 := yyvsp17 + 1
 				if yyvsp17 >= yyvsc17 then
@@ -1302,9 +1302,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs17")
 					end
 					yyvsc17 := yyvsc17 + yyInitial_yyvs_size
-					yyvs17 := yyspecial_routines17.resize (yyvs17, yyvsc17)
+					yyvs17 := yyspecial_routines17.resize_with_default (({ET_REAL_CONSTANT}).default, yyvs17, yyvsc17)
 				end
-				yyvs17.force (last_et_real_constant_value, yyvsp17)
+				yyvs17.put (last_et_real_constant_value, yyvsp17)
 			when 18 then
 				yyvsp18 := yyvsp18 + 1
 				if yyvsp18 >= yyvsc18 then
@@ -1312,9 +1312,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs18")
 					end
 					yyvsc18 := yyvsc18 + yyInitial_yyvs_size
-					yyvs18 := yyspecial_routines18.resize (yyvs18, yyvsc18)
+					yyvs18 := yyspecial_routines18.resize_with_default (({ET_RESULT}).default, yyvs18, yyvsc18)
 				end
-				yyvs18.force (last_et_result_value, yyvsp18)
+				yyvs18.put (last_et_result_value, yyvsp18)
 			when 19 then
 				yyvsp19 := yyvsp19 + 1
 				if yyvsp19 >= yyvsc19 then
@@ -1322,9 +1322,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs19")
 					end
 					yyvsc19 := yyvsc19 + yyInitial_yyvs_size
-					yyvs19 := yyspecial_routines19.resize (yyvs19, yyvsc19)
+					yyvs19 := yyspecial_routines19.resize_with_default (({ET_RETRY_INSTRUCTION}).default, yyvs19, yyvsc19)
 				end
-				yyvs19.force (last_et_retry_instruction_value, yyvsp19)
+				yyvs19.put (last_et_retry_instruction_value, yyvsp19)
 			when 20 then
 				yyvsp20 := yyvsp20 + 1
 				if yyvsp20 >= yyvsc20 then
@@ -1332,9 +1332,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs20")
 					end
 					yyvsc20 := yyvsc20 + yyInitial_yyvs_size
-					yyvs20 := yyspecial_routines20.resize (yyvs20, yyvsc20)
+					yyvs20 := yyspecial_routines20.resize_with_default (({ET_SYMBOL_OPERATOR}).default, yyvs20, yyvsc20)
 				end
-				yyvs20.force (last_et_symbol_operator_value, yyvsp20)
+				yyvs20.put (last_et_symbol_operator_value, yyvsp20)
 			when 21 then
 				yyvsp21 := yyvsp21 + 1
 				if yyvsp21 >= yyvsc21 then
@@ -1342,9 +1342,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs21")
 					end
 					yyvsc21 := yyvsc21 + yyInitial_yyvs_size
-					yyvs21 := yyspecial_routines21.resize (yyvs21, yyvsc21)
+					yyvs21 := yyspecial_routines21.resize_with_default (({ET_VOID}).default, yyvs21, yyvsc21)
 				end
-				yyvs21.force (last_et_void_value, yyvsp21)
+				yyvs21.put (last_et_void_value, yyvsp21)
 			when 22 then
 				yyvsp22 := yyvsp22 + 1
 				if yyvsp22 >= yyvsc22 then
@@ -1352,9 +1352,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs22")
 					end
 					yyvsc22 := yyvsc22 + yyInitial_yyvs_size
-					yyvs22 := yyspecial_routines22.resize (yyvs22, yyvsc22)
+					yyvs22 := yyspecial_routines22.resize_with_default (({ET_SEMICOLON_SYMBOL}).default, yyvs22, yyvsc22)
 				end
-				yyvs22.force (last_et_semicolon_symbol_value, yyvsp22)
+				yyvs22.put (last_et_semicolon_symbol_value, yyvsp22)
 			when 23 then
 				yyvsp23 := yyvsp23 + 1
 				if yyvsp23 >= yyvsc23 then
@@ -1362,9 +1362,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs23")
 					end
 					yyvsc23 := yyvsc23 + yyInitial_yyvs_size
-					yyvs23 := yyspecial_routines23.resize (yyvs23, yyvsc23)
+					yyvs23 := yyspecial_routines23.resize_with_default (({ET_BRACKET_SYMBOL}).default, yyvs23, yyvsc23)
 				end
-				yyvs23.force (last_et_bracket_symbol_value, yyvsp23)
+				yyvs23.put (last_et_bracket_symbol_value, yyvsp23)
 			when 24 then
 				yyvsp24 := yyvsp24 + 1
 				if yyvsp24 >= yyvsc24 then
@@ -1372,9 +1372,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs24")
 					end
 					yyvsc24 := yyvsc24 + yyInitial_yyvs_size
-					yyvs24 := yyspecial_routines24.resize (yyvs24, yyvsc24)
+					yyvs24 := yyspecial_routines24.resize_with_default (({ET_QUESTION_MARK_SYMBOL}).default, yyvs24, yyvsc24)
 				end
-				yyvs24.force (last_et_question_mark_symbol_value, yyvsp24)
+				yyvs24.put (last_et_question_mark_symbol_value, yyvsp24)
 			else
 				debug ("GEYACC")
 					std.error.put_string ("Error in parser: not a token type: ")
@@ -1397,9 +1397,9 @@ feature {NONE} -- Implementation
 					std.error.put_line ("Resize yyvs1")
 				end
 				yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-				yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+				yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 			end
-			yyvs1.force (yyval1, yyvsp1)
+			yyvs1.put (yyval1, yyvsp1)
 		end
 
 	yy_pop_last_value (yystate: INTEGER) is
@@ -4231,9 +4231,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -4261,9 +4261,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -4285,7 +4285,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp78 := yyvsp78 -1
-	yyvs42.force (yyval42, yyvsp42)
+	yyvs42.put (yyval42, yyvsp42)
 end
 		end
 
@@ -4308,9 +4308,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -4328,7 +4328,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp42 := yyvsp42 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -4356,9 +4356,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -4387,7 +4387,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp78 := yyvsp78 -1
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -2
-	yyvs42.force (yyval42, yyvsp42)
+	yyvs42.put (yyval42, yyvsp42)
 end
 		end
 
@@ -4416,7 +4416,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp78 := yyvsp78 -1
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -2
-	yyvs42.force (yyval42, yyvsp42)
+	yyvs42.put (yyval42, yyvsp42)
 end
 		end
 
@@ -4444,7 +4444,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp78 := yyvsp78 -1
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -2
-	yyvs42.force (yyval42, yyvsp42)
+	yyvs42.put (yyval42, yyvsp42)
 end
 		end
 
@@ -4471,7 +4471,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp78 := yyvsp78 -1
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -2
-	yyvs42.force (yyval42, yyvsp42)
+	yyvs42.put (yyval42, yyvsp42)
 end
 		end
 
@@ -4497,7 +4497,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp78 := yyvsp78 -1
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -2
-	yyvs42.force (yyval42, yyvsp42)
+	yyvs42.put (yyval42, yyvsp42)
 end
 		end
 
@@ -4525,7 +4525,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp102 := yyvsp102 -1
 	yyvsp78 := yyvsp78 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs42.force (yyval42, yyvsp42)
+	yyvs42.put (yyval42, yyvsp42)
 end
 		end
 
@@ -4553,9 +4553,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs42")
 		end
 		yyvsc42 := yyvsc42 + yyInitial_yyvs_size
-		yyvs42 := yyspecial_routines42.resize (yyvs42, yyvsc42)
+		yyvs42 := yyspecial_routines42.resize_with_default (({ET_CLASS}).default, yyvs42, yyvsc42)
 	end
-	yyvs42.force (yyval42, yyvsp42)
+	yyvs42.put (yyval42, yyvsp42)
 end
 		end
 
@@ -4580,7 +4580,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp78 := yyvsp78 -1
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -2
-	yyvs42.force (yyval42, yyvsp42)
+	yyvs42.put (yyval42, yyvsp42)
 end
 		end
 
@@ -4603,7 +4603,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp98 := yyvsp98 -1
 	yyvsp102 := yyvsp102 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs42.force (yyval42, yyvsp42)
+	yyvs42.put (yyval42, yyvsp42)
 end
 		end
 
@@ -4626,9 +4626,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -4652,9 +4652,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs78")
 		end
 		yyvsc78 := yyvsc78 + yyInitial_yyvs_size
-		yyvs78 := yyspecial_routines78.resize (yyvs78, yyvsc78)
+		yyvs78 := yyspecial_routines78.resize_with_default (({ET_INDEXING_LIST}).default, yyvs78, yyvsc78)
 	end
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -4676,7 +4676,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp78 := yyvsp78 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -4701,9 +4701,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs78")
 		end
 		yyvsc78 := yyvsc78 + yyInitial_yyvs_size
-		yyvs78 := yyspecial_routines78.resize (yyvs78, yyvsc78)
+		yyvs78 := yyspecial_routines78.resize_with_default (({ET_INDEXING_LIST}).default, yyvs78, yyvsc78)
 	end
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -4727,9 +4727,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs78")
 		end
 		yyvsc78 := yyvsc78 + yyInitial_yyvs_size
-		yyvs78 := yyspecial_routines78.resize (yyvs78, yyvsc78)
+		yyvs78 := yyspecial_routines78.resize_with_default (({ET_INDEXING_LIST}).default, yyvs78, yyvsc78)
 	end
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -4751,7 +4751,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp78 := yyvsp78 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -4776,9 +4776,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs78")
 		end
 		yyvsc78 := yyvsc78 + yyInitial_yyvs_size
-		yyvs78 := yyspecial_routines78.resize (yyvs78, yyvsc78)
+		yyvs78 := yyspecial_routines78.resize_with_default (({ET_INDEXING_LIST}).default, yyvs78, yyvsc78)
 	end
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -4801,9 +4801,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs78")
 		end
 		yyvsc78 := yyvsc78 + yyInitial_yyvs_size
-		yyvs78 := yyspecial_routines78.resize (yyvs78, yyvsc78)
+		yyvs78 := yyspecial_routines78.resize_with_default (({ET_INDEXING_LIST}).default, yyvs78, yyvsc78)
 	end
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -4820,7 +4820,7 @@ end
 yyval78 := yyvs78.item (yyvsp78) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -4852,9 +4852,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs78")
 		end
 		yyvsc78 := yyvsc78 + yyInitial_yyvs_size
-		yyvs78 := yyspecial_routines78.resize (yyvs78, yyvsc78)
+		yyvs78 := yyspecial_routines78.resize_with_default (({ET_INDEXING_LIST}).default, yyvs78, yyvsc78)
 	end
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -4877,7 +4877,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp78 := yyvsp78 -1
 	yyvsp79 := yyvsp79 -1
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -4900,9 +4900,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs78")
 		end
 		yyvsc78 := yyvsc78 + yyInitial_yyvs_size
-		yyvs78 := yyspecial_routines78.resize (yyvs78, yyvsc78)
+		yyvs78 := yyspecial_routines78.resize_with_default (({ET_INDEXING_LIST}).default, yyvs78, yyvsc78)
 	end
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -4925,7 +4925,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp78 := yyvsp78 -1
 	yyvsp79 := yyvsp79 -1
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -4948,9 +4948,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs78")
 		end
 		yyvsc78 := yyvsc78 + yyInitial_yyvs_size
-		yyvs78 := yyspecial_routines78.resize (yyvs78, yyvsc78)
+		yyvs78 := yyspecial_routines78.resize_with_default (({ET_INDEXING_LIST}).default, yyvs78, yyvsc78)
 	end
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -4970,7 +4970,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs79.force (yyval79, yyvsp79)
+	yyvs79.put (yyval79, yyvsp79)
 end
 		end
 
@@ -4997,9 +4997,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs79")
 		end
 		yyvsc79 := yyvsc79 + yyInitial_yyvs_size
-		yyvs79 := yyspecial_routines79.resize (yyvs79, yyvsc79)
+		yyvs79 := yyspecial_routines79.resize_with_default (({ET_INDEXING_ITEM}).default, yyvs79, yyvsc79)
 	end
-	yyvs79.force (yyval79, yyvsp79)
+	yyvs79.put (yyval79, yyvsp79)
 end
 		end
 
@@ -5017,7 +5017,7 @@ yyval79 := ast_factory.new_indexing_semicolon (yyvs79.item (yyvsp79), yyvs22.ite
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp22 := yyvsp22 -1
-	yyvs79.force (yyval79, yyvsp79)
+	yyvs79.put (yyval79, yyvsp79)
 end
 		end
 
@@ -5049,9 +5049,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs78")
 		end
 		yyvsc78 := yyvsc78 + yyInitial_yyvs_size
-		yyvs78 := yyspecial_routines78.resize (yyvs78, yyvsc78)
+		yyvs78 := yyspecial_routines78.resize_with_default (({ET_INDEXING_LIST}).default, yyvs78, yyvsc78)
 	end
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -5083,9 +5083,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs78")
 		end
 		yyvsc78 := yyvsc78 + yyInitial_yyvs_size
-		yyvs78 := yyspecial_routines78.resize (yyvs78, yyvsc78)
+		yyvs78 := yyspecial_routines78.resize_with_default (({ET_INDEXING_LIST}).default, yyvs78, yyvsc78)
 	end
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -5108,7 +5108,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp78 := yyvsp78 -1
 	yyvsp79 := yyvsp79 -1
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -5131,9 +5131,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs78")
 		end
 		yyvsc78 := yyvsc78 + yyInitial_yyvs_size
-		yyvs78 := yyspecial_routines78.resize (yyvs78, yyvsc78)
+		yyvs78 := yyspecial_routines78.resize_with_default (({ET_INDEXING_LIST}).default, yyvs78, yyvsc78)
 	end
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -5156,7 +5156,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp78 := yyvsp78 -1
 	yyvsp79 := yyvsp79 -1
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -5179,9 +5179,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs78")
 		end
 		yyvsc78 := yyvsc78 + yyInitial_yyvs_size
-		yyvs78 := yyspecial_routines78.resize (yyvs78, yyvsc78)
+		yyvs78 := yyspecial_routines78.resize_with_default (({ET_INDEXING_LIST}).default, yyvs78, yyvsc78)
 	end
-	yyvs78.force (yyval78, yyvsp78)
+	yyvs78.put (yyval78, yyvsp78)
 end
 		end
 
@@ -5201,7 +5201,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs79.force (yyval79, yyvsp79)
+	yyvs79.put (yyval79, yyvsp79)
 end
 		end
 
@@ -5226,9 +5226,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs79")
 		end
 		yyvsc79 := yyvsc79 + yyInitial_yyvs_size
-		yyvs79 := yyspecial_routines79.resize (yyvs79, yyvsc79)
+		yyvs79 := yyspecial_routines79.resize_with_default (({ET_INDEXING_ITEM}).default, yyvs79, yyvsc79)
 	end
-	yyvs79.force (yyval79, yyvsp79)
+	yyvs79.put (yyval79, yyvsp79)
 end
 		end
 
@@ -5255,9 +5255,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs79")
 		end
 		yyvsc79 := yyvsc79 + yyInitial_yyvs_size
-		yyvs79 := yyspecial_routines79.resize (yyvs79, yyvsc79)
+		yyvs79 := yyspecial_routines79.resize_with_default (({ET_INDEXING_ITEM}).default, yyvs79, yyvsc79)
 	end
-	yyvs79.force (yyval79, yyvsp79)
+	yyvs79.put (yyval79, yyvsp79)
 end
 		end
 
@@ -5275,7 +5275,7 @@ yyval79 := ast_factory.new_indexing_semicolon (yyvs79.item (yyvsp79), yyvs22.ite
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp22 := yyvsp22 -1
-	yyvs79.force (yyval79, yyvsp79)
+	yyvs79.put (yyval79, yyvsp79)
 end
 		end
 
@@ -5293,7 +5293,7 @@ yyval79 := ast_factory.new_indexing_semicolon (yyvs79.item (yyvsp79), yyvs22.ite
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp22 := yyvsp22 -1
-	yyvs79.force (yyval79, yyvsp79)
+	yyvs79.put (yyval79, yyvsp79)
 end
 		end
 
@@ -5325,9 +5325,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs82")
 		end
 		yyvsc82 := yyvsc82 + yyInitial_yyvs_size
-		yyvs82 := yyspecial_routines82.resize (yyvs82, yyvsc82)
+		yyvs82 := yyspecial_routines82.resize_with_default (({ET_INDEXING_TERM_LIST}).default, yyvs82, yyvsc82)
 	end
-	yyvs82.force (yyval82, yyvsp82)
+	yyvs82.put (yyval82, yyvsp82)
 end
 		end
 
@@ -5349,7 +5349,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp81 := yyvsp81 -1
-	yyvs82.force (yyval82, yyvsp82)
+	yyvs82.put (yyval82, yyvsp82)
 end
 		end
 
@@ -5373,9 +5373,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs80")
 		end
 		yyvsc80 := yyvsc80 + yyInitial_yyvs_size
-		yyvs80 := yyspecial_routines80.resize (yyvs80, yyvsc80)
+		yyvs80 := yyspecial_routines80.resize_with_default (({ET_INDEXING_TERM}).default, yyvs80, yyvsc80)
 	end
-	yyvs80.force (yyval80, yyvsp80)
+	yyvs80.put (yyval80, yyvsp80)
 end
 		end
 
@@ -5399,9 +5399,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs80")
 		end
 		yyvsc80 := yyvsc80 + yyInitial_yyvs_size
-		yyvs80 := yyspecial_routines80.resize (yyvs80, yyvsc80)
+		yyvs80 := yyspecial_routines80.resize_with_default (({ET_INDEXING_TERM}).default, yyvs80, yyvsc80)
 	end
-	yyvs80.force (yyval80, yyvsp80)
+	yyvs80.put (yyval80, yyvsp80)
 end
 		end
 
@@ -5425,9 +5425,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs80")
 		end
 		yyvsc80 := yyvsc80 + yyInitial_yyvs_size
-		yyvs80 := yyspecial_routines80.resize (yyvs80, yyvsc80)
+		yyvs80 := yyspecial_routines80.resize_with_default (({ET_INDEXING_TERM}).default, yyvs80, yyvsc80)
 	end
-	yyvs80.force (yyval80, yyvsp80)
+	yyvs80.put (yyval80, yyvsp80)
 end
 		end
 
@@ -5451,9 +5451,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs80")
 		end
 		yyvsc80 := yyvsc80 + yyInitial_yyvs_size
-		yyvs80 := yyspecial_routines80.resize (yyvs80, yyvsc80)
+		yyvs80 := yyspecial_routines80.resize_with_default (({ET_INDEXING_TERM}).default, yyvs80, yyvsc80)
 	end
-	yyvs80.force (yyval80, yyvsp80)
+	yyvs80.put (yyval80, yyvsp80)
 end
 		end
 
@@ -5477,9 +5477,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs80")
 		end
 		yyvsc80 := yyvsc80 + yyInitial_yyvs_size
-		yyvs80 := yyspecial_routines80.resize (yyvs80, yyvsc80)
+		yyvs80 := yyspecial_routines80.resize_with_default (({ET_INDEXING_TERM}).default, yyvs80, yyvsc80)
 	end
-	yyvs80.force (yyval80, yyvsp80)
+	yyvs80.put (yyval80, yyvsp80)
 end
 		end
 
@@ -5503,9 +5503,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs80")
 		end
 		yyvsc80 := yyvsc80 + yyInitial_yyvs_size
-		yyvs80 := yyspecial_routines80.resize (yyvs80, yyvsc80)
+		yyvs80 := yyspecial_routines80.resize_with_default (({ET_INDEXING_TERM}).default, yyvs80, yyvsc80)
 	end
-	yyvs80.force (yyval80, yyvsp80)
+	yyvs80.put (yyval80, yyvsp80)
 end
 		end
 
@@ -5529,9 +5529,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs80")
 		end
 		yyvsc80 := yyvsc80 + yyInitial_yyvs_size
-		yyvs80 := yyspecial_routines80.resize (yyvs80, yyvsc80)
+		yyvs80 := yyspecial_routines80.resize_with_default (({ET_INDEXING_TERM}).default, yyvs80, yyvsc80)
 	end
-	yyvs80.force (yyval80, yyvsp80)
+	yyvs80.put (yyval80, yyvsp80)
 end
 		end
 
@@ -5556,9 +5556,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs80")
 		end
 		yyvsc80 := yyvsc80 + yyInitial_yyvs_size
-		yyvs80 := yyspecial_routines80.resize (yyvs80, yyvsc80)
+		yyvs80 := yyspecial_routines80.resize_with_default (({ET_INDEXING_TERM}).default, yyvs80, yyvsc80)
 	end
-	yyvs80.force (yyval80, yyvsp80)
+	yyvs80.put (yyval80, yyvsp80)
 end
 		end
 
@@ -5584,9 +5584,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs80")
 		end
 		yyvsc80 := yyvsc80 + yyInitial_yyvs_size
-		yyvs80 := yyspecial_routines80.resize (yyvs80, yyvsc80)
+		yyvs80 := yyspecial_routines80.resize_with_default (({ET_INDEXING_TERM}).default, yyvs80, yyvsc80)
 	end
-	yyvs80.force (yyval80, yyvsp80)
+	yyvs80.put (yyval80, yyvsp80)
 end
 		end
 
@@ -5615,9 +5615,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs81")
 		end
 		yyvsc81 := yyvsc81 + yyInitial_yyvs_size
-		yyvs81 := yyspecial_routines81.resize (yyvs81, yyvsc81)
+		yyvs81 := yyspecial_routines81.resize_with_default (({ET_INDEXING_TERM_ITEM}).default, yyvs81, yyvsc81)
 	end
-	yyvs81.force (yyval81, yyvsp81)
+	yyvs81.put (yyval81, yyvsp81)
 end
 		end
 
@@ -5649,9 +5649,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs42")
 		end
 		yyvsc42 := yyvsc42 + yyInitial_yyvs_size
-		yyvs42 := yyspecial_routines42.resize (yyvs42, yyvsc42)
+		yyvs42 := yyspecial_routines42.resize_with_default (({ET_CLASS}).default, yyvs42, yyvsc42)
 	end
-	yyvs42.force (yyval42, yyvsp42)
+	yyvs42.put (yyval42, yyvsp42)
 end
 		end
 
@@ -5684,9 +5684,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs42")
 		end
 		yyvsc42 := yyvsc42 + yyInitial_yyvs_size
-		yyvs42 := yyspecial_routines42.resize (yyvs42, yyvsc42)
+		yyvs42 := yyspecial_routines42.resize_with_default (({ET_CLASS}).default, yyvs42, yyvsc42)
 	end
-	yyvs42.force (yyval42, yyvsp42)
+	yyvs42.put (yyval42, yyvsp42)
 end
 		end
 
@@ -5719,9 +5719,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs42")
 		end
 		yyvsc42 := yyvsc42 + yyInitial_yyvs_size
-		yyvs42 := yyspecial_routines42.resize (yyvs42, yyvsc42)
+		yyvs42 := yyspecial_routines42.resize_with_default (({ET_CLASS}).default, yyvs42, yyvsc42)
 	end
-	yyvs42.force (yyval42, yyvsp42)
+	yyvs42.put (yyval42, yyvsp42)
 end
 		end
 
@@ -5754,9 +5754,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs42")
 		end
 		yyvsc42 := yyvsc42 + yyInitial_yyvs_size
-		yyvs42 := yyspecial_routines42.resize (yyvs42, yyvsc42)
+		yyvs42 := yyspecial_routines42.resize_with_default (({ET_CLASS}).default, yyvs42, yyvsc42)
 	end
-	yyvs42.force (yyval42, yyvsp42)
+	yyvs42.put (yyval42, yyvsp42)
 end
 		end
 
@@ -5779,9 +5779,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs2")
 		end
 		yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-		yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+		yyvs2 := yyspecial_routines2.resize_with_default (({ET_KEYWORD}).default, yyvs2, yyvsc2)
 	end
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 		end
 
@@ -5798,7 +5798,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 		end
 
@@ -5821,9 +5821,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs2")
 		end
 		yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-		yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+		yyvs2 := yyspecial_routines2.resize_with_default (({ET_KEYWORD}).default, yyvs2, yyvsc2)
 	end
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 		end
 
@@ -5840,7 +5840,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 		end
 
@@ -5864,9 +5864,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs76")
 		end
 		yyvsc76 := yyvsc76 + yyInitial_yyvs_size
-		yyvs76 := yyspecial_routines76.resize (yyvs76, yyvsc76)
+		yyvs76 := yyspecial_routines76.resize_with_default (({ET_FORMAL_PARAMETER_LIST}).default, yyvs76, yyvsc76)
 	end
-	yyvs76.force (yyval76, yyvsp76)
+	yyvs76.put (yyval76, yyvsp76)
 end
 		end
 
@@ -5893,9 +5893,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs76")
 		end
 		yyvsc76 := yyvsc76 + yyInitial_yyvs_size
-		yyvs76 := yyspecial_routines76.resize (yyvs76, yyvsc76)
+		yyvs76 := yyspecial_routines76.resize_with_default (({ET_FORMAL_PARAMETER_LIST}).default, yyvs76, yyvsc76)
 	end
-	yyvs76.force (yyval76, yyvsp76)
+	yyvs76.put (yyval76, yyvsp76)
 end
 		end
 
@@ -5918,7 +5918,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp76 := yyvsp76 -1
 	yyvsp23 := yyvsp23 -1
-	yyvs76.force (yyval76, yyvsp76)
+	yyvs76.put (yyval76, yyvsp76)
 end
 		end
 
@@ -5943,9 +5943,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs76")
 		end
 		yyvsc76 := yyvsc76 + yyInitial_yyvs_size
-		yyvs76 := yyspecial_routines76.resize (yyvs76, yyvsc76)
+		yyvs76 := yyspecial_routines76.resize_with_default (({ET_FORMAL_PARAMETER_LIST}).default, yyvs76, yyvsc76)
 	end
-	yyvs76.force (yyval76, yyvsp76)
+	yyvs76.put (yyval76, yyvsp76)
 end
 		end
 
@@ -5978,9 +5978,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs76")
 		end
 		yyvsc76 := yyvsc76 + yyInitial_yyvs_size
-		yyvs76 := yyspecial_routines76.resize (yyvs76, yyvsc76)
+		yyvs76 := yyspecial_routines76.resize_with_default (({ET_FORMAL_PARAMETER_LIST}).default, yyvs76, yyvsc76)
 	end
-	yyvs76.force (yyval76, yyvsp76)
+	yyvs76.put (yyval76, yyvsp76)
 end
 		end
 
@@ -6002,7 +6002,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp75 := yyvsp75 -1
-	yyvs76.force (yyval76, yyvsp76)
+	yyvs76.put (yyval76, yyvsp76)
 end
 		end
 
@@ -6031,9 +6031,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs75")
 		end
 		yyvsc75 := yyvsc75 + yyInitial_yyvs_size
-		yyvs75 := yyspecial_routines75.resize (yyvs75, yyvsc75)
+		yyvs75 := yyspecial_routines75.resize_with_default (({ET_FORMAL_PARAMETER_ITEM}).default, yyvs75, yyvsc75)
 	end
-	yyvs75.force (yyval75, yyvsp75)
+	yyvs75.put (yyval75, yyvsp75)
 end
 		end
 
@@ -6061,9 +6061,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs74")
 		end
 		yyvsc74 := yyvsc74 + yyInitial_yyvs_size
-		yyvs74 := yyspecial_routines74.resize (yyvs74, yyvsc74)
+		yyvs74 := yyspecial_routines74.resize_with_default (({ET_FORMAL_PARAMETER}).default, yyvs74, yyvsc74)
 	end
-	yyvs74.force (yyval74, yyvsp74)
+	yyvs74.put (yyval74, yyvsp74)
 end
 		end
 
@@ -6092,9 +6092,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs74")
 		end
 		yyvsc74 := yyvsc74 + yyInitial_yyvs_size
-		yyvs74 := yyspecial_routines74.resize (yyvs74, yyvsc74)
+		yyvs74 := yyspecial_routines74.resize_with_default (({ET_FORMAL_PARAMETER}).default, yyvs74, yyvsc74)
 	end
-	yyvs74.force (yyval74, yyvsp74)
+	yyvs74.put (yyval74, yyvsp74)
 end
 		end
 
@@ -6123,9 +6123,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs74")
 		end
 		yyvsc74 := yyvsc74 + yyInitial_yyvs_size
-		yyvs74 := yyspecial_routines74.resize (yyvs74, yyvsc74)
+		yyvs74 := yyspecial_routines74.resize_with_default (({ET_FORMAL_PARAMETER}).default, yyvs74, yyvsc74)
 	end
-	yyvs74.force (yyval74, yyvsp74)
+	yyvs74.put (yyval74, yyvsp74)
 end
 		end
 
@@ -6155,9 +6155,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs74")
 		end
 		yyvsc74 := yyvsc74 + yyInitial_yyvs_size
-		yyvs74 := yyspecial_routines74.resize (yyvs74, yyvsc74)
+		yyvs74 := yyspecial_routines74.resize_with_default (({ET_FORMAL_PARAMETER}).default, yyvs74, yyvsc74)
 	end
-	yyvs74.force (yyval74, yyvsp74)
+	yyvs74.put (yyval74, yyvsp74)
 end
 		end
 
@@ -6188,9 +6188,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs74")
 		end
 		yyvsc74 := yyvsc74 + yyInitial_yyvs_size
-		yyvs74 := yyspecial_routines74.resize (yyvs74, yyvsc74)
+		yyvs74 := yyspecial_routines74.resize_with_default (({ET_FORMAL_PARAMETER}).default, yyvs74, yyvsc74)
 	end
-	yyvs74.force (yyval74, yyvsp74)
+	yyvs74.put (yyval74, yyvsp74)
 end
 		end
 
@@ -6221,9 +6221,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs74")
 		end
 		yyvsc74 := yyvsc74 + yyInitial_yyvs_size
-		yyvs74 := yyspecial_routines74.resize (yyvs74, yyvsc74)
+		yyvs74 := yyspecial_routines74.resize_with_default (({ET_FORMAL_PARAMETER}).default, yyvs74, yyvsc74)
 	end
-	yyvs74.force (yyval74, yyvsp74)
+	yyvs74.put (yyval74, yyvsp74)
 end
 		end
 
@@ -6254,9 +6254,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs74")
 		end
 		yyvsc74 := yyvsc74 + yyInitial_yyvs_size
-		yyvs74 := yyspecial_routines74.resize (yyvs74, yyvsc74)
+		yyvs74 := yyspecial_routines74.resize_with_default (({ET_FORMAL_PARAMETER}).default, yyvs74, yyvsc74)
 	end
-	yyvs74.force (yyval74, yyvsp74)
+	yyvs74.put (yyval74, yyvsp74)
 end
 		end
 
@@ -6288,9 +6288,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs74")
 		end
 		yyvsc74 := yyvsc74 + yyInitial_yyvs_size
-		yyvs74 := yyspecial_routines74.resize (yyvs74, yyvsc74)
+		yyvs74 := yyspecial_routines74.resize_with_default (({ET_FORMAL_PARAMETER}).default, yyvs74, yyvsc74)
 	end
-	yyvs74.force (yyval74, yyvsp74)
+	yyvs74.put (yyval74, yyvsp74)
 end
 		end
 
@@ -6322,9 +6322,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs74")
 		end
 		yyvsc74 := yyvsc74 + yyInitial_yyvs_size
-		yyvs74 := yyspecial_routines74.resize (yyvs74, yyvsc74)
+		yyvs74 := yyspecial_routines74.resize_with_default (({ET_FORMAL_PARAMETER}).default, yyvs74, yyvsc74)
 	end
-	yyvs74.force (yyval74, yyvsp74)
+	yyvs74.put (yyval74, yyvsp74)
 end
 		end
 
@@ -6348,9 +6348,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs49")
 		end
 		yyvsc49 := yyvsc49 + yyInitial_yyvs_size
-		yyvs49 := yyspecial_routines49.resize (yyvs49, yyvsc49)
+		yyvs49 := yyspecial_routines49.resize_with_default (({ET_CONSTRAINT_CREATOR}).default, yyvs49, yyvsc49)
 	end
-	yyvs49.force (yyval49, yyvsp49)
+	yyvs49.put (yyval49, yyvsp49)
 end
 		end
 
@@ -6372,7 +6372,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp49 := yyvsp49 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs49.force (yyval49, yyvsp49)
+	yyvs49.put (yyval49, yyvsp49)
 end
 		end
 
@@ -6397,9 +6397,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs49")
 		end
 		yyvsc49 := yyvsc49 + yyInitial_yyvs_size
-		yyvs49 := yyspecial_routines49.resize (yyvs49, yyvsc49)
+		yyvs49 := yyspecial_routines49.resize_with_default (({ET_CONSTRAINT_CREATOR}).default, yyvs49, yyvsc49)
 	end
-	yyvs49.force (yyval49, yyvsp49)
+	yyvs49.put (yyval49, yyvsp49)
 end
 		end
 
@@ -6432,9 +6432,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs49")
 		end
 		yyvsc49 := yyvsc49 + yyInitial_yyvs_size
-		yyvs49 := yyspecial_routines49.resize (yyvs49, yyvsc49)
+		yyvs49 := yyspecial_routines49.resize_with_default (({ET_CONSTRAINT_CREATOR}).default, yyvs49, yyvsc49)
 	end
-	yyvs49.force (yyval49, yyvsp49)
+	yyvs49.put (yyval49, yyvsp49)
 end
 		end
 
@@ -6463,9 +6463,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs49")
 		end
 		yyvsc49 := yyvsc49 + yyInitial_yyvs_size
-		yyvs49 := yyspecial_routines49.resize (yyvs49, yyvsc49)
+		yyvs49 := yyspecial_routines49.resize_with_default (({ET_CONSTRAINT_CREATOR}).default, yyvs49, yyvsc49)
 	end
-	yyvs49.force (yyval49, yyvsp49)
+	yyvs49.put (yyval49, yyvsp49)
 end
 		end
 
@@ -6487,7 +6487,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp70 := yyvsp70 -1
-	yyvs49.force (yyval49, yyvsp49)
+	yyvs49.put (yyval49, yyvsp49)
 end
 		end
 
@@ -6512,9 +6512,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6540,9 +6540,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6568,9 +6568,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6596,9 +6596,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6624,9 +6624,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6652,9 +6652,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6685,9 +6685,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6718,9 +6718,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6744,9 +6744,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6771,9 +6771,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6797,9 +6797,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6824,9 +6824,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6852,9 +6852,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6880,9 +6880,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6913,9 +6913,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6946,9 +6946,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -6973,9 +6973,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7001,9 +7001,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7029,9 +7029,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7057,9 +7057,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7085,9 +7085,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7113,9 +7113,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7146,9 +7146,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7179,9 +7179,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7205,9 +7205,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7232,9 +7232,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7258,9 +7258,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7285,9 +7285,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7313,9 +7313,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7341,9 +7341,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7374,9 +7374,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7407,9 +7407,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs50")
 		end
 		yyvsc50 := yyvsc50 + yyInitial_yyvs_size
-		yyvs50 := yyspecial_routines50.resize (yyvs50, yyvsc50)
+		yyvs50 := yyspecial_routines50.resize_with_default (({ET_CONSTRAINT_TYPE}).default, yyvs50, yyvsc50)
 	end
-	yyvs50.force (yyval50, yyvsp50)
+	yyvs50.put (yyval50, yyvsp50)
 end
 		end
 
@@ -7432,9 +7432,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs48")
 		end
 		yyvsc48 := yyvsc48 + yyInitial_yyvs_size
-		yyvs48 := yyspecial_routines48.resize (yyvs48, yyvsc48)
+		yyvs48 := yyspecial_routines48.resize_with_default (({ET_CONSTRAINT_ACTUAL_PARAMETER_LIST}).default, yyvs48, yyvsc48)
 	end
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7451,7 +7451,7 @@ end
 yyval48 := yyvs48.item (yyvsp48) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7476,9 +7476,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs48")
 		end
 		yyvsc48 := yyvsc48 + yyInitial_yyvs_size
-		yyvs48 := yyspecial_routines48.resize (yyvs48, yyvsc48)
+		yyvs48 := yyspecial_routines48.resize_with_default (({ET_CONSTRAINT_ACTUAL_PARAMETER_LIST}).default, yyvs48, yyvsc48)
 	end
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7499,7 +7499,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7532,9 +7532,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs48")
 		end
 		yyvsc48 := yyvsc48 + yyInitial_yyvs_size
-		yyvs48 := yyspecial_routines48.resize (yyvs48, yyvsc48)
+		yyvs48 := yyspecial_routines48.resize_with_default (({ET_CONSTRAINT_ACTUAL_PARAMETER_LIST}).default, yyvs48, yyvsc48)
 	end
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7554,7 +7554,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp47 := yyvsp47 -1
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7576,7 +7576,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp13 := yyvsp13 -1
 	yyvsp5 := yyvsp5 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7598,7 +7598,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp13 := yyvsp13 -1
 	yyvsp5 := yyvsp5 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7627,9 +7627,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs47")
 		end
 		yyvsc47 := yyvsc47 + yyInitial_yyvs_size
-		yyvs47 := yyspecial_routines47.resize (yyvs47, yyvsc47)
+		yyvs47 := yyspecial_routines47.resize_with_default (({ET_CONSTRAINT_ACTUAL_PARAMETER_ITEM}).default, yyvs47, yyvsc47)
 	end
-	yyvs47.force (yyval47, yyvsp47)
+	yyvs47.put (yyval47, yyvsp47)
 end
 		end
 
@@ -7652,9 +7652,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs48")
 		end
 		yyvsc48 := yyvsc48 + yyInitial_yyvs_size
-		yyvs48 := yyspecial_routines48.resize (yyvs48, yyvsc48)
+		yyvs48 := yyspecial_routines48.resize_with_default (({ET_CONSTRAINT_ACTUAL_PARAMETER_LIST}).default, yyvs48, yyvsc48)
 	end
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7671,7 +7671,7 @@ end
 yyval48 := yyvs48.item (yyvsp48) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7696,9 +7696,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs48")
 		end
 		yyvsc48 := yyvsc48 + yyInitial_yyvs_size
-		yyvs48 := yyspecial_routines48.resize (yyvs48, yyvsc48)
+		yyvs48 := yyspecial_routines48.resize_with_default (({ET_CONSTRAINT_ACTUAL_PARAMETER_LIST}).default, yyvs48, yyvsc48)
 	end
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7719,7 +7719,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7740,7 +7740,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7768,9 +7768,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs48")
 		end
 		yyvsc48 := yyvsc48 + yyInitial_yyvs_size
-		yyvs48 := yyspecial_routines48.resize (yyvs48, yyvsc48)
+		yyvs48 := yyspecial_routines48.resize_with_default (({ET_CONSTRAINT_ACTUAL_PARAMETER_LIST}).default, yyvs48, yyvsc48)
 	end
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7790,7 +7790,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp47 := yyvsp47 -1
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7810,7 +7810,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp47 := yyvsp47 -1
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7838,7 +7838,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp13 := yyvsp13 -1
 	yyvsp5 := yyvsp5 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7866,7 +7866,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp13 := yyvsp13 -1
 	yyvsp5 := yyvsp5 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7894,7 +7894,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp13 := yyvsp13 -1
 	yyvsp5 := yyvsp5 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs48.force (yyval48, yyvsp48)
+	yyvs48.put (yyval48, yyvsp48)
 end
 		end
 
@@ -7924,9 +7924,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs47")
 		end
 		yyvsc47 := yyvsc47 + yyInitial_yyvs_size
-		yyvs47 := yyspecial_routines47.resize (yyvs47, yyvsc47)
+		yyvs47 := yyspecial_routines47.resize_with_default (({ET_CONSTRAINT_ACTUAL_PARAMETER_ITEM}).default, yyvs47, yyvsc47)
 	end
-	yyvs47.force (yyval47, yyvsp47)
+	yyvs47.put (yyval47, yyvsp47)
 end
 		end
 
@@ -7957,9 +7957,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs47")
 		end
 		yyvsc47 := yyvsc47 + yyInitial_yyvs_size
-		yyvs47 := yyspecial_routines47.resize (yyvs47, yyvsc47)
+		yyvs47 := yyspecial_routines47.resize_with_default (({ET_CONSTRAINT_ACTUAL_PARAMETER_ITEM}).default, yyvs47, yyvsc47)
 	end
-	yyvs47.force (yyval47, yyvsp47)
+	yyvs47.put (yyval47, yyvsp47)
 end
 		end
 
@@ -7982,9 +7982,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs98")
 		end
 		yyvsc98 := yyvsc98 + yyInitial_yyvs_size
-		yyvs98 := yyspecial_routines98.resize (yyvs98, yyvsc98)
+		yyvs98 := yyspecial_routines98.resize_with_default (({ET_OBSOLETE}).default, yyvs98, yyvsc98)
 	end
-	yyvs98.force (yyval98, yyvsp98)
+	yyvs98.put (yyval98, yyvsp98)
 end
 		end
 
@@ -8009,9 +8009,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs98")
 		end
 		yyvsc98 := yyvsc98 + yyInitial_yyvs_size
-		yyvs98 := yyspecial_routines98.resize (yyvs98, yyvsc98)
+		yyvs98 := yyspecial_routines98.resize_with_default (({ET_OBSOLETE}).default, yyvs98, yyvsc98)
 	end
-	yyvs98.force (yyval98, yyvsp98)
+	yyvs98.put (yyval98, yyvsp98)
 end
 		end
 
@@ -8034,9 +8034,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs102")
 		end
 		yyvsc102 := yyvsc102 + yyInitial_yyvs_size
-		yyvs102 := yyspecial_routines102.resize (yyvs102, yyvsc102)
+		yyvs102 := yyspecial_routines102.resize_with_default (({ET_PARENT_LIST}).default, yyvs102, yyvsc102)
 	end
-	yyvs102.force (yyval102, yyvsp102)
+	yyvs102.put (yyval102, yyvsp102)
 end
 		end
 
@@ -8060,9 +8060,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs102")
 		end
 		yyvsc102 := yyvsc102 + yyInitial_yyvs_size
-		yyvs102 := yyspecial_routines102.resize (yyvs102, yyvsc102)
+		yyvs102 := yyspecial_routines102.resize_with_default (({ET_PARENT_LIST}).default, yyvs102, yyvsc102)
 	end
-	yyvs102.force (yyval102, yyvsp102)
+	yyvs102.put (yyval102, yyvsp102)
 end
 		end
 
@@ -8082,7 +8082,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs102.force (yyval102, yyvsp102)
+	yyvs102.put (yyval102, yyvsp102)
 end
 		end
 
@@ -8103,7 +8103,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs102.force (yyval102, yyvsp102)
+	yyvs102.put (yyval102, yyvsp102)
 end
 		end
 
@@ -8129,9 +8129,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -8160,9 +8160,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs100")
 		end
 		yyvsc100 := yyvsc100 + yyInitial_yyvs_size
-		yyvs100 := yyspecial_routines100.resize (yyvs100, yyvsc100)
+		yyvs100 := yyspecial_routines100.resize_with_default (({ET_PARENT}).default, yyvs100, yyvsc100)
 	end
-	yyvs100.force (yyval100, yyvsp100)
+	yyvs100.put (yyval100, yyvsp100)
 end
 		end
 
@@ -8195,9 +8195,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs100")
 		end
 		yyvsc100 := yyvsc100 + yyInitial_yyvs_size
-		yyvs100 := yyspecial_routines100.resize (yyvs100, yyvsc100)
+		yyvs100 := yyspecial_routines100.resize_with_default (({ET_PARENT}).default, yyvs100, yyvsc100)
 	end
-	yyvs100.force (yyval100, yyvsp100)
+	yyvs100.put (yyval100, yyvsp100)
 end
 		end
 
@@ -8229,9 +8229,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs100")
 		end
 		yyvsc100 := yyvsc100 + yyInitial_yyvs_size
-		yyvs100 := yyspecial_routines100.resize (yyvs100, yyvsc100)
+		yyvs100 := yyspecial_routines100.resize_with_default (({ET_PARENT}).default, yyvs100, yyvsc100)
 	end
-	yyvs100.force (yyval100, yyvsp100)
+	yyvs100.put (yyval100, yyvsp100)
 end
 		end
 
@@ -8262,9 +8262,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs100")
 		end
 		yyvsc100 := yyvsc100 + yyInitial_yyvs_size
-		yyvs100 := yyspecial_routines100.resize (yyvs100, yyvsc100)
+		yyvs100 := yyspecial_routines100.resize_with_default (({ET_PARENT}).default, yyvs100, yyvsc100)
 	end
-	yyvs100.force (yyval100, yyvsp100)
+	yyvs100.put (yyval100, yyvsp100)
 end
 		end
 
@@ -8295,9 +8295,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs100")
 		end
 		yyvsc100 := yyvsc100 + yyInitial_yyvs_size
-		yyvs100 := yyspecial_routines100.resize (yyvs100, yyvsc100)
+		yyvs100 := yyspecial_routines100.resize_with_default (({ET_PARENT}).default, yyvs100, yyvsc100)
 	end
-	yyvs100.force (yyval100, yyvsp100)
+	yyvs100.put (yyval100, yyvsp100)
 end
 		end
 
@@ -8328,9 +8328,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs100")
 		end
 		yyvsc100 := yyvsc100 + yyInitial_yyvs_size
-		yyvs100 := yyspecial_routines100.resize (yyvs100, yyvsc100)
+		yyvs100 := yyspecial_routines100.resize_with_default (({ET_PARENT}).default, yyvs100, yyvsc100)
 	end
-	yyvs100.force (yyval100, yyvsp100)
+	yyvs100.put (yyval100, yyvsp100)
 end
 		end
 
@@ -8360,9 +8360,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs100")
 		end
 		yyvsc100 := yyvsc100 + yyInitial_yyvs_size
-		yyvs100 := yyspecial_routines100.resize (yyvs100, yyvsc100)
+		yyvs100 := yyspecial_routines100.resize_with_default (({ET_PARENT}).default, yyvs100, yyvsc100)
 	end
-	yyvs100.force (yyval100, yyvsp100)
+	yyvs100.put (yyval100, yyvsp100)
 end
 		end
 
@@ -8390,9 +8390,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs102")
 		end
 		yyvsc102 := yyvsc102 + yyInitial_yyvs_size
-		yyvs102 := yyspecial_routines102.resize (yyvs102, yyvsc102)
+		yyvs102 := yyspecial_routines102.resize_with_default (({ET_PARENT_LIST}).default, yyvs102, yyvsc102)
 	end
-	yyvs102.force (yyval102, yyvsp102)
+	yyvs102.put (yyval102, yyvsp102)
 end
 		end
 
@@ -8420,9 +8420,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs102")
 		end
 		yyvsc102 := yyvsc102 + yyInitial_yyvs_size
-		yyvs102 := yyspecial_routines102.resize (yyvs102, yyvsc102)
+		yyvs102 := yyspecial_routines102.resize_with_default (({ET_PARENT_LIST}).default, yyvs102, yyvsc102)
 	end
-	yyvs102.force (yyval102, yyvsp102)
+	yyvs102.put (yyval102, yyvsp102)
 end
 		end
 
@@ -8444,7 +8444,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp100 := yyvsp100 -1
-	yyvs102.force (yyval102, yyvsp102)
+	yyvs102.put (yyval102, yyvsp102)
 end
 		end
 
@@ -8466,7 +8466,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp100 := yyvsp100 -1
-	yyvs102.force (yyval102, yyvsp102)
+	yyvs102.put (yyval102, yyvsp102)
 end
 		end
 
@@ -8488,7 +8488,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp101 := yyvsp101 -1
-	yyvs102.force (yyval102, yyvsp102)
+	yyvs102.put (yyval102, yyvsp102)
 end
 		end
 
@@ -8516,9 +8516,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs102")
 		end
 		yyvsc102 := yyvsc102 + yyInitial_yyvs_size
-		yyvs102 := yyspecial_routines102.resize (yyvs102, yyvsc102)
+		yyvs102 := yyspecial_routines102.resize_with_default (({ET_PARENT_LIST}).default, yyvs102, yyvsc102)
 	end
-	yyvs102.force (yyval102, yyvsp102)
+	yyvs102.put (yyval102, yyvsp102)
 end
 		end
 
@@ -8540,7 +8540,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp100 := yyvsp100 -1
-	yyvs102.force (yyval102, yyvsp102)
+	yyvs102.put (yyval102, yyvsp102)
 end
 		end
 
@@ -8562,7 +8562,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp100 := yyvsp100 -1
-	yyvs102.force (yyval102, yyvsp102)
+	yyvs102.put (yyval102, yyvsp102)
 end
 		end
 
@@ -8584,7 +8584,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp101 := yyvsp101 -1
-	yyvs102.force (yyval102, yyvsp102)
+	yyvs102.put (yyval102, yyvsp102)
 end
 		end
 
@@ -8613,9 +8613,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs101")
 		end
 		yyvsc101 := yyvsc101 + yyInitial_yyvs_size
-		yyvs101 := yyspecial_routines101.resize (yyvs101, yyvsc101)
+		yyvs101 := yyspecial_routines101.resize_with_default (({ET_PARENT_ITEM}).default, yyvs101, yyvsc101)
 	end
-	yyvs101.force (yyval101, yyvsp101)
+	yyvs101.put (yyval101, yyvsp101)
 end
 		end
 
@@ -8644,9 +8644,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs101")
 		end
 		yyvsc101 := yyvsc101 + yyInitial_yyvs_size
-		yyvs101 := yyspecial_routines101.resize (yyvs101, yyvsc101)
+		yyvs101 := yyspecial_routines101.resize_with_default (({ET_PARENT_ITEM}).default, yyvs101, yyvsc101)
 	end
-	yyvs101.force (yyval101, yyvsp101)
+	yyvs101.put (yyval101, yyvsp101)
 end
 		end
 
@@ -8670,9 +8670,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs109")
 		end
 		yyvsc109 := yyvsc109 + yyInitial_yyvs_size
-		yyvs109 := yyspecial_routines109.resize (yyvs109, yyvsc109)
+		yyvs109 := yyspecial_routines109.resize_with_default (({ET_RENAME_LIST}).default, yyvs109, yyvsc109)
 	end
-	yyvs109.force (yyval109, yyvsp109)
+	yyvs109.put (yyval109, yyvsp109)
 end
 		end
 
@@ -8694,7 +8694,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp109 := yyvsp109 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs109.force (yyval109, yyvsp109)
+	yyvs109.put (yyval109, yyvsp109)
 end
 		end
 
@@ -8719,9 +8719,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs109")
 		end
 		yyvsc109 := yyvsc109 + yyInitial_yyvs_size
-		yyvs109 := yyspecial_routines109.resize (yyvs109, yyvsc109)
+		yyvs109 := yyspecial_routines109.resize_with_default (({ET_RENAME_LIST}).default, yyvs109, yyvsc109)
 	end
-	yyvs109.force (yyval109, yyvsp109)
+	yyvs109.put (yyval109, yyvsp109)
 end
 		end
 
@@ -8749,9 +8749,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs109")
 		end
 		yyvsc109 := yyvsc109 + yyInitial_yyvs_size
-		yyvs109 := yyspecial_routines109.resize (yyvs109, yyvsc109)
+		yyvs109 := yyspecial_routines109.resize_with_default (({ET_RENAME_LIST}).default, yyvs109, yyvsc109)
 	end
-	yyvs109.force (yyval109, yyvsp109)
+	yyvs109.put (yyval109, yyvsp109)
 end
 		end
 
@@ -8779,9 +8779,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs109")
 		end
 		yyvsc109 := yyvsc109 + yyInitial_yyvs_size
-		yyvs109 := yyspecial_routines109.resize (yyvs109, yyvsc109)
+		yyvs109 := yyspecial_routines109.resize_with_default (({ET_RENAME_LIST}).default, yyvs109, yyvsc109)
 	end
-	yyvs109.force (yyval109, yyvsp109)
+	yyvs109.put (yyval109, yyvsp109)
 end
 		end
 
@@ -8803,7 +8803,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp108 := yyvsp108 -1
-	yyvs109.force (yyval109, yyvsp109)
+	yyvs109.put (yyval109, yyvsp109)
 end
 		end
 
@@ -8833,9 +8833,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs108")
 		end
 		yyvsc108 := yyvsc108 + yyInitial_yyvs_size
-		yyvs108 := yyspecial_routines108.resize (yyvs108, yyvsc108)
+		yyvs108 := yyspecial_routines108.resize_with_default (({ET_RENAME_ITEM}).default, yyvs108, yyvsc108)
 	end
-	yyvs108.force (yyval108, yyvsp108)
+	yyvs108.put (yyval108, yyvsp108)
 end
 		end
 
@@ -8866,9 +8866,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs108")
 		end
 		yyvsc108 := yyvsc108 + yyInitial_yyvs_size
-		yyvs108 := yyspecial_routines108.resize (yyvs108, yyvsc108)
+		yyvs108 := yyspecial_routines108.resize_with_default (({ET_RENAME_ITEM}).default, yyvs108, yyvsc108)
 	end
-	yyvs108.force (yyval108, yyvsp108)
+	yyvs108.put (yyval108, yyvsp108)
 end
 		end
 
@@ -8892,9 +8892,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs61")
 		end
 		yyvsc61 := yyvsc61 + yyInitial_yyvs_size
-		yyvs61 := yyspecial_routines61.resize (yyvs61, yyvsc61)
+		yyvs61 := yyspecial_routines61.resize_with_default (({ET_EXPORT_LIST}).default, yyvs61, yyvsc61)
 	end
-	yyvs61.force (yyval61, yyvsp61)
+	yyvs61.put (yyval61, yyvsp61)
 end
 		end
 
@@ -8916,7 +8916,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp61 := yyvsp61 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs61.force (yyval61, yyvsp61)
+	yyvs61.put (yyval61, yyvsp61)
 end
 		end
 
@@ -8941,9 +8941,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs61")
 		end
 		yyvsc61 := yyvsc61 + yyInitial_yyvs_size
-		yyvs61 := yyspecial_routines61.resize (yyvs61, yyvsc61)
+		yyvs61 := yyspecial_routines61.resize_with_default (({ET_EXPORT_LIST}).default, yyvs61, yyvsc61)
 	end
-	yyvs61.force (yyval61, yyvsp61)
+	yyvs61.put (yyval61, yyvsp61)
 end
 		end
 
@@ -8966,9 +8966,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs61")
 		end
 		yyvsc61 := yyvsc61 + yyInitial_yyvs_size
-		yyvs61 := yyspecial_routines61.resize (yyvs61, yyvsc61)
+		yyvs61 := yyspecial_routines61.resize_with_default (({ET_EXPORT_LIST}).default, yyvs61, yyvsc61)
 	end
-	yyvs61.force (yyval61, yyvsp61)
+	yyvs61.put (yyval61, yyvsp61)
 end
 		end
 
@@ -8985,7 +8985,7 @@ end
 yyval61 := yyvs61.item (yyvsp61) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs61.force (yyval61, yyvsp61)
+	yyvs61.put (yyval61, yyvsp61)
 end
 		end
 
@@ -9017,9 +9017,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs61")
 		end
 		yyvsc61 := yyvsc61 + yyInitial_yyvs_size
-		yyvs61 := yyspecial_routines61.resize (yyvs61, yyvsc61)
+		yyvs61 := yyspecial_routines61.resize_with_default (({ET_EXPORT_LIST}).default, yyvs61, yyvsc61)
 	end
-	yyvs61.force (yyval61, yyvsp61)
+	yyvs61.put (yyval61, yyvsp61)
 end
 		end
 
@@ -9042,7 +9042,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp61 := yyvsp61 -1
 	yyvsp60 := yyvsp60 -1
-	yyvs61.force (yyval61, yyvsp61)
+	yyvs61.put (yyval61, yyvsp61)
 end
 		end
 
@@ -9068,9 +9068,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs61")
 		end
 		yyvsc61 := yyvsc61 + yyInitial_yyvs_size
-		yyvs61 := yyspecial_routines61.resize (yyvs61, yyvsc61)
+		yyvs61 := yyspecial_routines61.resize_with_default (({ET_EXPORT_LIST}).default, yyvs61, yyvsc61)
 	end
-	yyvs61.force (yyval61, yyvsp61)
+	yyvs61.put (yyval61, yyvsp61)
 end
 		end
 
@@ -9096,9 +9096,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs60")
 		end
 		yyvsc60 := yyvsc60 + yyInitial_yyvs_size
-		yyvs60 := yyspecial_routines60.resize (yyvs60, yyvsc60)
+		yyvs60 := yyspecial_routines60.resize_with_default (({ET_EXPORT}).default, yyvs60, yyvsc60)
 	end
-	yyvs60.force (yyval60, yyvsp60)
+	yyvs60.put (yyval60, yyvsp60)
 end
 		end
 
@@ -9124,9 +9124,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs60")
 		end
 		yyvsc60 := yyvsc60 + yyInitial_yyvs_size
-		yyvs60 := yyspecial_routines60.resize (yyvs60, yyvsc60)
+		yyvs60 := yyspecial_routines60.resize_with_default (({ET_EXPORT}).default, yyvs60, yyvsc60)
 	end
-	yyvs60.force (yyval60, yyvsp60)
+	yyvs60.put (yyval60, yyvsp60)
 end
 		end
 
@@ -9147,7 +9147,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp44 := yyvsp44 -1
 	yyvsp68 := yyvsp68 -1
-	yyvs60.force (yyval60, yyvsp60)
+	yyvs60.put (yyval60, yyvsp60)
 end
 		end
 
@@ -9172,9 +9172,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs60")
 		end
 		yyvsc60 := yyvsc60 + yyInitial_yyvs_size
-		yyvs60 := yyspecial_routines60.resize (yyvs60, yyvsc60)
+		yyvs60 := yyspecial_routines60.resize_with_default (({ET_EXPORT}).default, yyvs60, yyvsc60)
 	end
-	yyvs60.force (yyval60, yyvsp60)
+	yyvs60.put (yyval60, yyvsp60)
 end
 		end
 
@@ -9198,9 +9198,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs60")
 		end
 		yyvsc60 := yyvsc60 + yyInitial_yyvs_size
-		yyvs60 := yyspecial_routines60.resize (yyvs60, yyvsc60)
+		yyvs60 := yyspecial_routines60.resize_with_default (({ET_EXPORT}).default, yyvs60, yyvsc60)
 	end
-	yyvs60.force (yyval60, yyvsp60)
+	yyvs60.put (yyval60, yyvsp60)
 end
 		end
 
@@ -9232,9 +9232,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs68")
 		end
 		yyvsc68 := yyvsc68 + yyInitial_yyvs_size
-		yyvs68 := yyspecial_routines68.resize (yyvs68, yyvsc68)
+		yyvs68 := yyspecial_routines68.resize_with_default (({ET_FEATURE_EXPORT}).default, yyvs68, yyvsc68)
 	end
-	yyvs68.force (yyval68, yyvsp68)
+	yyvs68.put (yyval68, yyvsp68)
 end
 		end
 
@@ -9262,9 +9262,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs68")
 		end
 		yyvsc68 := yyvsc68 + yyInitial_yyvs_size
-		yyvs68 := yyspecial_routines68.resize (yyvs68, yyvsc68)
+		yyvs68 := yyspecial_routines68.resize_with_default (({ET_FEATURE_EXPORT}).default, yyvs68, yyvsc68)
 	end
-	yyvs68.force (yyval68, yyvsp68)
+	yyvs68.put (yyval68, yyvsp68)
 end
 		end
 
@@ -9286,7 +9286,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp70 := yyvsp70 -1
-	yyvs68.force (yyval68, yyvsp68)
+	yyvs68.put (yyval68, yyvsp68)
 end
 		end
 
@@ -9308,7 +9308,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp44 := yyvsp44 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs44.force (yyval44, yyvsp44)
+	yyvs44.put (yyval44, yyvsp44)
 end
 		end
 
@@ -9333,9 +9333,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs44")
 		end
 		yyvsc44 := yyvsc44 + yyInitial_yyvs_size
-		yyvs44 := yyspecial_routines44.resize (yyvs44, yyvsc44)
+		yyvs44 := yyspecial_routines44.resize_with_default (({ET_CLIENTS}).default, yyvs44, yyvsc44)
 	end
-	yyvs44.force (yyval44, yyvsp44)
+	yyvs44.put (yyval44, yyvsp44)
 end
 		end
 
@@ -9359,9 +9359,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs44")
 		end
 		yyvsc44 := yyvsc44 + yyInitial_yyvs_size
-		yyvs44 := yyspecial_routines44.resize (yyvs44, yyvsc44)
+		yyvs44 := yyspecial_routines44.resize_with_default (({ET_CLIENTS}).default, yyvs44, yyvsc44)
 	end
-	yyvs44.force (yyval44, yyvsp44)
+	yyvs44.put (yyval44, yyvsp44)
 end
 		end
 
@@ -9390,9 +9390,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs44")
 		end
 		yyvsc44 := yyvsc44 + yyInitial_yyvs_size
-		yyvs44 := yyspecial_routines44.resize (yyvs44, yyvsc44)
+		yyvs44 := yyspecial_routines44.resize_with_default (({ET_CLIENTS}).default, yyvs44, yyvsc44)
 	end
-	yyvs44.force (yyval44, yyvsp44)
+	yyvs44.put (yyval44, yyvsp44)
 end
 		end
 
@@ -9421,9 +9421,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs44")
 		end
 		yyvsc44 := yyvsc44 + yyInitial_yyvs_size
-		yyvs44 := yyspecial_routines44.resize (yyvs44, yyvsc44)
+		yyvs44 := yyspecial_routines44.resize_with_default (({ET_CLIENTS}).default, yyvs44, yyvsc44)
 	end
-	yyvs44.force (yyval44, yyvsp44)
+	yyvs44.put (yyval44, yyvsp44)
 end
 		end
 
@@ -9445,7 +9445,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp43 := yyvsp43 -1
-	yyvs44.force (yyval44, yyvsp44)
+	yyvs44.put (yyval44, yyvsp44)
 end
 		end
 
@@ -9467,7 +9467,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp43 := yyvsp43 -1
-	yyvs44.force (yyval44, yyvsp44)
+	yyvs44.put (yyval44, yyvsp44)
 end
 		end
 
@@ -9495,9 +9495,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs43")
 		end
 		yyvsc43 := yyvsc43 + yyInitial_yyvs_size
-		yyvs43 := yyspecial_routines43.resize (yyvs43, yyvsc43)
+		yyvs43 := yyspecial_routines43.resize_with_default (({ET_CLIENT_ITEM}).default, yyvs43, yyvsc43)
 	end
-	yyvs43.force (yyval43, yyvsp43)
+	yyvs43.put (yyval43, yyvsp43)
 end
 		end
 
@@ -9526,9 +9526,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs43")
 		end
 		yyvsc43 := yyvsc43 + yyInitial_yyvs_size
-		yyvs43 := yyspecial_routines43.resize (yyvs43, yyvsc43)
+		yyvs43 := yyspecial_routines43.resize_with_default (({ET_CLIENT_ITEM}).default, yyvs43, yyvsc43)
 	end
-	yyvs43.force (yyval43, yyvsp43)
+	yyvs43.put (yyval43, yyvsp43)
 end
 		end
 
@@ -9552,9 +9552,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs87")
 		end
 		yyvsc87 := yyvsc87 + yyInitial_yyvs_size
-		yyvs87 := yyspecial_routines87.resize (yyvs87, yyvsc87)
+		yyvs87 := yyspecial_routines87.resize_with_default (({ET_KEYWORD_FEATURE_NAME_LIST}).default, yyvs87, yyvsc87)
 	end
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9576,7 +9576,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp87 := yyvsp87 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9601,9 +9601,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs87")
 		end
 		yyvsc87 := yyvsc87 + yyInitial_yyvs_size
-		yyvs87 := yyspecial_routines87.resize (yyvs87, yyvsc87)
+		yyvs87 := yyspecial_routines87.resize_with_default (({ET_KEYWORD_FEATURE_NAME_LIST}).default, yyvs87, yyvsc87)
 	end
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9626,9 +9626,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs87")
 		end
 		yyvsc87 := yyvsc87 + yyInitial_yyvs_size
-		yyvs87 := yyspecial_routines87.resize (yyvs87, yyvsc87)
+		yyvs87 := yyspecial_routines87.resize_with_default (({ET_KEYWORD_FEATURE_NAME_LIST}).default, yyvs87, yyvsc87)
 	end
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9645,7 +9645,7 @@ end
 yyval87 := yyvs87.item (yyvsp87) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9669,9 +9669,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs87")
 		end
 		yyvsc87 := yyvsc87 + yyInitial_yyvs_size
-		yyvs87 := yyspecial_routines87.resize (yyvs87, yyvsc87)
+		yyvs87 := yyspecial_routines87.resize_with_default (({ET_KEYWORD_FEATURE_NAME_LIST}).default, yyvs87, yyvsc87)
 	end
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9693,7 +9693,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp87 := yyvsp87 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9718,9 +9718,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs87")
 		end
 		yyvsc87 := yyvsc87 + yyInitial_yyvs_size
-		yyvs87 := yyspecial_routines87.resize (yyvs87, yyvsc87)
+		yyvs87 := yyspecial_routines87.resize_with_default (({ET_KEYWORD_FEATURE_NAME_LIST}).default, yyvs87, yyvsc87)
 	end
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9743,9 +9743,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs87")
 		end
 		yyvsc87 := yyvsc87 + yyInitial_yyvs_size
-		yyvs87 := yyspecial_routines87.resize (yyvs87, yyvsc87)
+		yyvs87 := yyspecial_routines87.resize_with_default (({ET_KEYWORD_FEATURE_NAME_LIST}).default, yyvs87, yyvsc87)
 	end
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9762,7 +9762,7 @@ end
 yyval87 := yyvs87.item (yyvsp87) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9786,9 +9786,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs87")
 		end
 		yyvsc87 := yyvsc87 + yyInitial_yyvs_size
-		yyvs87 := yyspecial_routines87.resize (yyvs87, yyvsc87)
+		yyvs87 := yyspecial_routines87.resize_with_default (({ET_KEYWORD_FEATURE_NAME_LIST}).default, yyvs87, yyvsc87)
 	end
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9810,7 +9810,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp87 := yyvsp87 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9835,9 +9835,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs87")
 		end
 		yyvsc87 := yyvsc87 + yyInitial_yyvs_size
-		yyvs87 := yyspecial_routines87.resize (yyvs87, yyvsc87)
+		yyvs87 := yyspecial_routines87.resize_with_default (({ET_KEYWORD_FEATURE_NAME_LIST}).default, yyvs87, yyvsc87)
 	end
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9860,9 +9860,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs87")
 		end
 		yyvsc87 := yyvsc87 + yyInitial_yyvs_size
-		yyvs87 := yyspecial_routines87.resize (yyvs87, yyvsc87)
+		yyvs87 := yyspecial_routines87.resize_with_default (({ET_KEYWORD_FEATURE_NAME_LIST}).default, yyvs87, yyvsc87)
 	end
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9879,7 +9879,7 @@ end
 yyval87 := yyvs87.item (yyvsp87) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9911,9 +9911,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs87")
 		end
 		yyvsc87 := yyvsc87 + yyInitial_yyvs_size
-		yyvs87 := yyspecial_routines87.resize (yyvs87, yyvsc87)
+		yyvs87 := yyspecial_routines87.resize_with_default (({ET_KEYWORD_FEATURE_NAME_LIST}).default, yyvs87, yyvsc87)
 	end
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9941,9 +9941,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs87")
 		end
 		yyvsc87 := yyvsc87 + yyInitial_yyvs_size
-		yyvs87 := yyspecial_routines87.resize (yyvs87, yyvsc87)
+		yyvs87 := yyspecial_routines87.resize_with_default (({ET_KEYWORD_FEATURE_NAME_LIST}).default, yyvs87, yyvsc87)
 	end
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9965,7 +9965,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp70 := yyvsp70 -1
-	yyvs87.force (yyval87, yyvsp87)
+	yyvs87.put (yyval87, yyvsp87)
 end
 		end
 
@@ -9994,9 +9994,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs70")
 		end
 		yyvsc70 := yyvsc70 + yyInitial_yyvs_size
-		yyvs70 := yyspecial_routines70.resize (yyvs70, yyvsc70)
+		yyvs70 := yyspecial_routines70.resize_with_default (({ET_FEATURE_NAME_ITEM}).default, yyvs70, yyvsc70)
 	end
-	yyvs70.force (yyval70, yyvsp70)
+	yyvs70.put (yyval70, yyvsp70)
 end
 		end
 
@@ -10019,9 +10019,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs56")
 		end
 		yyvsc56 := yyvsc56 + yyInitial_yyvs_size
-		yyvs56 := yyspecial_routines56.resize (yyvs56, yyvsc56)
+		yyvs56 := yyspecial_routines56.resize_with_default (({ET_CREATOR_LIST}).default, yyvs56, yyvsc56)
 	end
-	yyvs56.force (yyval56, yyvsp56)
+	yyvs56.put (yyval56, yyvsp56)
 end
 		end
 
@@ -10041,7 +10041,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs56.force (yyval56, yyvsp56)
+	yyvs56.put (yyval56, yyvsp56)
 end
 		end
 
@@ -10061,7 +10061,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs56.force (yyval56, yyvsp56)
+	yyvs56.put (yyval56, yyvsp56)
 end
 		end
 
@@ -10093,9 +10093,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs56")
 		end
 		yyvsc56 := yyvsc56 + yyInitial_yyvs_size
-		yyvs56 := yyspecial_routines56.resize (yyvs56, yyvsc56)
+		yyvs56 := yyspecial_routines56.resize_with_default (({ET_CREATOR_LIST}).default, yyvs56, yyvsc56)
 	end
-	yyvs56.force (yyval56, yyvsp56)
+	yyvs56.put (yyval56, yyvsp56)
 end
 		end
 
@@ -10118,7 +10118,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp56 := yyvsp56 -1
 	yyvsp55 := yyvsp55 -1
-	yyvs56.force (yyval56, yyvsp56)
+	yyvs56.put (yyval56, yyvsp56)
 end
 		end
 
@@ -10144,9 +10144,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs56")
 		end
 		yyvsc56 := yyvsc56 + yyInitial_yyvs_size
-		yyvs56 := yyspecial_routines56.resize (yyvs56, yyvsc56)
+		yyvs56 := yyspecial_routines56.resize_with_default (({ET_CREATOR_LIST}).default, yyvs56, yyvsc56)
 	end
-	yyvs56.force (yyval56, yyvsp56)
+	yyvs56.put (yyval56, yyvsp56)
 end
 		end
 
@@ -10171,9 +10171,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs55")
 		end
 		yyvsc55 := yyvsc55 + yyInitial_yyvs_size
-		yyvs55 := yyspecial_routines55.resize (yyvs55, yyvsc55)
+		yyvs55 := yyspecial_routines55.resize_with_default (({ET_CREATOR}).default, yyvs55, yyvsc55)
 	end
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10197,9 +10197,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs55")
 		end
 		yyvsc55 := yyvsc55 + yyInitial_yyvs_size
-		yyvs55 := yyspecial_routines55.resize (yyvs55, yyvsc55)
+		yyvs55 := yyspecial_routines55.resize_with_default (({ET_CREATOR}).default, yyvs55, yyvsc55)
 	end
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10222,7 +10222,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp55 := yyvsp55 -1
 	yyvsp2 := yyvsp2 -1
 	yyvsp44 := yyvsp44 -1
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10248,9 +10248,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs55")
 		end
 		yyvsc55 := yyvsc55 + yyInitial_yyvs_size
-		yyvs55 := yyspecial_routines55.resize (yyvs55, yyvsc55)
+		yyvs55 := yyspecial_routines55.resize_with_default (({ET_CREATOR}).default, yyvs55, yyvsc55)
 	end
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10272,7 +10272,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp55 := yyvsp55 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10298,9 +10298,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs55")
 		end
 		yyvsc55 := yyvsc55 + yyInitial_yyvs_size
-		yyvs55 := yyspecial_routines55.resize (yyvs55, yyvsc55)
+		yyvs55 := yyspecial_routines55.resize_with_default (({ET_CREATOR}).default, yyvs55, yyvsc55)
 	end
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10325,9 +10325,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs55")
 		end
 		yyvsc55 := yyvsc55 + yyInitial_yyvs_size
-		yyvs55 := yyspecial_routines55.resize (yyvs55, yyvsc55)
+		yyvs55 := yyspecial_routines55.resize_with_default (({ET_CREATOR}).default, yyvs55, yyvsc55)
 	end
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10351,9 +10351,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs55")
 		end
 		yyvsc55 := yyvsc55 + yyInitial_yyvs_size
-		yyvs55 := yyspecial_routines55.resize (yyvs55, yyvsc55)
+		yyvs55 := yyspecial_routines55.resize_with_default (({ET_CREATOR}).default, yyvs55, yyvsc55)
 	end
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10376,7 +10376,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp55 := yyvsp55 -1
 	yyvsp2 := yyvsp2 -1
 	yyvsp44 := yyvsp44 -1
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10402,9 +10402,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs55")
 		end
 		yyvsc55 := yyvsc55 + yyInitial_yyvs_size
-		yyvs55 := yyspecial_routines55.resize (yyvs55, yyvsc55)
+		yyvs55 := yyspecial_routines55.resize_with_default (({ET_CREATOR}).default, yyvs55, yyvsc55)
 	end
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10426,7 +10426,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp55 := yyvsp55 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10452,9 +10452,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs55")
 		end
 		yyvsc55 := yyvsc55 + yyInitial_yyvs_size
-		yyvs55 := yyspecial_routines55.resize (yyvs55, yyvsc55)
+		yyvs55 := yyspecial_routines55.resize_with_default (({ET_CREATOR}).default, yyvs55, yyvsc55)
 	end
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10486,9 +10486,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs55")
 		end
 		yyvsc55 := yyvsc55 + yyInitial_yyvs_size
-		yyvs55 := yyspecial_routines55.resize (yyvs55, yyvsc55)
+		yyvs55 := yyspecial_routines55.resize_with_default (({ET_CREATOR}).default, yyvs55, yyvsc55)
 	end
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10520,9 +10520,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs55")
 		end
 		yyvsc55 := yyvsc55 + yyInitial_yyvs_size
-		yyvs55 := yyspecial_routines55.resize (yyvs55, yyvsc55)
+		yyvs55 := yyspecial_routines55.resize_with_default (({ET_CREATOR}).default, yyvs55, yyvsc55)
 	end
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10544,7 +10544,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp70 := yyvsp70 -1
-	yyvs55.force (yyval55, yyvsp55)
+	yyvs55.put (yyval55, yyvsp55)
 end
 		end
 
@@ -10573,9 +10573,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs70")
 		end
 		yyvsc70 := yyvsc70 + yyInitial_yyvs_size
-		yyvs70 := yyspecial_routines70.resize (yyvs70, yyvsc70)
+		yyvs70 := yyspecial_routines70.resize_with_default (({ET_FEATURE_NAME_ITEM}).default, yyvs70, yyvsc70)
 	end
-	yyvs70.force (yyval70, yyvsp70)
+	yyvs70.put (yyval70, yyvsp70)
 end
 		end
 
@@ -10598,9 +10598,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs53")
 		end
 		yyvsc53 := yyvsc53 + yyInitial_yyvs_size
-		yyvs53 := yyspecial_routines53.resize (yyvs53, yyvsc53)
+		yyvs53 := yyspecial_routines53.resize_with_default (({ET_CONVERT_FEATURE_LIST}).default, yyvs53, yyvsc53)
 	end
-	yyvs53.force (yyval53, yyvsp53)
+	yyvs53.put (yyval53, yyvsp53)
 end
 		end
 
@@ -10617,7 +10617,7 @@ end
 yyval53 := yyvs53.item (yyvsp53) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs53.force (yyval53, yyvsp53)
+	yyvs53.put (yyval53, yyvsp53)
 end
 		end
 
@@ -10639,7 +10639,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp53 := yyvsp53 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs53.force (yyval53, yyvsp53)
+	yyvs53.put (yyval53, yyvsp53)
 end
 		end
 
@@ -10664,9 +10664,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs53")
 		end
 		yyvsc53 := yyvsc53 + yyInitial_yyvs_size
-		yyvs53 := yyspecial_routines53.resize (yyvs53, yyvsc53)
+		yyvs53 := yyspecial_routines53.resize_with_default (({ET_CONVERT_FEATURE_LIST}).default, yyvs53, yyvsc53)
 	end
-	yyvs53.force (yyval53, yyvsp53)
+	yyvs53.put (yyval53, yyvsp53)
 end
 		end
 
@@ -10694,9 +10694,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs53")
 		end
 		yyvsc53 := yyvsc53 + yyInitial_yyvs_size
-		yyvs53 := yyspecial_routines53.resize (yyvs53, yyvsc53)
+		yyvs53 := yyspecial_routines53.resize_with_default (({ET_CONVERT_FEATURE_LIST}).default, yyvs53, yyvsc53)
 	end
-	yyvs53.force (yyval53, yyvsp53)
+	yyvs53.put (yyval53, yyvsp53)
 end
 		end
 
@@ -10724,9 +10724,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs53")
 		end
 		yyvsc53 := yyvsc53 + yyInitial_yyvs_size
-		yyvs53 := yyspecial_routines53.resize (yyvs53, yyvsc53)
+		yyvs53 := yyspecial_routines53.resize_with_default (({ET_CONVERT_FEATURE_LIST}).default, yyvs53, yyvsc53)
 	end
-	yyvs53.force (yyval53, yyvsp53)
+	yyvs53.put (yyval53, yyvsp53)
 end
 		end
 
@@ -10748,7 +10748,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp52 := yyvsp52 -1
-	yyvs53.force (yyval53, yyvsp53)
+	yyvs53.put (yyval53, yyvsp53)
 end
 		end
 
@@ -10777,9 +10777,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs52")
 		end
 		yyvsc52 := yyvsc52 + yyInitial_yyvs_size
-		yyvs52 := yyspecial_routines52.resize (yyvs52, yyvsc52)
+		yyvs52 := yyspecial_routines52.resize_with_default (({ET_CONVERT_FEATURE_ITEM}).default, yyvs52, yyvsc52)
 	end
-	yyvs52.force (yyval52, yyvsp52)
+	yyvs52.put (yyval52, yyvsp52)
 end
 		end
 
@@ -10806,9 +10806,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs51")
 		end
 		yyvsc51 := yyvsc51 + yyInitial_yyvs_size
-		yyvs51 := yyspecial_routines51.resize (yyvs51, yyvsc51)
+		yyvs51 := yyspecial_routines51.resize_with_default (({ET_CONVERT_FEATURE}).default, yyvs51, yyvsc51)
 	end
-	yyvs51.force (yyval51, yyvsp51)
+	yyvs51.put (yyval51, yyvsp51)
 end
 		end
 
@@ -10835,9 +10835,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs51")
 		end
 		yyvsc51 := yyvsc51 + yyInitial_yyvs_size
-		yyvs51 := yyspecial_routines51.resize (yyvs51, yyvsc51)
+		yyvs51 := yyspecial_routines51.resize_with_default (({ET_CONVERT_FEATURE}).default, yyvs51, yyvsc51)
 	end
-	yyvs51.force (yyval51, yyvsp51)
+	yyvs51.put (yyval51, yyvsp51)
 end
 		end
 
@@ -10861,9 +10861,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs114")
 		end
 		yyvsc114 := yyvsc114 + yyInitial_yyvs_size
-		yyvs114 := yyspecial_routines114.resize (yyvs114, yyvsc114)
+		yyvs114 := yyspecial_routines114.resize_with_default (({ET_TYPE_LIST}).default, yyvs114, yyvsc114)
 	end
-	yyvs114.force (yyval114, yyvsp114)
+	yyvs114.put (yyval114, yyvsp114)
 end
 		end
 
@@ -10885,7 +10885,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp114 := yyvsp114 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs114.force (yyval114, yyvsp114)
+	yyvs114.put (yyval114, yyvsp114)
 end
 		end
 
@@ -10910,9 +10910,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs114")
 		end
 		yyvsc114 := yyvsc114 + yyInitial_yyvs_size
-		yyvs114 := yyspecial_routines114.resize (yyvs114, yyvsc114)
+		yyvs114 := yyspecial_routines114.resize_with_default (({ET_TYPE_LIST}).default, yyvs114, yyvsc114)
 	end
-	yyvs114.force (yyval114, yyvsp114)
+	yyvs114.put (yyval114, yyvsp114)
 end
 		end
 
@@ -10945,9 +10945,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs114")
 		end
 		yyvsc114 := yyvsc114 + yyInitial_yyvs_size
-		yyvs114 := yyspecial_routines114.resize (yyvs114, yyvsc114)
+		yyvs114 := yyspecial_routines114.resize_with_default (({ET_TYPE_LIST}).default, yyvs114, yyvsc114)
 	end
-	yyvs114.force (yyval114, yyvsp114)
+	yyvs114.put (yyval114, yyvsp114)
 end
 		end
 
@@ -10969,7 +10969,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp113 := yyvsp113 -1
-	yyvs114.force (yyval114, yyvsp114)
+	yyvs114.put (yyval114, yyvsp114)
 end
 		end
 
@@ -10998,9 +10998,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs113")
 		end
 		yyvsc113 := yyvsc113 + yyInitial_yyvs_size
-		yyvs113 := yyspecial_routines113.resize (yyvs113, yyvsc113)
+		yyvs113 := yyspecial_routines113.resize_with_default (({ET_TYPE_ITEM}).default, yyvs113, yyvsc113)
 	end
-	yyvs113.force (yyval113, yyvsp113)
+	yyvs113.put (yyval113, yyvsp113)
 end
 		end
 
@@ -11025,9 +11025,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs67")
 		end
 		yyvsc67 := yyvsc67 + yyInitial_yyvs_size
-		yyvs67 := yyspecial_routines67.resize (yyvs67, yyvsc67)
+		yyvs67 := yyspecial_routines67.resize_with_default (({ET_FEATURE_CLAUSE_LIST}).default, yyvs67, yyvsc67)
 	end
-	yyvs67.force (yyval67, yyvsp67)
+	yyvs67.put (yyval67, yyvsp67)
 end
 		end
 
@@ -11044,7 +11044,7 @@ end
 yyval67 := yyvs67.item (yyvsp67) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs67.force (yyval67, yyvsp67)
+	yyvs67.put (yyval67, yyvsp67)
 end
 		end
 
@@ -11065,7 +11065,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs67.force (yyval67, yyvsp67)
+	yyvs67.put (yyval67, yyvsp67)
 end
 		end
 
@@ -11093,9 +11093,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs67")
 		end
 		yyvsc67 := yyvsc67 + yyInitial_yyvs_size
-		yyvs67 := yyspecial_routines67.resize (yyvs67, yyvsc67)
+		yyvs67 := yyspecial_routines67.resize_with_default (({ET_FEATURE_CLAUSE_LIST}).default, yyvs67, yyvsc67)
 	end
-	yyvs67.force (yyval67, yyvsp67)
+	yyvs67.put (yyval67, yyvsp67)
 end
 		end
 
@@ -11117,7 +11117,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp66 := yyvsp66 -1
-	yyvs67.force (yyval67, yyvsp67)
+	yyvs67.put (yyval67, yyvsp67)
 end
 		end
 
@@ -11138,7 +11138,7 @@ end
 		
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs66.force (yyval66, yyvsp66)
+	yyvs66.put (yyval66, yyvsp66)
 end
 		end
 
@@ -11160,7 +11160,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs66.force (yyval66, yyvsp66)
+	yyvs66.put (yyval66, yyvsp66)
 end
 		end
 
@@ -11187,9 +11187,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs66")
 		end
 		yyvsc66 := yyvsc66 + yyInitial_yyvs_size
-		yyvs66 := yyspecial_routines66.resize (yyvs66, yyvsc66)
+		yyvs66 := yyspecial_routines66.resize_with_default (({ET_FEATURE_CLAUSE}).default, yyvs66, yyvsc66)
 	end
-	yyvs66.force (yyval66, yyvsp66)
+	yyvs66.put (yyval66, yyvsp66)
 end
 		end
 
@@ -11215,9 +11215,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs66")
 		end
 		yyvsc66 := yyvsc66 + yyInitial_yyvs_size
-		yyvs66 := yyspecial_routines66.resize (yyvs66, yyvsc66)
+		yyvs66 := yyspecial_routines66.resize_with_default (({ET_FEATURE_CLAUSE}).default, yyvs66, yyvsc66)
 	end
-	yyvs66.force (yyval66, yyvsp66)
+	yyvs66.put (yyval66, yyvsp66)
 end
 		end
 
@@ -11241,9 +11241,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -11267,9 +11267,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -11287,7 +11287,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp107 := yyvsp107 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -11305,7 +11305,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp105 := yyvsp105 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -11324,7 +11324,7 @@ end
 		
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11345,7 +11345,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp2 := yyvsp2 -1
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11366,7 +11366,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp64 := yyvsp64 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11386,7 +11386,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp64 := yyvsp64 -1
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11409,7 +11409,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp2 := yyvsp2 -1
 	yyvsp64 := yyvsp64 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11431,7 +11431,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp64 := yyvsp64 -1
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11450,7 +11450,7 @@ end
 		
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs105.force (yyval105, yyvsp105)
+	yyvs105.put (yyval105, yyvsp105)
 end
 		end
 
@@ -11471,7 +11471,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp2 := yyvsp2 -1
-	yyvs105.force (yyval105, yyvsp105)
+	yyvs105.put (yyval105, yyvsp105)
 end
 		end
 
@@ -11492,7 +11492,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp64 := yyvsp64 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs105.force (yyval105, yyvsp105)
+	yyvs105.put (yyval105, yyvsp105)
 end
 		end
 
@@ -11512,7 +11512,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp64 := yyvsp64 -1
-	yyvs105.force (yyval105, yyvsp105)
+	yyvs105.put (yyval105, yyvsp105)
 end
 		end
 
@@ -11535,7 +11535,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp2 := yyvsp2 -1
 	yyvsp64 := yyvsp64 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs105.force (yyval105, yyvsp105)
+	yyvs105.put (yyval105, yyvsp105)
 end
 		end
 
@@ -11557,7 +11557,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp64 := yyvsp64 -1
-	yyvs105.force (yyval105, yyvsp105)
+	yyvs105.put (yyval105, yyvsp105)
 end
 		end
 
@@ -11584,9 +11584,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11614,9 +11614,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11646,9 +11646,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11682,9 +11682,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11713,9 +11713,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11749,9 +11749,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11786,9 +11786,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11828,9 +11828,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11866,9 +11866,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11909,9 +11909,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11946,9 +11946,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -11988,9 +11988,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -12026,9 +12026,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -12069,9 +12069,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -12104,9 +12104,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -12144,9 +12144,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -12180,9 +12180,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -12221,9 +12221,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -12258,9 +12258,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -12300,9 +12300,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -12338,9 +12338,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -12381,9 +12381,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs107")
 		end
 		yyvsc107 := yyvsc107 + yyInitial_yyvs_size
-		yyvs107 := yyspecial_routines107.resize (yyvs107, yyvsc107)
+		yyvs107 := yyspecial_routines107.resize_with_default (({ET_QUERY}).default, yyvs107, yyvsc107)
 	end
-	yyvs107.force (yyval107, yyvsp107)
+	yyvs107.put (yyval107, yyvsp107)
 end
 		end
 
@@ -12415,9 +12415,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs105")
 		end
 		yyvsc105 := yyvsc105 + yyInitial_yyvs_size
-		yyvs105 := yyspecial_routines105.resize (yyvs105, yyvsc105)
+		yyvs105 := yyspecial_routines105.resize_with_default (({ET_PROCEDURE}).default, yyvs105, yyvsc105)
 	end
-	yyvs105.force (yyval105, yyvsp105)
+	yyvs105.put (yyval105, yyvsp105)
 end
 		end
 
@@ -12450,9 +12450,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs105")
 		end
 		yyvsc105 := yyvsc105 + yyInitial_yyvs_size
-		yyvs105 := yyspecial_routines105.resize (yyvs105, yyvsc105)
+		yyvs105 := yyspecial_routines105.resize_with_default (({ET_PROCEDURE}).default, yyvs105, yyvsc105)
 	end
-	yyvs105.force (yyval105, yyvsp105)
+	yyvs105.put (yyval105, yyvsp105)
 end
 		end
 
@@ -12484,9 +12484,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs105")
 		end
 		yyvsc105 := yyvsc105 + yyInitial_yyvs_size
-		yyvs105 := yyspecial_routines105.resize (yyvs105, yyvsc105)
+		yyvs105 := yyspecial_routines105.resize_with_default (({ET_PROCEDURE}).default, yyvs105, yyvsc105)
 	end
-	yyvs105.force (yyval105, yyvsp105)
+	yyvs105.put (yyval105, yyvsp105)
 end
 		end
 
@@ -12519,9 +12519,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs105")
 		end
 		yyvsc105 := yyvsc105 + yyInitial_yyvs_size
-		yyvs105 := yyspecial_routines105.resize (yyvs105, yyvsc105)
+		yyvs105 := yyspecial_routines105.resize_with_default (({ET_PROCEDURE}).default, yyvs105, yyvsc105)
 	end
-	yyvs105.force (yyval105, yyvsp105)
+	yyvs105.put (yyval105, yyvsp105)
 end
 		end
 
@@ -12551,9 +12551,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs105")
 		end
 		yyvsc105 := yyvsc105 + yyInitial_yyvs_size
-		yyvs105 := yyspecial_routines105.resize (yyvs105, yyvsc105)
+		yyvs105 := yyspecial_routines105.resize_with_default (({ET_PROCEDURE}).default, yyvs105, yyvsc105)
 	end
-	yyvs105.force (yyval105, yyvsp105)
+	yyvs105.put (yyval105, yyvsp105)
 end
 		end
 
@@ -12584,9 +12584,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs105")
 		end
 		yyvsc105 := yyvsc105 + yyInitial_yyvs_size
-		yyvs105 := yyspecial_routines105.resize (yyvs105, yyvsc105)
+		yyvs105 := yyspecial_routines105.resize_with_default (({ET_PROCEDURE}).default, yyvs105, yyvsc105)
 	end
-	yyvs105.force (yyval105, yyvsp105)
+	yyvs105.put (yyval105, yyvsp105)
 end
 		end
 
@@ -12618,9 +12618,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs105")
 		end
 		yyvsc105 := yyvsc105 + yyInitial_yyvs_size
-		yyvs105 := yyspecial_routines105.resize (yyvs105, yyvsc105)
+		yyvs105 := yyspecial_routines105.resize_with_default (({ET_PROCEDURE}).default, yyvs105, yyvsc105)
 	end
-	yyvs105.force (yyval105, yyvsp105)
+	yyvs105.put (yyval105, yyvsp105)
 end
 		end
 
@@ -12653,9 +12653,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs105")
 		end
 		yyvsc105 := yyvsc105 + yyInitial_yyvs_size
-		yyvs105 := yyspecial_routines105.resize (yyvs105, yyvsc105)
+		yyvs105 := yyspecial_routines105.resize_with_default (({ET_PROCEDURE}).default, yyvs105, yyvsc105)
 	end
-	yyvs105.force (yyval105, yyvsp105)
+	yyvs105.put (yyval105, yyvsp105)
 end
 		end
 
@@ -12683,9 +12683,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs2")
 		end
 		yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-		yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+		yyvs2 := yyspecial_routines2.resize_with_default (({ET_KEYWORD}).default, yyvs2, yyvsc2)
 	end
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 		end
 
@@ -12702,7 +12702,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 		end
 
@@ -12725,9 +12725,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs22")
 		end
 		yyvsc22 := yyvsc22 + yyInitial_yyvs_size
-		yyvs22 := yyspecial_routines22.resize (yyvs22, yyvsc22)
+		yyvs22 := yyspecial_routines22.resize_with_default (({ET_SEMICOLON_SYMBOL}).default, yyvs22, yyvsc22)
 	end
-	yyvs22.force (yyval22, yyvsp22)
+	yyvs22.put (yyval22, yyvsp22)
 end
 		end
 
@@ -12744,7 +12744,7 @@ end
 yyval22 := yyvs22.item (yyvsp22) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs22.force (yyval22, yyvsp22)
+	yyvs22.put (yyval22, yyvsp22)
 end
 		end
 
@@ -12767,9 +12767,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs65")
 		end
 		yyvsc65 := yyvsc65 + yyInitial_yyvs_size
-		yyvs65 := yyspecial_routines65.resize (yyvs65, yyvsc65)
+		yyvs65 := yyspecial_routines65.resize_with_default (({ET_EXTERNAL_ALIAS}).default, yyvs65, yyvsc65)
 	end
-	yyvs65.force (yyval65, yyvsp65)
+	yyvs65.put (yyval65, yyvsp65)
 end
 		end
 
@@ -12794,9 +12794,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs65")
 		end
 		yyvsc65 := yyvsc65 + yyInitial_yyvs_size
-		yyvs65 := yyspecial_routines65.resize (yyvs65, yyvsc65)
+		yyvs65 := yyspecial_routines65.resize_with_default (({ET_EXTERNAL_ALIAS}).default, yyvs65, yyvsc65)
 	end
-	yyvs65.force (yyval65, yyvsp65)
+	yyvs65.put (yyval65, yyvsp65)
 end
 		end
 
@@ -12819,9 +12819,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs33")
 		end
 		yyvsc33 := yyvsc33 + yyInitial_yyvs_size
-		yyvs33 := yyspecial_routines33.resize (yyvs33, yyvsc33)
+		yyvs33 := yyspecial_routines33.resize_with_default (({ET_ASSIGNER}).default, yyvs33, yyvsc33)
 	end
-	yyvs33.force (yyval33, yyvsp33)
+	yyvs33.put (yyval33, yyvsp33)
 end
 		end
 
@@ -12846,9 +12846,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs33")
 		end
 		yyvsc33 := yyvsc33 + yyInitial_yyvs_size
-		yyvs33 := yyspecial_routines33.resize (yyvs33, yyvsc33)
+		yyvs33 := yyspecial_routines33.resize_with_default (({ET_ASSIGNER}).default, yyvs33, yyvsc33)
 	end
-	yyvs33.force (yyval33, yyvsp33)
+	yyvs33.put (yyval33, yyvsp33)
 end
 		end
 
@@ -12872,9 +12872,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -12899,9 +12899,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -12926,9 +12926,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -12953,9 +12953,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -12980,9 +12980,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13007,9 +13007,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13034,9 +13034,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13061,9 +13061,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13088,9 +13088,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13115,9 +13115,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13142,9 +13142,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13169,9 +13169,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13196,9 +13196,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13223,9 +13223,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13250,9 +13250,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13277,9 +13277,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13304,9 +13304,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13331,9 +13331,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13358,9 +13358,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13385,9 +13385,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13412,9 +13412,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13439,9 +13439,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13466,9 +13466,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13493,9 +13493,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13520,9 +13520,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13547,9 +13547,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13574,9 +13574,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13601,9 +13601,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13628,9 +13628,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13655,9 +13655,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13682,9 +13682,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13709,9 +13709,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13736,9 +13736,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13763,9 +13763,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13790,9 +13790,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13817,9 +13817,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13844,9 +13844,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13871,9 +13871,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13898,9 +13898,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13925,9 +13925,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13952,9 +13952,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs69")
 		end
 		yyvsc69 := yyvsc69 + yyInitial_yyvs_size
-		yyvs69 := yyspecial_routines69.resize (yyvs69, yyvsc69)
+		yyvs69 := yyspecial_routines69.resize_with_default (({ET_FEATURE_NAME}).default, yyvs69, yyvsc69)
 	end
-	yyvs69.force (yyval69, yyvsp69)
+	yyvs69.put (yyval69, yyvsp69)
 end
 		end
 
@@ -13978,9 +13978,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs64")
 		end
 		yyvsc64 := yyvsc64 + yyInitial_yyvs_size
-		yyvs64 := yyspecial_routines64.resize (yyvs64, yyvsc64)
+		yyvs64 := yyspecial_routines64.resize_with_default (({ET_EXTENDED_FEATURE_NAME}).default, yyvs64, yyvsc64)
 	end
-	yyvs64.force (yyval64, yyvsp64)
+	yyvs64.put (yyval64, yyvsp64)
 end
 		end
 
@@ -14005,9 +14005,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs64")
 		end
 		yyvsc64 := yyvsc64 + yyInitial_yyvs_size
-		yyvs64 := yyspecial_routines64.resize (yyvs64, yyvsc64)
+		yyvs64 := yyspecial_routines64.resize_with_default (({ET_EXTENDED_FEATURE_NAME}).default, yyvs64, yyvsc64)
 	end
-	yyvs64.force (yyval64, yyvsp64)
+	yyvs64.put (yyval64, yyvsp64)
 end
 		end
 
@@ -14032,9 +14032,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14059,9 +14059,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14086,9 +14086,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14113,9 +14113,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14140,9 +14140,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14167,9 +14167,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14194,9 +14194,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14221,9 +14221,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14248,9 +14248,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14275,9 +14275,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14302,9 +14302,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14329,9 +14329,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14356,9 +14356,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14383,9 +14383,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14410,9 +14410,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14437,9 +14437,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14464,9 +14464,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14491,9 +14491,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14518,9 +14518,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14545,9 +14545,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14572,9 +14572,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14599,9 +14599,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs32")
 		end
 		yyvsc32 := yyvsc32 + yyInitial_yyvs_size
-		yyvs32 := yyspecial_routines32.resize (yyvs32, yyvsc32)
+		yyvs32 := yyspecial_routines32.resize_with_default (({ET_ALIAS_NAME}).default, yyvs32, yyvsc32)
 	end
-	yyvs32.force (yyval32, yyvsp32)
+	yyvs32.put (yyval32, yyvsp32)
 end
 		end
 
@@ -14620,7 +14620,7 @@ end
 		
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs73.force (yyval73, yyvsp73)
+	yyvs73.put (yyval73, yyvsp73)
 end
 		end
 
@@ -14644,9 +14644,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs73")
 		end
 		yyvsc73 := yyvsc73 + yyInitial_yyvs_size
-		yyvs73 := yyspecial_routines73.resize (yyvs73, yyvsc73)
+		yyvs73 := yyspecial_routines73.resize_with_default (({ET_FORMAL_ARGUMENT_LIST}).default, yyvs73, yyvsc73)
 	end
-	yyvs73.force (yyval73, yyvsp73)
+	yyvs73.put (yyval73, yyvsp73)
 end
 		end
 
@@ -14667,7 +14667,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp5 := yyvsp5 -1
-	yyvs73.force (yyval73, yyvsp73)
+	yyvs73.put (yyval73, yyvsp73)
 end
 		end
 
@@ -14690,7 +14690,7 @@ end
 		
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 		end
 
@@ -14719,9 +14719,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs73")
 		end
 		yyvsc73 := yyvsc73 + yyInitial_yyvs_size
-		yyvs73 := yyspecial_routines73.resize (yyvs73, yyvsc73)
+		yyvs73 := yyspecial_routines73.resize_with_default (({ET_FORMAL_ARGUMENT_LIST}).default, yyvs73, yyvsc73)
 	end
-	yyvs73.force (yyval73, yyvsp73)
+	yyvs73.put (yyval73, yyvsp73)
 end
 		end
 
@@ -14750,9 +14750,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs73")
 		end
 		yyvsc73 := yyvsc73 + yyInitial_yyvs_size
-		yyvs73 := yyspecial_routines73.resize (yyvs73, yyvsc73)
+		yyvs73 := yyspecial_routines73.resize_with_default (({ET_FORMAL_ARGUMENT_LIST}).default, yyvs73, yyvsc73)
 	end
-	yyvs73.force (yyval73, yyvsp73)
+	yyvs73.put (yyval73, yyvsp73)
 end
 		end
 
@@ -14777,7 +14777,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp71 := yyvsp71 -1
-	yyvs73.force (yyval73, yyvsp73)
+	yyvs73.put (yyval73, yyvsp73)
 end
 		end
 
@@ -14803,7 +14803,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp71 := yyvsp71 -1
-	yyvs73.force (yyval73, yyvsp73)
+	yyvs73.put (yyval73, yyvsp73)
 end
 		end
 
@@ -14825,7 +14825,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp72 := yyvsp72 -1
-	yyvs73.force (yyval73, yyvsp73)
+	yyvs73.put (yyval73, yyvsp73)
 end
 		end
 
@@ -14847,7 +14847,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp72 := yyvsp72 -1
-	yyvs73.force (yyval73, yyvsp73)
+	yyvs73.put (yyval73, yyvsp73)
 end
 		end
 
@@ -14876,9 +14876,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs71")
 		end
 		yyvsc71 := yyvsc71 + yyInitial_yyvs_size
-		yyvs71 := yyspecial_routines71.resize (yyvs71, yyvsc71)
+		yyvs71 := yyspecial_routines71.resize_with_default (({ET_FORMAL_ARGUMENT}).default, yyvs71, yyvsc71)
 	end
-	yyvs71.force (yyval71, yyvsp71)
+	yyvs71.put (yyval71, yyvsp71)
 end
 		end
 
@@ -14906,9 +14906,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs71")
 		end
 		yyvsc71 := yyvsc71 + yyInitial_yyvs_size
-		yyvs71 := yyspecial_routines71.resize (yyvs71, yyvsc71)
+		yyvs71 := yyspecial_routines71.resize_with_default (({ET_FORMAL_ARGUMENT}).default, yyvs71, yyvsc71)
 	end
-	yyvs71.force (yyval71, yyvsp71)
+	yyvs71.put (yyval71, yyvsp71)
 end
 		end
 
@@ -14938,9 +14938,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs72")
 		end
 		yyvsc72 := yyvsc72 + yyInitial_yyvs_size
-		yyvs72 := yyspecial_routines72.resize (yyvs72, yyvsc72)
+		yyvs72 := yyspecial_routines72.resize_with_default (({ET_FORMAL_ARGUMENT_ITEM}).default, yyvs72, yyvsc72)
 	end
-	yyvs72.force (yyval72, yyvsp72)
+	yyvs72.put (yyval72, yyvsp72)
 end
 		end
 
@@ -14971,9 +14971,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs72")
 		end
 		yyvsc72 := yyvsc72 + yyInitial_yyvs_size
-		yyvs72 := yyspecial_routines72.resize (yyvs72, yyvsc72)
+		yyvs72 := yyspecial_routines72.resize_with_default (({ET_FORMAL_ARGUMENT_ITEM}).default, yyvs72, yyvsc72)
 	end
-	yyvs72.force (yyval72, yyvsp72)
+	yyvs72.put (yyval72, yyvsp72)
 end
 		end
 
@@ -14996,9 +14996,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs91")
 		end
 		yyvsc91 := yyvsc91 + yyInitial_yyvs_size
-		yyvs91 := yyspecial_routines91.resize (yyvs91, yyvsc91)
+		yyvs91 := yyspecial_routines91.resize_with_default (({ET_LOCAL_VARIABLE_LIST}).default, yyvs91, yyvsc91)
 	end
-	yyvs91.force (yyval91, yyvsp91)
+	yyvs91.put (yyval91, yyvsp91)
 end
 		end
 
@@ -15022,9 +15022,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs91")
 		end
 		yyvsc91 := yyvsc91 + yyInitial_yyvs_size
-		yyvs91 := yyspecial_routines91.resize (yyvs91, yyvsc91)
+		yyvs91 := yyspecial_routines91.resize_with_default (({ET_LOCAL_VARIABLE_LIST}).default, yyvs91, yyvsc91)
 	end
-	yyvs91.force (yyval91, yyvsp91)
+	yyvs91.put (yyval91, yyvsp91)
 end
 		end
 
@@ -15046,7 +15046,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp91 := yyvsp91 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs91.force (yyval91, yyvsp91)
+	yyvs91.put (yyval91, yyvsp91)
 end
 		end
 
@@ -15071,9 +15071,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs91")
 		end
 		yyvsc91 := yyvsc91 + yyInitial_yyvs_size
-		yyvs91 := yyspecial_routines91.resize (yyvs91, yyvsc91)
+		yyvs91 := yyspecial_routines91.resize_with_default (({ET_LOCAL_VARIABLE_LIST}).default, yyvs91, yyvsc91)
 	end
-	yyvs91.force (yyval91, yyvsp91)
+	yyvs91.put (yyval91, yyvsp91)
 end
 		end
 
@@ -15101,9 +15101,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs91")
 		end
 		yyvsc91 := yyvsc91 + yyInitial_yyvs_size
-		yyvs91 := yyspecial_routines91.resize (yyvs91, yyvsc91)
+		yyvs91 := yyspecial_routines91.resize_with_default (({ET_LOCAL_VARIABLE_LIST}).default, yyvs91, yyvsc91)
 	end
-	yyvs91.force (yyval91, yyvsp91)
+	yyvs91.put (yyval91, yyvsp91)
 end
 		end
 
@@ -15131,9 +15131,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs91")
 		end
 		yyvsc91 := yyvsc91 + yyInitial_yyvs_size
-		yyvs91 := yyspecial_routines91.resize (yyvs91, yyvsc91)
+		yyvs91 := yyspecial_routines91.resize_with_default (({ET_LOCAL_VARIABLE_LIST}).default, yyvs91, yyvsc91)
 	end
-	yyvs91.force (yyval91, yyvsp91)
+	yyvs91.put (yyval91, yyvsp91)
 end
 		end
 
@@ -15158,7 +15158,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp89 := yyvsp89 -1
-	yyvs91.force (yyval91, yyvsp91)
+	yyvs91.put (yyval91, yyvsp91)
 end
 		end
 
@@ -15184,7 +15184,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp89 := yyvsp89 -1
-	yyvs91.force (yyval91, yyvsp91)
+	yyvs91.put (yyval91, yyvsp91)
 end
 		end
 
@@ -15206,7 +15206,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp90 := yyvsp90 -1
-	yyvs91.force (yyval91, yyvsp91)
+	yyvs91.put (yyval91, yyvsp91)
 end
 		end
 
@@ -15228,7 +15228,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp90 := yyvsp90 -1
-	yyvs91.force (yyval91, yyvsp91)
+	yyvs91.put (yyval91, yyvsp91)
 end
 		end
 
@@ -15257,9 +15257,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs89")
 		end
 		yyvsc89 := yyvsc89 + yyInitial_yyvs_size
-		yyvs89 := yyspecial_routines89.resize (yyvs89, yyvsc89)
+		yyvs89 := yyspecial_routines89.resize_with_default (({ET_LOCAL_VARIABLE}).default, yyvs89, yyvsc89)
 	end
-	yyvs89.force (yyval89, yyvsp89)
+	yyvs89.put (yyval89, yyvsp89)
 end
 		end
 
@@ -15287,9 +15287,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs89")
 		end
 		yyvsc89 := yyvsc89 + yyInitial_yyvs_size
-		yyvs89 := yyspecial_routines89.resize (yyvs89, yyvsc89)
+		yyvs89 := yyspecial_routines89.resize_with_default (({ET_LOCAL_VARIABLE}).default, yyvs89, yyvsc89)
 	end
-	yyvs89.force (yyval89, yyvsp89)
+	yyvs89.put (yyval89, yyvsp89)
 end
 		end
 
@@ -15319,9 +15319,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs90")
 		end
 		yyvsc90 := yyvsc90 + yyInitial_yyvs_size
-		yyvs90 := yyspecial_routines90.resize (yyvs90, yyvsc90)
+		yyvs90 := yyspecial_routines90.resize_with_default (({ET_LOCAL_VARIABLE_ITEM}).default, yyvs90, yyvsc90)
 	end
-	yyvs90.force (yyval90, yyvsp90)
+	yyvs90.put (yyval90, yyvsp90)
 end
 		end
 
@@ -15352,9 +15352,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs90")
 		end
 		yyvsc90 := yyvsc90 + yyInitial_yyvs_size
-		yyvs90 := yyspecial_routines90.resize (yyvs90, yyvsc90)
+		yyvs90 := yyspecial_routines90.resize_with_default (({ET_LOCAL_VARIABLE_ITEM}).default, yyvs90, yyvsc90)
 	end
-	yyvs90.force (yyval90, yyvsp90)
+	yyvs90.put (yyval90, yyvsp90)
 end
 		end
 
@@ -15378,9 +15378,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -15405,9 +15405,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -15432,9 +15432,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -15460,9 +15460,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -15480,7 +15480,7 @@ add_expression_assertion (yyvs62.item (yyvsp62), Void)
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp62 := yyvsp62 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -15499,7 +15499,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp22 := yyvsp22 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -15518,7 +15518,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp13 := yyvsp13 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -15538,7 +15538,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp13 := yyvsp13 -1
 	yyvsp5 := yyvsp5 -1
 	yyvsp22 := yyvsp22 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -15561,9 +15561,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs104")
 		end
 		yyvsc104 := yyvsc104 + yyInitial_yyvs_size
-		yyvs104 := yyspecial_routines104.resize (yyvs104, yyvsc104)
+		yyvs104 := yyspecial_routines104.resize_with_default (({ET_PRECONDITIONS}).default, yyvs104, yyvsc104)
 	end
-	yyvs104.force (yyval104, yyvsp104)
+	yyvs104.put (yyval104, yyvsp104)
 end
 		end
 
@@ -15587,9 +15587,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs104")
 		end
 		yyvsc104 := yyvsc104 + yyInitial_yyvs_size
-		yyvs104 := yyspecial_routines104.resize (yyvs104, yyvsc104)
+		yyvs104 := yyspecial_routines104.resize_with_default (({ET_PRECONDITIONS}).default, yyvs104, yyvsc104)
 	end
-	yyvs104.force (yyval104, yyvsp104)
+	yyvs104.put (yyval104, yyvsp104)
 end
 		end
 
@@ -15613,9 +15613,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs104")
 		end
 		yyvsc104 := yyvsc104 + yyInitial_yyvs_size
-		yyvs104 := yyspecial_routines104.resize (yyvs104, yyvsc104)
+		yyvs104 := yyspecial_routines104.resize_with_default (({ET_PRECONDITIONS}).default, yyvs104, yyvsc104)
 	end
-	yyvs104.force (yyval104, yyvsp104)
+	yyvs104.put (yyval104, yyvsp104)
 end
 		end
 
@@ -15640,9 +15640,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs104")
 		end
 		yyvsc104 := yyvsc104 + yyInitial_yyvs_size
-		yyvs104 := yyspecial_routines104.resize (yyvs104, yyvsc104)
+		yyvs104 := yyspecial_routines104.resize_with_default (({ET_PRECONDITIONS}).default, yyvs104, yyvsc104)
 	end
-	yyvs104.force (yyval104, yyvsp104)
+	yyvs104.put (yyval104, yyvsp104)
 end
 		end
 
@@ -15667,9 +15667,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs104")
 		end
 		yyvsc104 := yyvsc104 + yyInitial_yyvs_size
-		yyvs104 := yyspecial_routines104.resize (yyvs104, yyvsc104)
+		yyvs104 := yyspecial_routines104.resize_with_default (({ET_PRECONDITIONS}).default, yyvs104, yyvsc104)
 	end
-	yyvs104.force (yyval104, yyvsp104)
+	yyvs104.put (yyval104, yyvsp104)
 end
 		end
 
@@ -15692,9 +15692,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs103")
 		end
 		yyvsc103 := yyvsc103 + yyInitial_yyvs_size
-		yyvs103 := yyspecial_routines103.resize (yyvs103, yyvsc103)
+		yyvs103 := yyspecial_routines103.resize_with_default (({ET_POSTCONDITIONS}).default, yyvs103, yyvsc103)
 	end
-	yyvs103.force (yyval103, yyvsp103)
+	yyvs103.put (yyval103, yyvsp103)
 end
 		end
 
@@ -15718,9 +15718,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs103")
 		end
 		yyvsc103 := yyvsc103 + yyInitial_yyvs_size
-		yyvs103 := yyspecial_routines103.resize (yyvs103, yyvsc103)
+		yyvs103 := yyspecial_routines103.resize_with_default (({ET_POSTCONDITIONS}).default, yyvs103, yyvsc103)
 	end
-	yyvs103.force (yyval103, yyvsp103)
+	yyvs103.put (yyval103, yyvsp103)
 end
 		end
 
@@ -15744,9 +15744,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs103")
 		end
 		yyvsc103 := yyvsc103 + yyInitial_yyvs_size
-		yyvs103 := yyspecial_routines103.resize (yyvs103, yyvsc103)
+		yyvs103 := yyspecial_routines103.resize_with_default (({ET_POSTCONDITIONS}).default, yyvs103, yyvsc103)
 	end
-	yyvs103.force (yyval103, yyvsp103)
+	yyvs103.put (yyval103, yyvsp103)
 end
 		end
 
@@ -15771,9 +15771,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs103")
 		end
 		yyvsc103 := yyvsc103 + yyInitial_yyvs_size
-		yyvs103 := yyspecial_routines103.resize (yyvs103, yyvsc103)
+		yyvs103 := yyspecial_routines103.resize_with_default (({ET_POSTCONDITIONS}).default, yyvs103, yyvsc103)
 	end
-	yyvs103.force (yyval103, yyvsp103)
+	yyvs103.put (yyval103, yyvsp103)
 end
 		end
 
@@ -15798,9 +15798,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs103")
 		end
 		yyvsc103 := yyvsc103 + yyInitial_yyvs_size
-		yyvs103 := yyspecial_routines103.resize (yyvs103, yyvsc103)
+		yyvs103 := yyspecial_routines103.resize_with_default (({ET_POSTCONDITIONS}).default, yyvs103, yyvsc103)
 	end
-	yyvs103.force (yyval103, yyvsp103)
+	yyvs103.put (yyval103, yyvsp103)
 end
 		end
 
@@ -15823,9 +15823,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs86")
 		end
 		yyvsc86 := yyvsc86 + yyInitial_yyvs_size
-		yyvs86 := yyspecial_routines86.resize (yyvs86, yyvsc86)
+		yyvs86 := yyspecial_routines86.resize_with_default (({ET_INVARIANTS}).default, yyvs86, yyvsc86)
 	end
-	yyvs86.force (yyval86, yyvsp86)
+	yyvs86.put (yyval86, yyvsp86)
 end
 		end
 
@@ -15842,7 +15842,7 @@ end
 yyval86 := yyvs86.item (yyvsp86) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs86.force (yyval86, yyvsp86)
+	yyvs86.put (yyval86, yyvsp86)
 end
 		end
 
@@ -15867,9 +15867,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs86")
 		end
 		yyvsc86 := yyvsc86 + yyInitial_yyvs_size
-		yyvs86 := yyspecial_routines86.resize (yyvs86, yyvsc86)
+		yyvs86 := yyspecial_routines86.resize_with_default (({ET_INVARIANTS}).default, yyvs86, yyvsc86)
 	end
-	yyvs86.force (yyval86, yyvsp86)
+	yyvs86.put (yyval86, yyvsp86)
 end
 		end
 
@@ -15894,9 +15894,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs86")
 		end
 		yyvsc86 := yyvsc86 + yyInitial_yyvs_size
-		yyvs86 := yyspecial_routines86.resize (yyvs86, yyvsc86)
+		yyvs86 := yyspecial_routines86.resize_with_default (({ET_INVARIANTS}).default, yyvs86, yyvsc86)
 	end
-	yyvs86.force (yyval86, yyvsp86)
+	yyvs86.put (yyval86, yyvsp86)
 end
 		end
 
@@ -15919,9 +15919,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -15944,9 +15944,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs92")
 		end
 		yyvsc92 := yyvsc92 + yyInitial_yyvs_size
-		yyvs92 := yyspecial_routines92.resize (yyvs92, yyvsc92)
+		yyvs92 := yyspecial_routines92.resize_with_default (({ET_LOOP_INVARIANTS}).default, yyvs92, yyvsc92)
 	end
-	yyvs92.force (yyval92, yyvsp92)
+	yyvs92.put (yyval92, yyvsp92)
 end
 		end
 
@@ -15963,7 +15963,7 @@ end
 yyval92 := yyvs92.item (yyvsp92) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs92.force (yyval92, yyvsp92)
+	yyvs92.put (yyval92, yyvsp92)
 end
 		end
 
@@ -15987,9 +15987,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs92")
 		end
 		yyvsc92 := yyvsc92 + yyInitial_yyvs_size
-		yyvs92 := yyspecial_routines92.resize (yyvs92, yyvsc92)
+		yyvs92 := yyspecial_routines92.resize_with_default (({ET_LOOP_INVARIANTS}).default, yyvs92, yyvsc92)
 	end
-	yyvs92.force (yyval92, yyvsp92)
+	yyvs92.put (yyval92, yyvsp92)
 end
 		end
 
@@ -16014,9 +16014,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs92")
 		end
 		yyvsc92 := yyvsc92 + yyInitial_yyvs_size
-		yyvs92 := yyspecial_routines92.resize (yyvs92, yyvsc92)
+		yyvs92 := yyspecial_routines92.resize_with_default (({ET_LOOP_INVARIANTS}).default, yyvs92, yyvsc92)
 	end
-	yyvs92.force (yyval92, yyvsp92)
+	yyvs92.put (yyval92, yyvsp92)
 end
 		end
 
@@ -16040,9 +16040,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs115")
 		end
 		yyvsc115 := yyvsc115 + yyInitial_yyvs_size
-		yyvs115 := yyspecial_routines115.resize (yyvs115, yyvsc115)
+		yyvs115 := yyspecial_routines115.resize_with_default (({ET_VARIANT}).default, yyvs115, yyvsc115)
 	end
-	yyvs115.force (yyval115, yyvsp115)
+	yyvs115.put (yyval115, yyvsp115)
 end
 		end
 
@@ -16067,9 +16067,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs115")
 		end
 		yyvsc115 := yyvsc115 + yyInitial_yyvs_size
-		yyvs115 := yyspecial_routines115.resize (yyvs115, yyvsc115)
+		yyvs115 := yyspecial_routines115.resize_with_default (({ET_VARIANT}).default, yyvs115, yyvsc115)
 	end
-	yyvs115.force (yyval115, yyvsp115)
+	yyvs115.put (yyval115, yyvsp115)
 end
 		end
 
@@ -16096,9 +16096,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs115")
 		end
 		yyvsc115 := yyvsc115 + yyInitial_yyvs_size
-		yyvs115 := yyspecial_routines115.resize (yyvs115, yyvsc115)
+		yyvs115 := yyspecial_routines115.resize_with_default (({ET_VARIANT}).default, yyvs115, yyvsc115)
 	end
-	yyvs115.force (yyval115, yyvsp115)
+	yyvs115.put (yyval115, yyvsp115)
 end
 		end
 
@@ -16121,9 +16121,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs45")
 		end
 		yyvsc45 := yyvsc45 + yyInitial_yyvs_size
-		yyvs45 := yyspecial_routines45.resize (yyvs45, yyvsc45)
+		yyvs45 := yyspecial_routines45.resize_with_default (({ET_COMPOUND}).default, yyvs45, yyvsc45)
 	end
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -16140,7 +16140,7 @@ end
 yyval45 := yyvs45.item (yyvsp45) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -16164,9 +16164,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16183,7 +16183,7 @@ end
 yyval112 := yyvs112.item (yyvsp112) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16208,9 +16208,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16236,9 +16236,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16264,9 +16264,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16292,9 +16292,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16320,9 +16320,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16348,9 +16348,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16381,9 +16381,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16414,9 +16414,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16440,9 +16440,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16467,9 +16467,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16493,9 +16493,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16520,9 +16520,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16548,9 +16548,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16576,9 +16576,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16609,9 +16609,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16642,9 +16642,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16669,9 +16669,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16697,9 +16697,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16725,9 +16725,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16753,9 +16753,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16781,9 +16781,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16809,9 +16809,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16842,9 +16842,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16875,9 +16875,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16901,9 +16901,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16928,9 +16928,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16954,9 +16954,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -16981,9 +16981,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17009,9 +17009,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17037,9 +17037,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17070,9 +17070,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17103,9 +17103,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17129,9 +17129,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17156,9 +17156,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17184,9 +17184,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17212,9 +17212,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17240,9 +17240,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17268,9 +17268,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17296,9 +17296,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17329,9 +17329,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17362,9 +17362,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17388,9 +17388,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17415,9 +17415,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17441,9 +17441,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17468,9 +17468,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17496,9 +17496,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17524,9 +17524,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17557,9 +17557,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17590,9 +17590,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs112")
 		end
 		yyvsc112 := yyvsc112 + yyInitial_yyvs_size
-		yyvs112 := yyspecial_routines112.resize (yyvs112, yyvsc112)
+		yyvs112 := yyspecial_routines112.resize_with_default (({ET_TYPE}).default, yyvs112, yyvsc112)
 	end
-	yyvs112.force (yyval112, yyvsp112)
+	yyvs112.put (yyval112, yyvsp112)
 end
 		end
 
@@ -17609,7 +17609,7 @@ end
 yyval13 := yyvs13.item (yyvsp13) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs13.force (yyval13, yyvsp13)
+	yyvs13.put (yyval13, yyvsp13)
 end
 		end
 
@@ -17632,9 +17632,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs27")
 		end
 		yyvsc27 := yyvsc27 + yyInitial_yyvs_size
-		yyvs27 := yyspecial_routines27.resize (yyvs27, yyvsc27)
+		yyvs27 := yyspecial_routines27.resize_with_default (({ET_ACTUAL_PARAMETER_LIST}).default, yyvs27, yyvsc27)
 	end
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -17651,7 +17651,7 @@ end
 yyval27 := yyvs27.item (yyvsp27) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -17676,9 +17676,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs27")
 		end
 		yyvsc27 := yyvsc27 + yyInitial_yyvs_size
-		yyvs27 := yyspecial_routines27.resize (yyvs27, yyvsc27)
+		yyvs27 := yyspecial_routines27.resize_with_default (({ET_ACTUAL_PARAMETER_LIST}).default, yyvs27, yyvsc27)
 	end
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -17699,7 +17699,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -17725,9 +17725,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -17760,9 +17760,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs27")
 		end
 		yyvsc27 := yyvsc27 + yyInitial_yyvs_size
-		yyvs27 := yyspecial_routines27.resize (yyvs27, yyvsc27)
+		yyvs27 := yyspecial_routines27.resize_with_default (({ET_ACTUAL_PARAMETER_LIST}).default, yyvs27, yyvsc27)
 	end
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -17782,7 +17782,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp26 := yyvsp26 -1
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -17804,7 +17804,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp13 := yyvsp13 -1
 	yyvsp5 := yyvsp5 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -17826,7 +17826,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp13 := yyvsp13 -1
 	yyvsp5 := yyvsp5 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -17850,9 +17850,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -17881,9 +17881,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs26")
 		end
 		yyvsc26 := yyvsc26 + yyInitial_yyvs_size
-		yyvs26 := yyspecial_routines26.resize (yyvs26, yyvsc26)
+		yyvs26 := yyspecial_routines26.resize_with_default (({ET_ACTUAL_PARAMETER_ITEM}).default, yyvs26, yyvsc26)
 	end
-	yyvs26.force (yyval26, yyvsp26)
+	yyvs26.put (yyval26, yyvsp26)
 end
 		end
 
@@ -17906,9 +17906,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs27")
 		end
 		yyvsc27 := yyvsc27 + yyInitial_yyvs_size
-		yyvs27 := yyspecial_routines27.resize (yyvs27, yyvsc27)
+		yyvs27 := yyspecial_routines27.resize_with_default (({ET_ACTUAL_PARAMETER_LIST}).default, yyvs27, yyvsc27)
 	end
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -17925,7 +17925,7 @@ end
 yyval27 := yyvs27.item (yyvsp27) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -17950,9 +17950,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs27")
 		end
 		yyvsc27 := yyvsc27 + yyInitial_yyvs_size
-		yyvs27 := yyspecial_routines27.resize (yyvs27, yyvsc27)
+		yyvs27 := yyspecial_routines27.resize_with_default (({ET_ACTUAL_PARAMETER_LIST}).default, yyvs27, yyvsc27)
 	end
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -17973,7 +17973,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -17994,7 +17994,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -18022,9 +18022,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs27")
 		end
 		yyvsc27 := yyvsc27 + yyInitial_yyvs_size
-		yyvs27 := yyspecial_routines27.resize (yyvs27, yyvsc27)
+		yyvs27 := yyspecial_routines27.resize_with_default (({ET_ACTUAL_PARAMETER_LIST}).default, yyvs27, yyvsc27)
 	end
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -18044,7 +18044,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp26 := yyvsp26 -1
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -18064,7 +18064,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp26 := yyvsp26 -1
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -18092,7 +18092,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp13 := yyvsp13 -1
 	yyvsp5 := yyvsp5 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -18120,7 +18120,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp13 := yyvsp13 -1
 	yyvsp5 := yyvsp5 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -18148,7 +18148,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp13 := yyvsp13 -1
 	yyvsp5 := yyvsp5 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs27.force (yyval27, yyvsp27)
+	yyvs27.put (yyval27, yyvsp27)
 end
 		end
 
@@ -18178,9 +18178,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs26")
 		end
 		yyvsc26 := yyvsc26 + yyInitial_yyvs_size
-		yyvs26 := yyspecial_routines26.resize (yyvs26, yyvsc26)
+		yyvs26 := yyspecial_routines26.resize_with_default (({ET_ACTUAL_PARAMETER_ITEM}).default, yyvs26, yyvsc26)
 	end
-	yyvs26.force (yyval26, yyvsp26)
+	yyvs26.put (yyval26, yyvsp26)
 end
 		end
 
@@ -18211,9 +18211,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs26")
 		end
 		yyvsc26 := yyvsc26 + yyInitial_yyvs_size
-		yyvs26 := yyspecial_routines26.resize (yyvs26, yyvsc26)
+		yyvs26 := yyspecial_routines26.resize_with_default (({ET_ACTUAL_PARAMETER_ITEM}).default, yyvs26, yyvsc26)
 	end
-	yyvs26.force (yyval26, yyvsp26)
+	yyvs26.put (yyval26, yyvsp26)
 end
 		end
 
@@ -18238,9 +18238,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs88")
 		end
 		yyvsc88 := yyvsc88 + yyInitial_yyvs_size
-		yyvs88 := yyspecial_routines88.resize (yyvs88, yyvsc88)
+		yyvs88 := yyspecial_routines88.resize_with_default (({ET_LIKE_TYPE}).default, yyvs88, yyvsc88)
 	end
-	yyvs88.force (yyval88, yyvsp88)
+	yyvs88.put (yyval88, yyvsp88)
 end
 		end
 
@@ -18265,9 +18265,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs88")
 		end
 		yyvsc88 := yyvsc88 + yyInitial_yyvs_size
-		yyvs88 := yyspecial_routines88.resize (yyvs88, yyvsc88)
+		yyvs88 := yyspecial_routines88.resize_with_default (({ET_LIKE_TYPE}).default, yyvs88, yyvsc88)
 	end
-	yyvs88.force (yyval88, yyvsp88)
+	yyvs88.put (yyval88, yyvsp88)
 end
 		end
 
@@ -18292,9 +18292,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs88")
 		end
 		yyvsc88 := yyvsc88 + yyInitial_yyvs_size
-		yyvs88 := yyspecial_routines88.resize (yyvs88, yyvsc88)
+		yyvs88 := yyspecial_routines88.resize_with_default (({ET_LIKE_TYPE}).default, yyvs88, yyvsc88)
 	end
-	yyvs88.force (yyval88, yyvsp88)
+	yyvs88.put (yyval88, yyvsp88)
 end
 		end
 
@@ -18325,9 +18325,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs88")
 		end
 		yyvsc88 := yyvsc88 + yyInitial_yyvs_size
-		yyvs88 := yyspecial_routines88.resize (yyvs88, yyvsc88)
+		yyvs88 := yyspecial_routines88.resize_with_default (({ET_LIKE_TYPE}).default, yyvs88, yyvsc88)
 	end
-	yyvs88.force (yyval88, yyvsp88)
+	yyvs88.put (yyval88, yyvsp88)
 end
 		end
 
@@ -18358,9 +18358,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs88")
 		end
 		yyvsc88 := yyvsc88 + yyInitial_yyvs_size
-		yyvs88 := yyspecial_routines88.resize (yyvs88, yyvsc88)
+		yyvs88 := yyspecial_routines88.resize_with_default (({ET_LIKE_TYPE}).default, yyvs88, yyvsc88)
 	end
-	yyvs88.force (yyval88, yyvsp88)
+	yyvs88.put (yyval88, yyvsp88)
 end
 		end
 
@@ -18385,9 +18385,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs88")
 		end
 		yyvsc88 := yyvsc88 + yyInitial_yyvs_size
-		yyvs88 := yyspecial_routines88.resize (yyvs88, yyvsc88)
+		yyvs88 := yyspecial_routines88.resize_with_default (({ET_LIKE_TYPE}).default, yyvs88, yyvsc88)
 	end
-	yyvs88.force (yyval88, yyvsp88)
+	yyvs88.put (yyval88, yyvsp88)
 end
 		end
 
@@ -18412,9 +18412,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs88")
 		end
 		yyvsc88 := yyvsc88 + yyInitial_yyvs_size
-		yyvs88 := yyspecial_routines88.resize (yyvs88, yyvsc88)
+		yyvs88 := yyspecial_routines88.resize_with_default (({ET_LIKE_TYPE}).default, yyvs88, yyvsc88)
 	end
-	yyvs88.force (yyval88, yyvsp88)
+	yyvs88.put (yyval88, yyvsp88)
 end
 		end
 
@@ -18439,9 +18439,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs88")
 		end
 		yyvsc88 := yyvsc88 + yyInitial_yyvs_size
-		yyvs88 := yyspecial_routines88.resize (yyvs88, yyvsc88)
+		yyvs88 := yyspecial_routines88.resize_with_default (({ET_LIKE_TYPE}).default, yyvs88, yyvsc88)
 	end
-	yyvs88.force (yyval88, yyvsp88)
+	yyvs88.put (yyval88, yyvsp88)
 end
 		end
 
@@ -18472,9 +18472,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs88")
 		end
 		yyvsc88 := yyvsc88 + yyInitial_yyvs_size
-		yyvs88 := yyspecial_routines88.resize (yyvs88, yyvsc88)
+		yyvs88 := yyspecial_routines88.resize_with_default (({ET_LIKE_TYPE}).default, yyvs88, yyvsc88)
 	end
-	yyvs88.force (yyval88, yyvsp88)
+	yyvs88.put (yyval88, yyvsp88)
 end
 		end
 
@@ -18505,9 +18505,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs88")
 		end
 		yyvsc88 := yyvsc88 + yyInitial_yyvs_size
-		yyvs88 := yyspecial_routines88.resize (yyvs88, yyvsc88)
+		yyvs88 := yyspecial_routines88.resize_with_default (({ET_LIKE_TYPE}).default, yyvs88, yyvsc88)
 	end
-	yyvs88.force (yyval88, yyvsp88)
+	yyvs88.put (yyval88, yyvsp88)
 end
 		end
 
@@ -18531,9 +18531,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs88")
 		end
 		yyvsc88 := yyvsc88 + yyInitial_yyvs_size
-		yyvs88 := yyspecial_routines88.resize (yyvs88, yyvsc88)
+		yyvs88 := yyspecial_routines88.resize_with_default (({ET_LIKE_TYPE}).default, yyvs88, yyvsc88)
 	end
-	yyvs88.force (yyval88, yyvsp88)
+	yyvs88.put (yyval88, yyvsp88)
 end
 		end
 
@@ -18565,9 +18565,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs106")
 		end
 		yyvsc106 := yyvsc106 + yyInitial_yyvs_size
-		yyvs106 := yyspecial_routines106.resize (yyvs106, yyvsc106)
+		yyvs106 := yyspecial_routines106.resize_with_default (({ET_QUALIFIED_LIKE_IDENTIFIER}).default, yyvs106, yyvsc106)
 	end
-	yyvs106.force (yyval106, yyvsp106)
+	yyvs106.put (yyval106, yyvsp106)
 end
 		end
 
@@ -18599,9 +18599,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs106")
 		end
 		yyvsc106 := yyvsc106 + yyInitial_yyvs_size
-		yyvs106 := yyspecial_routines106.resize (yyvs106, yyvsc106)
+		yyvs106 := yyspecial_routines106.resize_with_default (({ET_QUALIFIED_LIKE_IDENTIFIER}).default, yyvs106, yyvsc106)
 	end
-	yyvs106.force (yyval106, yyvsp106)
+	yyvs106.put (yyval106, yyvsp106)
 end
 		end
 
@@ -18633,9 +18633,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs106")
 		end
 		yyvsc106 := yyvsc106 + yyInitial_yyvs_size
-		yyvs106 := yyspecial_routines106.resize (yyvs106, yyvsc106)
+		yyvs106 := yyspecial_routines106.resize_with_default (({ET_QUALIFIED_LIKE_IDENTIFIER}).default, yyvs106, yyvsc106)
 	end
-	yyvs106.force (yyval106, yyvsp106)
+	yyvs106.put (yyval106, yyvsp106)
 end
 		end
 
@@ -18669,9 +18669,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs106")
 		end
 		yyvsc106 := yyvsc106 + yyInitial_yyvs_size
-		yyvs106 := yyspecial_routines106.resize (yyvs106, yyvsc106)
+		yyvs106 := yyspecial_routines106.resize_with_default (({ET_QUALIFIED_LIKE_IDENTIFIER}).default, yyvs106, yyvsc106)
 	end
-	yyvs106.force (yyval106, yyvsp106)
+	yyvs106.put (yyval106, yyvsp106)
 end
 		end
 
@@ -18706,9 +18706,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs106")
 		end
 		yyvsc106 := yyvsc106 + yyInitial_yyvs_size
-		yyvs106 := yyspecial_routines106.resize (yyvs106, yyvsc106)
+		yyvs106 := yyspecial_routines106.resize_with_default (({ET_QUALIFIED_LIKE_IDENTIFIER}).default, yyvs106, yyvsc106)
 	end
-	yyvs106.force (yyval106, yyvsp106)
+	yyvs106.put (yyval106, yyvsp106)
 end
 		end
 
@@ -18739,9 +18739,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs106")
 		end
 		yyvsc106 := yyvsc106 + yyInitial_yyvs_size
-		yyvs106 := yyspecial_routines106.resize (yyvs106, yyvsc106)
+		yyvs106 := yyspecial_routines106.resize_with_default (({ET_QUALIFIED_LIKE_IDENTIFIER}).default, yyvs106, yyvsc106)
 	end
-	yyvs106.force (yyval106, yyvsp106)
+	yyvs106.put (yyval106, yyvsp106)
 end
 		end
 
@@ -18765,9 +18765,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs45")
 		end
 		yyvsc45 := yyvsc45 + yyInitial_yyvs_size
-		yyvs45 := yyspecial_routines45.resize (yyvs45, yyvsc45)
+		yyvs45 := yyspecial_routines45.resize_with_default (({ET_COMPOUND}).default, yyvs45, yyvsc45)
 	end
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -18788,7 +18788,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -18812,9 +18812,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs45")
 		end
 		yyvsc45 := yyvsc45 + yyInitial_yyvs_size
-		yyvs45 := yyspecial_routines45.resize (yyvs45, yyvsc45)
+		yyvs45 := yyspecial_routines45.resize_with_default (({ET_COMPOUND}).default, yyvs45, yyvsc45)
 	end
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -18835,7 +18835,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -18859,9 +18859,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs45")
 		end
 		yyvsc45 := yyvsc45 + yyInitial_yyvs_size
-		yyvs45 := yyspecial_routines45.resize (yyvs45, yyvsc45)
+		yyvs45 := yyspecial_routines45.resize_with_default (({ET_COMPOUND}).default, yyvs45, yyvsc45)
 	end
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -18882,7 +18882,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -18906,9 +18906,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs45")
 		end
 		yyvsc45 := yyvsc45 + yyInitial_yyvs_size
-		yyvs45 := yyspecial_routines45.resize (yyvs45, yyvsc45)
+		yyvs45 := yyspecial_routines45.resize_with_default (({ET_COMPOUND}).default, yyvs45, yyvsc45)
 	end
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -18929,7 +18929,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -18953,9 +18953,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs45")
 		end
 		yyvsc45 := yyvsc45 + yyInitial_yyvs_size
-		yyvs45 := yyspecial_routines45.resize (yyvs45, yyvsc45)
+		yyvs45 := yyspecial_routines45.resize_with_default (({ET_COMPOUND}).default, yyvs45, yyvsc45)
 	end
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -18976,7 +18976,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -19000,9 +19000,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs45")
 		end
 		yyvsc45 := yyvsc45 + yyInitial_yyvs_size
-		yyvs45 := yyspecial_routines45.resize (yyvs45, yyvsc45)
+		yyvs45 := yyspecial_routines45.resize_with_default (({ET_COMPOUND}).default, yyvs45, yyvsc45)
 	end
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -19023,7 +19023,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -19047,9 +19047,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs45")
 		end
 		yyvsc45 := yyvsc45 + yyInitial_yyvs_size
-		yyvs45 := yyspecial_routines45.resize (yyvs45, yyvsc45)
+		yyvs45 := yyspecial_routines45.resize_with_default (({ET_COMPOUND}).default, yyvs45, yyvsc45)
 	end
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -19070,7 +19070,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -19102,9 +19102,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs45")
 		end
 		yyvsc45 := yyvsc45 + yyInitial_yyvs_size
-		yyvs45 := yyspecial_routines45.resize (yyvs45, yyvsc45)
+		yyvs45 := yyspecial_routines45.resize_with_default (({ET_COMPOUND}).default, yyvs45, yyvsc45)
 	end
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -19127,7 +19127,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp45 := yyvsp45 -1
 	yyvsp85 := yyvsp85 -1
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -19153,9 +19153,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs45")
 		end
 		yyvsc45 := yyvsc45 + yyInitial_yyvs_size
-		yyvs45 := yyspecial_routines45.resize (yyvs45, yyvsc45)
+		yyvs45 := yyspecial_routines45.resize_with_default (({ET_COMPOUND}).default, yyvs45, yyvsc45)
 	end
-	yyvs45.force (yyval45, yyvsp45)
+	yyvs45.put (yyval45, yyvsp45)
 end
 		end
 
@@ -19172,7 +19172,7 @@ end
 yyval85 := yyvs85.item (yyvsp85) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19189,7 +19189,7 @@ end
 yyval85 := yyvs85.item (yyvsp85) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19206,7 +19206,7 @@ end
 yyval85 := yyvs85.item (yyvsp85) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19232,9 +19232,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19260,9 +19260,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19288,9 +19288,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19316,9 +19316,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19342,9 +19342,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19368,9 +19368,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19398,9 +19398,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19432,9 +19432,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19467,9 +19467,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19493,9 +19493,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19519,9 +19519,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19546,9 +19546,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19572,9 +19572,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19598,9 +19598,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19626,9 +19626,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19656,9 +19656,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19683,9 +19683,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19712,9 +19712,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19741,9 +19741,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19772,9 +19772,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19799,9 +19799,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19829,9 +19829,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -19857,9 +19857,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs54")
 		end
 		yyvsc54 := yyvsc54 + yyInitial_yyvs_size
-		yyvs54 := yyspecial_routines54.resize (yyvs54, yyvsc54)
+		yyvs54 := yyspecial_routines54.resize_with_default (({ET_CREATE_EXPRESSION}).default, yyvs54, yyvsc54)
 	end
-	yyvs54.force (yyval54, yyvsp54)
+	yyvs54.put (yyval54, yyvsp54)
 end
 		end
 
@@ -19887,9 +19887,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs54")
 		end
 		yyvsc54 := yyvsc54 + yyInitial_yyvs_size
-		yyvs54 := yyspecial_routines54.resize (yyvs54, yyvsc54)
+		yyvs54 := yyspecial_routines54.resize_with_default (({ET_CREATE_EXPRESSION}).default, yyvs54, yyvsc54)
 	end
-	yyvs54.force (yyval54, yyvsp54)
+	yyvs54.put (yyval54, yyvsp54)
 end
 		end
 
@@ -19915,9 +19915,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs77")
 		end
 		yyvsc77 := yyvsc77 + yyInitial_yyvs_size
-		yyvs77 := yyspecial_routines77.resize (yyvs77, yyvsc77)
+		yyvs77 := yyspecial_routines77.resize_with_default (({ET_IF_INSTRUCTION}).default, yyvs77, yyvsc77)
 	end
-	yyvs77.force (yyval77, yyvsp77)
+	yyvs77.put (yyval77, yyvsp77)
 end
 		end
 
@@ -19943,9 +19943,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs77")
 		end
 		yyvsc77 := yyvsc77 + yyInitial_yyvs_size
-		yyvs77 := yyspecial_routines77.resize (yyvs77, yyvsc77)
+		yyvs77 := yyspecial_routines77.resize_with_default (({ET_IF_INSTRUCTION}).default, yyvs77, yyvsc77)
 	end
-	yyvs77.force (yyval77, yyvsp77)
+	yyvs77.put (yyval77, yyvsp77)
 end
 		end
 
@@ -19972,9 +19972,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs77")
 		end
 		yyvsc77 := yyvsc77 + yyInitial_yyvs_size
-		yyvs77 := yyspecial_routines77.resize (yyvs77, yyvsc77)
+		yyvs77 := yyspecial_routines77.resize_with_default (({ET_IF_INSTRUCTION}).default, yyvs77, yyvsc77)
 	end
-	yyvs77.force (yyval77, yyvsp77)
+	yyvs77.put (yyval77, yyvsp77)
 end
 		end
 
@@ -20001,9 +20001,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs77")
 		end
 		yyvsc77 := yyvsc77 + yyInitial_yyvs_size
-		yyvs77 := yyspecial_routines77.resize (yyvs77, yyvsc77)
+		yyvs77 := yyspecial_routines77.resize_with_default (({ET_IF_INSTRUCTION}).default, yyvs77, yyvsc77)
 	end
-	yyvs77.force (yyval77, yyvsp77)
+	yyvs77.put (yyval77, yyvsp77)
 end
 		end
 
@@ -20023,7 +20023,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs59.force (yyval59, yyvsp59)
+	yyvs59.put (yyval59, yyvsp59)
 end
 		end
 
@@ -20051,9 +20051,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs59")
 		end
 		yyvsc59 := yyvsc59 + yyInitial_yyvs_size
-		yyvs59 := yyspecial_routines59.resize (yyvs59, yyvsc59)
+		yyvs59 := yyspecial_routines59.resize_with_default (({ET_ELSEIF_PART_LIST}).default, yyvs59, yyvsc59)
 	end
-	yyvs59.force (yyval59, yyvsp59)
+	yyvs59.put (yyval59, yyvsp59)
 end
 		end
 
@@ -20075,7 +20075,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp58 := yyvsp58 -1
-	yyvs59.force (yyval59, yyvsp59)
+	yyvs59.put (yyval59, yyvsp59)
 end
 		end
 
@@ -20105,9 +20105,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs58")
 		end
 		yyvsc58 := yyvsc58 + yyInitial_yyvs_size
-		yyvs58 := yyspecial_routines58.resize (yyvs58, yyvsc58)
+		yyvs58 := yyspecial_routines58.resize_with_default (({ET_ELSEIF_PART}).default, yyvs58, yyvsc58)
 	end
-	yyvs58.force (yyval58, yyvsp58)
+	yyvs58.put (yyval58, yyvsp58)
 end
 		end
 
@@ -20134,9 +20134,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs84")
 		end
 		yyvsc84 := yyvsc84 + yyInitial_yyvs_size
-		yyvs84 := yyspecial_routines84.resize (yyvs84, yyvsc84)
+		yyvs84 := yyspecial_routines84.resize_with_default (({ET_INSPECT_INSTRUCTION}).default, yyvs84, yyvsc84)
 	end
-	yyvs84.force (yyval84, yyvsp84)
+	yyvs84.put (yyval84, yyvsp84)
 end
 		end
 
@@ -20162,9 +20162,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs84")
 		end
 		yyvsc84 := yyvsc84 + yyInitial_yyvs_size
-		yyvs84 := yyspecial_routines84.resize (yyvs84, yyvsc84)
+		yyvs84 := yyspecial_routines84.resize_with_default (({ET_INSPECT_INSTRUCTION}).default, yyvs84, yyvsc84)
 	end
-	yyvs84.force (yyval84, yyvsp84)
+	yyvs84.put (yyval84, yyvsp84)
 end
 		end
 
@@ -20187,9 +20187,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs117")
 		end
 		yyvsc117 := yyvsc117 + yyInitial_yyvs_size
-		yyvs117 := yyspecial_routines117.resize (yyvs117, yyvsc117)
+		yyvs117 := yyspecial_routines117.resize_with_default (({ET_WHEN_PART_LIST}).default, yyvs117, yyvsc117)
 	end
-	yyvs117.force (yyval117, yyvsp117)
+	yyvs117.put (yyval117, yyvsp117)
 end
 		end
 
@@ -20209,7 +20209,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs117.force (yyval117, yyvsp117)
+	yyvs117.put (yyval117, yyvsp117)
 end
 		end
 
@@ -20237,9 +20237,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs117")
 		end
 		yyvsc117 := yyvsc117 + yyInitial_yyvs_size
-		yyvs117 := yyspecial_routines117.resize (yyvs117, yyvsc117)
+		yyvs117 := yyspecial_routines117.resize_with_default (({ET_WHEN_PART_LIST}).default, yyvs117, yyvsc117)
 	end
-	yyvs117.force (yyval117, yyvsp117)
+	yyvs117.put (yyval117, yyvsp117)
 end
 		end
 
@@ -20261,7 +20261,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp116 := yyvsp116 -1
-	yyvs117.force (yyval117, yyvsp117)
+	yyvs117.put (yyval117, yyvsp117)
 end
 		end
 
@@ -20290,9 +20290,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs116")
 		end
 		yyvsc116 := yyvsc116 + yyInitial_yyvs_size
-		yyvs116 := yyspecial_routines116.resize (yyvs116, yyvsc116)
+		yyvs116 := yyspecial_routines116.resize_with_default (({ET_WHEN_PART}).default, yyvs116, yyvsc116)
 	end
-	yyvs116.force (yyval116, yyvsp116)
+	yyvs116.put (yyval116, yyvsp116)
 end
 		end
 
@@ -20316,9 +20316,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs41")
 		end
 		yyvsc41 := yyvsc41 + yyInitial_yyvs_size
-		yyvs41 := yyspecial_routines41.resize (yyvs41, yyvsc41)
+		yyvs41 := yyspecial_routines41.resize_with_default (({ET_CHOICE_LIST}).default, yyvs41, yyvsc41)
 	end
-	yyvs41.force (yyval41, yyvsp41)
+	yyvs41.put (yyval41, yyvsp41)
 end
 		end
 
@@ -20340,7 +20340,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp41 := yyvsp41 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs41.force (yyval41, yyvsp41)
+	yyvs41.put (yyval41, yyvsp41)
 end
 		end
 
@@ -20365,9 +20365,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs41")
 		end
 		yyvsc41 := yyvsc41 + yyInitial_yyvs_size
-		yyvs41 := yyspecial_routines41.resize (yyvs41, yyvsc41)
+		yyvs41 := yyspecial_routines41.resize_with_default (({ET_CHOICE_LIST}).default, yyvs41, yyvsc41)
 	end
-	yyvs41.force (yyval41, yyvsp41)
+	yyvs41.put (yyval41, yyvsp41)
 end
 		end
 
@@ -20399,9 +20399,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs41")
 		end
 		yyvsc41 := yyvsc41 + yyInitial_yyvs_size
-		yyvs41 := yyspecial_routines41.resize (yyvs41, yyvsc41)
+		yyvs41 := yyspecial_routines41.resize_with_default (({ET_CHOICE_LIST}).default, yyvs41, yyvsc41)
 	end
-	yyvs41.force (yyval41, yyvsp41)
+	yyvs41.put (yyval41, yyvsp41)
 end
 		end
 
@@ -20429,9 +20429,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs41")
 		end
 		yyvsc41 := yyvsc41 + yyInitial_yyvs_size
-		yyvs41 := yyspecial_routines41.resize (yyvs41, yyvsc41)
+		yyvs41 := yyspecial_routines41.resize_with_default (({ET_CHOICE_LIST}).default, yyvs41, yyvsc41)
 	end
-	yyvs41.force (yyval41, yyvsp41)
+	yyvs41.put (yyval41, yyvsp41)
 end
 		end
 
@@ -20453,7 +20453,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp40 := yyvsp40 -1
-	yyvs41.force (yyval41, yyvsp41)
+	yyvs41.put (yyval41, yyvsp41)
 end
 		end
 
@@ -20482,9 +20482,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs40")
 		end
 		yyvsc40 := yyvsc40 + yyInitial_yyvs_size
-		yyvs40 := yyspecial_routines40.resize (yyvs40, yyvsc40)
+		yyvs40 := yyspecial_routines40.resize_with_default (({ET_CHOICE_ITEM}).default, yyvs40, yyvsc40)
 	end
-	yyvs40.force (yyval40, yyvsp40)
+	yyvs40.put (yyval40, yyvsp40)
 end
 		end
 
@@ -20508,9 +20508,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs38")
 		end
 		yyvsc38 := yyvsc38 + yyInitial_yyvs_size
-		yyvs38 := yyspecial_routines38.resize (yyvs38, yyvsc38)
+		yyvs38 := yyspecial_routines38.resize_with_default (({ET_CHOICE}).default, yyvs38, yyvsc38)
 	end
-	yyvs38.force (yyval38, yyvsp38)
+	yyvs38.put (yyval38, yyvsp38)
 end
 		end
 
@@ -20535,9 +20535,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs38")
 		end
 		yyvsc38 := yyvsc38 + yyInitial_yyvs_size
-		yyvs38 := yyspecial_routines38.resize (yyvs38, yyvsc38)
+		yyvs38 := yyspecial_routines38.resize_with_default (({ET_CHOICE}).default, yyvs38, yyvsc38)
 	end
-	yyvs38.force (yyval38, yyvsp38)
+	yyvs38.put (yyval38, yyvsp38)
 end
 		end
 
@@ -20561,9 +20561,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs39")
 		end
 		yyvsc39 := yyvsc39 + yyInitial_yyvs_size
-		yyvs39 := yyspecial_routines39.resize (yyvs39, yyvsc39)
+		yyvs39 := yyspecial_routines39.resize_with_default (({ET_CHOICE_CONSTANT}).default, yyvs39, yyvsc39)
 	end
-	yyvs39.force (yyval39, yyvsp39)
+	yyvs39.put (yyval39, yyvsp39)
 end
 		end
 
@@ -20587,9 +20587,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs39")
 		end
 		yyvsc39 := yyvsc39 + yyInitial_yyvs_size
-		yyvs39 := yyspecial_routines39.resize (yyvs39, yyvsc39)
+		yyvs39 := yyspecial_routines39.resize_with_default (({ET_CHOICE_CONSTANT}).default, yyvs39, yyvsc39)
 	end
-	yyvs39.force (yyval39, yyvsp39)
+	yyvs39.put (yyval39, yyvsp39)
 end
 		end
 
@@ -20613,9 +20613,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs39")
 		end
 		yyvsc39 := yyvsc39 + yyInitial_yyvs_size
-		yyvs39 := yyspecial_routines39.resize (yyvs39, yyvsc39)
+		yyvs39 := yyspecial_routines39.resize_with_default (({ET_CHOICE_CONSTANT}).default, yyvs39, yyvsc39)
 	end
-	yyvs39.force (yyval39, yyvsp39)
+	yyvs39.put (yyval39, yyvsp39)
 end
 		end
 
@@ -20639,9 +20639,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs39")
 		end
 		yyvsc39 := yyvsc39 + yyInitial_yyvs_size
-		yyvs39 := yyspecial_routines39.resize (yyvs39, yyvsc39)
+		yyvs39 := yyspecial_routines39.resize_with_default (({ET_CHOICE_CONSTANT}).default, yyvs39, yyvsc39)
 	end
-	yyvs39.force (yyval39, yyvsp39)
+	yyvs39.put (yyval39, yyvsp39)
 end
 		end
 
@@ -20666,9 +20666,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs57")
 		end
 		yyvsc57 := yyvsc57 + yyInitial_yyvs_size
-		yyvs57 := yyspecial_routines57.resize (yyvs57, yyvsc57)
+		yyvs57 := yyspecial_routines57.resize_with_default (({ET_DEBUG_INSTRUCTION}).default, yyvs57, yyvsc57)
 	end
-	yyvs57.force (yyval57, yyvsp57)
+	yyvs57.put (yyval57, yyvsp57)
 end
 		end
 
@@ -20697,9 +20697,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs57")
 		end
 		yyvsc57 := yyvsc57 + yyInitial_yyvs_size
-		yyvs57 := yyspecial_routines57.resize (yyvs57, yyvsc57)
+		yyvs57 := yyspecial_routines57.resize_with_default (({ET_DEBUG_INSTRUCTION}).default, yyvs57, yyvsc57)
 	end
-	yyvs57.force (yyval57, yyvsp57)
+	yyvs57.put (yyval57, yyvsp57)
 end
 		end
 
@@ -20722,9 +20722,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs95")
 		end
 		yyvsc95 := yyvsc95 + yyInitial_yyvs_size
-		yyvs95 := yyspecial_routines95.resize (yyvs95, yyvsc95)
+		yyvs95 := yyspecial_routines95.resize_with_default (({ET_MANIFEST_STRING_LIST}).default, yyvs95, yyvsc95)
 	end
-	yyvs95.force (yyval95, yyvsp95)
+	yyvs95.put (yyval95, yyvsp95)
 end
 		end
 
@@ -20748,9 +20748,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs95")
 		end
 		yyvsc95 := yyvsc95 + yyInitial_yyvs_size
-		yyvs95 := yyspecial_routines95.resize (yyvs95, yyvsc95)
+		yyvs95 := yyspecial_routines95.resize_with_default (({ET_MANIFEST_STRING_LIST}).default, yyvs95, yyvsc95)
 	end
-	yyvs95.force (yyval95, yyvsp95)
+	yyvs95.put (yyval95, yyvsp95)
 end
 		end
 
@@ -20772,7 +20772,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp95 := yyvsp95 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs95.force (yyval95, yyvsp95)
+	yyvs95.put (yyval95, yyvsp95)
 end
 		end
 
@@ -20797,9 +20797,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs95")
 		end
 		yyvsc95 := yyvsc95 + yyInitial_yyvs_size
-		yyvs95 := yyspecial_routines95.resize (yyvs95, yyvsc95)
+		yyvs95 := yyspecial_routines95.resize_with_default (({ET_MANIFEST_STRING_LIST}).default, yyvs95, yyvsc95)
 	end
-	yyvs95.force (yyval95, yyvsp95)
+	yyvs95.put (yyval95, yyvsp95)
 end
 		end
 
@@ -20832,9 +20832,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs95")
 		end
 		yyvsc95 := yyvsc95 + yyInitial_yyvs_size
-		yyvs95 := yyspecial_routines95.resize (yyvs95, yyvsc95)
+		yyvs95 := yyspecial_routines95.resize_with_default (({ET_MANIFEST_STRING_LIST}).default, yyvs95, yyvsc95)
 	end
-	yyvs95.force (yyval95, yyvsp95)
+	yyvs95.put (yyval95, yyvsp95)
 end
 		end
 
@@ -20856,7 +20856,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp94 := yyvsp94 -1
-	yyvs95.force (yyval95, yyvsp95)
+	yyvs95.put (yyval95, yyvsp95)
 end
 		end
 
@@ -20885,9 +20885,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs94")
 		end
 		yyvsc94 := yyvsc94 + yyInitial_yyvs_size
-		yyvs94 := yyspecial_routines94.resize (yyvs94, yyvsc94)
+		yyvs94 := yyspecial_routines94.resize_with_default (({ET_MANIFEST_STRING_ITEM}).default, yyvs94, yyvsc94)
 	end
-	yyvs94.force (yyval94, yyvsp94)
+	yyvs94.put (yyval94, yyvsp94)
 end
 		end
 
@@ -20912,9 +20912,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -20941,9 +20941,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -20968,9 +20968,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -20997,9 +20997,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -21027,9 +21027,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -21056,9 +21056,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs85")
 		end
 		yyvsc85 := yyvsc85 + yyInitial_yyvs_size
-		yyvs85 := yyspecial_routines85.resize (yyvs85, yyvsc85)
+		yyvs85 := yyspecial_routines85.resize_with_default (({ET_INSTRUCTION}).default, yyvs85, yyvsc85)
 	end
-	yyvs85.force (yyval85, yyvsp85)
+	yyvs85.put (yyval85, yyvsp85)
 end
 		end
 
@@ -21083,9 +21083,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21105,7 +21105,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp5 := yyvsp5 -1
 	yyvsp13 := yyvsp13 -1
 	yyvsp25 := yyvsp25 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21132,9 +21132,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs37")
 		end
 		yyvsc37 := yyvsc37 + yyInitial_yyvs_size
-		yyvs37 := yyspecial_routines37.resize (yyvs37, yyvsc37)
+		yyvs37 := yyspecial_routines37.resize_with_default (({ET_CALL_EXPRESSION}).default, yyvs37, yyvsc37)
 	end
-	yyvs37.force (yyval37, yyvsp37)
+	yyvs37.put (yyval37, yyvsp37)
 end
 		end
 
@@ -21162,9 +21162,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs110")
 		end
 		yyvsc110 := yyvsc110 + yyInitial_yyvs_size
-		yyvs110 := yyspecial_routines110.resize (yyvs110, yyvsc110)
+		yyvs110 := yyspecial_routines110.resize_with_default (({ET_STATIC_CALL_EXPRESSION}).default, yyvs110, yyvsc110)
 	end
-	yyvs110.force (yyval110, yyvsp110)
+	yyvs110.put (yyval110, yyvsp110)
 end
 		end
 
@@ -21191,9 +21191,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs110")
 		end
 		yyvsc110 := yyvsc110 + yyInitial_yyvs_size
-		yyvs110 := yyspecial_routines110.resize (yyvs110, yyvsc110)
+		yyvs110 := yyspecial_routines110.resize_with_default (({ET_STATIC_CALL_EXPRESSION}).default, yyvs110, yyvsc110)
 	end
-	yyvs110.force (yyval110, yyvsp110)
+	yyvs110.put (yyval110, yyvsp110)
 end
 		end
 
@@ -21218,9 +21218,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21247,9 +21247,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21274,9 +21274,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21300,9 +21300,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21326,9 +21326,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21352,9 +21352,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21371,7 +21371,7 @@ end
 yyval62 := yyvs62.item (yyvsp62) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21400,9 +21400,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21426,9 +21426,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21448,7 +21448,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp5 := yyvsp5 -1
 	yyvsp13 := yyvsp13 -1
 	yyvsp25 := yyvsp25 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21471,9 +21471,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs25")
 		end
 		yyvsc25 := yyvsc25 + yyInitial_yyvs_size
-		yyvs25 := yyspecial_routines25.resize (yyvs25, yyvsc25)
+		yyvs25 := yyspecial_routines25.resize_with_default (({ET_ACTUAL_ARGUMENT_LIST}).default, yyvs25, yyvsc25)
 	end
-	yyvs25.force (yyval25, yyvsp25)
+	yyvs25.put (yyval25, yyvsp25)
 end
 		end
 
@@ -21497,9 +21497,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs25")
 		end
 		yyvsc25 := yyvsc25 + yyInitial_yyvs_size
-		yyvs25 := yyspecial_routines25.resize (yyvs25, yyvsc25)
+		yyvs25 := yyspecial_routines25.resize_with_default (({ET_ACTUAL_ARGUMENT_LIST}).default, yyvs25, yyvsc25)
 	end
-	yyvs25.force (yyval25, yyvsp25)
+	yyvs25.put (yyval25, yyvsp25)
 end
 		end
 
@@ -21521,7 +21521,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp25 := yyvsp25 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs25.force (yyval25, yyvsp25)
+	yyvs25.put (yyval25, yyvsp25)
 end
 		end
 
@@ -21546,9 +21546,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs25")
 		end
 		yyvsc25 := yyvsc25 + yyInitial_yyvs_size
-		yyvs25 := yyspecial_routines25.resize (yyvs25, yyvsc25)
+		yyvs25 := yyspecial_routines25.resize_with_default (({ET_ACTUAL_ARGUMENT_LIST}).default, yyvs25, yyvsc25)
 	end
-	yyvs25.force (yyval25, yyvsp25)
+	yyvs25.put (yyval25, yyvsp25)
 end
 		end
 
@@ -21581,9 +21581,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs25")
 		end
 		yyvsc25 := yyvsc25 + yyInitial_yyvs_size
-		yyvs25 := yyspecial_routines25.resize (yyvs25, yyvsc25)
+		yyvs25 := yyspecial_routines25.resize_with_default (({ET_ACTUAL_ARGUMENT_LIST}).default, yyvs25, yyvsc25)
 	end
-	yyvs25.force (yyval25, yyvsp25)
+	yyvs25.put (yyval25, yyvsp25)
 end
 		end
 
@@ -21612,9 +21612,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs25")
 		end
 		yyvsc25 := yyvsc25 + yyInitial_yyvs_size
-		yyvs25 := yyspecial_routines25.resize (yyvs25, yyvsc25)
+		yyvs25 := yyspecial_routines25.resize_with_default (({ET_ACTUAL_ARGUMENT_LIST}).default, yyvs25, yyvsc25)
 	end
-	yyvs25.force (yyval25, yyvsp25)
+	yyvs25.put (yyval25, yyvsp25)
 end
 		end
 
@@ -21636,7 +21636,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp63 := yyvsp63 -1
-	yyvs25.force (yyval25, yyvsp25)
+	yyvs25.put (yyval25, yyvsp25)
 end
 		end
 
@@ -21665,9 +21665,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs63")
 		end
 		yyvsc63 := yyvsc63 + yyInitial_yyvs_size
-		yyvs63 := yyspecial_routines63.resize (yyvs63, yyvsc63)
+		yyvs63 := yyspecial_routines63.resize_with_default (({ET_EXPRESSION_ITEM}).default, yyvs63, yyvsc63)
 	end
-	yyvs63.force (yyval63, yyvsp63)
+	yyvs63.put (yyval63, yyvsp63)
 end
 		end
 
@@ -21692,9 +21692,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21719,9 +21719,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21746,9 +21746,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21773,9 +21773,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21799,9 +21799,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs118")
 		end
 		yyvsc118 := yyvsc118 + yyInitial_yyvs_size
-		yyvs118 := yyspecial_routines118.resize (yyvs118, yyvsc118)
+		yyvs118 := yyspecial_routines118.resize_with_default (({ET_WRITABLE}).default, yyvs118, yyvsc118)
 	end
-	yyvs118.force (yyval118, yyvsp118)
+	yyvs118.put (yyval118, yyvsp118)
 end
 		end
 
@@ -21825,9 +21825,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs118")
 		end
 		yyvsc118 := yyvsc118 + yyInitial_yyvs_size
-		yyvs118 := yyspecial_routines118.resize (yyvs118, yyvsc118)
+		yyvs118 := yyspecial_routines118.resize_with_default (({ET_WRITABLE}).default, yyvs118, yyvsc118)
 	end
-	yyvs118.force (yyval118, yyvsp118)
+	yyvs118.put (yyval118, yyvsp118)
 end
 		end
 
@@ -21844,7 +21844,7 @@ end
 yyval62 := yyvs62.item (yyvsp62) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21861,7 +21861,7 @@ end
 yyval62 := yyvs62.item (yyvsp62) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21880,7 +21880,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp12 := yyvsp12 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21899,7 +21899,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp20 := yyvsp20 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21918,7 +21918,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp20 := yyvsp20 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21937,7 +21937,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp20 := yyvsp20 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21956,7 +21956,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp20 := yyvsp20 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21975,7 +21975,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp20 := yyvsp20 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -21994,7 +21994,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp20 := yyvsp20 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22013,7 +22013,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp20 := yyvsp20 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22032,7 +22032,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp20 := yyvsp20 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22051,7 +22051,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp20 := yyvsp20 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22070,7 +22070,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp20 := yyvsp20 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22089,7 +22089,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp20 := yyvsp20 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22108,7 +22108,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp15 := yyvsp15 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22127,7 +22127,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp15 := yyvsp15 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22146,7 +22146,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp15 := yyvsp15 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22166,7 +22166,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp62 := yyvsp62 -1
 	yyvsp15 := yyvsp15 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22186,7 +22186,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp62 := yyvsp62 -1
 	yyvsp15 := yyvsp15 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22205,7 +22205,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp15 := yyvsp15 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22224,7 +22224,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22243,7 +22243,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22262,7 +22262,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22281,7 +22281,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp62 := yyvsp62 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22298,7 +22298,7 @@ end
 yyval62 := yyvs62.item (yyvsp62) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22322,9 +22322,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22348,9 +22348,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22375,9 +22375,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22394,7 +22394,7 @@ end
 yyval62 := yyvs62.item (yyvsp62) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22418,9 +22418,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22444,9 +22444,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22470,9 +22470,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22496,9 +22496,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22522,9 +22522,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22542,7 +22542,7 @@ yyval62 := new_prefix_plus_expression (yyvs20.item (yyvsp20), yyvs62.item (yyvsp
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp20 := yyvsp20 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22560,7 +22560,7 @@ yyval62 := new_prefix_minus_expression (yyvs20.item (yyvsp20), yyvs62.item (yyvs
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp20 := yyvsp20 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22578,7 +22578,7 @@ yyval62 := ast_factory.new_prefix_expression (yyvs15.item (yyvsp15), yyvs62.item
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp15 := yyvsp15 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22596,7 +22596,7 @@ yyval62 := ast_factory.new_prefix_expression (ast_factory.new_prefix_free_operat
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp12 := yyvsp12 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22614,7 +22614,7 @@ yyval62 := ast_factory.new_old_expression (yyvs2.item (yyvsp2), yyvs62.item (yyv
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp2 := yyvsp2 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22639,7 +22639,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp5 := yyvsp5 -3
 	yyvsp13 := yyvsp13 -1
 	yyvsp112 := yyvsp112 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22657,7 +22657,7 @@ yyval62 := ast_factory.new_object_test (yyvs2.item (yyvsp2), Void, yyvs62.item (
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp2 := yyvsp2 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22677,7 +22677,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp2 := yyvsp2 -1
 	yyvsp5 := yyvsp5 -2
 	yyvsp112 := yyvsp112 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22696,7 +22696,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp2 := yyvsp2 -2
 	yyvsp13 := yyvsp13 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22717,7 +22717,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp5 := yyvsp5 -2
 	yyvsp112 := yyvsp112 -1
 	yyvsp13 := yyvsp13 -1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22734,7 +22734,7 @@ end
 yyval62 := yyvs62.item (yyvsp62) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22758,9 +22758,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22777,7 +22777,7 @@ end
 yyval62 := yyvs62.item (yyvsp62) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22801,9 +22801,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22827,9 +22827,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22853,9 +22853,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22879,9 +22879,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22905,9 +22905,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22931,9 +22931,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22957,9 +22957,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -22983,9 +22983,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -23009,9 +23009,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -23036,9 +23036,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -23062,9 +23062,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -23088,9 +23088,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -23114,9 +23114,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs62")
 		end
 		yyvsc62 := yyvsc62 + yyInitial_yyvs_size
-		yyvs62 := yyspecial_routines62.resize (yyvs62, yyvsc62)
+		yyvs62 := yyspecial_routines62.resize_with_default (({ET_EXPRESSION}).default, yyvs62, yyvsc62)
 	end
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -23133,7 +23133,7 @@ end
 yyval62 := yyvs62.item (yyvsp62) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs62.force (yyval62, yyvsp62)
+	yyvs62.put (yyval62, yyvsp62)
 end
 		end
 
@@ -23156,7 +23156,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp62 := yyvsp62 -1
 	yyvsp23 := yyvsp23 -1
 	yyvsp34 := yyvsp34 -1
-	yyvs35.force (yyval35, yyvsp35)
+	yyvs35.put (yyval35, yyvsp35)
 end
 		end
 
@@ -23181,9 +23181,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs35")
 		end
 		yyvsc35 := yyvsc35 + yyInitial_yyvs_size
-		yyvs35 := yyspecial_routines35.resize (yyvs35, yyvsc35)
+		yyvs35 := yyspecial_routines35.resize_with_default (({ET_BRACKET_EXPRESSION}).default, yyvs35, yyvsc35)
 	end
-	yyvs35.force (yyval35, yyvsp35)
+	yyvs35.put (yyval35, yyvsp35)
 end
 		end
 
@@ -23216,9 +23216,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs34")
 		end
 		yyvsc34 := yyvsc34 + yyInitial_yyvs_size
-		yyvs34 := yyspecial_routines34.resize (yyvs34, yyvsc34)
+		yyvs34 := yyspecial_routines34.resize_with_default (({ET_BRACKET_ARGUMENT_LIST}).default, yyvs34, yyvsc34)
 	end
-	yyvs34.force (yyval34, yyvsp34)
+	yyvs34.put (yyval34, yyvsp34)
 end
 		end
 
@@ -23247,9 +23247,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs34")
 		end
 		yyvsc34 := yyvsc34 + yyInitial_yyvs_size
-		yyvs34 := yyspecial_routines34.resize (yyvs34, yyvsc34)
+		yyvs34 := yyspecial_routines34.resize_with_default (({ET_BRACKET_ARGUMENT_LIST}).default, yyvs34, yyvsc34)
 	end
-	yyvs34.force (yyval34, yyvsp34)
+	yyvs34.put (yyval34, yyvsp34)
 end
 		end
 
@@ -23271,7 +23271,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp63 := yyvsp63 -1
-	yyvs34.force (yyval34, yyvsp34)
+	yyvs34.put (yyval34, yyvsp34)
 end
 		end
 
@@ -23299,9 +23299,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs99")
 		end
 		yyvsc99 := yyvsc99 + yyInitial_yyvs_size
-		yyvs99 := yyspecial_routines99.resize (yyvs99, yyvsc99)
+		yyvs99 := yyspecial_routines99.resize_with_default (({ET_PARENTHESIZED_EXPRESSION}).default, yyvs99, yyvsc99)
 	end
-	yyvs99.force (yyval99, yyvsp99)
+	yyvs99.put (yyval99, yyvsp99)
 end
 		end
 
@@ -23325,9 +23325,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs93")
 		end
 		yyvsc93 := yyvsc93 + yyInitial_yyvs_size
-		yyvs93 := yyspecial_routines93.resize (yyvs93, yyvsc93)
+		yyvs93 := yyspecial_routines93.resize_with_default (({ET_MANIFEST_ARRAY}).default, yyvs93, yyvsc93)
 	end
-	yyvs93.force (yyval93, yyvsp93)
+	yyvs93.put (yyval93, yyvsp93)
 end
 		end
 
@@ -23349,7 +23349,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp93 := yyvsp93 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs93.force (yyval93, yyvsp93)
+	yyvs93.put (yyval93, yyvsp93)
 end
 		end
 
@@ -23374,9 +23374,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs93")
 		end
 		yyvsc93 := yyvsc93 + yyInitial_yyvs_size
-		yyvs93 := yyspecial_routines93.resize (yyvs93, yyvsc93)
+		yyvs93 := yyspecial_routines93.resize_with_default (({ET_MANIFEST_ARRAY}).default, yyvs93, yyvsc93)
 	end
-	yyvs93.force (yyval93, yyvsp93)
+	yyvs93.put (yyval93, yyvsp93)
 end
 		end
 
@@ -23409,9 +23409,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs93")
 		end
 		yyvsc93 := yyvsc93 + yyInitial_yyvs_size
-		yyvs93 := yyspecial_routines93.resize (yyvs93, yyvsc93)
+		yyvs93 := yyspecial_routines93.resize_with_default (({ET_MANIFEST_ARRAY}).default, yyvs93, yyvsc93)
 	end
-	yyvs93.force (yyval93, yyvsp93)
+	yyvs93.put (yyval93, yyvsp93)
 end
 		end
 
@@ -23440,9 +23440,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs93")
 		end
 		yyvsc93 := yyvsc93 + yyInitial_yyvs_size
-		yyvs93 := yyspecial_routines93.resize (yyvs93, yyvsc93)
+		yyvs93 := yyspecial_routines93.resize_with_default (({ET_MANIFEST_ARRAY}).default, yyvs93, yyvsc93)
 	end
-	yyvs93.force (yyval93, yyvsp93)
+	yyvs93.put (yyval93, yyvsp93)
 end
 		end
 
@@ -23464,7 +23464,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp63 := yyvsp63 -1
-	yyvs93.force (yyval93, yyvsp93)
+	yyvs93.put (yyval93, yyvsp93)
 end
 		end
 
@@ -23489,9 +23489,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs96")
 		end
 		yyvsc96 := yyvsc96 + yyInitial_yyvs_size
-		yyvs96 := yyspecial_routines96.resize (yyvs96, yyvsc96)
+		yyvs96 := yyspecial_routines96.resize_with_default (({ET_MANIFEST_TUPLE}).default, yyvs96, yyvsc96)
 	end
-	yyvs96.force (yyval96, yyvsp96)
+	yyvs96.put (yyval96, yyvsp96)
 end
 		end
 
@@ -23513,7 +23513,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp96 := yyvsp96 -1
 	yyvsp23 := yyvsp23 -1
-	yyvs96.force (yyval96, yyvsp96)
+	yyvs96.put (yyval96, yyvsp96)
 end
 		end
 
@@ -23538,9 +23538,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs96")
 		end
 		yyvsc96 := yyvsc96 + yyInitial_yyvs_size
-		yyvs96 := yyspecial_routines96.resize (yyvs96, yyvsc96)
+		yyvs96 := yyspecial_routines96.resize_with_default (({ET_MANIFEST_TUPLE}).default, yyvs96, yyvsc96)
 	end
-	yyvs96.force (yyval96, yyvsp96)
+	yyvs96.put (yyval96, yyvsp96)
 end
 		end
 
@@ -23573,9 +23573,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs96")
 		end
 		yyvsc96 := yyvsc96 + yyInitial_yyvs_size
-		yyvs96 := yyspecial_routines96.resize (yyvs96, yyvsc96)
+		yyvs96 := yyspecial_routines96.resize_with_default (({ET_MANIFEST_TUPLE}).default, yyvs96, yyvsc96)
 	end
-	yyvs96.force (yyval96, yyvsp96)
+	yyvs96.put (yyval96, yyvsp96)
 end
 		end
 
@@ -23604,9 +23604,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs96")
 		end
 		yyvsc96 := yyvsc96 + yyInitial_yyvs_size
-		yyvs96 := yyspecial_routines96.resize (yyvs96, yyvsc96)
+		yyvs96 := yyspecial_routines96.resize_with_default (({ET_MANIFEST_TUPLE}).default, yyvs96, yyvsc96)
 	end
-	yyvs96.force (yyval96, yyvsp96)
+	yyvs96.put (yyval96, yyvsp96)
 end
 		end
 
@@ -23628,7 +23628,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp63 := yyvsp63 -1
-	yyvs96.force (yyval96, yyvsp96)
+	yyvs96.put (yyval96, yyvsp96)
 end
 		end
 
@@ -23653,9 +23653,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs111")
 		end
 		yyvsc111 := yyvsc111 + yyInitial_yyvs_size
-		yyvs111 := yyspecial_routines111.resize (yyvs111, yyvsc111)
+		yyvs111 := yyspecial_routines111.resize_with_default (({ET_STRIP_EXPRESSION}).default, yyvs111, yyvsc111)
 	end
-	yyvs111.force (yyval111, yyvsp111)
+	yyvs111.put (yyval111, yyvsp111)
 end
 		end
 
@@ -23679,7 +23679,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp111 := yyvsp111 -1
 	yyvsp2 := yyvsp2 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs111.force (yyval111, yyvsp111)
+	yyvs111.put (yyval111, yyvsp111)
 end
 		end
 
@@ -23705,9 +23705,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs111")
 		end
 		yyvsc111 := yyvsc111 + yyInitial_yyvs_size
-		yyvs111 := yyspecial_routines111.resize (yyvs111, yyvsc111)
+		yyvs111 := yyspecial_routines111.resize_with_default (({ET_STRIP_EXPRESSION}).default, yyvs111, yyvsc111)
 	end
-	yyvs111.force (yyval111, yyvsp111)
+	yyvs111.put (yyval111, yyvsp111)
 end
 		end
 
@@ -23740,9 +23740,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs111")
 		end
 		yyvsc111 := yyvsc111 + yyInitial_yyvs_size
-		yyvs111 := yyspecial_routines111.resize (yyvs111, yyvsc111)
+		yyvs111 := yyspecial_routines111.resize_with_default (({ET_STRIP_EXPRESSION}).default, yyvs111, yyvsc111)
 	end
-	yyvs111.force (yyval111, yyvsp111)
+	yyvs111.put (yyval111, yyvsp111)
 end
 		end
 
@@ -23771,9 +23771,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs111")
 		end
 		yyvsc111 := yyvsc111 + yyInitial_yyvs_size
-		yyvs111 := yyspecial_routines111.resize (yyvs111, yyvsc111)
+		yyvs111 := yyspecial_routines111.resize_with_default (({ET_STRIP_EXPRESSION}).default, yyvs111, yyvsc111)
 	end
-	yyvs111.force (yyval111, yyvsp111)
+	yyvs111.put (yyval111, yyvsp111)
 end
 		end
 
@@ -23795,7 +23795,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp70 := yyvsp70 -1
-	yyvs111.force (yyval111, yyvsp111)
+	yyvs111.put (yyval111, yyvsp111)
 end
 		end
 
@@ -23819,9 +23819,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs46")
 		end
 		yyvsc46 := yyvsc46 + yyInitial_yyvs_size
-		yyvs46 := yyspecial_routines46.resize (yyvs46, yyvsc46)
+		yyvs46 := yyspecial_routines46.resize_with_default (({ET_CONSTANT}).default, yyvs46, yyvsc46)
 	end
-	yyvs46.force (yyval46, yyvsp46)
+	yyvs46.put (yyval46, yyvsp46)
 end
 		end
 
@@ -23845,9 +23845,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs46")
 		end
 		yyvsc46 := yyvsc46 + yyInitial_yyvs_size
-		yyvs46 := yyspecial_routines46.resize (yyvs46, yyvsc46)
+		yyvs46 := yyspecial_routines46.resize_with_default (({ET_CONSTANT}).default, yyvs46, yyvsc46)
 	end
-	yyvs46.force (yyval46, yyvsp46)
+	yyvs46.put (yyval46, yyvsp46)
 end
 		end
 
@@ -23871,9 +23871,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs46")
 		end
 		yyvsc46 := yyvsc46 + yyInitial_yyvs_size
-		yyvs46 := yyspecial_routines46.resize (yyvs46, yyvsc46)
+		yyvs46 := yyspecial_routines46.resize_with_default (({ET_CONSTANT}).default, yyvs46, yyvsc46)
 	end
-	yyvs46.force (yyval46, yyvsp46)
+	yyvs46.put (yyval46, yyvsp46)
 end
 		end
 
@@ -23897,9 +23897,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs46")
 		end
 		yyvsc46 := yyvsc46 + yyInitial_yyvs_size
-		yyvs46 := yyspecial_routines46.resize (yyvs46, yyvsc46)
+		yyvs46 := yyspecial_routines46.resize_with_default (({ET_CONSTANT}).default, yyvs46, yyvsc46)
 	end
-	yyvs46.force (yyval46, yyvsp46)
+	yyvs46.put (yyval46, yyvsp46)
 end
 		end
 
@@ -23923,9 +23923,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs46")
 		end
 		yyvsc46 := yyvsc46 + yyInitial_yyvs_size
-		yyvs46 := yyspecial_routines46.resize (yyvs46, yyvsc46)
+		yyvs46 := yyspecial_routines46.resize_with_default (({ET_CONSTANT}).default, yyvs46, yyvsc46)
 	end
-	yyvs46.force (yyval46, yyvsp46)
+	yyvs46.put (yyval46, yyvsp46)
 end
 		end
 
@@ -23949,9 +23949,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs46")
 		end
 		yyvsc46 := yyvsc46 + yyInitial_yyvs_size
-		yyvs46 := yyspecial_routines46.resize (yyvs46, yyvsc46)
+		yyvs46 := yyspecial_routines46.resize_with_default (({ET_CONSTANT}).default, yyvs46, yyvsc46)
 	end
-	yyvs46.force (yyval46, yyvsp46)
+	yyvs46.put (yyval46, yyvsp46)
 end
 		end
 
@@ -23977,9 +23977,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs36")
 		end
 		yyvsc36 := yyvsc36 + yyInitial_yyvs_size
-		yyvs36 := yyspecial_routines36.resize (yyvs36, yyvsc36)
+		yyvs36 := yyspecial_routines36.resize_with_default (({ET_CALL_AGENT}).default, yyvs36, yyvsc36)
 	end
-	yyvs36.force (yyval36, yyvsp36)
+	yyvs36.put (yyval36, yyvsp36)
 end
 		end
 
@@ -24007,9 +24007,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs36")
 		end
 		yyvsc36 := yyvsc36 + yyInitial_yyvs_size
-		yyvs36 := yyspecial_routines36.resize (yyvs36, yyvsc36)
+		yyvs36 := yyspecial_routines36.resize_with_default (({ET_CALL_AGENT}).default, yyvs36, yyvsc36)
 	end
-	yyvs36.force (yyval36, yyvsp36)
+	yyvs36.put (yyval36, yyvsp36)
 end
 		end
 
@@ -24045,9 +24045,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs83")
 		end
 		yyvsc83 := yyvsc83 + yyInitial_yyvs_size
-		yyvs83 := yyspecial_routines83.resize (yyvs83, yyvsc83)
+		yyvs83 := yyspecial_routines83.resize_with_default (({ET_INLINE_AGENT}).default, yyvs83, yyvsc83)
 	end
-	yyvs83.force (yyval83, yyvsp83)
+	yyvs83.put (yyval83, yyvsp83)
 end
 		end
 
@@ -24083,9 +24083,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs83")
 		end
 		yyvsc83 := yyvsc83 + yyInitial_yyvs_size
-		yyvs83 := yyspecial_routines83.resize (yyvs83, yyvsc83)
+		yyvs83 := yyspecial_routines83.resize_with_default (({ET_INLINE_AGENT}).default, yyvs83, yyvsc83)
 	end
-	yyvs83.force (yyval83, yyvsp83)
+	yyvs83.put (yyval83, yyvsp83)
 end
 		end
 
@@ -24121,9 +24121,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs83")
 		end
 		yyvsc83 := yyvsc83 + yyInitial_yyvs_size
-		yyvs83 := yyspecial_routines83.resize (yyvs83, yyvsc83)
+		yyvs83 := yyspecial_routines83.resize_with_default (({ET_INLINE_AGENT}).default, yyvs83, yyvsc83)
 	end
-	yyvs83.force (yyval83, yyvsp83)
+	yyvs83.put (yyval83, yyvsp83)
 end
 		end
 
@@ -24159,9 +24159,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs83")
 		end
 		yyvsc83 := yyvsc83 + yyInitial_yyvs_size
-		yyvs83 := yyspecial_routines83.resize (yyvs83, yyvsc83)
+		yyvs83 := yyspecial_routines83.resize_with_default (({ET_INLINE_AGENT}).default, yyvs83, yyvsc83)
 	end
-	yyvs83.force (yyval83, yyvsp83)
+	yyvs83.put (yyval83, yyvsp83)
 end
 		end
 
@@ -24197,9 +24197,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs83")
 		end
 		yyvsc83 := yyvsc83 + yyInitial_yyvs_size
-		yyvs83 := yyspecial_routines83.resize (yyvs83, yyvsc83)
+		yyvs83 := yyspecial_routines83.resize_with_default (({ET_INLINE_AGENT}).default, yyvs83, yyvsc83)
 	end
-	yyvs83.force (yyval83, yyvsp83)
+	yyvs83.put (yyval83, yyvsp83)
 end
 		end
 
@@ -24235,9 +24235,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs83")
 		end
 		yyvsc83 := yyvsc83 + yyInitial_yyvs_size
-		yyvs83 := yyspecial_routines83.resize (yyvs83, yyvsc83)
+		yyvs83 := yyspecial_routines83.resize_with_default (({ET_INLINE_AGENT}).default, yyvs83, yyvsc83)
 	end
-	yyvs83.force (yyval83, yyvsp83)
+	yyvs83.put (yyval83, yyvsp83)
 end
 		end
 
@@ -24271,9 +24271,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs83")
 		end
 		yyvsc83 := yyvsc83 + yyInitial_yyvs_size
-		yyvs83 := yyspecial_routines83.resize (yyvs83, yyvsc83)
+		yyvs83 := yyspecial_routines83.resize_with_default (({ET_INLINE_AGENT}).default, yyvs83, yyvsc83)
 	end
-	yyvs83.force (yyval83, yyvsp83)
+	yyvs83.put (yyval83, yyvsp83)
 end
 		end
 
@@ -24307,9 +24307,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs83")
 		end
 		yyvsc83 := yyvsc83 + yyInitial_yyvs_size
-		yyvs83 := yyspecial_routines83.resize (yyvs83, yyvsc83)
+		yyvs83 := yyspecial_routines83.resize_with_default (({ET_INLINE_AGENT}).default, yyvs83, yyvsc83)
 	end
-	yyvs83.force (yyval83, yyvsp83)
+	yyvs83.put (yyval83, yyvsp83)
 end
 		end
 
@@ -24343,9 +24343,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs83")
 		end
 		yyvsc83 := yyvsc83 + yyInitial_yyvs_size
-		yyvs83 := yyspecial_routines83.resize (yyvs83, yyvsc83)
+		yyvs83 := yyspecial_routines83.resize_with_default (({ET_INLINE_AGENT}).default, yyvs83, yyvsc83)
 	end
-	yyvs83.force (yyval83, yyvsp83)
+	yyvs83.put (yyval83, yyvsp83)
 end
 		end
 
@@ -24379,9 +24379,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs83")
 		end
 		yyvsc83 := yyvsc83 + yyInitial_yyvs_size
-		yyvs83 := yyspecial_routines83.resize (yyvs83, yyvsc83)
+		yyvs83 := yyspecial_routines83.resize_with_default (({ET_INLINE_AGENT}).default, yyvs83, yyvsc83)
 	end
-	yyvs83.force (yyval83, yyvsp83)
+	yyvs83.put (yyval83, yyvsp83)
 end
 		end
 
@@ -24415,9 +24415,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs83")
 		end
 		yyvsc83 := yyvsc83 + yyInitial_yyvs_size
-		yyvs83 := yyspecial_routines83.resize (yyvs83, yyvsc83)
+		yyvs83 := yyspecial_routines83.resize_with_default (({ET_INLINE_AGENT}).default, yyvs83, yyvsc83)
 	end
-	yyvs83.force (yyval83, yyvsp83)
+	yyvs83.put (yyval83, yyvsp83)
 end
 		end
 
@@ -24451,9 +24451,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs83")
 		end
 		yyvsc83 := yyvsc83 + yyInitial_yyvs_size
-		yyvs83 := yyspecial_routines83.resize (yyvs83, yyvsc83)
+		yyvs83 := yyspecial_routines83.resize_with_default (({ET_INLINE_AGENT}).default, yyvs83, yyvsc83)
 	end
-	yyvs83.force (yyval83, yyvsp83)
+	yyvs83.put (yyval83, yyvsp83)
 end
 		end
 
@@ -24472,7 +24472,7 @@ end
 		
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs73.force (yyval73, yyvsp73)
+	yyvs73.put (yyval73, yyvsp73)
 end
 		end
 
@@ -24495,9 +24495,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -24527,9 +24527,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs97")
 		end
 		yyvsc97 := yyvsc97 + yyInitial_yyvs_size
-		yyvs97 := yyspecial_routines97.resize (yyvs97, yyvsc97)
+		yyvs97 := yyspecial_routines97.resize_with_default (({ET_OBJECT_TEST_LIST}).default, yyvs97, yyvsc97)
 	end
-	yyvs97.force (yyval97, yyvsp97)
+	yyvs97.put (yyval97, yyvsp97)
 end
 		end
 
@@ -24553,9 +24553,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs31")
 		end
 		yyvsc31 := yyvsc31 + yyInitial_yyvs_size
-		yyvs31 := yyspecial_routines31.resize (yyvs31, yyvsc31)
+		yyvs31 := yyspecial_routines31.resize_with_default (({ET_AGENT_TARGET}).default, yyvs31, yyvsc31)
 	end
-	yyvs31.force (yyval31, yyvsp31)
+	yyvs31.put (yyval31, yyvsp31)
 end
 		end
 
@@ -24579,9 +24579,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs31")
 		end
 		yyvsc31 := yyvsc31 + yyInitial_yyvs_size
-		yyvs31 := yyspecial_routines31.resize (yyvs31, yyvsc31)
+		yyvs31 := yyspecial_routines31.resize_with_default (({ET_AGENT_TARGET}).default, yyvs31, yyvsc31)
 	end
-	yyvs31.force (yyval31, yyvsp31)
+	yyvs31.put (yyval31, yyvsp31)
 end
 		end
 
@@ -24605,9 +24605,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs31")
 		end
 		yyvsc31 := yyvsc31 + yyInitial_yyvs_size
-		yyvs31 := yyspecial_routines31.resize (yyvs31, yyvsc31)
+		yyvs31 := yyspecial_routines31.resize_with_default (({ET_AGENT_TARGET}).default, yyvs31, yyvsc31)
 	end
-	yyvs31.force (yyval31, yyvsp31)
+	yyvs31.put (yyval31, yyvsp31)
 end
 		end
 
@@ -24631,9 +24631,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs31")
 		end
 		yyvsc31 := yyvsc31 + yyInitial_yyvs_size
-		yyvs31 := yyspecial_routines31.resize (yyvs31, yyvsc31)
+		yyvs31 := yyspecial_routines31.resize_with_default (({ET_AGENT_TARGET}).default, yyvs31, yyvsc31)
 	end
-	yyvs31.force (yyval31, yyvsp31)
+	yyvs31.put (yyval31, yyvsp31)
 end
 		end
 
@@ -24658,9 +24658,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs31")
 		end
 		yyvsc31 := yyvsc31 + yyInitial_yyvs_size
-		yyvs31 := yyspecial_routines31.resize (yyvs31, yyvsc31)
+		yyvs31 := yyspecial_routines31.resize_with_default (({ET_AGENT_TARGET}).default, yyvs31, yyvsc31)
 	end
-	yyvs31.force (yyval31, yyvsp31)
+	yyvs31.put (yyval31, yyvsp31)
 end
 		end
 
@@ -24683,9 +24683,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs30")
 		end
 		yyvsc30 := yyvsc30 + yyInitial_yyvs_size
-		yyvs30 := yyspecial_routines30.resize (yyvs30, yyvsc30)
+		yyvs30 := yyspecial_routines30.resize_with_default (({ET_AGENT_ARGUMENT_OPERAND_LIST}).default, yyvs30, yyvsc30)
 	end
-	yyvs30.force (yyval30, yyvsp30)
+	yyvs30.put (yyval30, yyvsp30)
 end
 		end
 
@@ -24709,9 +24709,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs30")
 		end
 		yyvsc30 := yyvsc30 + yyInitial_yyvs_size
-		yyvs30 := yyspecial_routines30.resize (yyvs30, yyvsc30)
+		yyvs30 := yyspecial_routines30.resize_with_default (({ET_AGENT_ARGUMENT_OPERAND_LIST}).default, yyvs30, yyvsc30)
 	end
-	yyvs30.force (yyval30, yyvsp30)
+	yyvs30.put (yyval30, yyvsp30)
 end
 		end
 
@@ -24733,7 +24733,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp30 := yyvsp30 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs30.force (yyval30, yyvsp30)
+	yyvs30.put (yyval30, yyvsp30)
 end
 		end
 
@@ -24758,9 +24758,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs30")
 		end
 		yyvsc30 := yyvsc30 + yyInitial_yyvs_size
-		yyvs30 := yyspecial_routines30.resize (yyvs30, yyvsc30)
+		yyvs30 := yyspecial_routines30.resize_with_default (({ET_AGENT_ARGUMENT_OPERAND_LIST}).default, yyvs30, yyvsc30)
 	end
-	yyvs30.force (yyval30, yyvsp30)
+	yyvs30.put (yyval30, yyvsp30)
 end
 		end
 
@@ -24793,9 +24793,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs30")
 		end
 		yyvsc30 := yyvsc30 + yyInitial_yyvs_size
-		yyvs30 := yyspecial_routines30.resize (yyvs30, yyvsc30)
+		yyvs30 := yyspecial_routines30.resize_with_default (({ET_AGENT_ARGUMENT_OPERAND_LIST}).default, yyvs30, yyvsc30)
 	end
-	yyvs30.force (yyval30, yyvsp30)
+	yyvs30.put (yyval30, yyvsp30)
 end
 		end
 
@@ -24824,9 +24824,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs30")
 		end
 		yyvsc30 := yyvsc30 + yyInitial_yyvs_size
-		yyvs30 := yyspecial_routines30.resize (yyvs30, yyvsc30)
+		yyvs30 := yyspecial_routines30.resize_with_default (({ET_AGENT_ARGUMENT_OPERAND_LIST}).default, yyvs30, yyvsc30)
 	end
-	yyvs30.force (yyval30, yyvsp30)
+	yyvs30.put (yyval30, yyvsp30)
 end
 		end
 
@@ -24848,7 +24848,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp29 := yyvsp29 -1
-	yyvs30.force (yyval30, yyvsp30)
+	yyvs30.put (yyval30, yyvsp30)
 end
 		end
 
@@ -24877,9 +24877,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs29")
 		end
 		yyvsc29 := yyvsc29 + yyInitial_yyvs_size
-		yyvs29 := yyspecial_routines29.resize (yyvs29, yyvsc29)
+		yyvs29 := yyspecial_routines29.resize_with_default (({ET_AGENT_ARGUMENT_OPERAND_ITEM}).default, yyvs29, yyvsc29)
 	end
-	yyvs29.force (yyval29, yyvsp29)
+	yyvs29.put (yyval29, yyvsp29)
 end
 		end
 
@@ -24903,9 +24903,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs28")
 		end
 		yyvsc28 := yyvsc28 + yyInitial_yyvs_size
-		yyvs28 := yyspecial_routines28.resize (yyvs28, yyvsc28)
+		yyvs28 := yyspecial_routines28.resize_with_default (({ET_AGENT_ARGUMENT_OPERAND}).default, yyvs28, yyvsc28)
 	end
-	yyvs28.force (yyval28, yyvsp28)
+	yyvs28.put (yyval28, yyvsp28)
 end
 		end
 
@@ -24929,9 +24929,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs28")
 		end
 		yyvsc28 := yyvsc28 + yyInitial_yyvs_size
-		yyvs28 := yyspecial_routines28.resize (yyvs28, yyvsc28)
+		yyvs28 := yyspecial_routines28.resize_with_default (({ET_AGENT_ARGUMENT_OPERAND}).default, yyvs28, yyvsc28)
 	end
-	yyvs28.force (yyval28, yyvsp28)
+	yyvs28.put (yyval28, yyvsp28)
 end
 		end
 
@@ -24957,9 +24957,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs28")
 		end
 		yyvsc28 := yyvsc28 + yyInitial_yyvs_size
-		yyvs28 := yyspecial_routines28.resize (yyvs28, yyvsc28)
+		yyvs28 := yyspecial_routines28.resize_with_default (({ET_AGENT_ARGUMENT_OPERAND}).default, yyvs28, yyvsc28)
 	end
-	yyvs28.force (yyval28, yyvsp28)
+	yyvs28.put (yyval28, yyvsp28)
 end
 		end
 
@@ -24976,7 +24976,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -24993,7 +24993,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25010,7 +25010,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25027,7 +25027,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25044,7 +25044,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25061,7 +25061,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25078,7 +25078,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25095,7 +25095,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25112,7 +25112,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25129,7 +25129,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25146,7 +25146,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25163,7 +25163,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25180,7 +25180,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25197,7 +25197,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25214,7 +25214,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25231,7 +25231,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25248,7 +25248,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25265,7 +25265,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25282,7 +25282,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25299,7 +25299,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25316,7 +25316,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25333,7 +25333,7 @@ end
 yyval16 := yyvs16.item (yyvsp16) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25357,9 +25357,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs16")
 		end
 		yyvsc16 := yyvsc16 + yyInitial_yyvs_size
-		yyvs16 := yyspecial_routines16.resize (yyvs16, yyvsc16)
+		yyvs16 := yyspecial_routines16.resize_with_default (({ET_MANIFEST_STRING}).default, yyvs16, yyvsc16)
 	end
-	yyvs16.force (yyval16, yyvsp16)
+	yyvs16.put (yyval16, yyvsp16)
 end
 		end
 
@@ -25376,7 +25376,7 @@ end
 yyval10 := yyvs10.item (yyvsp10) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs10.force (yyval10, yyvsp10)
+	yyvs10.put (yyval10, yyvsp10)
 end
 		end
 
@@ -25400,9 +25400,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs10")
 		end
 		yyvsc10 := yyvsc10 + yyInitial_yyvs_size
-		yyvs10 := yyspecial_routines10.resize (yyvs10, yyvsc10)
+		yyvs10 := yyspecial_routines10.resize_with_default (({ET_CHARACTER_CONSTANT}).default, yyvs10, yyvsc10)
 	end
-	yyvs10.force (yyval10, yyvsp10)
+	yyvs10.put (yyval10, yyvsp10)
 end
 		end
 
@@ -25419,7 +25419,7 @@ end
 yyval8 := yyvs8.item (yyvsp8) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs8.force (yyval8, yyvsp8)
+	yyvs8.put (yyval8, yyvsp8)
 end
 		end
 
@@ -25436,7 +25436,7 @@ end
 yyval8 := yyvs8.item (yyvsp8) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs8.force (yyval8, yyvsp8)
+	yyvs8.put (yyval8, yyvsp8)
 end
 		end
 
@@ -25453,7 +25453,7 @@ end
 yyval14 := yyvs14.item (yyvsp14) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs14.force (yyval14, yyvsp14)
+	yyvs14.put (yyval14, yyvsp14)
 end
 		end
 
@@ -25470,7 +25470,7 @@ end
 yyval14 := yyvs14.item (yyvsp14) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs14.force (yyval14, yyvsp14)
+	yyvs14.put (yyval14, yyvsp14)
 end
 		end
 
@@ -25487,7 +25487,7 @@ end
 yyval14 := yyvs14.item (yyvsp14) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs14.force (yyval14, yyvsp14)
+	yyvs14.put (yyval14, yyvsp14)
 end
 		end
 
@@ -25504,7 +25504,7 @@ end
 yyval14 := yyvs14.item (yyvsp14) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs14.force (yyval14, yyvsp14)
+	yyvs14.put (yyval14, yyvsp14)
 end
 		end
 
@@ -25524,7 +25524,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp20 := yyvsp20 -1
-	yyvs14.force (yyval14, yyvsp14)
+	yyvs14.put (yyval14, yyvsp14)
 end
 		end
 
@@ -25544,7 +25544,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp20 := yyvsp20 -1
-	yyvs14.force (yyval14, yyvsp14)
+	yyvs14.put (yyval14, yyvsp14)
 end
 		end
 
@@ -25565,7 +25565,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp5 := yyvsp5 -2
 	yyvsp112 := yyvsp112 -1
-	yyvs14.force (yyval14, yyvsp14)
+	yyvs14.put (yyval14, yyvsp14)
 end
 		end
 
@@ -25582,7 +25582,7 @@ end
 yyval17 := yyvs17.item (yyvsp17) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs17.force (yyval17, yyvsp17)
+	yyvs17.put (yyval17, yyvsp17)
 end
 		end
 
@@ -25599,7 +25599,7 @@ end
 yyval17 := yyvs17.item (yyvsp17) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs17.force (yyval17, yyvsp17)
+	yyvs17.put (yyval17, yyvsp17)
 end
 		end
 
@@ -25616,7 +25616,7 @@ end
 yyval17 := yyvs17.item (yyvsp17) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs17.force (yyval17, yyvsp17)
+	yyvs17.put (yyval17, yyvsp17)
 end
 		end
 
@@ -25633,7 +25633,7 @@ end
 yyval17 := yyvs17.item (yyvsp17) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs17.force (yyval17, yyvsp17)
+	yyvs17.put (yyval17, yyvsp17)
 end
 		end
 
@@ -25653,7 +25653,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp20 := yyvsp20 -1
-	yyvs17.force (yyval17, yyvsp17)
+	yyvs17.put (yyval17, yyvsp17)
 end
 		end
 
@@ -25673,7 +25673,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp20 := yyvsp20 -1
-	yyvs17.force (yyval17, yyvsp17)
+	yyvs17.put (yyval17, yyvsp17)
 end
 		end
 
@@ -25694,7 +25694,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp5 := yyvsp5 -2
 	yyvsp112 := yyvsp112 -1
-	yyvs17.force (yyval17, yyvsp17)
+	yyvs17.put (yyval17, yyvsp17)
 end
 		end
 
@@ -25711,7 +25711,7 @@ end
 yyval13 := yyvs13.item (yyvsp13) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs13.force (yyval13, yyvsp13)
+	yyvs13.put (yyval13, yyvsp13)
 end
 		end
 
@@ -25728,7 +25728,7 @@ end
 yyval13 := yyvs13.item (yyvsp13) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs13.force (yyval13, yyvsp13)
+	yyvs13.put (yyval13, yyvsp13)
 end
 		end
 
@@ -25747,7 +25747,7 @@ end
 		
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs13.force (yyval13, yyvsp13)
+	yyvs13.put (yyval13, yyvsp13)
 end
 		end
 
@@ -25770,9 +25770,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 		end
 
@@ -28056,7 +28056,7 @@ feature {NONE} -- Table templates
 
 feature {NONE} -- Semantic value stacks
 
-	yyvs1: SPECIAL [?ANY]
+	frozen yyvs1: SPECIAL [?ANY]
 			-- Stack for semantic values of type ANY
 
 	yyvsc1: INTEGER
@@ -28065,10 +28065,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp1: INTEGER
 			-- Top of semantic value stack `yyvs1'
 
-	yyspecial_routines1: KL_SPECIAL_ROUTINES [?ANY]
+	frozen yyspecial_routines1: KL_SPECIAL_ROUTINES [?ANY]
 			-- Routines that ought to be in SPECIAL [ANY]
 
-	yyvs2: SPECIAL [?ET_KEYWORD]
+	frozen yyvs2: SPECIAL [?ET_KEYWORD]
 			-- Stack for semantic values of type ET_KEYWORD
 
 	yyvsc2: INTEGER
@@ -28077,10 +28077,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp2: INTEGER
 			-- Top of semantic value stack `yyvs2'
 
-	yyspecial_routines2: KL_SPECIAL_ROUTINES [?ET_KEYWORD]
+	frozen yyspecial_routines2: KL_SPECIAL_ROUTINES [?ET_KEYWORD]
 			-- Routines that ought to be in SPECIAL [ET_KEYWORD]
 
-	yyvs3: SPECIAL [?ET_AGENT_KEYWORD]
+	frozen yyvs3: SPECIAL [?ET_AGENT_KEYWORD]
 			-- Stack for semantic values of type ET_AGENT_KEYWORD
 
 	yyvsc3: INTEGER
@@ -28089,10 +28089,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp3: INTEGER
 			-- Top of semantic value stack `yyvs3'
 
-	yyspecial_routines3: KL_SPECIAL_ROUTINES [?ET_AGENT_KEYWORD]
+	frozen yyspecial_routines3: KL_SPECIAL_ROUTINES [?ET_AGENT_KEYWORD]
 			-- Routines that ought to be in SPECIAL [ET_AGENT_KEYWORD]
 
-	yyvs4: SPECIAL [?ET_PRECURSOR_KEYWORD]
+	frozen yyvs4: SPECIAL [?ET_PRECURSOR_KEYWORD]
 			-- Stack for semantic values of type ET_PRECURSOR_KEYWORD
 
 	yyvsc4: INTEGER
@@ -28101,10 +28101,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp4: INTEGER
 			-- Top of semantic value stack `yyvs4'
 
-	yyspecial_routines4: KL_SPECIAL_ROUTINES [?ET_PRECURSOR_KEYWORD]
+	frozen yyspecial_routines4: KL_SPECIAL_ROUTINES [?ET_PRECURSOR_KEYWORD]
 			-- Routines that ought to be in SPECIAL [ET_PRECURSOR_KEYWORD]
 
-	yyvs5: SPECIAL [?ET_SYMBOL]
+	frozen yyvs5: SPECIAL [?ET_SYMBOL]
 			-- Stack for semantic values of type ET_SYMBOL
 
 	yyvsc5: INTEGER
@@ -28113,10 +28113,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp5: INTEGER
 			-- Top of semantic value stack `yyvs5'
 
-	yyspecial_routines5: KL_SPECIAL_ROUTINES [?ET_SYMBOL]
+	frozen yyspecial_routines5: KL_SPECIAL_ROUTINES [?ET_SYMBOL]
 			-- Routines that ought to be in SPECIAL [ET_SYMBOL]
 
-	yyvs6: SPECIAL [?ET_POSITION]
+	frozen yyvs6: SPECIAL [?ET_POSITION]
 			-- Stack for semantic values of type ET_POSITION
 
 	yyvsc6: INTEGER
@@ -28125,10 +28125,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp6: INTEGER
 			-- Top of semantic value stack `yyvs6'
 
-	yyspecial_routines6: KL_SPECIAL_ROUTINES [?ET_POSITION]
+	frozen yyspecial_routines6: KL_SPECIAL_ROUTINES [?ET_POSITION]
 			-- Routines that ought to be in SPECIAL [ET_POSITION]
 
-	yyvs7: SPECIAL [?ET_BIT_CONSTANT]
+	frozen yyvs7: SPECIAL [?ET_BIT_CONSTANT]
 			-- Stack for semantic values of type ET_BIT_CONSTANT
 
 	yyvsc7: INTEGER
@@ -28137,10 +28137,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp7: INTEGER
 			-- Top of semantic value stack `yyvs7'
 
-	yyspecial_routines7: KL_SPECIAL_ROUTINES [?ET_BIT_CONSTANT]
+	frozen yyspecial_routines7: KL_SPECIAL_ROUTINES [?ET_BIT_CONSTANT]
 			-- Routines that ought to be in SPECIAL [ET_BIT_CONSTANT]
 
-	yyvs8: SPECIAL [?ET_BOOLEAN_CONSTANT]
+	frozen yyvs8: SPECIAL [?ET_BOOLEAN_CONSTANT]
 			-- Stack for semantic values of type ET_BOOLEAN_CONSTANT
 
 	yyvsc8: INTEGER
@@ -28149,10 +28149,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp8: INTEGER
 			-- Top of semantic value stack `yyvs8'
 
-	yyspecial_routines8: KL_SPECIAL_ROUTINES [?ET_BOOLEAN_CONSTANT]
+	frozen yyspecial_routines8: KL_SPECIAL_ROUTINES [?ET_BOOLEAN_CONSTANT]
 			-- Routines that ought to be in SPECIAL [ET_BOOLEAN_CONSTANT]
 
-	yyvs9: SPECIAL [?ET_BREAK]
+	frozen yyvs9: SPECIAL [?ET_BREAK]
 			-- Stack for semantic values of type ET_BREAK
 
 	yyvsc9: INTEGER
@@ -28161,10 +28161,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp9: INTEGER
 			-- Top of semantic value stack `yyvs9'
 
-	yyspecial_routines9: KL_SPECIAL_ROUTINES [?ET_BREAK]
+	frozen yyspecial_routines9: KL_SPECIAL_ROUTINES [?ET_BREAK]
 			-- Routines that ought to be in SPECIAL [ET_BREAK]
 
-	yyvs10: SPECIAL [?ET_CHARACTER_CONSTANT]
+	frozen yyvs10: SPECIAL [?ET_CHARACTER_CONSTANT]
 			-- Stack for semantic values of type ET_CHARACTER_CONSTANT
 
 	yyvsc10: INTEGER
@@ -28173,10 +28173,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp10: INTEGER
 			-- Top of semantic value stack `yyvs10'
 
-	yyspecial_routines10: KL_SPECIAL_ROUTINES [?ET_CHARACTER_CONSTANT]
+	frozen yyspecial_routines10: KL_SPECIAL_ROUTINES [?ET_CHARACTER_CONSTANT]
 			-- Routines that ought to be in SPECIAL [ET_CHARACTER_CONSTANT]
 
-	yyvs11: SPECIAL [?ET_CURRENT]
+	frozen yyvs11: SPECIAL [?ET_CURRENT]
 			-- Stack for semantic values of type ET_CURRENT
 
 	yyvsc11: INTEGER
@@ -28185,10 +28185,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp11: INTEGER
 			-- Top of semantic value stack `yyvs11'
 
-	yyspecial_routines11: KL_SPECIAL_ROUTINES [?ET_CURRENT]
+	frozen yyspecial_routines11: KL_SPECIAL_ROUTINES [?ET_CURRENT]
 			-- Routines that ought to be in SPECIAL [ET_CURRENT]
 
-	yyvs12: SPECIAL [?ET_FREE_OPERATOR]
+	frozen yyvs12: SPECIAL [?ET_FREE_OPERATOR]
 			-- Stack for semantic values of type ET_FREE_OPERATOR
 
 	yyvsc12: INTEGER
@@ -28197,10 +28197,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp12: INTEGER
 			-- Top of semantic value stack `yyvs12'
 
-	yyspecial_routines12: KL_SPECIAL_ROUTINES [?ET_FREE_OPERATOR]
+	frozen yyspecial_routines12: KL_SPECIAL_ROUTINES [?ET_FREE_OPERATOR]
 			-- Routines that ought to be in SPECIAL [ET_FREE_OPERATOR]
 
-	yyvs13: SPECIAL [?ET_IDENTIFIER]
+	frozen yyvs13: SPECIAL [?ET_IDENTIFIER]
 			-- Stack for semantic values of type ET_IDENTIFIER
 
 	yyvsc13: INTEGER
@@ -28209,10 +28209,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp13: INTEGER
 			-- Top of semantic value stack `yyvs13'
 
-	yyspecial_routines13: KL_SPECIAL_ROUTINES [?ET_IDENTIFIER]
+	frozen yyspecial_routines13: KL_SPECIAL_ROUTINES [?ET_IDENTIFIER]
 			-- Routines that ought to be in SPECIAL [ET_IDENTIFIER]
 
-	yyvs14: SPECIAL [?ET_INTEGER_CONSTANT]
+	frozen yyvs14: SPECIAL [?ET_INTEGER_CONSTANT]
 			-- Stack for semantic values of type ET_INTEGER_CONSTANT
 
 	yyvsc14: INTEGER
@@ -28221,10 +28221,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp14: INTEGER
 			-- Top of semantic value stack `yyvs14'
 
-	yyspecial_routines14: KL_SPECIAL_ROUTINES [?ET_INTEGER_CONSTANT]
+	frozen yyspecial_routines14: KL_SPECIAL_ROUTINES [?ET_INTEGER_CONSTANT]
 			-- Routines that ought to be in SPECIAL [ET_INTEGER_CONSTANT]
 
-	yyvs15: SPECIAL [?ET_KEYWORD_OPERATOR]
+	frozen yyvs15: SPECIAL [?ET_KEYWORD_OPERATOR]
 			-- Stack for semantic values of type ET_KEYWORD_OPERATOR
 
 	yyvsc15: INTEGER
@@ -28233,10 +28233,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp15: INTEGER
 			-- Top of semantic value stack `yyvs15'
 
-	yyspecial_routines15: KL_SPECIAL_ROUTINES [?ET_KEYWORD_OPERATOR]
+	frozen yyspecial_routines15: KL_SPECIAL_ROUTINES [?ET_KEYWORD_OPERATOR]
 			-- Routines that ought to be in SPECIAL [ET_KEYWORD_OPERATOR]
 
-	yyvs16: SPECIAL [?ET_MANIFEST_STRING]
+	frozen yyvs16: SPECIAL [?ET_MANIFEST_STRING]
 			-- Stack for semantic values of type ET_MANIFEST_STRING
 
 	yyvsc16: INTEGER
@@ -28245,10 +28245,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp16: INTEGER
 			-- Top of semantic value stack `yyvs16'
 
-	yyspecial_routines16: KL_SPECIAL_ROUTINES [?ET_MANIFEST_STRING]
+	frozen yyspecial_routines16: KL_SPECIAL_ROUTINES [?ET_MANIFEST_STRING]
 			-- Routines that ought to be in SPECIAL [ET_MANIFEST_STRING]
 
-	yyvs17: SPECIAL [?ET_REAL_CONSTANT]
+	frozen yyvs17: SPECIAL [?ET_REAL_CONSTANT]
 			-- Stack for semantic values of type ET_REAL_CONSTANT
 
 	yyvsc17: INTEGER
@@ -28257,10 +28257,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp17: INTEGER
 			-- Top of semantic value stack `yyvs17'
 
-	yyspecial_routines17: KL_SPECIAL_ROUTINES [?ET_REAL_CONSTANT]
+	frozen yyspecial_routines17: KL_SPECIAL_ROUTINES [?ET_REAL_CONSTANT]
 			-- Routines that ought to be in SPECIAL [ET_REAL_CONSTANT]
 
-	yyvs18: SPECIAL [?ET_RESULT]
+	frozen yyvs18: SPECIAL [?ET_RESULT]
 			-- Stack for semantic values of type ET_RESULT
 
 	yyvsc18: INTEGER
@@ -28269,10 +28269,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp18: INTEGER
 			-- Top of semantic value stack `yyvs18'
 
-	yyspecial_routines18: KL_SPECIAL_ROUTINES [?ET_RESULT]
+	frozen yyspecial_routines18: KL_SPECIAL_ROUTINES [?ET_RESULT]
 			-- Routines that ought to be in SPECIAL [ET_RESULT]
 
-	yyvs19: SPECIAL [?ET_RETRY_INSTRUCTION]
+	frozen yyvs19: SPECIAL [?ET_RETRY_INSTRUCTION]
 			-- Stack for semantic values of type ET_RETRY_INSTRUCTION
 
 	yyvsc19: INTEGER
@@ -28281,10 +28281,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp19: INTEGER
 			-- Top of semantic value stack `yyvs19'
 
-	yyspecial_routines19: KL_SPECIAL_ROUTINES [?ET_RETRY_INSTRUCTION]
+	frozen yyspecial_routines19: KL_SPECIAL_ROUTINES [?ET_RETRY_INSTRUCTION]
 			-- Routines that ought to be in SPECIAL [ET_RETRY_INSTRUCTION]
 
-	yyvs20: SPECIAL [?ET_SYMBOL_OPERATOR]
+	frozen yyvs20: SPECIAL [?ET_SYMBOL_OPERATOR]
 			-- Stack for semantic values of type ET_SYMBOL_OPERATOR
 
 	yyvsc20: INTEGER
@@ -28293,10 +28293,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp20: INTEGER
 			-- Top of semantic value stack `yyvs20'
 
-	yyspecial_routines20: KL_SPECIAL_ROUTINES [?ET_SYMBOL_OPERATOR]
+	frozen yyspecial_routines20: KL_SPECIAL_ROUTINES [?ET_SYMBOL_OPERATOR]
 			-- Routines that ought to be in SPECIAL [ET_SYMBOL_OPERATOR]
 
-	yyvs21: SPECIAL [?ET_VOID]
+	frozen yyvs21: SPECIAL [?ET_VOID]
 			-- Stack for semantic values of type ET_VOID
 
 	yyvsc21: INTEGER
@@ -28305,10 +28305,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp21: INTEGER
 			-- Top of semantic value stack `yyvs21'
 
-	yyspecial_routines21: KL_SPECIAL_ROUTINES [?ET_VOID]
+	frozen yyspecial_routines21: KL_SPECIAL_ROUTINES [?ET_VOID]
 			-- Routines that ought to be in SPECIAL [ET_VOID]
 
-	yyvs22: SPECIAL [?ET_SEMICOLON_SYMBOL]
+	frozen yyvs22: SPECIAL [?ET_SEMICOLON_SYMBOL]
 			-- Stack for semantic values of type ET_SEMICOLON_SYMBOL
 
 	yyvsc22: INTEGER
@@ -28317,10 +28317,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp22: INTEGER
 			-- Top of semantic value stack `yyvs22'
 
-	yyspecial_routines22: KL_SPECIAL_ROUTINES [?ET_SEMICOLON_SYMBOL]
+	frozen yyspecial_routines22: KL_SPECIAL_ROUTINES [?ET_SEMICOLON_SYMBOL]
 			-- Routines that ought to be in SPECIAL [ET_SEMICOLON_SYMBOL]
 
-	yyvs23: SPECIAL [?ET_BRACKET_SYMBOL]
+	frozen yyvs23: SPECIAL [?ET_BRACKET_SYMBOL]
 			-- Stack for semantic values of type ET_BRACKET_SYMBOL
 
 	yyvsc23: INTEGER
@@ -28329,10 +28329,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp23: INTEGER
 			-- Top of semantic value stack `yyvs23'
 
-	yyspecial_routines23: KL_SPECIAL_ROUTINES [?ET_BRACKET_SYMBOL]
+	frozen yyspecial_routines23: KL_SPECIAL_ROUTINES [?ET_BRACKET_SYMBOL]
 			-- Routines that ought to be in SPECIAL [ET_BRACKET_SYMBOL]
 
-	yyvs24: SPECIAL [?ET_QUESTION_MARK_SYMBOL]
+	frozen yyvs24: SPECIAL [?ET_QUESTION_MARK_SYMBOL]
 			-- Stack for semantic values of type ET_QUESTION_MARK_SYMBOL
 
 	yyvsc24: INTEGER
@@ -28341,10 +28341,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp24: INTEGER
 			-- Top of semantic value stack `yyvs24'
 
-	yyspecial_routines24: KL_SPECIAL_ROUTINES [?ET_QUESTION_MARK_SYMBOL]
+	frozen yyspecial_routines24: KL_SPECIAL_ROUTINES [?ET_QUESTION_MARK_SYMBOL]
 			-- Routines that ought to be in SPECIAL [ET_QUESTION_MARK_SYMBOL]
 
-	yyvs25: SPECIAL [?ET_ACTUAL_ARGUMENT_LIST]
+	frozen yyvs25: SPECIAL [?ET_ACTUAL_ARGUMENT_LIST]
 			-- Stack for semantic values of type ET_ACTUAL_ARGUMENT_LIST
 
 	yyvsc25: INTEGER
@@ -28353,10 +28353,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp25: INTEGER
 			-- Top of semantic value stack `yyvs25'
 
-	yyspecial_routines25: KL_SPECIAL_ROUTINES [?ET_ACTUAL_ARGUMENT_LIST]
+	frozen yyspecial_routines25: KL_SPECIAL_ROUTINES [?ET_ACTUAL_ARGUMENT_LIST]
 			-- Routines that ought to be in SPECIAL [ET_ACTUAL_ARGUMENT_LIST]
 
-	yyvs26: SPECIAL [?ET_ACTUAL_PARAMETER_ITEM]
+	frozen yyvs26: SPECIAL [?ET_ACTUAL_PARAMETER_ITEM]
 			-- Stack for semantic values of type ET_ACTUAL_PARAMETER_ITEM
 
 	yyvsc26: INTEGER
@@ -28365,10 +28365,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp26: INTEGER
 			-- Top of semantic value stack `yyvs26'
 
-	yyspecial_routines26: KL_SPECIAL_ROUTINES [?ET_ACTUAL_PARAMETER_ITEM]
+	frozen yyspecial_routines26: KL_SPECIAL_ROUTINES [?ET_ACTUAL_PARAMETER_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_ACTUAL_PARAMETER_ITEM]
 
-	yyvs27: SPECIAL [?ET_ACTUAL_PARAMETER_LIST]
+	frozen yyvs27: SPECIAL [?ET_ACTUAL_PARAMETER_LIST]
 			-- Stack for semantic values of type ET_ACTUAL_PARAMETER_LIST
 
 	yyvsc27: INTEGER
@@ -28377,10 +28377,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp27: INTEGER
 			-- Top of semantic value stack `yyvs27'
 
-	yyspecial_routines27: KL_SPECIAL_ROUTINES [?ET_ACTUAL_PARAMETER_LIST]
+	frozen yyspecial_routines27: KL_SPECIAL_ROUTINES [?ET_ACTUAL_PARAMETER_LIST]
 			-- Routines that ought to be in SPECIAL [ET_ACTUAL_PARAMETER_LIST]
 
-	yyvs28: SPECIAL [?ET_AGENT_ARGUMENT_OPERAND]
+	frozen yyvs28: SPECIAL [?ET_AGENT_ARGUMENT_OPERAND]
 			-- Stack for semantic values of type ET_AGENT_ARGUMENT_OPERAND
 
 	yyvsc28: INTEGER
@@ -28389,10 +28389,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp28: INTEGER
 			-- Top of semantic value stack `yyvs28'
 
-	yyspecial_routines28: KL_SPECIAL_ROUTINES [?ET_AGENT_ARGUMENT_OPERAND]
+	frozen yyspecial_routines28: KL_SPECIAL_ROUTINES [?ET_AGENT_ARGUMENT_OPERAND]
 			-- Routines that ought to be in SPECIAL [ET_AGENT_ARGUMENT_OPERAND]
 
-	yyvs29: SPECIAL [?ET_AGENT_ARGUMENT_OPERAND_ITEM]
+	frozen yyvs29: SPECIAL [?ET_AGENT_ARGUMENT_OPERAND_ITEM]
 			-- Stack for semantic values of type ET_AGENT_ARGUMENT_OPERAND_ITEM
 
 	yyvsc29: INTEGER
@@ -28401,10 +28401,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp29: INTEGER
 			-- Top of semantic value stack `yyvs29'
 
-	yyspecial_routines29: KL_SPECIAL_ROUTINES [?ET_AGENT_ARGUMENT_OPERAND_ITEM]
+	frozen yyspecial_routines29: KL_SPECIAL_ROUTINES [?ET_AGENT_ARGUMENT_OPERAND_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_AGENT_ARGUMENT_OPERAND_ITEM]
 
-	yyvs30: SPECIAL [?ET_AGENT_ARGUMENT_OPERAND_LIST]
+	frozen yyvs30: SPECIAL [?ET_AGENT_ARGUMENT_OPERAND_LIST]
 			-- Stack for semantic values of type ET_AGENT_ARGUMENT_OPERAND_LIST
 
 	yyvsc30: INTEGER
@@ -28413,10 +28413,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp30: INTEGER
 			-- Top of semantic value stack `yyvs30'
 
-	yyspecial_routines30: KL_SPECIAL_ROUTINES [?ET_AGENT_ARGUMENT_OPERAND_LIST]
+	frozen yyspecial_routines30: KL_SPECIAL_ROUTINES [?ET_AGENT_ARGUMENT_OPERAND_LIST]
 			-- Routines that ought to be in SPECIAL [ET_AGENT_ARGUMENT_OPERAND_LIST]
 
-	yyvs31: SPECIAL [?ET_AGENT_TARGET]
+	frozen yyvs31: SPECIAL [?ET_AGENT_TARGET]
 			-- Stack for semantic values of type ET_AGENT_TARGET
 
 	yyvsc31: INTEGER
@@ -28425,10 +28425,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp31: INTEGER
 			-- Top of semantic value stack `yyvs31'
 
-	yyspecial_routines31: KL_SPECIAL_ROUTINES [?ET_AGENT_TARGET]
+	frozen yyspecial_routines31: KL_SPECIAL_ROUTINES [?ET_AGENT_TARGET]
 			-- Routines that ought to be in SPECIAL [ET_AGENT_TARGET]
 
-	yyvs32: SPECIAL [?ET_ALIAS_NAME]
+	frozen yyvs32: SPECIAL [?ET_ALIAS_NAME]
 			-- Stack for semantic values of type ET_ALIAS_NAME
 
 	yyvsc32: INTEGER
@@ -28437,10 +28437,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp32: INTEGER
 			-- Top of semantic value stack `yyvs32'
 
-	yyspecial_routines32: KL_SPECIAL_ROUTINES [?ET_ALIAS_NAME]
+	frozen yyspecial_routines32: KL_SPECIAL_ROUTINES [?ET_ALIAS_NAME]
 			-- Routines that ought to be in SPECIAL [ET_ALIAS_NAME]
 
-	yyvs33: SPECIAL [?ET_ASSIGNER]
+	frozen yyvs33: SPECIAL [?ET_ASSIGNER]
 			-- Stack for semantic values of type ET_ASSIGNER
 
 	yyvsc33: INTEGER
@@ -28449,10 +28449,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp33: INTEGER
 			-- Top of semantic value stack `yyvs33'
 
-	yyspecial_routines33: KL_SPECIAL_ROUTINES [?ET_ASSIGNER]
+	frozen yyspecial_routines33: KL_SPECIAL_ROUTINES [?ET_ASSIGNER]
 			-- Routines that ought to be in SPECIAL [ET_ASSIGNER]
 
-	yyvs34: SPECIAL [?ET_BRACKET_ARGUMENT_LIST]
+	frozen yyvs34: SPECIAL [?ET_BRACKET_ARGUMENT_LIST]
 			-- Stack for semantic values of type ET_BRACKET_ARGUMENT_LIST
 
 	yyvsc34: INTEGER
@@ -28461,10 +28461,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp34: INTEGER
 			-- Top of semantic value stack `yyvs34'
 
-	yyspecial_routines34: KL_SPECIAL_ROUTINES [?ET_BRACKET_ARGUMENT_LIST]
+	frozen yyspecial_routines34: KL_SPECIAL_ROUTINES [?ET_BRACKET_ARGUMENT_LIST]
 			-- Routines that ought to be in SPECIAL [ET_BRACKET_ARGUMENT_LIST]
 
-	yyvs35: SPECIAL [?ET_BRACKET_EXPRESSION]
+	frozen yyvs35: SPECIAL [?ET_BRACKET_EXPRESSION]
 			-- Stack for semantic values of type ET_BRACKET_EXPRESSION
 
 	yyvsc35: INTEGER
@@ -28473,10 +28473,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp35: INTEGER
 			-- Top of semantic value stack `yyvs35'
 
-	yyspecial_routines35: KL_SPECIAL_ROUTINES [?ET_BRACKET_EXPRESSION]
+	frozen yyspecial_routines35: KL_SPECIAL_ROUTINES [?ET_BRACKET_EXPRESSION]
 			-- Routines that ought to be in SPECIAL [ET_BRACKET_EXPRESSION]
 
-	yyvs36: SPECIAL [?ET_CALL_AGENT]
+	frozen yyvs36: SPECIAL [?ET_CALL_AGENT]
 			-- Stack for semantic values of type ET_CALL_AGENT
 
 	yyvsc36: INTEGER
@@ -28485,10 +28485,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp36: INTEGER
 			-- Top of semantic value stack `yyvs36'
 
-	yyspecial_routines36: KL_SPECIAL_ROUTINES [?ET_CALL_AGENT]
+	frozen yyspecial_routines36: KL_SPECIAL_ROUTINES [?ET_CALL_AGENT]
 			-- Routines that ought to be in SPECIAL [ET_CALL_AGENT]
 
-	yyvs37: SPECIAL [?ET_CALL_EXPRESSION]
+	frozen yyvs37: SPECIAL [?ET_CALL_EXPRESSION]
 			-- Stack for semantic values of type ET_CALL_EXPRESSION
 
 	yyvsc37: INTEGER
@@ -28497,10 +28497,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp37: INTEGER
 			-- Top of semantic value stack `yyvs37'
 
-	yyspecial_routines37: KL_SPECIAL_ROUTINES [?ET_CALL_EXPRESSION]
+	frozen yyspecial_routines37: KL_SPECIAL_ROUTINES [?ET_CALL_EXPRESSION]
 			-- Routines that ought to be in SPECIAL [ET_CALL_EXPRESSION]
 
-	yyvs38: SPECIAL [?ET_CHOICE]
+	frozen yyvs38: SPECIAL [?ET_CHOICE]
 			-- Stack for semantic values of type ET_CHOICE
 
 	yyvsc38: INTEGER
@@ -28509,10 +28509,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp38: INTEGER
 			-- Top of semantic value stack `yyvs38'
 
-	yyspecial_routines38: KL_SPECIAL_ROUTINES [?ET_CHOICE]
+	frozen yyspecial_routines38: KL_SPECIAL_ROUTINES [?ET_CHOICE]
 			-- Routines that ought to be in SPECIAL [ET_CHOICE]
 
-	yyvs39: SPECIAL [?ET_CHOICE_CONSTANT]
+	frozen yyvs39: SPECIAL [?ET_CHOICE_CONSTANT]
 			-- Stack for semantic values of type ET_CHOICE_CONSTANT
 
 	yyvsc39: INTEGER
@@ -28521,10 +28521,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp39: INTEGER
 			-- Top of semantic value stack `yyvs39'
 
-	yyspecial_routines39: KL_SPECIAL_ROUTINES [?ET_CHOICE_CONSTANT]
+	frozen yyspecial_routines39: KL_SPECIAL_ROUTINES [?ET_CHOICE_CONSTANT]
 			-- Routines that ought to be in SPECIAL [ET_CHOICE_CONSTANT]
 
-	yyvs40: SPECIAL [?ET_CHOICE_ITEM]
+	frozen yyvs40: SPECIAL [?ET_CHOICE_ITEM]
 			-- Stack for semantic values of type ET_CHOICE_ITEM
 
 	yyvsc40: INTEGER
@@ -28533,10 +28533,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp40: INTEGER
 			-- Top of semantic value stack `yyvs40'
 
-	yyspecial_routines40: KL_SPECIAL_ROUTINES [?ET_CHOICE_ITEM]
+	frozen yyspecial_routines40: KL_SPECIAL_ROUTINES [?ET_CHOICE_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_CHOICE_ITEM]
 
-	yyvs41: SPECIAL [?ET_CHOICE_LIST]
+	frozen yyvs41: SPECIAL [?ET_CHOICE_LIST]
 			-- Stack for semantic values of type ET_CHOICE_LIST
 
 	yyvsc41: INTEGER
@@ -28545,10 +28545,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp41: INTEGER
 			-- Top of semantic value stack `yyvs41'
 
-	yyspecial_routines41: KL_SPECIAL_ROUTINES [?ET_CHOICE_LIST]
+	frozen yyspecial_routines41: KL_SPECIAL_ROUTINES [?ET_CHOICE_LIST]
 			-- Routines that ought to be in SPECIAL [ET_CHOICE_LIST]
 
-	yyvs42: SPECIAL [?ET_CLASS]
+	frozen yyvs42: SPECIAL [?ET_CLASS]
 			-- Stack for semantic values of type ET_CLASS
 
 	yyvsc42: INTEGER
@@ -28557,10 +28557,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp42: INTEGER
 			-- Top of semantic value stack `yyvs42'
 
-	yyspecial_routines42: KL_SPECIAL_ROUTINES [?ET_CLASS]
+	frozen yyspecial_routines42: KL_SPECIAL_ROUTINES [?ET_CLASS]
 			-- Routines that ought to be in SPECIAL [ET_CLASS]
 
-	yyvs43: SPECIAL [?ET_CLIENT_ITEM]
+	frozen yyvs43: SPECIAL [?ET_CLIENT_ITEM]
 			-- Stack for semantic values of type ET_CLIENT_ITEM
 
 	yyvsc43: INTEGER
@@ -28569,10 +28569,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp43: INTEGER
 			-- Top of semantic value stack `yyvs43'
 
-	yyspecial_routines43: KL_SPECIAL_ROUTINES [?ET_CLIENT_ITEM]
+	frozen yyspecial_routines43: KL_SPECIAL_ROUTINES [?ET_CLIENT_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_CLIENT_ITEM]
 
-	yyvs44: SPECIAL [?ET_CLIENTS]
+	frozen yyvs44: SPECIAL [?ET_CLIENTS]
 			-- Stack for semantic values of type ET_CLIENTS
 
 	yyvsc44: INTEGER
@@ -28581,10 +28581,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp44: INTEGER
 			-- Top of semantic value stack `yyvs44'
 
-	yyspecial_routines44: KL_SPECIAL_ROUTINES [?ET_CLIENTS]
+	frozen yyspecial_routines44: KL_SPECIAL_ROUTINES [?ET_CLIENTS]
 			-- Routines that ought to be in SPECIAL [ET_CLIENTS]
 
-	yyvs45: SPECIAL [?ET_COMPOUND]
+	frozen yyvs45: SPECIAL [?ET_COMPOUND]
 			-- Stack for semantic values of type ET_COMPOUND
 
 	yyvsc45: INTEGER
@@ -28593,10 +28593,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp45: INTEGER
 			-- Top of semantic value stack `yyvs45'
 
-	yyspecial_routines45: KL_SPECIAL_ROUTINES [?ET_COMPOUND]
+	frozen yyspecial_routines45: KL_SPECIAL_ROUTINES [?ET_COMPOUND]
 			-- Routines that ought to be in SPECIAL [ET_COMPOUND]
 
-	yyvs46: SPECIAL [?ET_CONSTANT]
+	frozen yyvs46: SPECIAL [?ET_CONSTANT]
 			-- Stack for semantic values of type ET_CONSTANT
 
 	yyvsc46: INTEGER
@@ -28605,10 +28605,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp46: INTEGER
 			-- Top of semantic value stack `yyvs46'
 
-	yyspecial_routines46: KL_SPECIAL_ROUTINES [?ET_CONSTANT]
+	frozen yyspecial_routines46: KL_SPECIAL_ROUTINES [?ET_CONSTANT]
 			-- Routines that ought to be in SPECIAL [ET_CONSTANT]
 
-	yyvs47: SPECIAL [?ET_CONSTRAINT_ACTUAL_PARAMETER_ITEM]
+	frozen yyvs47: SPECIAL [?ET_CONSTRAINT_ACTUAL_PARAMETER_ITEM]
 			-- Stack for semantic values of type ET_CONSTRAINT_ACTUAL_PARAMETER_ITEM
 
 	yyvsc47: INTEGER
@@ -28617,10 +28617,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp47: INTEGER
 			-- Top of semantic value stack `yyvs47'
 
-	yyspecial_routines47: KL_SPECIAL_ROUTINES [?ET_CONSTRAINT_ACTUAL_PARAMETER_ITEM]
+	frozen yyspecial_routines47: KL_SPECIAL_ROUTINES [?ET_CONSTRAINT_ACTUAL_PARAMETER_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_CONSTRAINT_ACTUAL_PARAMETER_ITEM]
 
-	yyvs48: SPECIAL [?ET_CONSTRAINT_ACTUAL_PARAMETER_LIST]
+	frozen yyvs48: SPECIAL [?ET_CONSTRAINT_ACTUAL_PARAMETER_LIST]
 			-- Stack for semantic values of type ET_CONSTRAINT_ACTUAL_PARAMETER_LIST
 
 	yyvsc48: INTEGER
@@ -28629,10 +28629,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp48: INTEGER
 			-- Top of semantic value stack `yyvs48'
 
-	yyspecial_routines48: KL_SPECIAL_ROUTINES [?ET_CONSTRAINT_ACTUAL_PARAMETER_LIST]
+	frozen yyspecial_routines48: KL_SPECIAL_ROUTINES [?ET_CONSTRAINT_ACTUAL_PARAMETER_LIST]
 			-- Routines that ought to be in SPECIAL [ET_CONSTRAINT_ACTUAL_PARAMETER_LIST]
 
-	yyvs49: SPECIAL [?ET_CONSTRAINT_CREATOR]
+	frozen yyvs49: SPECIAL [?ET_CONSTRAINT_CREATOR]
 			-- Stack for semantic values of type ET_CONSTRAINT_CREATOR
 
 	yyvsc49: INTEGER
@@ -28641,10 +28641,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp49: INTEGER
 			-- Top of semantic value stack `yyvs49'
 
-	yyspecial_routines49: KL_SPECIAL_ROUTINES [?ET_CONSTRAINT_CREATOR]
+	frozen yyspecial_routines49: KL_SPECIAL_ROUTINES [?ET_CONSTRAINT_CREATOR]
 			-- Routines that ought to be in SPECIAL [ET_CONSTRAINT_CREATOR]
 
-	yyvs50: SPECIAL [?ET_CONSTRAINT_TYPE]
+	frozen yyvs50: SPECIAL [?ET_CONSTRAINT_TYPE]
 			-- Stack for semantic values of type ET_CONSTRAINT_TYPE
 
 	yyvsc50: INTEGER
@@ -28653,10 +28653,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp50: INTEGER
 			-- Top of semantic value stack `yyvs50'
 
-	yyspecial_routines50: KL_SPECIAL_ROUTINES [?ET_CONSTRAINT_TYPE]
+	frozen yyspecial_routines50: KL_SPECIAL_ROUTINES [?ET_CONSTRAINT_TYPE]
 			-- Routines that ought to be in SPECIAL [ET_CONSTRAINT_TYPE]
 
-	yyvs51: SPECIAL [?ET_CONVERT_FEATURE]
+	frozen yyvs51: SPECIAL [?ET_CONVERT_FEATURE]
 			-- Stack for semantic values of type ET_CONVERT_FEATURE
 
 	yyvsc51: INTEGER
@@ -28665,10 +28665,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp51: INTEGER
 			-- Top of semantic value stack `yyvs51'
 
-	yyspecial_routines51: KL_SPECIAL_ROUTINES [?ET_CONVERT_FEATURE]
+	frozen yyspecial_routines51: KL_SPECIAL_ROUTINES [?ET_CONVERT_FEATURE]
 			-- Routines that ought to be in SPECIAL [ET_CONVERT_FEATURE]
 
-	yyvs52: SPECIAL [?ET_CONVERT_FEATURE_ITEM]
+	frozen yyvs52: SPECIAL [?ET_CONVERT_FEATURE_ITEM]
 			-- Stack for semantic values of type ET_CONVERT_FEATURE_ITEM
 
 	yyvsc52: INTEGER
@@ -28677,10 +28677,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp52: INTEGER
 			-- Top of semantic value stack `yyvs52'
 
-	yyspecial_routines52: KL_SPECIAL_ROUTINES [?ET_CONVERT_FEATURE_ITEM]
+	frozen yyspecial_routines52: KL_SPECIAL_ROUTINES [?ET_CONVERT_FEATURE_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_CONVERT_FEATURE_ITEM]
 
-	yyvs53: SPECIAL [?ET_CONVERT_FEATURE_LIST]
+	frozen yyvs53: SPECIAL [?ET_CONVERT_FEATURE_LIST]
 			-- Stack for semantic values of type ET_CONVERT_FEATURE_LIST
 
 	yyvsc53: INTEGER
@@ -28689,10 +28689,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp53: INTEGER
 			-- Top of semantic value stack `yyvs53'
 
-	yyspecial_routines53: KL_SPECIAL_ROUTINES [?ET_CONVERT_FEATURE_LIST]
+	frozen yyspecial_routines53: KL_SPECIAL_ROUTINES [?ET_CONVERT_FEATURE_LIST]
 			-- Routines that ought to be in SPECIAL [ET_CONVERT_FEATURE_LIST]
 
-	yyvs54: SPECIAL [?ET_CREATE_EXPRESSION]
+	frozen yyvs54: SPECIAL [?ET_CREATE_EXPRESSION]
 			-- Stack for semantic values of type ET_CREATE_EXPRESSION
 
 	yyvsc54: INTEGER
@@ -28701,10 +28701,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp54: INTEGER
 			-- Top of semantic value stack `yyvs54'
 
-	yyspecial_routines54: KL_SPECIAL_ROUTINES [?ET_CREATE_EXPRESSION]
+	frozen yyspecial_routines54: KL_SPECIAL_ROUTINES [?ET_CREATE_EXPRESSION]
 			-- Routines that ought to be in SPECIAL [ET_CREATE_EXPRESSION]
 
-	yyvs55: SPECIAL [?ET_CREATOR]
+	frozen yyvs55: SPECIAL [?ET_CREATOR]
 			-- Stack for semantic values of type ET_CREATOR
 
 	yyvsc55: INTEGER
@@ -28713,10 +28713,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp55: INTEGER
 			-- Top of semantic value stack `yyvs55'
 
-	yyspecial_routines55: KL_SPECIAL_ROUTINES [?ET_CREATOR]
+	frozen yyspecial_routines55: KL_SPECIAL_ROUTINES [?ET_CREATOR]
 			-- Routines that ought to be in SPECIAL [ET_CREATOR]
 
-	yyvs56: SPECIAL [?ET_CREATOR_LIST]
+	frozen yyvs56: SPECIAL [?ET_CREATOR_LIST]
 			-- Stack for semantic values of type ET_CREATOR_LIST
 
 	yyvsc56: INTEGER
@@ -28725,10 +28725,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp56: INTEGER
 			-- Top of semantic value stack `yyvs56'
 
-	yyspecial_routines56: KL_SPECIAL_ROUTINES [?ET_CREATOR_LIST]
+	frozen yyspecial_routines56: KL_SPECIAL_ROUTINES [?ET_CREATOR_LIST]
 			-- Routines that ought to be in SPECIAL [ET_CREATOR_LIST]
 
-	yyvs57: SPECIAL [?ET_DEBUG_INSTRUCTION]
+	frozen yyvs57: SPECIAL [?ET_DEBUG_INSTRUCTION]
 			-- Stack for semantic values of type ET_DEBUG_INSTRUCTION
 
 	yyvsc57: INTEGER
@@ -28737,10 +28737,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp57: INTEGER
 			-- Top of semantic value stack `yyvs57'
 
-	yyspecial_routines57: KL_SPECIAL_ROUTINES [?ET_DEBUG_INSTRUCTION]
+	frozen yyspecial_routines57: KL_SPECIAL_ROUTINES [?ET_DEBUG_INSTRUCTION]
 			-- Routines that ought to be in SPECIAL [ET_DEBUG_INSTRUCTION]
 
-	yyvs58: SPECIAL [?ET_ELSEIF_PART]
+	frozen yyvs58: SPECIAL [?ET_ELSEIF_PART]
 			-- Stack for semantic values of type ET_ELSEIF_PART
 
 	yyvsc58: INTEGER
@@ -28749,10 +28749,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp58: INTEGER
 			-- Top of semantic value stack `yyvs58'
 
-	yyspecial_routines58: KL_SPECIAL_ROUTINES [?ET_ELSEIF_PART]
+	frozen yyspecial_routines58: KL_SPECIAL_ROUTINES [?ET_ELSEIF_PART]
 			-- Routines that ought to be in SPECIAL [ET_ELSEIF_PART]
 
-	yyvs59: SPECIAL [?ET_ELSEIF_PART_LIST]
+	frozen yyvs59: SPECIAL [?ET_ELSEIF_PART_LIST]
 			-- Stack for semantic values of type ET_ELSEIF_PART_LIST
 
 	yyvsc59: INTEGER
@@ -28761,10 +28761,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp59: INTEGER
 			-- Top of semantic value stack `yyvs59'
 
-	yyspecial_routines59: KL_SPECIAL_ROUTINES [?ET_ELSEIF_PART_LIST]
+	frozen yyspecial_routines59: KL_SPECIAL_ROUTINES [?ET_ELSEIF_PART_LIST]
 			-- Routines that ought to be in SPECIAL [ET_ELSEIF_PART_LIST]
 
-	yyvs60: SPECIAL [?ET_EXPORT]
+	frozen yyvs60: SPECIAL [?ET_EXPORT]
 			-- Stack for semantic values of type ET_EXPORT
 
 	yyvsc60: INTEGER
@@ -28773,10 +28773,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp60: INTEGER
 			-- Top of semantic value stack `yyvs60'
 
-	yyspecial_routines60: KL_SPECIAL_ROUTINES [?ET_EXPORT]
+	frozen yyspecial_routines60: KL_SPECIAL_ROUTINES [?ET_EXPORT]
 			-- Routines that ought to be in SPECIAL [ET_EXPORT]
 
-	yyvs61: SPECIAL [?ET_EXPORT_LIST]
+	frozen yyvs61: SPECIAL [?ET_EXPORT_LIST]
 			-- Stack for semantic values of type ET_EXPORT_LIST
 
 	yyvsc61: INTEGER
@@ -28785,10 +28785,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp61: INTEGER
 			-- Top of semantic value stack `yyvs61'
 
-	yyspecial_routines61: KL_SPECIAL_ROUTINES [?ET_EXPORT_LIST]
+	frozen yyspecial_routines61: KL_SPECIAL_ROUTINES [?ET_EXPORT_LIST]
 			-- Routines that ought to be in SPECIAL [ET_EXPORT_LIST]
 
-	yyvs62: SPECIAL [?ET_EXPRESSION]
+	frozen yyvs62: SPECIAL [?ET_EXPRESSION]
 			-- Stack for semantic values of type ET_EXPRESSION
 
 	yyvsc62: INTEGER
@@ -28797,10 +28797,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp62: INTEGER
 			-- Top of semantic value stack `yyvs62'
 
-	yyspecial_routines62: KL_SPECIAL_ROUTINES [?ET_EXPRESSION]
+	frozen yyspecial_routines62: KL_SPECIAL_ROUTINES [?ET_EXPRESSION]
 			-- Routines that ought to be in SPECIAL [ET_EXPRESSION]
 
-	yyvs63: SPECIAL [?ET_EXPRESSION_ITEM]
+	frozen yyvs63: SPECIAL [?ET_EXPRESSION_ITEM]
 			-- Stack for semantic values of type ET_EXPRESSION_ITEM
 
 	yyvsc63: INTEGER
@@ -28809,10 +28809,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp63: INTEGER
 			-- Top of semantic value stack `yyvs63'
 
-	yyspecial_routines63: KL_SPECIAL_ROUTINES [?ET_EXPRESSION_ITEM]
+	frozen yyspecial_routines63: KL_SPECIAL_ROUTINES [?ET_EXPRESSION_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_EXPRESSION_ITEM]
 
-	yyvs64: SPECIAL [?ET_EXTENDED_FEATURE_NAME]
+	frozen yyvs64: SPECIAL [?ET_EXTENDED_FEATURE_NAME]
 			-- Stack for semantic values of type ET_EXTENDED_FEATURE_NAME
 
 	yyvsc64: INTEGER
@@ -28821,10 +28821,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp64: INTEGER
 			-- Top of semantic value stack `yyvs64'
 
-	yyspecial_routines64: KL_SPECIAL_ROUTINES [?ET_EXTENDED_FEATURE_NAME]
+	frozen yyspecial_routines64: KL_SPECIAL_ROUTINES [?ET_EXTENDED_FEATURE_NAME]
 			-- Routines that ought to be in SPECIAL [ET_EXTENDED_FEATURE_NAME]
 
-	yyvs65: SPECIAL [?ET_EXTERNAL_ALIAS]
+	frozen yyvs65: SPECIAL [?ET_EXTERNAL_ALIAS]
 			-- Stack for semantic values of type ET_EXTERNAL_ALIAS
 
 	yyvsc65: INTEGER
@@ -28833,10 +28833,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp65: INTEGER
 			-- Top of semantic value stack `yyvs65'
 
-	yyspecial_routines65: KL_SPECIAL_ROUTINES [?ET_EXTERNAL_ALIAS]
+	frozen yyspecial_routines65: KL_SPECIAL_ROUTINES [?ET_EXTERNAL_ALIAS]
 			-- Routines that ought to be in SPECIAL [ET_EXTERNAL_ALIAS]
 
-	yyvs66: SPECIAL [?ET_FEATURE_CLAUSE]
+	frozen yyvs66: SPECIAL [?ET_FEATURE_CLAUSE]
 			-- Stack for semantic values of type ET_FEATURE_CLAUSE
 
 	yyvsc66: INTEGER
@@ -28845,10 +28845,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp66: INTEGER
 			-- Top of semantic value stack `yyvs66'
 
-	yyspecial_routines66: KL_SPECIAL_ROUTINES [?ET_FEATURE_CLAUSE]
+	frozen yyspecial_routines66: KL_SPECIAL_ROUTINES [?ET_FEATURE_CLAUSE]
 			-- Routines that ought to be in SPECIAL [ET_FEATURE_CLAUSE]
 
-	yyvs67: SPECIAL [?ET_FEATURE_CLAUSE_LIST]
+	frozen yyvs67: SPECIAL [?ET_FEATURE_CLAUSE_LIST]
 			-- Stack for semantic values of type ET_FEATURE_CLAUSE_LIST
 
 	yyvsc67: INTEGER
@@ -28857,10 +28857,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp67: INTEGER
 			-- Top of semantic value stack `yyvs67'
 
-	yyspecial_routines67: KL_SPECIAL_ROUTINES [?ET_FEATURE_CLAUSE_LIST]
+	frozen yyspecial_routines67: KL_SPECIAL_ROUTINES [?ET_FEATURE_CLAUSE_LIST]
 			-- Routines that ought to be in SPECIAL [ET_FEATURE_CLAUSE_LIST]
 
-	yyvs68: SPECIAL [?ET_FEATURE_EXPORT]
+	frozen yyvs68: SPECIAL [?ET_FEATURE_EXPORT]
 			-- Stack for semantic values of type ET_FEATURE_EXPORT
 
 	yyvsc68: INTEGER
@@ -28869,10 +28869,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp68: INTEGER
 			-- Top of semantic value stack `yyvs68'
 
-	yyspecial_routines68: KL_SPECIAL_ROUTINES [?ET_FEATURE_EXPORT]
+	frozen yyspecial_routines68: KL_SPECIAL_ROUTINES [?ET_FEATURE_EXPORT]
 			-- Routines that ought to be in SPECIAL [ET_FEATURE_EXPORT]
 
-	yyvs69: SPECIAL [?ET_FEATURE_NAME]
+	frozen yyvs69: SPECIAL [?ET_FEATURE_NAME]
 			-- Stack for semantic values of type ET_FEATURE_NAME
 
 	yyvsc69: INTEGER
@@ -28881,10 +28881,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp69: INTEGER
 			-- Top of semantic value stack `yyvs69'
 
-	yyspecial_routines69: KL_SPECIAL_ROUTINES [?ET_FEATURE_NAME]
+	frozen yyspecial_routines69: KL_SPECIAL_ROUTINES [?ET_FEATURE_NAME]
 			-- Routines that ought to be in SPECIAL [ET_FEATURE_NAME]
 
-	yyvs70: SPECIAL [?ET_FEATURE_NAME_ITEM]
+	frozen yyvs70: SPECIAL [?ET_FEATURE_NAME_ITEM]
 			-- Stack for semantic values of type ET_FEATURE_NAME_ITEM
 
 	yyvsc70: INTEGER
@@ -28893,10 +28893,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp70: INTEGER
 			-- Top of semantic value stack `yyvs70'
 
-	yyspecial_routines70: KL_SPECIAL_ROUTINES [?ET_FEATURE_NAME_ITEM]
+	frozen yyspecial_routines70: KL_SPECIAL_ROUTINES [?ET_FEATURE_NAME_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_FEATURE_NAME_ITEM]
 
-	yyvs71: SPECIAL [?ET_FORMAL_ARGUMENT]
+	frozen yyvs71: SPECIAL [?ET_FORMAL_ARGUMENT]
 			-- Stack for semantic values of type ET_FORMAL_ARGUMENT
 
 	yyvsc71: INTEGER
@@ -28905,10 +28905,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp71: INTEGER
 			-- Top of semantic value stack `yyvs71'
 
-	yyspecial_routines71: KL_SPECIAL_ROUTINES [?ET_FORMAL_ARGUMENT]
+	frozen yyspecial_routines71: KL_SPECIAL_ROUTINES [?ET_FORMAL_ARGUMENT]
 			-- Routines that ought to be in SPECIAL [ET_FORMAL_ARGUMENT]
 
-	yyvs72: SPECIAL [?ET_FORMAL_ARGUMENT_ITEM]
+	frozen yyvs72: SPECIAL [?ET_FORMAL_ARGUMENT_ITEM]
 			-- Stack for semantic values of type ET_FORMAL_ARGUMENT_ITEM
 
 	yyvsc72: INTEGER
@@ -28917,10 +28917,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp72: INTEGER
 			-- Top of semantic value stack `yyvs72'
 
-	yyspecial_routines72: KL_SPECIAL_ROUTINES [?ET_FORMAL_ARGUMENT_ITEM]
+	frozen yyspecial_routines72: KL_SPECIAL_ROUTINES [?ET_FORMAL_ARGUMENT_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_FORMAL_ARGUMENT_ITEM]
 
-	yyvs73: SPECIAL [?ET_FORMAL_ARGUMENT_LIST]
+	frozen yyvs73: SPECIAL [?ET_FORMAL_ARGUMENT_LIST]
 			-- Stack for semantic values of type ET_FORMAL_ARGUMENT_LIST
 
 	yyvsc73: INTEGER
@@ -28929,10 +28929,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp73: INTEGER
 			-- Top of semantic value stack `yyvs73'
 
-	yyspecial_routines73: KL_SPECIAL_ROUTINES [?ET_FORMAL_ARGUMENT_LIST]
+	frozen yyspecial_routines73: KL_SPECIAL_ROUTINES [?ET_FORMAL_ARGUMENT_LIST]
 			-- Routines that ought to be in SPECIAL [ET_FORMAL_ARGUMENT_LIST]
 
-	yyvs74: SPECIAL [?ET_FORMAL_PARAMETER]
+	frozen yyvs74: SPECIAL [?ET_FORMAL_PARAMETER]
 			-- Stack for semantic values of type ET_FORMAL_PARAMETER
 
 	yyvsc74: INTEGER
@@ -28941,10 +28941,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp74: INTEGER
 			-- Top of semantic value stack `yyvs74'
 
-	yyspecial_routines74: KL_SPECIAL_ROUTINES [?ET_FORMAL_PARAMETER]
+	frozen yyspecial_routines74: KL_SPECIAL_ROUTINES [?ET_FORMAL_PARAMETER]
 			-- Routines that ought to be in SPECIAL [ET_FORMAL_PARAMETER]
 
-	yyvs75: SPECIAL [?ET_FORMAL_PARAMETER_ITEM]
+	frozen yyvs75: SPECIAL [?ET_FORMAL_PARAMETER_ITEM]
 			-- Stack for semantic values of type ET_FORMAL_PARAMETER_ITEM
 
 	yyvsc75: INTEGER
@@ -28953,10 +28953,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp75: INTEGER
 			-- Top of semantic value stack `yyvs75'
 
-	yyspecial_routines75: KL_SPECIAL_ROUTINES [?ET_FORMAL_PARAMETER_ITEM]
+	frozen yyspecial_routines75: KL_SPECIAL_ROUTINES [?ET_FORMAL_PARAMETER_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_FORMAL_PARAMETER_ITEM]
 
-	yyvs76: SPECIAL [?ET_FORMAL_PARAMETER_LIST]
+	frozen yyvs76: SPECIAL [?ET_FORMAL_PARAMETER_LIST]
 			-- Stack for semantic values of type ET_FORMAL_PARAMETER_LIST
 
 	yyvsc76: INTEGER
@@ -28965,10 +28965,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp76: INTEGER
 			-- Top of semantic value stack `yyvs76'
 
-	yyspecial_routines76: KL_SPECIAL_ROUTINES [?ET_FORMAL_PARAMETER_LIST]
+	frozen yyspecial_routines76: KL_SPECIAL_ROUTINES [?ET_FORMAL_PARAMETER_LIST]
 			-- Routines that ought to be in SPECIAL [ET_FORMAL_PARAMETER_LIST]
 
-	yyvs77: SPECIAL [?ET_IF_INSTRUCTION]
+	frozen yyvs77: SPECIAL [?ET_IF_INSTRUCTION]
 			-- Stack for semantic values of type ET_IF_INSTRUCTION
 
 	yyvsc77: INTEGER
@@ -28977,10 +28977,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp77: INTEGER
 			-- Top of semantic value stack `yyvs77'
 
-	yyspecial_routines77: KL_SPECIAL_ROUTINES [?ET_IF_INSTRUCTION]
+	frozen yyspecial_routines77: KL_SPECIAL_ROUTINES [?ET_IF_INSTRUCTION]
 			-- Routines that ought to be in SPECIAL [ET_IF_INSTRUCTION]
 
-	yyvs78: SPECIAL [?ET_INDEXING_LIST]
+	frozen yyvs78: SPECIAL [?ET_INDEXING_LIST]
 			-- Stack for semantic values of type ET_INDEXING_LIST
 
 	yyvsc78: INTEGER
@@ -28989,10 +28989,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp78: INTEGER
 			-- Top of semantic value stack `yyvs78'
 
-	yyspecial_routines78: KL_SPECIAL_ROUTINES [?ET_INDEXING_LIST]
+	frozen yyspecial_routines78: KL_SPECIAL_ROUTINES [?ET_INDEXING_LIST]
 			-- Routines that ought to be in SPECIAL [ET_INDEXING_LIST]
 
-	yyvs79: SPECIAL [?ET_INDEXING_ITEM]
+	frozen yyvs79: SPECIAL [?ET_INDEXING_ITEM]
 			-- Stack for semantic values of type ET_INDEXING_ITEM
 
 	yyvsc79: INTEGER
@@ -29001,10 +29001,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp79: INTEGER
 			-- Top of semantic value stack `yyvs79'
 
-	yyspecial_routines79: KL_SPECIAL_ROUTINES [?ET_INDEXING_ITEM]
+	frozen yyspecial_routines79: KL_SPECIAL_ROUTINES [?ET_INDEXING_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_INDEXING_ITEM]
 
-	yyvs80: SPECIAL [?ET_INDEXING_TERM]
+	frozen yyvs80: SPECIAL [?ET_INDEXING_TERM]
 			-- Stack for semantic values of type ET_INDEXING_TERM
 
 	yyvsc80: INTEGER
@@ -29013,10 +29013,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp80: INTEGER
 			-- Top of semantic value stack `yyvs80'
 
-	yyspecial_routines80: KL_SPECIAL_ROUTINES [?ET_INDEXING_TERM]
+	frozen yyspecial_routines80: KL_SPECIAL_ROUTINES [?ET_INDEXING_TERM]
 			-- Routines that ought to be in SPECIAL [ET_INDEXING_TERM]
 
-	yyvs81: SPECIAL [?ET_INDEXING_TERM_ITEM]
+	frozen yyvs81: SPECIAL [?ET_INDEXING_TERM_ITEM]
 			-- Stack for semantic values of type ET_INDEXING_TERM_ITEM
 
 	yyvsc81: INTEGER
@@ -29025,10 +29025,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp81: INTEGER
 			-- Top of semantic value stack `yyvs81'
 
-	yyspecial_routines81: KL_SPECIAL_ROUTINES [?ET_INDEXING_TERM_ITEM]
+	frozen yyspecial_routines81: KL_SPECIAL_ROUTINES [?ET_INDEXING_TERM_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_INDEXING_TERM_ITEM]
 
-	yyvs82: SPECIAL [?ET_INDEXING_TERM_LIST]
+	frozen yyvs82: SPECIAL [?ET_INDEXING_TERM_LIST]
 			-- Stack for semantic values of type ET_INDEXING_TERM_LIST
 
 	yyvsc82: INTEGER
@@ -29037,10 +29037,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp82: INTEGER
 			-- Top of semantic value stack `yyvs82'
 
-	yyspecial_routines82: KL_SPECIAL_ROUTINES [?ET_INDEXING_TERM_LIST]
+	frozen yyspecial_routines82: KL_SPECIAL_ROUTINES [?ET_INDEXING_TERM_LIST]
 			-- Routines that ought to be in SPECIAL [ET_INDEXING_TERM_LIST]
 
-	yyvs83: SPECIAL [?ET_INLINE_AGENT]
+	frozen yyvs83: SPECIAL [?ET_INLINE_AGENT]
 			-- Stack for semantic values of type ET_INLINE_AGENT
 
 	yyvsc83: INTEGER
@@ -29049,10 +29049,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp83: INTEGER
 			-- Top of semantic value stack `yyvs83'
 
-	yyspecial_routines83: KL_SPECIAL_ROUTINES [?ET_INLINE_AGENT]
+	frozen yyspecial_routines83: KL_SPECIAL_ROUTINES [?ET_INLINE_AGENT]
 			-- Routines that ought to be in SPECIAL [ET_INLINE_AGENT]
 
-	yyvs84: SPECIAL [?ET_INSPECT_INSTRUCTION]
+	frozen yyvs84: SPECIAL [?ET_INSPECT_INSTRUCTION]
 			-- Stack for semantic values of type ET_INSPECT_INSTRUCTION
 
 	yyvsc84: INTEGER
@@ -29061,10 +29061,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp84: INTEGER
 			-- Top of semantic value stack `yyvs84'
 
-	yyspecial_routines84: KL_SPECIAL_ROUTINES [?ET_INSPECT_INSTRUCTION]
+	frozen yyspecial_routines84: KL_SPECIAL_ROUTINES [?ET_INSPECT_INSTRUCTION]
 			-- Routines that ought to be in SPECIAL [ET_INSPECT_INSTRUCTION]
 
-	yyvs85: SPECIAL [?ET_INSTRUCTION]
+	frozen yyvs85: SPECIAL [?ET_INSTRUCTION]
 			-- Stack for semantic values of type ET_INSTRUCTION
 
 	yyvsc85: INTEGER
@@ -29073,10 +29073,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp85: INTEGER
 			-- Top of semantic value stack `yyvs85'
 
-	yyspecial_routines85: KL_SPECIAL_ROUTINES [?ET_INSTRUCTION]
+	frozen yyspecial_routines85: KL_SPECIAL_ROUTINES [?ET_INSTRUCTION]
 			-- Routines that ought to be in SPECIAL [ET_INSTRUCTION]
 
-	yyvs86: SPECIAL [?ET_INVARIANTS]
+	frozen yyvs86: SPECIAL [?ET_INVARIANTS]
 			-- Stack for semantic values of type ET_INVARIANTS
 
 	yyvsc86: INTEGER
@@ -29085,10 +29085,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp86: INTEGER
 			-- Top of semantic value stack `yyvs86'
 
-	yyspecial_routines86: KL_SPECIAL_ROUTINES [?ET_INVARIANTS]
+	frozen yyspecial_routines86: KL_SPECIAL_ROUTINES [?ET_INVARIANTS]
 			-- Routines that ought to be in SPECIAL [ET_INVARIANTS]
 
-	yyvs87: SPECIAL [?ET_KEYWORD_FEATURE_NAME_LIST]
+	frozen yyvs87: SPECIAL [?ET_KEYWORD_FEATURE_NAME_LIST]
 			-- Stack for semantic values of type ET_KEYWORD_FEATURE_NAME_LIST
 
 	yyvsc87: INTEGER
@@ -29097,10 +29097,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp87: INTEGER
 			-- Top of semantic value stack `yyvs87'
 
-	yyspecial_routines87: KL_SPECIAL_ROUTINES [?ET_KEYWORD_FEATURE_NAME_LIST]
+	frozen yyspecial_routines87: KL_SPECIAL_ROUTINES [?ET_KEYWORD_FEATURE_NAME_LIST]
 			-- Routines that ought to be in SPECIAL [ET_KEYWORD_FEATURE_NAME_LIST]
 
-	yyvs88: SPECIAL [?ET_LIKE_TYPE]
+	frozen yyvs88: SPECIAL [?ET_LIKE_TYPE]
 			-- Stack for semantic values of type ET_LIKE_TYPE
 
 	yyvsc88: INTEGER
@@ -29109,10 +29109,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp88: INTEGER
 			-- Top of semantic value stack `yyvs88'
 
-	yyspecial_routines88: KL_SPECIAL_ROUTINES [?ET_LIKE_TYPE]
+	frozen yyspecial_routines88: KL_SPECIAL_ROUTINES [?ET_LIKE_TYPE]
 			-- Routines that ought to be in SPECIAL [ET_LIKE_TYPE]
 
-	yyvs89: SPECIAL [?ET_LOCAL_VARIABLE]
+	frozen yyvs89: SPECIAL [?ET_LOCAL_VARIABLE]
 			-- Stack for semantic values of type ET_LOCAL_VARIABLE
 
 	yyvsc89: INTEGER
@@ -29121,10 +29121,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp89: INTEGER
 			-- Top of semantic value stack `yyvs89'
 
-	yyspecial_routines89: KL_SPECIAL_ROUTINES [?ET_LOCAL_VARIABLE]
+	frozen yyspecial_routines89: KL_SPECIAL_ROUTINES [?ET_LOCAL_VARIABLE]
 			-- Routines that ought to be in SPECIAL [ET_LOCAL_VARIABLE]
 
-	yyvs90: SPECIAL [?ET_LOCAL_VARIABLE_ITEM]
+	frozen yyvs90: SPECIAL [?ET_LOCAL_VARIABLE_ITEM]
 			-- Stack for semantic values of type ET_LOCAL_VARIABLE_ITEM
 
 	yyvsc90: INTEGER
@@ -29133,10 +29133,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp90: INTEGER
 			-- Top of semantic value stack `yyvs90'
 
-	yyspecial_routines90: KL_SPECIAL_ROUTINES [?ET_LOCAL_VARIABLE_ITEM]
+	frozen yyspecial_routines90: KL_SPECIAL_ROUTINES [?ET_LOCAL_VARIABLE_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_LOCAL_VARIABLE_ITEM]
 
-	yyvs91: SPECIAL [?ET_LOCAL_VARIABLE_LIST]
+	frozen yyvs91: SPECIAL [?ET_LOCAL_VARIABLE_LIST]
 			-- Stack for semantic values of type ET_LOCAL_VARIABLE_LIST
 
 	yyvsc91: INTEGER
@@ -29145,10 +29145,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp91: INTEGER
 			-- Top of semantic value stack `yyvs91'
 
-	yyspecial_routines91: KL_SPECIAL_ROUTINES [?ET_LOCAL_VARIABLE_LIST]
+	frozen yyspecial_routines91: KL_SPECIAL_ROUTINES [?ET_LOCAL_VARIABLE_LIST]
 			-- Routines that ought to be in SPECIAL [ET_LOCAL_VARIABLE_LIST]
 
-	yyvs92: SPECIAL [?ET_LOOP_INVARIANTS]
+	frozen yyvs92: SPECIAL [?ET_LOOP_INVARIANTS]
 			-- Stack for semantic values of type ET_LOOP_INVARIANTS
 
 	yyvsc92: INTEGER
@@ -29157,10 +29157,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp92: INTEGER
 			-- Top of semantic value stack `yyvs92'
 
-	yyspecial_routines92: KL_SPECIAL_ROUTINES [?ET_LOOP_INVARIANTS]
+	frozen yyspecial_routines92: KL_SPECIAL_ROUTINES [?ET_LOOP_INVARIANTS]
 			-- Routines that ought to be in SPECIAL [ET_LOOP_INVARIANTS]
 
-	yyvs93: SPECIAL [?ET_MANIFEST_ARRAY]
+	frozen yyvs93: SPECIAL [?ET_MANIFEST_ARRAY]
 			-- Stack for semantic values of type ET_MANIFEST_ARRAY
 
 	yyvsc93: INTEGER
@@ -29169,10 +29169,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp93: INTEGER
 			-- Top of semantic value stack `yyvs93'
 
-	yyspecial_routines93: KL_SPECIAL_ROUTINES [?ET_MANIFEST_ARRAY]
+	frozen yyspecial_routines93: KL_SPECIAL_ROUTINES [?ET_MANIFEST_ARRAY]
 			-- Routines that ought to be in SPECIAL [ET_MANIFEST_ARRAY]
 
-	yyvs94: SPECIAL [?ET_MANIFEST_STRING_ITEM]
+	frozen yyvs94: SPECIAL [?ET_MANIFEST_STRING_ITEM]
 			-- Stack for semantic values of type ET_MANIFEST_STRING_ITEM
 
 	yyvsc94: INTEGER
@@ -29181,10 +29181,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp94: INTEGER
 			-- Top of semantic value stack `yyvs94'
 
-	yyspecial_routines94: KL_SPECIAL_ROUTINES [?ET_MANIFEST_STRING_ITEM]
+	frozen yyspecial_routines94: KL_SPECIAL_ROUTINES [?ET_MANIFEST_STRING_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_MANIFEST_STRING_ITEM]
 
-	yyvs95: SPECIAL [?ET_MANIFEST_STRING_LIST]
+	frozen yyvs95: SPECIAL [?ET_MANIFEST_STRING_LIST]
 			-- Stack for semantic values of type ET_MANIFEST_STRING_LIST
 
 	yyvsc95: INTEGER
@@ -29193,10 +29193,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp95: INTEGER
 			-- Top of semantic value stack `yyvs95'
 
-	yyspecial_routines95: KL_SPECIAL_ROUTINES [?ET_MANIFEST_STRING_LIST]
+	frozen yyspecial_routines95: KL_SPECIAL_ROUTINES [?ET_MANIFEST_STRING_LIST]
 			-- Routines that ought to be in SPECIAL [ET_MANIFEST_STRING_LIST]
 
-	yyvs96: SPECIAL [?ET_MANIFEST_TUPLE]
+	frozen yyvs96: SPECIAL [?ET_MANIFEST_TUPLE]
 			-- Stack for semantic values of type ET_MANIFEST_TUPLE
 
 	yyvsc96: INTEGER
@@ -29205,10 +29205,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp96: INTEGER
 			-- Top of semantic value stack `yyvs96'
 
-	yyspecial_routines96: KL_SPECIAL_ROUTINES [?ET_MANIFEST_TUPLE]
+	frozen yyspecial_routines96: KL_SPECIAL_ROUTINES [?ET_MANIFEST_TUPLE]
 			-- Routines that ought to be in SPECIAL [ET_MANIFEST_TUPLE]
 
-	yyvs97: SPECIAL [?ET_OBJECT_TEST_LIST]
+	frozen yyvs97: SPECIAL [?ET_OBJECT_TEST_LIST]
 			-- Stack for semantic values of type ET_OBJECT_TEST_LIST
 
 	yyvsc97: INTEGER
@@ -29217,10 +29217,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp97: INTEGER
 			-- Top of semantic value stack `yyvs97'
 
-	yyspecial_routines97: KL_SPECIAL_ROUTINES [?ET_OBJECT_TEST_LIST]
+	frozen yyspecial_routines97: KL_SPECIAL_ROUTINES [?ET_OBJECT_TEST_LIST]
 			-- Routines that ought to be in SPECIAL [ET_OBJECT_TEST_LIST]
 
-	yyvs98: SPECIAL [?ET_OBSOLETE]
+	frozen yyvs98: SPECIAL [?ET_OBSOLETE]
 			-- Stack for semantic values of type ET_OBSOLETE
 
 	yyvsc98: INTEGER
@@ -29229,10 +29229,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp98: INTEGER
 			-- Top of semantic value stack `yyvs98'
 
-	yyspecial_routines98: KL_SPECIAL_ROUTINES [?ET_OBSOLETE]
+	frozen yyspecial_routines98: KL_SPECIAL_ROUTINES [?ET_OBSOLETE]
 			-- Routines that ought to be in SPECIAL [ET_OBSOLETE]
 
-	yyvs99: SPECIAL [?ET_PARENTHESIZED_EXPRESSION]
+	frozen yyvs99: SPECIAL [?ET_PARENTHESIZED_EXPRESSION]
 			-- Stack for semantic values of type ET_PARENTHESIZED_EXPRESSION
 
 	yyvsc99: INTEGER
@@ -29241,10 +29241,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp99: INTEGER
 			-- Top of semantic value stack `yyvs99'
 
-	yyspecial_routines99: KL_SPECIAL_ROUTINES [?ET_PARENTHESIZED_EXPRESSION]
+	frozen yyspecial_routines99: KL_SPECIAL_ROUTINES [?ET_PARENTHESIZED_EXPRESSION]
 			-- Routines that ought to be in SPECIAL [ET_PARENTHESIZED_EXPRESSION]
 
-	yyvs100: SPECIAL [?ET_PARENT]
+	frozen yyvs100: SPECIAL [?ET_PARENT]
 			-- Stack for semantic values of type ET_PARENT
 
 	yyvsc100: INTEGER
@@ -29253,10 +29253,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp100: INTEGER
 			-- Top of semantic value stack `yyvs100'
 
-	yyspecial_routines100: KL_SPECIAL_ROUTINES [?ET_PARENT]
+	frozen yyspecial_routines100: KL_SPECIAL_ROUTINES [?ET_PARENT]
 			-- Routines that ought to be in SPECIAL [ET_PARENT]
 
-	yyvs101: SPECIAL [?ET_PARENT_ITEM]
+	frozen yyvs101: SPECIAL [?ET_PARENT_ITEM]
 			-- Stack for semantic values of type ET_PARENT_ITEM
 
 	yyvsc101: INTEGER
@@ -29265,10 +29265,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp101: INTEGER
 			-- Top of semantic value stack `yyvs101'
 
-	yyspecial_routines101: KL_SPECIAL_ROUTINES [?ET_PARENT_ITEM]
+	frozen yyspecial_routines101: KL_SPECIAL_ROUTINES [?ET_PARENT_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_PARENT_ITEM]
 
-	yyvs102: SPECIAL [?ET_PARENT_LIST]
+	frozen yyvs102: SPECIAL [?ET_PARENT_LIST]
 			-- Stack for semantic values of type ET_PARENT_LIST
 
 	yyvsc102: INTEGER
@@ -29277,10 +29277,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp102: INTEGER
 			-- Top of semantic value stack `yyvs102'
 
-	yyspecial_routines102: KL_SPECIAL_ROUTINES [?ET_PARENT_LIST]
+	frozen yyspecial_routines102: KL_SPECIAL_ROUTINES [?ET_PARENT_LIST]
 			-- Routines that ought to be in SPECIAL [ET_PARENT_LIST]
 
-	yyvs103: SPECIAL [?ET_POSTCONDITIONS]
+	frozen yyvs103: SPECIAL [?ET_POSTCONDITIONS]
 			-- Stack for semantic values of type ET_POSTCONDITIONS
 
 	yyvsc103: INTEGER
@@ -29289,10 +29289,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp103: INTEGER
 			-- Top of semantic value stack `yyvs103'
 
-	yyspecial_routines103: KL_SPECIAL_ROUTINES [?ET_POSTCONDITIONS]
+	frozen yyspecial_routines103: KL_SPECIAL_ROUTINES [?ET_POSTCONDITIONS]
 			-- Routines that ought to be in SPECIAL [ET_POSTCONDITIONS]
 
-	yyvs104: SPECIAL [?ET_PRECONDITIONS]
+	frozen yyvs104: SPECIAL [?ET_PRECONDITIONS]
 			-- Stack for semantic values of type ET_PRECONDITIONS
 
 	yyvsc104: INTEGER
@@ -29301,10 +29301,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp104: INTEGER
 			-- Top of semantic value stack `yyvs104'
 
-	yyspecial_routines104: KL_SPECIAL_ROUTINES [?ET_PRECONDITIONS]
+	frozen yyspecial_routines104: KL_SPECIAL_ROUTINES [?ET_PRECONDITIONS]
 			-- Routines that ought to be in SPECIAL [ET_PRECONDITIONS]
 
-	yyvs105: SPECIAL [?ET_PROCEDURE]
+	frozen yyvs105: SPECIAL [?ET_PROCEDURE]
 			-- Stack for semantic values of type ET_PROCEDURE
 
 	yyvsc105: INTEGER
@@ -29313,10 +29313,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp105: INTEGER
 			-- Top of semantic value stack `yyvs105'
 
-	yyspecial_routines105: KL_SPECIAL_ROUTINES [?ET_PROCEDURE]
+	frozen yyspecial_routines105: KL_SPECIAL_ROUTINES [?ET_PROCEDURE]
 			-- Routines that ought to be in SPECIAL [ET_PROCEDURE]
 
-	yyvs106: SPECIAL [?ET_QUALIFIED_LIKE_IDENTIFIER]
+	frozen yyvs106: SPECIAL [?ET_QUALIFIED_LIKE_IDENTIFIER]
 			-- Stack for semantic values of type ET_QUALIFIED_LIKE_IDENTIFIER
 
 	yyvsc106: INTEGER
@@ -29325,10 +29325,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp106: INTEGER
 			-- Top of semantic value stack `yyvs106'
 
-	yyspecial_routines106: KL_SPECIAL_ROUTINES [?ET_QUALIFIED_LIKE_IDENTIFIER]
+	frozen yyspecial_routines106: KL_SPECIAL_ROUTINES [?ET_QUALIFIED_LIKE_IDENTIFIER]
 			-- Routines that ought to be in SPECIAL [ET_QUALIFIED_LIKE_IDENTIFIER]
 
-	yyvs107: SPECIAL [?ET_QUERY]
+	frozen yyvs107: SPECIAL [?ET_QUERY]
 			-- Stack for semantic values of type ET_QUERY
 
 	yyvsc107: INTEGER
@@ -29337,10 +29337,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp107: INTEGER
 			-- Top of semantic value stack `yyvs107'
 
-	yyspecial_routines107: KL_SPECIAL_ROUTINES [?ET_QUERY]
+	frozen yyspecial_routines107: KL_SPECIAL_ROUTINES [?ET_QUERY]
 			-- Routines that ought to be in SPECIAL [ET_QUERY]
 
-	yyvs108: SPECIAL [?ET_RENAME_ITEM]
+	frozen yyvs108: SPECIAL [?ET_RENAME_ITEM]
 			-- Stack for semantic values of type ET_RENAME_ITEM
 
 	yyvsc108: INTEGER
@@ -29349,10 +29349,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp108: INTEGER
 			-- Top of semantic value stack `yyvs108'
 
-	yyspecial_routines108: KL_SPECIAL_ROUTINES [?ET_RENAME_ITEM]
+	frozen yyspecial_routines108: KL_SPECIAL_ROUTINES [?ET_RENAME_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_RENAME_ITEM]
 
-	yyvs109: SPECIAL [?ET_RENAME_LIST]
+	frozen yyvs109: SPECIAL [?ET_RENAME_LIST]
 			-- Stack for semantic values of type ET_RENAME_LIST
 
 	yyvsc109: INTEGER
@@ -29361,10 +29361,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp109: INTEGER
 			-- Top of semantic value stack `yyvs109'
 
-	yyspecial_routines109: KL_SPECIAL_ROUTINES [?ET_RENAME_LIST]
+	frozen yyspecial_routines109: KL_SPECIAL_ROUTINES [?ET_RENAME_LIST]
 			-- Routines that ought to be in SPECIAL [ET_RENAME_LIST]
 
-	yyvs110: SPECIAL [?ET_STATIC_CALL_EXPRESSION]
+	frozen yyvs110: SPECIAL [?ET_STATIC_CALL_EXPRESSION]
 			-- Stack for semantic values of type ET_STATIC_CALL_EXPRESSION
 
 	yyvsc110: INTEGER
@@ -29373,10 +29373,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp110: INTEGER
 			-- Top of semantic value stack `yyvs110'
 
-	yyspecial_routines110: KL_SPECIAL_ROUTINES [?ET_STATIC_CALL_EXPRESSION]
+	frozen yyspecial_routines110: KL_SPECIAL_ROUTINES [?ET_STATIC_CALL_EXPRESSION]
 			-- Routines that ought to be in SPECIAL [ET_STATIC_CALL_EXPRESSION]
 
-	yyvs111: SPECIAL [?ET_STRIP_EXPRESSION]
+	frozen yyvs111: SPECIAL [?ET_STRIP_EXPRESSION]
 			-- Stack for semantic values of type ET_STRIP_EXPRESSION
 
 	yyvsc111: INTEGER
@@ -29385,10 +29385,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp111: INTEGER
 			-- Top of semantic value stack `yyvs111'
 
-	yyspecial_routines111: KL_SPECIAL_ROUTINES [?ET_STRIP_EXPRESSION]
+	frozen yyspecial_routines111: KL_SPECIAL_ROUTINES [?ET_STRIP_EXPRESSION]
 			-- Routines that ought to be in SPECIAL [ET_STRIP_EXPRESSION]
 
-	yyvs112: SPECIAL [?ET_TYPE]
+	frozen yyvs112: SPECIAL [?ET_TYPE]
 			-- Stack for semantic values of type ET_TYPE
 
 	yyvsc112: INTEGER
@@ -29397,10 +29397,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp112: INTEGER
 			-- Top of semantic value stack `yyvs112'
 
-	yyspecial_routines112: KL_SPECIAL_ROUTINES [?ET_TYPE]
+	frozen yyspecial_routines112: KL_SPECIAL_ROUTINES [?ET_TYPE]
 			-- Routines that ought to be in SPECIAL [ET_TYPE]
 
-	yyvs113: SPECIAL [?ET_TYPE_ITEM]
+	frozen yyvs113: SPECIAL [?ET_TYPE_ITEM]
 			-- Stack for semantic values of type ET_TYPE_ITEM
 
 	yyvsc113: INTEGER
@@ -29409,10 +29409,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp113: INTEGER
 			-- Top of semantic value stack `yyvs113'
 
-	yyspecial_routines113: KL_SPECIAL_ROUTINES [?ET_TYPE_ITEM]
+	frozen yyspecial_routines113: KL_SPECIAL_ROUTINES [?ET_TYPE_ITEM]
 			-- Routines that ought to be in SPECIAL [ET_TYPE_ITEM]
 
-	yyvs114: SPECIAL [?ET_TYPE_LIST]
+	frozen yyvs114: SPECIAL [?ET_TYPE_LIST]
 			-- Stack for semantic values of type ET_TYPE_LIST
 
 	yyvsc114: INTEGER
@@ -29421,10 +29421,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp114: INTEGER
 			-- Top of semantic value stack `yyvs114'
 
-	yyspecial_routines114: KL_SPECIAL_ROUTINES [?ET_TYPE_LIST]
+	frozen yyspecial_routines114: KL_SPECIAL_ROUTINES [?ET_TYPE_LIST]
 			-- Routines that ought to be in SPECIAL [ET_TYPE_LIST]
 
-	yyvs115: SPECIAL [?ET_VARIANT]
+	frozen yyvs115: SPECIAL [?ET_VARIANT]
 			-- Stack for semantic values of type ET_VARIANT
 
 	yyvsc115: INTEGER
@@ -29433,10 +29433,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp115: INTEGER
 			-- Top of semantic value stack `yyvs115'
 
-	yyspecial_routines115: KL_SPECIAL_ROUTINES [?ET_VARIANT]
+	frozen yyspecial_routines115: KL_SPECIAL_ROUTINES [?ET_VARIANT]
 			-- Routines that ought to be in SPECIAL [ET_VARIANT]
 
-	yyvs116: SPECIAL [?ET_WHEN_PART]
+	frozen yyvs116: SPECIAL [?ET_WHEN_PART]
 			-- Stack for semantic values of type ET_WHEN_PART
 
 	yyvsc116: INTEGER
@@ -29445,10 +29445,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp116: INTEGER
 			-- Top of semantic value stack `yyvs116'
 
-	yyspecial_routines116: KL_SPECIAL_ROUTINES [?ET_WHEN_PART]
+	frozen yyspecial_routines116: KL_SPECIAL_ROUTINES [?ET_WHEN_PART]
 			-- Routines that ought to be in SPECIAL [ET_WHEN_PART]
 
-	yyvs117: SPECIAL [?ET_WHEN_PART_LIST]
+	frozen yyvs117: SPECIAL [?ET_WHEN_PART_LIST]
 			-- Stack for semantic values of type ET_WHEN_PART_LIST
 
 	yyvsc117: INTEGER
@@ -29457,10 +29457,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp117: INTEGER
 			-- Top of semantic value stack `yyvs117'
 
-	yyspecial_routines117: KL_SPECIAL_ROUTINES [?ET_WHEN_PART_LIST]
+	frozen yyspecial_routines117: KL_SPECIAL_ROUTINES [?ET_WHEN_PART_LIST]
 			-- Routines that ought to be in SPECIAL [ET_WHEN_PART_LIST]
 
-	yyvs118: SPECIAL [?ET_WRITABLE]
+	frozen yyvs118: SPECIAL [?ET_WRITABLE]
 			-- Stack for semantic values of type ET_WRITABLE
 
 	yyvsc118: INTEGER
@@ -29469,7 +29469,7 @@ feature {NONE} -- Semantic value stacks
 	yyvsp118: INTEGER
 			-- Top of semantic value stack `yyvs118'
 
-	yyspecial_routines118: KL_SPECIAL_ROUTINES [?ET_WRITABLE]
+	frozen yyspecial_routines118: KL_SPECIAL_ROUTINES [?ET_WRITABLE]
 			-- Routines that ought to be in SPECIAL [ET_WRITABLE]
 
 feature {NONE} -- Constants

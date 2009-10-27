@@ -52,49 +52,49 @@ feature {NONE} -- Implementation
 			end
 			create yyspecial_routines1
 			yyvsc1 := yyInitial_yyvs_size
-			yyvs1 := yyspecial_routines1.make (yyvsc1)
+			yyvs1 := yyspecial_routines1.make_filled (({ANY}).default, yyvsc1)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs2")
 			end
 			create yyspecial_routines2
 			yyvsc2 := yyInitial_yyvs_size
-			yyvs2 := yyspecial_routines2.make (yyvsc2)
+			yyvs2 := yyspecial_routines2.make_filled (({STRING}).default, yyvsc2)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs3")
 			end
 			create yyspecial_routines3
 			yyvsc3 := yyInitial_yyvs_size
-			yyvs3 := yyspecial_routines3.make (yyvsc3)
+			yyvs3 := yyspecial_routines3.make_filled (({INTEGER}).default, yyvsc3)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs4")
 			end
 			create yyspecial_routines4
 			yyvsc4 := yyInitial_yyvs_size
-			yyvs4 := yyspecial_routines4.make (yyvsc4)
+			yyvs4 := yyspecial_routines4.make_filled (({PR_TOKEN}).default, yyvsc4)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs5")
 			end
 			create yyspecial_routines5
 			yyvsc5 := yyInitial_yyvs_size
-			yyvs5 := yyspecial_routines5.make (yyvsc5)
+			yyvs5 := yyspecial_routines5.make_filled (({PR_TYPE}).default, yyvsc5)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs6")
 			end
 			create yyspecial_routines6
 			yyvsc6 := yyInitial_yyvs_size
-			yyvs6 := yyspecial_routines6.make (yyvsc6)
+			yyvs6 := yyspecial_routines6.make_filled (({DS_ARRAYED_LIST [PR_TYPE]}).default, yyvsc6)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs7")
 			end
 			create yyspecial_routines7
 			yyvsc7 := yyInitial_yyvs_size
-			yyvs7 := yyspecial_routines7.make (yyvsc7)
+			yyvs7 := yyspecial_routines7.make_filled (({PR_LABELED_TYPE}).default, yyvsc7)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs8")
 			end
 			create yyspecial_routines8
 			yyvsc8 := yyInitial_yyvs_size
-			yyvs8 := yyspecial_routines8.make (yyvsc8)
+			yyvs8 := yyspecial_routines8.make_filled (({DS_ARRAYED_LIST [PR_LABELED_TYPE]}).default, yyvsc8)
 		end
 
 	yy_init_value_stacks is
@@ -146,9 +146,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs1")
 					end
 					yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-					yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+					yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 				end
-				yyvs1.force (last_any_value, yyvsp1)
+				yyvs1.put (last_any_value, yyvsp1)
 			when 2 then
 				yyvsp2 := yyvsp2 + 1
 				if yyvsp2 >= yyvsc2 then
@@ -156,9 +156,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs2")
 					end
 					yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-					yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+					yyvs2 := yyspecial_routines2.resize_with_default (({STRING}).default, yyvs2, yyvsc2)
 				end
-				yyvs2.force (last_string_value, yyvsp2)
+				yyvs2.put (last_string_value, yyvsp2)
 			when 3 then
 				yyvsp3 := yyvsp3 + 1
 				if yyvsp3 >= yyvsc3 then
@@ -166,9 +166,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs3")
 					end
 					yyvsc3 := yyvsc3 + yyInitial_yyvs_size
-					yyvs3 := yyspecial_routines3.resize (yyvs3, yyvsc3)
+					yyvs3 := yyspecial_routines3.resize_with_default (({INTEGER}).default, yyvs3, yyvsc3)
 				end
-				yyvs3.force (last_integer_value, yyvsp3)
+				yyvs3.put (last_integer_value, yyvsp3)
 			else
 				debug ("GEYACC")
 					std.error.put_string ("Error in parser: not a token type: ")
@@ -191,9 +191,9 @@ feature {NONE} -- Implementation
 					std.error.put_line ("Resize yyvs1")
 				end
 				yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-				yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+				yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 			end
-			yyvs1.force (yyval1, yyvsp1)
+			yyvs1.put (yyval1, yyvsp1)
 		end
 
 	yy_pop_last_value (yystate: INTEGER) is
@@ -257,7 +257,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp1 := yyvsp1 -4
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 2 then
 --|#line 58 "pr_yacc_parser.y"
@@ -275,9 +275,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 3 then
 --|#line 71 "pr_yacc_parser.y"
@@ -295,9 +295,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 4 then
 --|#line 75 "pr_yacc_parser.y"
@@ -309,7 +309,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 5 then
 --|#line 78 "pr_yacc_parser.y"
@@ -332,9 +332,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 6 then
 --|#line 86 "pr_yacc_parser.y"
@@ -347,7 +347,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 7 then
 --|#line 90 "pr_yacc_parser.y"
@@ -360,7 +360,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 8 then
 --|#line 94 "pr_yacc_parser.y"
@@ -373,7 +373,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 9 then
 --|#line 98 "pr_yacc_parser.y"
@@ -386,7 +386,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 10 then
 --|#line 102 "pr_yacc_parser.y"
@@ -399,7 +399,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 11 then
 --|#line 106 "pr_yacc_parser.y"
@@ -420,7 +420,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 12 then
 --|#line 118 "pr_yacc_parser.y"
@@ -433,7 +433,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp3 := yyvsp3 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 13 then
 --|#line 124 "pr_yacc_parser.y"
@@ -451,9 +451,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 14 then
 --|#line 128 "pr_yacc_parser.y"
@@ -468,7 +468,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 15 then
 --|#line 133 "pr_yacc_parser.y"
@@ -484,7 +484,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp1 := yyvsp1 -1
 	yyvsp5 := yyvsp5 -1
 	yyvsp2 := yyvsp2 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 16 then
 --|#line 140 "pr_yacc_parser.y"
@@ -502,9 +502,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 17 then
 --|#line 144 "pr_yacc_parser.y"
@@ -518,7 +518,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp5 := yyvsp5 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 18 then
 --|#line 150 "pr_yacc_parser.y"
@@ -537,9 +537,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 19 then
 --|#line 154 "pr_yacc_parser.y"
@@ -558,9 +558,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 20 then
 --|#line 158 "pr_yacc_parser.y"
@@ -579,9 +579,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 21 then
 --|#line 162 "pr_yacc_parser.y"
@@ -592,7 +592,7 @@ end
 yyval5 := yyvs5.item (yyvsp5) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 22 then
 --|#line 166 "pr_yacc_parser.y"
@@ -611,9 +611,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 23 then
 --|#line 170 "pr_yacc_parser.y"
@@ -632,9 +632,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 24 then
 --|#line 174 "pr_yacc_parser.y"
@@ -654,9 +654,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 25 then
 --|#line 178 "pr_yacc_parser.y"
@@ -676,9 +676,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 26 then
 --|#line 182 "pr_yacc_parser.y"
@@ -698,9 +698,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 27 then
 --|#line 186 "pr_yacc_parser.y"
@@ -720,9 +720,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 28 then
 --|#line 190 "pr_yacc_parser.y"
@@ -741,9 +741,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 29 then
 --|#line 194 "pr_yacc_parser.y"
@@ -763,9 +763,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 30 then
 --|#line 198 "pr_yacc_parser.y"
@@ -785,9 +785,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 31 then
 --|#line 202 "pr_yacc_parser.y"
@@ -807,9 +807,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 32 then
 --|#line 206 "pr_yacc_parser.y"
@@ -829,9 +829,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 33 then
 --|#line 210 "pr_yacc_parser.y"
@@ -851,9 +851,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 34 then
 --|#line 214 "pr_yacc_parser.y"
@@ -873,9 +873,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 35 then
 --|#line 218 "pr_yacc_parser.y"
@@ -894,9 +894,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 36 then
 --|#line 222 "pr_yacc_parser.y"
@@ -915,9 +915,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs5")
 		end
 		yyvsc5 := yyvsc5 + yyInitial_yyvs_size
-		yyvs5 := yyspecial_routines5.resize (yyvs5, yyvsc5)
+		yyvs5 := yyspecial_routines5.resize_with_default (({PR_TYPE}).default, yyvs5, yyvsc5)
 	end
-	yyvs5.force (yyval5, yyvsp5)
+	yyvs5.put (yyval5, yyvsp5)
 end
 when 37 then
 --|#line 228 "pr_yacc_parser.y"
@@ -928,7 +928,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 38 then
 --|#line 230 "pr_yacc_parser.y"
@@ -939,7 +939,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 39 then
 --|#line 232 "pr_yacc_parser.y"
@@ -950,7 +950,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 40 then
 --|#line 234 "pr_yacc_parser.y"
@@ -961,7 +961,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 41 then
 --|#line 236 "pr_yacc_parser.y"
@@ -972,7 +972,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 42 then
 --|#line 238 "pr_yacc_parser.y"
@@ -983,7 +983,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 43 then
 --|#line 240 "pr_yacc_parser.y"
@@ -994,7 +994,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 44 then
 --|#line 242 "pr_yacc_parser.y"
@@ -1005,7 +1005,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 45 then
 --|#line 244 "pr_yacc_parser.y"
@@ -1016,7 +1016,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 46 then
 --|#line 246 "pr_yacc_parser.y"
@@ -1027,7 +1027,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 47 then
 --|#line 248 "pr_yacc_parser.y"
@@ -1038,7 +1038,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 48 then
 --|#line 250 "pr_yacc_parser.y"
@@ -1049,7 +1049,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 49 then
 --|#line 252 "pr_yacc_parser.y"
@@ -1060,7 +1060,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 50 then
 --|#line 254 "pr_yacc_parser.y"
@@ -1071,7 +1071,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 51 then
 --|#line 256 "pr_yacc_parser.y"
@@ -1082,7 +1082,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 52 then
 --|#line 258 "pr_yacc_parser.y"
@@ -1093,7 +1093,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 53 then
 --|#line 260 "pr_yacc_parser.y"
@@ -1104,7 +1104,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 54 then
 --|#line 262 "pr_yacc_parser.y"
@@ -1115,7 +1115,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 55 then
 --|#line 264 "pr_yacc_parser.y"
@@ -1126,7 +1126,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 56 then
 --|#line 268 "pr_yacc_parser.y"
@@ -1137,7 +1137,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 57 then
 --|#line 270 "pr_yacc_parser.y"
@@ -1148,7 +1148,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 58 then
 --|#line 272 "pr_yacc_parser.y"
@@ -1159,7 +1159,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 59 then
 --|#line 274 "pr_yacc_parser.y"
@@ -1170,7 +1170,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 60 then
 --|#line 276 "pr_yacc_parser.y"
@@ -1181,7 +1181,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 61 then
 --|#line 278 "pr_yacc_parser.y"
@@ -1199,9 +1199,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs2")
 		end
 		yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-		yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+		yyvs2 := yyspecial_routines2.resize_with_default (({STRING}).default, yyvs2, yyvsc2)
 	end
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 62 then
 --|#line 280 "pr_yacc_parser.y"
@@ -1219,9 +1219,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs2")
 		end
 		yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-		yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+		yyvs2 := yyspecial_routines2.resize_with_default (({STRING}).default, yyvs2, yyvsc2)
 	end
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 63 then
 --|#line 284 "pr_yacc_parser.y"
@@ -1238,9 +1238,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs2")
 		end
 		yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-		yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+		yyvs2 := yyspecial_routines2.resize_with_default (({STRING}).default, yyvs2, yyvsc2)
 	end
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 64 then
 --|#line 286 "pr_yacc_parser.y"
@@ -1251,7 +1251,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 65 then
 --|#line 290 "pr_yacc_parser.y"
@@ -1262,7 +1262,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 66 then
 --|#line 292 "pr_yacc_parser.y"
@@ -1273,7 +1273,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 67 then
 --|#line 294 "pr_yacc_parser.y"
@@ -1291,9 +1291,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs2")
 		end
 		yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-		yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+		yyvs2 := yyspecial_routines2.resize_with_default (({STRING}).default, yyvs2, yyvsc2)
 	end
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 68 then
 --|#line 296 "pr_yacc_parser.y"
@@ -1311,9 +1311,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs2")
 		end
 		yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-		yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+		yyvs2 := yyspecial_routines2.resize_with_default (({STRING}).default, yyvs2, yyvsc2)
 	end
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 69 then
 --|#line 300 "pr_yacc_parser.y"
@@ -1326,7 +1326,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -2
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 70 then
 --|#line 306 "pr_yacc_parser.y"
@@ -1350,9 +1350,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs6")
 		end
 		yyvsc6 := yyvsc6 + yyInitial_yyvs_size
-		yyvs6 := yyspecial_routines6.resize (yyvs6, yyvsc6)
+		yyvs6 := yyspecial_routines6.resize_with_default (({DS_ARRAYED_LIST [PR_TYPE]}).default, yyvs6, yyvsc6)
 	end
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 71 then
 --|#line 315 "pr_yacc_parser.y"
@@ -1372,7 +1372,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp5 := yyvsp5 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 72 then
 --|#line 325 "pr_yacc_parser.y"
@@ -1388,7 +1388,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 73 then
 --|#line 331 "pr_yacc_parser.y"
@@ -1404,7 +1404,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 74 then
 --|#line 337 "pr_yacc_parser.y"
@@ -1420,7 +1420,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs6.force (yyval6, yyvsp6)
+	yyvs6.put (yyval6, yyvsp6)
 end
 when 75 then
 --|#line 345 "pr_yacc_parser.y"
@@ -1433,7 +1433,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -2
-	yyvs8.force (yyval8, yyvsp8)
+	yyvs8.put (yyval8, yyvsp8)
 end
 when 76 then
 --|#line 351 "pr_yacc_parser.y"
@@ -1457,9 +1457,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs8")
 		end
 		yyvsc8 := yyvsc8 + yyInitial_yyvs_size
-		yyvs8 := yyspecial_routines8.resize (yyvs8, yyvsc8)
+		yyvs8 := yyspecial_routines8.resize_with_default (({DS_ARRAYED_LIST [PR_LABELED_TYPE]}).default, yyvs8, yyvsc8)
 	end
-	yyvs8.force (yyval8, yyvsp8)
+	yyvs8.put (yyval8, yyvsp8)
 end
 when 77 then
 --|#line 360 "pr_yacc_parser.y"
@@ -1479,7 +1479,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp7 := yyvsp7 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs8.force (yyval8, yyvsp8)
+	yyvs8.put (yyval8, yyvsp8)
 end
 when 78 then
 --|#line 370 "pr_yacc_parser.y"
@@ -1499,7 +1499,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs8.force (yyval8, yyvsp8)
+	yyvs8.put (yyval8, yyvsp8)
 end
 when 79 then
 --|#line 380 "pr_yacc_parser.y"
@@ -1519,7 +1519,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs8.force (yyval8, yyvsp8)
+	yyvs8.put (yyval8, yyvsp8)
 end
 when 80 then
 --|#line 390 "pr_yacc_parser.y"
@@ -1539,7 +1539,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp2 := yyvsp2 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs8.force (yyval8, yyvsp8)
+	yyvs8.put (yyval8, yyvsp8)
 end
 when 81 then
 --|#line 402 "pr_yacc_parser.y"
@@ -1560,9 +1560,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs7")
 		end
 		yyvsc7 := yyvsc7 + yyInitial_yyvs_size
-		yyvs7 := yyspecial_routines7.resize (yyvs7, yyvsc7)
+		yyvs7 := yyspecial_routines7.resize_with_default (({PR_LABELED_TYPE}).default, yyvs7, yyvsc7)
 	end
-	yyvs7.force (yyval7, yyvsp7)
+	yyvs7.put (yyval7, yyvsp7)
 end
 when 82 then
 --|#line 408 "pr_yacc_parser.y"
@@ -1579,9 +1579,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 83 then
 --|#line 409 "pr_yacc_parser.y"
@@ -1593,7 +1593,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 84 then
 --|#line 410 "pr_yacc_parser.y"
@@ -1606,7 +1606,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 85 then
 --|#line 413 "pr_yacc_parser.y"
@@ -1625,9 +1625,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 86 then
 --|#line 417 "pr_yacc_parser.y"
@@ -1648,9 +1648,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 87 then
 --|#line 422 "pr_yacc_parser.y"
@@ -1670,9 +1670,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 88 then
 --|#line 427 "pr_yacc_parser.y"
@@ -1694,9 +1694,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 89 then
 --|#line 433 "pr_yacc_parser.y"
@@ -1715,9 +1715,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 90 then
 --|#line 439 "pr_yacc_parser.y"
@@ -1734,9 +1734,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 91 then
 --|#line 440 "pr_yacc_parser.y"
@@ -1748,7 +1748,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 92 then
 --|#line 441 "pr_yacc_parser.y"
@@ -1761,7 +1761,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 93 then
 --|#line 444 "pr_yacc_parser.y"
@@ -1780,9 +1780,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 94 then
 --|#line 448 "pr_yacc_parser.y"
@@ -1803,9 +1803,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 95 then
 --|#line 453 "pr_yacc_parser.y"
@@ -1825,9 +1825,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 96 then
 --|#line 458 "pr_yacc_parser.y"
@@ -1849,9 +1849,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 97 then
 --|#line 464 "pr_yacc_parser.y"
@@ -1870,9 +1870,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 98 then
 --|#line 470 "pr_yacc_parser.y"
@@ -1889,9 +1889,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 99 then
 --|#line 471 "pr_yacc_parser.y"
@@ -1903,7 +1903,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 100 then
 --|#line 472 "pr_yacc_parser.y"
@@ -1916,7 +1916,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 101 then
 --|#line 475 "pr_yacc_parser.y"
@@ -1935,9 +1935,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 102 then
 --|#line 479 "pr_yacc_parser.y"
@@ -1958,9 +1958,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 103 then
 --|#line 484 "pr_yacc_parser.y"
@@ -1980,9 +1980,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 104 then
 --|#line 489 "pr_yacc_parser.y"
@@ -2004,9 +2004,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 105 then
 --|#line 495 "pr_yacc_parser.y"
@@ -2025,9 +2025,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 106 then
 --|#line 501 "pr_yacc_parser.y"
@@ -2044,9 +2044,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 107 then
 --|#line 502 "pr_yacc_parser.y"
@@ -2058,7 +2058,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 108 then
 --|#line 503 "pr_yacc_parser.y"
@@ -2071,7 +2071,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 109 then
 --|#line 506 "pr_yacc_parser.y"
@@ -2090,9 +2090,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 110 then
 --|#line 510 "pr_yacc_parser.y"
@@ -2113,9 +2113,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 111 then
 --|#line 515 "pr_yacc_parser.y"
@@ -2135,9 +2135,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 112 then
 --|#line 520 "pr_yacc_parser.y"
@@ -2159,9 +2159,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 113 then
 --|#line 526 "pr_yacc_parser.y"
@@ -2180,9 +2180,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 114 then
 --|#line 532 "pr_yacc_parser.y"
@@ -2199,9 +2199,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 115 then
 --|#line 533 "pr_yacc_parser.y"
@@ -2213,7 +2213,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 116 then
 --|#line 534 "pr_yacc_parser.y"
@@ -2225,7 +2225,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 117 then
 --|#line 537 "pr_yacc_parser.y"
@@ -2244,9 +2244,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 118 then
 --|#line 543 "pr_yacc_parser.y"
@@ -2264,9 +2264,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 119 then
 --|#line 547 "pr_yacc_parser.y"
@@ -2277,7 +2277,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 120 then
 --|#line 548 "pr_yacc_parser.y"
@@ -2289,7 +2289,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 121 then
 --|#line 551 "pr_yacc_parser.y"
@@ -2304,7 +2304,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp1 := yyvsp1 -3
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 122 then
 --|#line 559 "pr_yacc_parser.y"
@@ -2340,9 +2340,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 123 then
 --|#line 582 "pr_yacc_parser.y"
@@ -2365,9 +2365,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 124 then
 --|#line 592 "pr_yacc_parser.y"
@@ -2378,7 +2378,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 125 then
 --|#line 593 "pr_yacc_parser.y"
@@ -2390,7 +2390,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 126 then
 --|#line 596 "pr_yacc_parser.y"
@@ -2401,7 +2401,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 127 then
 --|#line 597 "pr_yacc_parser.y"
@@ -2424,7 +2424,7 @@ if yy_parsing_status >= yyContinue then
 	yyvsp1 := yyvsp1 -2
 	yyvsp3 := yyvsp3 -2
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 128 then
 --|#line 611 "pr_yacc_parser.y"
@@ -2441,9 +2441,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 129 then
 --|#line 612 "pr_yacc_parser.y"
@@ -2456,7 +2456,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 130 then
 --|#line 616 "pr_yacc_parser.y"
@@ -2469,7 +2469,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 131 then
 --|#line 620 "pr_yacc_parser.y"
@@ -2482,7 +2482,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 132 then
 --|#line 624 "pr_yacc_parser.y"
@@ -2495,7 +2495,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 133 then
 --|#line 628 "pr_yacc_parser.y"
@@ -2513,7 +2513,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp4 := yyvsp4 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 134 then
 --|#line 638 "pr_yacc_parser.y"
@@ -2537,9 +2537,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 135 then
 --|#line 647 "pr_yacc_parser.y"
@@ -2558,9 +2558,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs4")
 		end
 		yyvsc4 := yyvsc4 + yyInitial_yyvs_size
-		yyvs4 := yyspecial_routines4.resize (yyvs4, yyvsc4)
+		yyvs4 := yyspecial_routines4.resize_with_default (({PR_TOKEN}).default, yyvs4, yyvsc4)
 	end
-	yyvs4.force (yyval4, yyvsp4)
+	yyvs4.put (yyval4, yyvsp4)
 end
 when 136 then
 --|#line 653 "pr_yacc_parser.y"
@@ -2591,9 +2591,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 137 then
 --|#line 671 "pr_yacc_parser.y"
@@ -2610,9 +2610,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 138 then
 --|#line 672 "pr_yacc_parser.y"
@@ -2623,7 +2623,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 139 then
 --|#line 673 "pr_yacc_parser.y"
@@ -2636,7 +2636,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 140 then
 --|#line 679 "pr_yacc_parser.y"
@@ -2647,7 +2647,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 141 then
 --|#line 681 "pr_yacc_parser.y"
@@ -2658,7 +2658,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 142 then
 --|#line 683 "pr_yacc_parser.y"
@@ -2669,7 +2669,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 143 then
 --|#line 685 "pr_yacc_parser.y"
@@ -2680,7 +2680,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 144 then
 --|#line 687 "pr_yacc_parser.y"
@@ -2691,7 +2691,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 145 then
 --|#line 689 "pr_yacc_parser.y"
@@ -2702,7 +2702,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 146 then
 --|#line 691 "pr_yacc_parser.y"
@@ -2713,7 +2713,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 147 then
 --|#line 693 "pr_yacc_parser.y"
@@ -2724,7 +2724,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 148 then
 --|#line 695 "pr_yacc_parser.y"
@@ -2735,7 +2735,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 149 then
 --|#line 697 "pr_yacc_parser.y"
@@ -2746,7 +2746,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 when 150 then
 --|#line 699 "pr_yacc_parser.y"
@@ -2757,7 +2757,7 @@ end
 yyval2 := yyvs2.item (yyvsp2) 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs2.force (yyval2, yyvsp2)
+	yyvs2.put (yyval2, yyvsp2)
 end
 			else
 				debug ("GEYACC")
@@ -3245,7 +3245,7 @@ feature {NONE} -- Table templates
 
 feature {NONE} -- Semantic value stacks
 
-	yyvs1: SPECIAL [?ANY]
+	frozen yyvs1: SPECIAL [?ANY]
 			-- Stack for semantic values of type ANY
 
 	yyvsc1: INTEGER
@@ -3254,10 +3254,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp1: INTEGER
 			-- Top of semantic value stack `yyvs1'
 
-	yyspecial_routines1: KL_SPECIAL_ROUTINES [?ANY]
+	frozen yyspecial_routines1: KL_SPECIAL_ROUTINES [?ANY]
 			-- Routines that ought to be in SPECIAL [ANY]
 
-	yyvs2: SPECIAL [?STRING]
+	frozen yyvs2: SPECIAL [?STRING]
 			-- Stack for semantic values of type STRING
 
 	yyvsc2: INTEGER
@@ -3266,10 +3266,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp2: INTEGER
 			-- Top of semantic value stack `yyvs2'
 
-	yyspecial_routines2: KL_SPECIAL_ROUTINES [?STRING]
+	frozen yyspecial_routines2: KL_SPECIAL_ROUTINES [?STRING]
 			-- Routines that ought to be in SPECIAL [STRING]
 
-	yyvs3: SPECIAL [INTEGER]
+	frozen yyvs3: SPECIAL [INTEGER]
 			-- Stack for semantic values of type INTEGER
 
 	yyvsc3: INTEGER
@@ -3278,10 +3278,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp3: INTEGER
 			-- Top of semantic value stack `yyvs3'
 
-	yyspecial_routines3: KL_SPECIAL_ROUTINES [INTEGER]
+	frozen yyspecial_routines3: KL_SPECIAL_ROUTINES [INTEGER]
 			-- Routines that ought to be in SPECIAL [INTEGER]
 
-	yyvs4: SPECIAL [?PR_TOKEN]
+	frozen yyvs4: SPECIAL [?PR_TOKEN]
 			-- Stack for semantic values of type PR_TOKEN
 
 	yyvsc4: INTEGER
@@ -3290,10 +3290,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp4: INTEGER
 			-- Top of semantic value stack `yyvs4'
 
-	yyspecial_routines4: KL_SPECIAL_ROUTINES [?PR_TOKEN]
+	frozen yyspecial_routines4: KL_SPECIAL_ROUTINES [?PR_TOKEN]
 			-- Routines that ought to be in SPECIAL [PR_TOKEN]
 
-	yyvs5: SPECIAL [?PR_TYPE]
+	frozen yyvs5: SPECIAL [?PR_TYPE]
 			-- Stack for semantic values of type PR_TYPE
 
 	yyvsc5: INTEGER
@@ -3302,10 +3302,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp5: INTEGER
 			-- Top of semantic value stack `yyvs5'
 
-	yyspecial_routines5: KL_SPECIAL_ROUTINES [?PR_TYPE]
+	frozen yyspecial_routines5: KL_SPECIAL_ROUTINES [?PR_TYPE]
 			-- Routines that ought to be in SPECIAL [PR_TYPE]
 
-	yyvs6: SPECIAL [?DS_ARRAYED_LIST [PR_TYPE]]
+	frozen yyvs6: SPECIAL [?DS_ARRAYED_LIST [PR_TYPE]]
 			-- Stack for semantic values of type DS_ARRAYED_LIST [PR_TYPE]
 
 	yyvsc6: INTEGER
@@ -3314,10 +3314,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp6: INTEGER
 			-- Top of semantic value stack `yyvs6'
 
-	yyspecial_routines6: KL_SPECIAL_ROUTINES [?DS_ARRAYED_LIST [PR_TYPE]]
+	frozen yyspecial_routines6: KL_SPECIAL_ROUTINES [?DS_ARRAYED_LIST [PR_TYPE]]
 			-- Routines that ought to be in SPECIAL [DS_ARRAYED_LIST [PR_TYPE]]
 
-	yyvs7: SPECIAL [?PR_LABELED_TYPE]
+	frozen yyvs7: SPECIAL [?PR_LABELED_TYPE]
 			-- Stack for semantic values of type PR_LABELED_TYPE
 
 	yyvsc7: INTEGER
@@ -3326,10 +3326,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp7: INTEGER
 			-- Top of semantic value stack `yyvs7'
 
-	yyspecial_routines7: KL_SPECIAL_ROUTINES [?PR_LABELED_TYPE]
+	frozen yyspecial_routines7: KL_SPECIAL_ROUTINES [?PR_LABELED_TYPE]
 			-- Routines that ought to be in SPECIAL [PR_LABELED_TYPE]
 
-	yyvs8: SPECIAL [?DS_ARRAYED_LIST [PR_LABELED_TYPE]]
+	frozen yyvs8: SPECIAL [?DS_ARRAYED_LIST [PR_LABELED_TYPE]]
 			-- Stack for semantic values of type DS_ARRAYED_LIST [PR_LABELED_TYPE]
 
 	yyvsc8: INTEGER
@@ -3338,7 +3338,7 @@ feature {NONE} -- Semantic value stacks
 	yyvsp8: INTEGER
 			-- Top of semantic value stack `yyvs8'
 
-	yyspecial_routines8: KL_SPECIAL_ROUTINES [?DS_ARRAYED_LIST [PR_LABELED_TYPE]]
+	frozen yyspecial_routines8: KL_SPECIAL_ROUTINES [?DS_ARRAYED_LIST [PR_LABELED_TYPE]]
 			-- Routines that ought to be in SPECIAL [DS_ARRAYED_LIST [PR_LABELED_TYPE]]
 
 feature {NONE} -- Constants

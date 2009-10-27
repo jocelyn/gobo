@@ -62,19 +62,19 @@ feature {NONE} -- Implementation
 			end
 			create yyspecial_routines1
 			yyvsc1 := yyInitial_yyvs_size
-			yyvs1 := yyspecial_routines1.make (yyvsc1)
+			yyvs1 := yyspecial_routines1.make_filled (({ANY}).default, yyvsc1)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs2")
 			end
 			create yyspecial_routines2
 			yyvsc2 := yyInitial_yyvs_size
-			yyvs2 := yyspecial_routines2.make (yyvsc2)
+			yyvs2 := yyspecial_routines2.make_filled (({STRING}).default, yyvsc2)
 			debug ("GEYACC")
 				std.error.put_line ("Create yyvs3")
 			end
 			create yyspecial_routines3
 			yyvsc3 := yyInitial_yyvs_size
-			yyvs3 := yyspecial_routines3.make (yyvsc3)
+			yyvs3 := yyspecial_routines3.make_filled (({BOOLEAN}).default, yyvsc3)
 		end
 
 	yy_init_value_stacks is
@@ -111,9 +111,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs1")
 					end
 					yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-					yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+					yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 				end
-				yyvs1.force (last_any_value, yyvsp1)
+				yyvs1.put (last_any_value, yyvsp1)
 			when 2 then
 				yyvsp2 := yyvsp2 + 1
 				if yyvsp2 >= yyvsc2 then
@@ -121,9 +121,9 @@ feature {NONE} -- Implementation
 						std.error.put_line ("Resize yyvs2")
 					end
 					yyvsc2 := yyvsc2 + yyInitial_yyvs_size
-					yyvs2 := yyspecial_routines2.resize (yyvs2, yyvsc2)
+					yyvs2 := yyspecial_routines2.resize_with_default (({STRING}).default, yyvs2, yyvsc2)
 				end
-				yyvs2.force (last_string_value, yyvsp2)
+				yyvs2.put (last_string_value, yyvsp2)
 			else
 				debug ("GEYACC")
 					std.error.put_string ("Error in parser: not a token type: ")
@@ -146,9 +146,9 @@ feature {NONE} -- Implementation
 					std.error.put_line ("Resize yyvs1")
 				end
 				yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-				yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+				yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 			end
-			yyvs1.force (yyval1, yyvsp1)
+			yyvs1.put (yyval1, yyvsp1)
 		end
 
 	yy_pop_last_value (yystate: INTEGER) is
@@ -192,7 +192,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 2 then
 --|#line 60 "ut_config_parser.y"
@@ -209,9 +209,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs1")
 		end
 		yyvsc1 := yyvsc1 + yyInitial_yyvs_size
-		yyvs1 := yyspecial_routines1.resize (yyvs1, yyvsc1)
+		yyvs1 := yyspecial_routines1.resize_with_default (({ANY}).default, yyvs1, yyvsc1)
 	end
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 3 then
 --|#line 61 "ut_config_parser.y"
@@ -222,7 +222,7 @@ end
 
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 4 then
 --|#line 62 "ut_config_parser.y"
@@ -234,7 +234,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 5 then
 --|#line 66 "ut_config_parser.y"
@@ -246,7 +246,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 6 then
 --|#line 67 "ut_config_parser.y"
@@ -258,7 +258,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 5
 	yyvsp1 := yyvsp1 -4
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 7 then
 --|#line 68 "ut_config_parser.y"
@@ -278,7 +278,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 8 then
 --|#line 78 "ut_config_parser.y"
@@ -298,7 +298,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 9 then
 --|#line 88 "ut_config_parser.y"
@@ -318,7 +318,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 10 then
 --|#line 98 "ut_config_parser.y"
@@ -338,7 +338,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 4
 	yyvsp1 := yyvsp1 -1
 	yyvsp2 := yyvsp2 -2
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 11 then
 --|#line 108 "ut_config_parser.y"
@@ -358,7 +358,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp2 := yyvsp2 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 12 then
 --|#line 118 "ut_config_parser.y"
@@ -370,7 +370,7 @@ end
 		
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 13 then
 --|#line 124 "ut_config_parser.y"
@@ -387,7 +387,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp3 := yyvsp3 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 14 then
 --|#line 131 "ut_config_parser.y"
@@ -404,7 +404,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -1
 	yyvsp3 := yyvsp3 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 15 then
 --|#line 140 "ut_config_parser.y"
@@ -427,9 +427,9 @@ if yy_parsing_status >= yyContinue then
 			std.error.put_line ("Resize yyvs3")
 		end
 		yyvsc3 := yyvsc3 + yyInitial_yyvs_size
-		yyvs3 := yyspecial_routines3.resize (yyvs3, yyvsc3)
+		yyvs3 := yyspecial_routines3.resize_with_default (({BOOLEAN}).default, yyvs3, yyvsc3)
 	end
-	yyvs3.force (yyval3, yyvsp3)
+	yyvs3.put (yyval3, yyvsp3)
 end
 when 16 then
 --|#line 148 "ut_config_parser.y"
@@ -442,7 +442,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp1 := yyvsp1 -2
-	yyvs3.force (yyval3, yyvsp3)
+	yyvs3.put (yyval3, yyvsp3)
 end
 when 17 then
 --|#line 152 "ut_config_parser.y"
@@ -456,7 +456,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp3 := yyvsp3 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs3.force (yyval3, yyvsp3)
+	yyvs3.put (yyval3, yyvsp3)
 end
 when 18 then
 --|#line 156 "ut_config_parser.y"
@@ -470,7 +470,7 @@ if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 3
 	yyvsp3 := yyvsp3 -1
 	yyvsp1 := yyvsp1 -1
-	yyvs3.force (yyval3, yyvsp3)
+	yyvs3.put (yyval3, yyvsp3)
 end
 when 19 then
 --|#line 160 "ut_config_parser.y"
@@ -483,7 +483,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs3.force (yyval3, yyvsp3)
+	yyvs3.put (yyval3, yyvsp3)
 end
 when 20 then
 --|#line 166 "ut_config_parser.y"
@@ -499,7 +499,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 when 21 then
 --|#line 175 "ut_config_parser.y"
@@ -516,7 +516,7 @@ end
 if yy_parsing_status >= yyContinue then
 	yyssp := yyssp - 2
 	yyvsp1 := yyvsp1 -1
-	yyvs1.force (yyval1, yyvsp1)
+	yyvs1.put (yyval1, yyvsp1)
 end
 			else
 				debug ("GEYACC")
@@ -671,7 +671,7 @@ feature {NONE} -- Table templates
 
 feature {NONE} -- Semantic value stacks
 
-	yyvs1: SPECIAL [?ANY]
+	frozen yyvs1: SPECIAL [?ANY]
 			-- Stack for semantic values of type ANY
 
 	yyvsc1: INTEGER
@@ -680,10 +680,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp1: INTEGER
 			-- Top of semantic value stack `yyvs1'
 
-	yyspecial_routines1: KL_SPECIAL_ROUTINES [?ANY]
+	frozen yyspecial_routines1: KL_SPECIAL_ROUTINES [?ANY]
 			-- Routines that ought to be in SPECIAL [ANY]
 
-	yyvs2: SPECIAL [?STRING]
+	frozen yyvs2: SPECIAL [?STRING]
 			-- Stack for semantic values of type STRING
 
 	yyvsc2: INTEGER
@@ -692,10 +692,10 @@ feature {NONE} -- Semantic value stacks
 	yyvsp2: INTEGER
 			-- Top of semantic value stack `yyvs2'
 
-	yyspecial_routines2: KL_SPECIAL_ROUTINES [?STRING]
+	frozen yyspecial_routines2: KL_SPECIAL_ROUTINES [?STRING]
 			-- Routines that ought to be in SPECIAL [STRING]
 
-	yyvs3: SPECIAL [BOOLEAN]
+	frozen yyvs3: SPECIAL [BOOLEAN]
 			-- Stack for semantic values of type BOOLEAN
 
 	yyvsc3: INTEGER
@@ -704,7 +704,7 @@ feature {NONE} -- Semantic value stacks
 	yyvsp3: INTEGER
 			-- Top of semantic value stack `yyvs3'
 
-	yyspecial_routines3: KL_SPECIAL_ROUTINES [BOOLEAN]
+	frozen yyspecial_routines3: KL_SPECIAL_ROUTINES [BOOLEAN]
 			-- Routines that ought to be in SPECIAL [BOOLEAN]
 
 feature {NONE} -- Constants
