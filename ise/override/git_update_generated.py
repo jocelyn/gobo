@@ -63,14 +63,17 @@ def update_node (a_src, a_target, a_dir, a_name):
 	import shutil
 
 	#print "makedirs %s" % (os.path.join (a_target, a_dir))
-	makedirs (os.path.join (a_target, a_dir))
 	orig_fn = os.path.join (a_src, a_dir, a_name)
 	target_fn = os.path.join (a_target, a_dir, a_name)
-	#print "Copy [%s] to [%s]" % (orig_fn, target_fn)
-	shutil.copy2 (orig_fn, target_fn)
-	os.remove (orig_fn)
-#	copyfile (os.path.join (a_src, a_dir, a_name), os.path.join (a_target, a_name))
-	print "  + %s"% (os.path.join (a_dir, a_name))
+	if os.path.exists(orig_fn):
+		makedirs (os.path.join (a_target, a_dir))
+		#print "Copy [%s] to [%s]" % (orig_fn, target_fn)
+		shutil.copy2 (orig_fn, target_fn)
+		os.remove (orig_fn)
+	#	copyfile (os.path.join (a_src, a_dir, a_name), os.path.join (a_target, a_name))
+		print "  + %s"% (os.path.join (a_dir, a_name))
+	else:
+		print "  ? %s"% (os.path.join (a_dir, a_name))
 
 def is_wanted_file(n):
 	a_pattern=".*\.(ge|e|y|l)$"
@@ -117,7 +120,6 @@ def main():
 	os.chdir("..")
 	l_target = os.path.join("ise","override", "generated")
 	l_dir = ""
-	#l_dir = os.path.join("library")
 
 	sys.stderr.write ("Update override folder\n")
 	sys.stderr.write ("* git status \n")
@@ -129,7 +131,7 @@ def main():
 	spec_ise_pat = os.path.join ("spec", "ise")
 
 	sys.stderr.write ("* clean current files from \"%s\" ...\n" % (l_target))
-	#clean_folder (l_target)
+	clean_folder (l_target)
 
 	sys.stderr.write ("* copy files to \"%s\" ...\n" % (l_target))
 
@@ -153,6 +155,9 @@ def main():
 					r.append ({'dir':d, 'file':sp[1]})
 
 	sr = gitignore_in_folder(os.path.join(l_dir, "library"))
+	for i in sr:
+		r.append ({'dir':i['dir'], 'file':i['file']})
+	sr = gitignore_in_folder(os.path.join(l_dir, "src"))
 	for i in sr:
 		r.append ({'dir':i['dir'], 'file':i['file']})
 
